@@ -1,0 +1,59 @@
+/** global style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body_rejest {
+  background-color: whitesmoke;
+}
+
+/** adding Fonts*/
+@font-face {
+  font-family: Inter;
+  src: url("../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf");
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf");
+}
+
+@font-face {
+  font-family: Cairo;
+  src: url("../fonts/CairoFont/Cairo-VariableFont_slnt\,wght.ttf");
+}
+
+/** Using fonts in pages */
+h1, h2, h3, h4, h5, h6 {
+  font-family: Inter;
+  /** Using font inter for headlines */
+
+}
+
+
+p {
+  font-family: Roboto;
+  /** Using font Roboto for any paragraphs */
+}
+
+/* a {
+  text-decoration: none;
+  color: black;
+} */
+
+/** Forms style */
+
+
+.createAccount {
+  background-color: #008c81;
+}
+
+@media screen and (min-width: 700px) {
+  .card_form {
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 5px lightgray;
+    background-color: white;
+  }
+}
