@@ -79,11 +79,12 @@ nav a:hover{
 
 /* Styling MyCarousel*/
 .MyCarousel{
-    height: 80vh !important;
+    height: 90vh !important;
     background-image: url('../images/carusoal_images/1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transition: height 2s ease , background-image 1s ease;
 }
 
 /* styling carusoal buttons*/
@@ -97,11 +98,29 @@ nav a:hover{
 }
 
 /* styling the height of my crusoal in different widths :*/
-@media (max-width: 900px) { /* For small devices */
+@media (max-width: 550px) { /* For small devices */
     .MyCarousel{
         height: 40vh !important;
     }
   }
+
+@media (min-width: 550px) and (max-width: 720px) { /* For small devices */
+    .MyCarousel{
+        height: 50vh !important;
+    }
+}
+
+@media (min-width: 720px) and (max-width: 860px) { /* For small devices */
+    .MyCarousel{
+        height: 60vh !important;
+    }
+}
+
+@media (min-width: 860px) and (max-width: 1000px) { /* For small devices */
+    .MyCarousel{
+        height: 70vh !important;
+    }
+}
 
 
 /*************************************************/
@@ -109,7 +128,6 @@ nav a:hover{
 /* Styling my Footer*/
 footer{
     color: white;
-    font-size: 1.3rem;
 }
 footer .someInfo a, footer .socialMediaLinks a{
     text-decoration: none;
@@ -120,6 +138,43 @@ footer .someInfo a:hover , footer .socialMediaLinks a:hover{
     color: black;
 }
 
+footer .socialMediaLinks a{
+    font-size: 1.4rem;
+}
 /*************************************************/
 
+/* styling my category container*/
 
+.category a{
+    text-decoration: none;
+    color: black;
+    transition: transform 1s ease ;
+}
+.category:hover a{
+    transform: scale(1.2);
+    z-index: 2;
+    border: 1px solid black;
+}
+
+.category a p{
+    padding-top: 1rem !important;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 550px) { /* For small devices */
+    .MyCarousel{
+        height: 40vh !important;
+    }
+  }
+
+@media (min-width: 550px) and (max-width: 720px) { /* For small devices */
+    .MyCarousel{
+        height: 50vh !important;
+    }
+}
