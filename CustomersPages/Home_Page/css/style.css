@@ -18,6 +18,10 @@ html{
 #menuBarBtn_id:hover{
     color: black;
 }
+
+.imgLogo_class{
+    width: 100%;
+}
 /* this is Shopping Cart Icon */
 #shoppingCartIcon_id{
     font-size: 2rem;
