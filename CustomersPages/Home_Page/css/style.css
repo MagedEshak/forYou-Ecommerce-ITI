@@ -31,6 +31,7 @@ html{
 .searchInput_class{
     padding:.5rem  !important;
     width: 100%;
+    border: solid 1px rgb(83, 81, 81);
 }
 .searchInput_class:hover{
     border: solid 2px black;
@@ -46,7 +47,9 @@ html{
     top: 30%;
     right: 2rem;
 }
-
+#searchBtn_1_id:hover{
+    color: black;
+}
 
 
 /* styling a vertical ruler */
@@ -68,3 +71,31 @@ nav a:hover{
     color: black;
 }
 
+/*************************************************/
+
+/* Styling MyCarousel*/
+.MyCarousel{
+    height: 80vh !important;
+    background-image: url('../images/carusoal_images/1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* styling carusoal buttons*/
+.carusoalBtns{
+    position: absolute;
+    top: 45%;
+    left: 0;
+    height: 10%;
+    width: 100%;
+    font-size: 3rem;
+}
+
+
+/* styling the height of my crusoal in different widths :*/
+@media (max-width: 900px) { /* For small devices */
+    .MyCarousel{
+        height: 40vh !important;
+    }
+  }
