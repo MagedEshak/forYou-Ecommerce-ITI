@@ -15,6 +15,11 @@ body,
 header,
 main {
     background-color: #f2efe3 !important;
+    transition: transform 2s ease, opacity .5s ease-out;
+    -webkit-transition: transform 2s ease, opacity .5s ease-out;
+    -moz-transition: transform 2s ease, opacity .5s ease-out;
+    -ms-transition: transform 2s ease, opacity .5s ease-out;
+    -o-transition: transform 2s ease, opacity .5s ease-out;
 }
 
 nav {
@@ -24,6 +29,14 @@ nav {
 aside {
     background-color: #006766 !important;
     height: 650px;
+}
+
+.btn-color {
+    background-color: #006766 !important;
+}
+
+.btn-color:hover {
+    background-color: #004140 !important;
 }
 
 #profileDiv-id {
@@ -90,5 +103,9 @@ ul li .list-links-active {
 
     .img-cf-w {
         width: 150px;
+    }
+
+    .table-lg-w {
+        width: 100%;
     }
 }
