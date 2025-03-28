@@ -19,8 +19,8 @@
 
 <body>
     <main class="col-12 p-4 d-flex justify-content-around">
-        <section class="col-2 d-none d-lg-block">
-            <aside class="rounded-4">
+
+        <aside class="col-2 d-none d-lg-block rounded-4">
                 <ul class="d-flex flex-column justify-content-between p-4 gap-2">
                     <li>
                         <div id="logoDiv-id" class="text-center">
@@ -54,8 +54,7 @@
                     <li><a href="#" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
                     <li><a href="#" class="list-links text-light"><i class="bi bi-box-arrow-left"></i> LogOut</a></li>
                 </ul>
-            </aside>
-        </section>
+        </aside>
 
         <section class="d-flex flex-column align-items-end align-items-sm-center">
             <!-- Start Nav Bar -->
@@ -65,15 +64,15 @@
                     <div class="d-flex">
 
                         <!-- Bars Icon -->
-                        <div id="barsDiv-id" class="pe-2 d-lg-none">
+                        <div id="barsDiv-id" class="pe-2 d-lg-none fs-cf-4 ">
                             <i class="bi bi-filter-left"></i>
                         </div>
 
-                        <span class="fw-bolder">Orders</span>
+                        <span class="fw-bolder fs-cf-2 fs-cf-4 ">Orders</span>
                     </div>
 
                     <div id="logoDiv-id">
-                        <img src="../Images/logo/LLLOGO.png" width="70px" alt="WebSite Logo">
+                        <img src="../Images/logo/LLLOGO.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
                     </div>
 
                     <!-- Nav Left Side -->
@@ -83,12 +82,12 @@
 
                             <!-- Search Icon -->
                             <div id="searchDiv-id">
-                                <i class="bi bi-search"></i>
+                                <i class="bi bi-search fs-5"></i>
                             </div>
 
                             <!-- notifications Icon -->
                             <div id="notificationsDiv-id">
-                                <i id="notificationsIcon-id" class="bi bi-bell">
+                                <i id="notificationsIcon-id" class="bi bi-bell fs-5">
                                     <span id="notificationsDot-id"
                                         class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
                                         <span class="visually-hidden">New notification</span>
@@ -97,16 +96,16 @@
                             </div>
 
                             <!-- Profile -->
-                            <div id="profileDiv-id" class="d-flex gap-3 position-relative">
+                            <div id="profileDiv-id" class="fs-5 d-flex gap-3 position-relative">
                                 <!-- Profile Icon -->
                                 <div id="profileDiv-id">
-                                    <i class="bi bi-person-circle"></i>
+                                    <i class="bi bi-person-circle "></i>
                                 </div>
 
                                 <!-- Admin Name -->
                                 <div class="d-none d-lg-flex flex-column">
-                                    <span class="fw-bolder">Maged Eshak</span>
-                                    <span class="text-secondary">Admin</span>
+                                    <span class="fw-bolder ">Maged Eshak</span>
+                                    <span class="text-secondary ">Admin</span>
                                 </div>
 
                             </div>
@@ -143,24 +142,32 @@
                                 <td class="">300 EGP</td>
                                 <td class="d-none d-md-flex justify-content-center p-3">Card</td>
                                 <td class="">Mar 27, 2025</td>
+
+                                <!-- Order Status -->
                                 <td class="">
+
+                                    <!-- Order Status If New -->
                                     <a href="../index.html"
                                         class="text-primary border border-1 border-primary p-2 rounded-3 text-center badge text-decoration-none">
                                         New
                                     </a>
 
+                                    <!-- Order Status If Approved -->
                                     <!-- <div
-                                    class="text-success border border-1 border-success p-2 rounded-3 text-center badge">
-                                    Approved
-                                </div>
+                                        class="text-success border border-1 border-success p-2 rounded-3 text-center badge">
+                                        Approved
+                                    </div> -->
 
-                                <div class="text-danger border border-1 border-danger p-2 rounded-3 text-center badge">
-                                    Canceled
-                                </div> -->
+                                    <!-- Order Status If Canceled -->
+                                    <!-- <div
+                                        class="text-danger border border-1 border-danger p-2 rounded-3 text-center badge">
+                                        Canceled
+                                    </div> -->
+
                                 </td>
 
-                                <td class="d-none d-md-flex justify-content-around">
-                                    <button type="button" class="btn btn-success d-flex ">
+                                <td class="d-none d-md-flex justify-content-between gap-2">
+                                    <button type="button" class="btn btn-success d-flex gap-1">
                                         <i class="bi bi-check-lg"></i>
                                         Approve
                                     </button>
@@ -172,73 +179,6 @@
                                 </td>
                             </tr>
 
-                            <tr>
-                                <th class="d-none d-md-flex justify-content-center p-3">#251Owd5</th>
-                                <td class="">Maged Eshak</td>
-                                <td class="">300 EGP</td>
-                                <td class="d-none d-md-flex justify-content-center p-3">Card</td>
-                                <td class="">Mar 27, 2025</td>
-                                <td class="">
-                                    <!-- <a href="../index.html"
-                                class="text-primary border border-1 border-primary p-2 rounded-3 text-center badge text-decoration-none">
-                                New
-                            </a> -->
-
-                                    <div
-                                        class="text-success border border-1 border-success p-2 rounded-3 text-center badge">
-                                        Approved
-                                    </div>
-
-                                    <!--  <div class="text-danger border border-1 border-danger p-2 rounded-3 text-center badge">
-                                    Canceled
-                                </div> -->
-                                </td>
-
-                                <td class="d-none d-md-flex justify-content-around">
-                                    <button type="button" class="btn btn-success d-flex gap-1">
-                                        <i class="bi bi-check-lg"></i>Approve
-                                    </button>
-
-                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
-                                        <i class="bi bi-x-lg "></i>
-                                        Decline
-                                    </button>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <th class="d-none d-md-flex justify-content-center p-3">#251Owd5</th>
-                                <td class="">Maged Eshak</td>
-                                <td class="">300 EGP</td>
-                                <td class="d-none d-md-flex justify-content-center p-3">Card</td>
-                                <td class="">Mar 27, 2025</td>
-                                <td class="">
-                                    <!-- <a href="../index.html"
-                                                    class="text-primary border border-1 border-primary p-2 rounded-3 text-center badge text-decoration-none">
-                                                    New
-                                                </a> -->
-
-                                    <!-- <div class="text-success border border-1 border-success p-2 rounded-3 text-center badge">
-                                Approved
-                            </div> -->
-
-                                    <div
-                                        class="text-danger border border-1 border-danger p-2 rounded-3 text-center badge">
-                                        Canceled
-                                    </div>
-                                </td>
-
-                                <td class="d-none d-md-flex justify-content-around">
-                                    <button type="button" class="btn btn-success d-flex gap-1">
-                                        <i class="bi bi-check-lg"></i>Approve
-                                    </button>
-
-                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
-                                        <i class="bi bi-x-lg "></i>
-                                        Decline
-                                    </button>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
