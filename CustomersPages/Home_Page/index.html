@@ -41,47 +41,47 @@
      but in large devices it appears with logo and some links on the top of the page-->
     <!-- my header in large devices -->
     <header class="">
-    <div class="containert-fluid">
-        <div class="row align-items-center justify-content-evenly p-2">
+        <div class="containert-fluid">
+            <div class="row align-items-center justify-content-evenly p-2">
 
-            <!-- this is my site logo -->
-            <div class="d-none d-lg-block siteLogo col-1">
-                <a href="#">
-                    <img class="imgLogo_class" src="images/LLLOGO.png" alt="">
-                </a>
-            </div>
-
-            <!-- this is search input  -->
-            <div class="col-lg-5 row p-3 position-relative">
-                <!-- this is my search input tag -->
-                <input id="searchInput_1_id" class="searchInput_class" type="text" name="searchProduct" placeholder="Search">
-                
-                <!-- this is my search icon button -->
-                <button id="searchBtn_1_id" class="col-auto">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-
-            <!-- this is some links whatsapp, support and branches -->
-            <div class="d-none d-lg-flex col-3 row someLinks justify-content-evenly align-items-center">
-                <div class="whatsapp col-auto">
-                    whatsapp
+                <!-- this is my site logo -->
+                <div class="d-none d-lg-block siteLogo col-1">
+                    <a href="#">
+                        <img class="imgLogo_class" src="images/LLLOGO.png" alt="">
+                    </a>
                 </div>
 
-                <div class="verticalSpace"></div>
-
-                <div class="support col-auto">
-                    call support
+                <!-- this is search input  -->
+                <div class="col-lg-5 row p-3 position-relative">
+                    <!-- this is my search input tag -->
+                    <input id="searchInput_1_id" class="searchInput_class" type="text" name="searchProduct" placeholder="Search">
+                    
+                    <!-- this is my search icon button -->
+                    <button id="searchBtn_1_id" class="col-auto">
+                        <i class="fa fa-search"></i>
+                    </button>
                 </div>
 
-                <div class="verticalSpace"></div>
+                <!-- this is some links whatsapp, support and branches -->
+                <div class="d-none d-lg-flex col-3 row someLinks justify-content-evenly align-items-center">
+                    <div class="whatsapp col-auto">
+                        whatsapp
+                    </div>
 
-                <div class="branches col-auto">
-                    Branches
+                    <div class="verticalSpace"></div>
+
+                    <div class="support col-auto">
+                        call support
+                    </div>
+
+                    <div class="verticalSpace"></div>
+
+                    <div class="branches col-auto">
+                        Branches
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </header>
 
     <!-- my nav in large devices , it only appears on large devices -->
@@ -101,20 +101,16 @@
     </nav>
 
     <!-- ****************************************************************** -->
-    
+    <!-- this is my crusoal  -->
     <section>
         <div class="container-fluid px-2 px-sm-3 px-md-4 p-lg-5">
             <div id="carouselExample" class="carousel slide position-relative">
                 
-                  <div id="MyCarousel_id" class="MyCarousel">
-                  </div>
-                  <!-- <div class="MyCarousel carousel-item">
-                    <img src="images/carusoal images/2.jpg" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="MyCarousel carousel-item">
-                    <img src="images/carusoal images/3.jpeg" class="d-block w-100" alt="...">
-                  </div> -->
+                <!-- this is the div that contains the back ground image -->
+                <div id="MyCarousel_id" class="MyCarousel">
+                </div>
 
+                <!-- my crusoal next and prev buttons -->
                 <div class="carusoalBtns">
                     <button class="carousel-control-prev" type="button" id="controlPrevBtn_id">
                         <i class="fa fa-angle-left"></i>
@@ -128,6 +124,49 @@
         </div>
     </section>
     
+
+
+    <!-- ****************************************************************** -->
+     <!-- Footer -->
+      <footer class="bg-black">
+        <div class="container-fluid bg-danger">
+            <div class="row justify-content-evenly align-items-center p-3 bg-success">
+                <!-- some information linkes like  about us , customer service , more   -->
+                <div class="someInfo row justify-content-evenly align-items-center col-12 col-lg-6 p-2 ">
+                    <div class="aboutus col-auto">
+                        <a href="#">About Us</a>
+                    </div>
+                    <div class="customerService col-auto">
+                        <a href="#">Customer Service</a>
+                    </div>
+                    <div class="more col-auto">
+                        <a href="#">More</a>
+                    </div>
+                </div>
+
+                <!-- Our social media links , facebook , insta , youtube and linked in -->
+                <div class="socialMediaLinks row justify-content-evenly align-items-center col-8 col-lg-4 p-2">
+                    <a class="col-1" href="#"><i class="fa fa-facebook-f"></i></a>
+                    <a class="col-1" href="#"><i class="fa fa-instagram"></i></i></a>
+                    <a class="col-1" href="#"><i class="fa fa-youtube-play"></i></a>
+                    <a class="col-1" href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+
+                <!-- Payment methods , paypal , visa and premium card -->
+                <div class="paymentMethods row justify-content-center align-items-center col-8 col-lg-6 p-2 ">
+                    <img class="col-2 px-2 px-lg-4" src="images/pay_images/premium_card.png" alt="">
+                    <img class="col-2 px-2 px-lg-4" src="images/pay_images/visa.png" alt="">
+                    <img class="col-2 px-2 px-lg-4" src="images/pay_images/payPal.png" alt="">
+                </div>
+
+                <!-- text about our rights reserved -->
+                <div class="rights row justify-content-evenly align-items-center col-10 col-lg-4 p-2">
+                    All rights reserved - forYou
+                </div>
+
+            </div>
+        </div>
+      </footer>
     <script src="js/script.js"></script>
    <script src="js/bootstrap.bundle.min.js"></script>
 </body>

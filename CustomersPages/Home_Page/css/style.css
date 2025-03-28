@@ -96,10 +96,30 @@ nav a:hover{
     font-size: 3rem;
 }
 
-
 /* styling the height of my crusoal in different widths :*/
 @media (max-width: 900px) { /* For small devices */
     .MyCarousel{
         height: 40vh !important;
     }
   }
+
+
+/*************************************************/
+
+/* Styling my Footer*/
+footer{
+    color: white;
+    font-size: 1.3rem;
+}
+footer .someInfo a, footer .socialMediaLinks a{
+    text-decoration: none;
+    color: inherit;
+}
+
+footer .someInfo a:hover , footer .socialMediaLinks a:hover{
+    color: black;
+}
+
+/*************************************************/
+
+
