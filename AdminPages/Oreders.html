@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../ui-ux/icons/checklist.png" type="image/x-icon">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../AdminPages/CSS/orders.css">
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.css">
+
+    <!-- bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Orders Page</title>
+</head>
+
+<body>
+    <main class="col-12 p-4 d-flex justify-content-around">
+        <section class="col-2 d-none d-lg-block">
+            <aside class="rounded-4">
+                <ul class="d-flex flex-column justify-content-between p-4 gap-2">
+                    <li>
+                        <div id="logoDiv-id" class="text-center">
+                            <img src="../Images/logo/LLLOGO.png" width="100px" alt="WebSite Logo">
+                        </div>
+                    </li>
+                    <li>
+                        <span class="fw-bolder">Menu</span>
+                    </li>
+                    <hr class="mt-0">
+                    <li>
+                        <a href="#" class="list-links text-light">
+                            <i class="bi bi-house"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#" class="list-links list-links-active text-light"><i class="bi bi-bag"></i> Orders</a>
+                    </li>
+                    <li>
+                        <a href="#" class="list-links text-light">
+                            <i class="bi bi-house"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="list-links text-light">
+                            <i class="bi bi-bag"></i> Orders</a>
+                    </li>
+                </ul>
+
+                <ul class="d-flex flex-column justify-content-between p-4 gap-2">
+                    <hr>
+                    <li><a href="#" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
+                    <li><a href="#" class="list-links text-light"><i class="bi bi-box-arrow-left"></i> LogOut</a></li>
+                </ul>
+            </aside>
+        </section>
+
+        <section class="d-flex flex-column align-items-end align-items-sm-center">
+            <!-- Start Nav Bar -->
+            <header class="container container-lg col-12 col-lg-11 p-3 ms-lg-3 ms-sm-0 me-md-0">
+                <nav class="col-12 d-flex justify-content-between">
+                    <!-- Nav Left Side -->
+                    <div class="d-flex">
+
+                        <!-- Bars Icon -->
+                        <div id="barsDiv-id" class="pe-2 d-lg-none">
+                            <i class="bi bi-filter-left"></i>
+                        </div>
+
+                        <span class="fw-bolder">Orders</span>
+                    </div>
+
+                    <div id="logoDiv-id">
+                        <img src="../Images/logo/LLLOGO.png" width="70px" alt="WebSite Logo">
+                    </div>
+
+                    <!-- Nav Left Side -->
+                    <div>
+                        <!-- Start profile img, search, notifications icons-->
+                        <div class="d-flex gap-3">
+
+                            <!-- Search Icon -->
+                            <div id="searchDiv-id">
+                                <i class="bi bi-search"></i>
+                            </div>
+
+                            <!-- notifications Icon -->
+                            <div id="notificationsDiv-id">
+                                <i id="notificationsIcon-id" class="bi bi-bell">
+                                    <span id="notificationsDot-id"
+                                        class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                        <span class="visually-hidden">New notification</span>
+                                    </span>
+                                </i>
+                            </div>
+
+                            <!-- Profile -->
+                            <div id="profileDiv-id" class="d-flex gap-3 position-relative">
+                                <!-- Profile Icon -->
+                                <div id="profileDiv-id">
+                                    <i class="bi bi-person-circle"></i>
+                                </div>
+
+                                <!-- Admin Name -->
+                                <div class="d-none d-lg-flex flex-column">
+                                    <span class="fw-bolder">Maged Eshak</span>
+                                    <span class="text-secondary">Admin</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <!-- End Nav Bar -->
+
+            <!-- Start Order Table -->
+            <section class="col-12">
+                <div class="bg-light p-3 m-3 rounded-3 table-responsive">
+                    <table class="table table-hover text-center w-100">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="d-none d-md-flex justify-content-center p-3">#</th>
+                                <th scope="col" class="">Customer</th>
+                                <th scope="col" class="">Total Price</th>
+                                <th scope="col" class="d-none d-md-flex justify-content-center p-3">Payment Method</th>
+                                <th scope="col" class="">Order Date</th>
+                                <th scope="col" class="">Status</th>
+                                <th scope="col" class="d-none d-md-flex justify-content-center p-3">
+                                    Confirming
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="col-1 col-sm-1 w-50">
+
+                            <tr>
+                                <th class="d-none d-md-flex justify-content-center p-3">#251Owd5</th>
+                                <td class="">Maged Eshak</td>
+                                <td class="">300 EGP</td>
+                                <td class="d-none d-md-flex justify-content-center p-3">Card</td>
+                                <td class="">Mar 27, 2025</td>
+                                <td class="">
+                                    <a href="../index.html"
+                                        class="text-primary border border-1 border-primary p-2 rounded-3 text-center badge text-decoration-none">
+                                        New
+                                    </a>
+
+                                    <!-- <div
+                                    class="text-success border border-1 border-success p-2 rounded-3 text-center badge">
+                                    Approved
+                                </div>
+
+                                <div class="text-danger border border-1 border-danger p-2 rounded-3 text-center badge">
+                                    Canceled
+                                </div> -->
+                                </td>
+
+                                <td class="d-none d-md-flex justify-content-around">
+                                    <button type="button" class="btn btn-success d-flex ">
+                                        <i class="bi bi-check-lg"></i>
+                                        Approve
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
+                                        <i class="bi bi-x-lg "></i>
+                                        Decline
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th class="d-none d-md-flex justify-content-center p-3">#251Owd5</th>
+                                <td class="">Maged Eshak</td>
+                                <td class="">300 EGP</td>
+                                <td class="d-none d-md-flex justify-content-center p-3">Card</td>
+                                <td class="">Mar 27, 2025</td>
+                                <td class="">
+                                    <!-- <a href="../index.html"
+                                class="text-primary border border-1 border-primary p-2 rounded-3 text-center badge text-decoration-none">
+                                New
+                            </a> -->
+
+                                    <div
+                                        class="text-success border border-1 border-success p-2 rounded-3 text-center badge">
+                                        Approved
+                                    </div>
+
+                                    <!--  <div class="text-danger border border-1 border-danger p-2 rounded-3 text-center badge">
+                                    Canceled
+                                </div> -->
+                                </td>
+
+                                <td class="d-none d-md-flex justify-content-around">
+                                    <button type="button" class="btn btn-success d-flex gap-1">
+                                        <i class="bi bi-check-lg"></i>Approve
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
+                                        <i class="bi bi-x-lg "></i>
+                                        Decline
+                                    </button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th class="d-none d-md-flex justify-content-center p-3">#251Owd5</th>
+                                <td class="">Maged Eshak</td>
+                                <td class="">300 EGP</td>
+                                <td class="d-none d-md-flex justify-content-center p-3">Card</td>
+                                <td class="">Mar 27, 2025</td>
+                                <td class="">
+                                    <!-- <a href="../index.html"
+                                                    class="text-primary border border-1 border-primary p-2 rounded-3 text-center badge text-decoration-none">
+                                                    New
+                                                </a> -->
+
+                                    <!-- <div class="text-success border border-1 border-success p-2 rounded-3 text-center badge">
+                                Approved
+                            </div> -->
+
+                                    <div
+                                        class="text-danger border border-1 border-danger p-2 rounded-3 text-center badge">
+                                        Canceled
+                                    </div>
+                                </td>
+
+                                <td class="d-none d-md-flex justify-content-around">
+                                    <button type="button" class="btn btn-success d-flex gap-1">
+                                        <i class="bi bi-check-lg"></i>Approve
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
+                                        <i class="bi bi-x-lg "></i>
+                                        Decline
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <!-- End Order Table -->
+        </section>
+
+    </main>
+
+    <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+</body>
+
+</html>
