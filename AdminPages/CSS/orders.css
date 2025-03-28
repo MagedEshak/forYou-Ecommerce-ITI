@@ -1,0 +1,84 @@
+/* Importing bootstrap icons */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+/* Importing Custom Fonts */
+@font-face {
+    font-family: 'Headline Font';
+    src: url('../../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf');
+
+    font-family: 'Main Font';
+    src: url('../../fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf');
+}
+
+html,
+body,
+header,
+main {
+    background-color: #f2efe3 !important;
+}
+
+aside {
+    background-color: #006766 !important;
+    height: 650px;
+}
+
+#profileDiv-id {
+    cursor: pointer;
+}
+
+ul {
+    list-style: none !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+ul li .list-links {
+    font-weight: 900 !important;
+    font-size: 20px;
+}
+
+ul li .list-links:hover {
+    color: black !important;
+
+}
+
+ul li .list-links-active {
+    color: #000 !important;
+}
+
+/* Custom Fonts */
+.img-sm-w {
+    width: 70px;
+}
+
+.fs-cf-4 {
+    font-size: 1.25rem !important;
+}
+
+/* للشاشات المتوسطة (md) وما فوق */
+@media (min-width: 768px) {
+    .fs-cf-3 {
+        font-size: 1.5rem !important;
+    }
+
+    .img-md-w {
+        width: 100px;
+    }
+}
+
+/* للشاشات الكبيرة (lg) وما فوق */
+@media (min-width: 992px) {
+    .fs-cf-1 {
+        font-size: 2.5rem !important;
+    }
+
+    .fs-cf-2 {
+        font-size: 2rem !important;
+    }
+
+    .img-cf-w {
+        width: 150px;
+    }
+}
