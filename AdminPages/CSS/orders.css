@@ -17,6 +17,10 @@ main {
     background-color: #f2efe3 !important;
 }
 
+nav {
+    justify-content: flex-start;
+}
+
 aside {
     background-color: #006766 !important;
     height: 650px;
@@ -53,9 +57,15 @@ ul li .list-links-active {
     width: 70px;
 }
 
+
 .fs-cf-4 {
     font-size: 1.25rem !important;
 }
+
+.fs-cf-5 {
+    font-size: 1rem !important;
+}
+
 
 /* للشاشات المتوسطة (md) وما فوق */
 @media (min-width: 768px) {

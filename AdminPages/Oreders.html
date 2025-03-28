@@ -17,58 +17,58 @@
     <title>Orders Page</title>
 </head>
 
-<body>
-    <main class="col-12 p-4 d-flex justify-content-around">
+<body class="col-12 p-lg-4 d-flex justify-content-around">
+    
 
         <aside class="col-2 d-none d-lg-block rounded-4">
-                <ul class="d-flex flex-column justify-content-between p-4 gap-2">
-                    <li>
-                        <div id="logoDiv-id" class="text-center">
-                            <img src="../Images/logo/LLLOGO.png" width="100px" alt="WebSite Logo">
-                        </div>
-                    </li>
-                    <li>
-                        <span class="fw-bolder">Menu</span>
-                    </li>
-                    <hr class="mt-0">
-                    <li>
-                        <a href="#" class="list-links text-light">
-                            <i class="bi bi-house"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#" class="list-links list-links-active text-light"><i class="bi bi-bag"></i> Orders</a>
-                    </li>
-                    <li>
-                        <a href="#" class="list-links text-light">
-                            <i class="bi bi-house"></i> Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="list-links text-light">
-                            <i class="bi bi-bag"></i> Orders</a>
-                    </li>
-                </ul>
+            <ul class="d-flex flex-column justify-content-between p-4 gap-2">
+                <li>
+                    <div id="logoDiv-id" class="text-center">
+                        <img src="../Images/logo/LLLOGO.png" width="100px" alt="WebSite Logo">
+                    </div>
+                </li>
+                <li>
+                    <span class="fw-bolder">Menu</span>
+                </li>
+                <hr class="mt-0">
+                <li>
+                    <a href="#" class="list-links text-light">
+                        <i class="bi bi-house"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="#" class="list-links list-links-active text-light"><i class="bi bi-bag"></i> Orders</a>
+                </li>
+                <li>
+                    <a href="#" class="list-links text-light">
+                        <i class="bi bi-house"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="list-links text-light">
+                        <i class="bi bi-bag"></i> Orders</a>
+                </li>
+            </ul>
 
-                <ul class="d-flex flex-column justify-content-between p-4 gap-2">
-                    <hr>
-                    <li><a href="#" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
-                    <li><a href="#" class="list-links text-light"><i class="bi bi-box-arrow-left"></i> LogOut</a></li>
-                </ul>
+            <ul class="d-flex flex-column justify-content-between p-4 gap-2">
+                <hr>
+                <li><a href="#" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
+                <li><a href="#" class="list-links text-light"><i class="bi bi-box-arrow-left"></i> LogOut</a></li>
+            </ul>
         </aside>
 
-        <section class="d-flex flex-column align-items-end align-items-sm-center">
+        <main class="d-flex flex-column align-items-end align-items-sm-center ps-lg-3 col">
             <!-- Start Nav Bar -->
-            <header class="container container-lg col-12 col-lg-11 p-3 ms-lg-3 ms-sm-0 me-md-0">
+            <header class="container container-lg col-12 col-lg-12 pt-3 pb-3 ms-0 me-0">
                 <nav class="col-12 d-flex justify-content-between">
                     <!-- Nav Left Side -->
                     <div class="d-flex">
 
                         <!-- Bars Icon -->
-                        <div id="barsDiv-id" class="pe-2 d-lg-none fs-cf-4 ">
+                        <div id="barsDiv-id" class="pe-2 d-lg-none fs-cf-4">
                             <i class="bi bi-filter-left"></i>
                         </div>
 
-                        <span class="fw-bolder fs-cf-2 fs-cf-4 ">Orders</span>
+                        <span class="fw-bolder fs-cf-2 fs-cf-4">Orders</span>
                     </div>
 
                     <div id="logoDiv-id">
@@ -82,12 +82,12 @@
 
                             <!-- Search Icon -->
                             <div id="searchDiv-id">
-                                <i class="bi bi-search fs-5"></i>
+                                <i class="bi bi-search fs-cf-3 fs-cf-4"></i>
                             </div>
 
                             <!-- notifications Icon -->
                             <div id="notificationsDiv-id">
-                                <i id="notificationsIcon-id" class="bi bi-bell fs-5">
+                                <i id="notificationsIcon-id" class="bi bi-bell fs-cf-3 fs-cf-4">
                                     <span id="notificationsDot-id"
                                         class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
                                         <span class="visually-hidden">New notification</span>
@@ -99,7 +99,7 @@
                             <div id="profileDiv-id" class="fs-5 d-flex gap-3 position-relative">
                                 <!-- Profile Icon -->
                                 <div id="profileDiv-id">
-                                    <i class="bi bi-person-circle "></i>
+                                    <i class="bi bi-person-circle fs-cf-3 fs-cf-4"></i>
                                 </div>
 
                                 <!-- Admin Name -->
@@ -124,7 +124,7 @@
                             <tr>
                                 <th scope="col" class="d-none d-md-flex justify-content-center p-3">#</th>
                                 <th scope="col" class="">Customer</th>
-                                <th scope="col" class="">Total Price</th>
+                                <th scope="col" class="fs-cf-6">Total Price</th>
                                 <th scope="col" class="d-none d-md-flex justify-content-center p-3">Payment Method</th>
                                 <th scope="col" class="">Order Date</th>
                                 <th scope="col" class="">Status</th>
@@ -184,7 +184,7 @@
                 </div>
             </section>
             <!-- End Order Table -->
-        </section>
+        </main>
 
     </main>
 
