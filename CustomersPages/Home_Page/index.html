@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForYou</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <!-- in case of small devices -->
+
+     <!-- my nav bar in small devices : it appears on the top of the page-->
+    <nav class="d-lg-none">
+        <div class="container-fluid p-2 p-md-3 bg-success">
+            <div class="row text-center justify-content-between align-items-center">
+                <!-- this is menue bar button -->
+                <button id="menuBarBtn_id" class="col-auto"> 
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- this is My Site Logo -->
+                <div class="siteLogo col-auto">
+                    <a href="#">
+                        <img src="images/logo.svg" alt="">
+                    </a>
+                </div>
+
+                <!-- this is Shopping Cart Icon -->
+                <a href="#" class="col-auto"><i id="shoppingCartIcon_id" class="fa fa-shopping-cart" ></i></a>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- ****************************************************************** -->
+
+    <!-- in case of small devices this header appears as a search input only
+     but in large devices it appears with logo and some links on the top of the page-->
+    <!-- my header in large devices -->
+    <header class="">
+    <div class="containert-fluid">
+        <div class="row align-items-center justify-content-evenly p-2">
+
+            <!-- this is my site logo -->
+            <div class="d-none d-lg-block siteLogo col-auto">
+                <a href="#">
+                    <img src="images/logo.svg" alt="">
+                </a>
+            </div>
+
+            <!-- this is search input  -->
+            <div class="col-lg-5 row p-3 position-relative">
+                <!-- this is my search input tag -->
+                <input id="searchInput_1_id" class="searchInput_class" type="text" name="searchProduct" placeholder="Search">
+                
+                <!-- this is my search icon button -->
+                <button id="searchBtn_1_id" class="col-auto">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+
+            <!-- this is some links whatsapp, support and branches -->
+            <div class="d-none d-lg-flex col-3 row someLinks justify-content-evenly align-items-center">
+                <div class="whatsapp col-auto">
+                    whatsapp
+                </div>
+
+                <div class="verticalSpace"></div>
+
+                <div class="support col-auto">
+                    call support
+                </div>
+
+                <div class="verticalSpace"></div>
+
+                <div class="branches col-auto">
+                    Branches
+                </div>
+            </div>
+        </div>
+    </div>
+    </header>
+
+    <!-- my nav in large devices , it only appears on large devices -->
+    <nav class="d-none d-lg-block bg-success">
+        <div class="container-fluid p-3">
+            <div class="row justify-content-evenly align-items-center links">
+                <a href="#" class="col-auto"> Cookers</a>
+                <a href="#" class="col-auto"> Small Home Appliances</a>
+                <a href="#" class="col-auto"> Televesions</a>
+                <a href="#" class="col-auto"> Cooling Appliances</a>
+                <a href="#" class="col-auto"> Air Conditioners</a>
+                <a href="#" class="col-auto"> Washing Mashines</a>
+                <a href="#" class="col-auto"> Sign in</a>
+                <a href="#" class="col-auto"><i id="shoppingCartIcon_id" class="fa fa-shopping-cart" ></i></a>
+            </div>
+        </div>
+    </nav>
+
+</body>
+</html>

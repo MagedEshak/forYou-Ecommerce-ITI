@@ -1,0 +1,70 @@
+*{
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+}
+html{
+    font-size: 16px;
+}
+
+/* My Nav Bar in case of small screens : */
+/* this is Menue Bar Button */
+#menuBarBtn_id{
+    border: none;
+    background-color: inherit;
+    color: white;
+    font-size: 2rem;
+}
+#menuBarBtn_id:hover{
+    color: black;
+}
+/* this is Shopping Cart Icon */
+#shoppingCartIcon_id{
+    font-size: 2rem;
+    color: white;
+}
+
+
+
+/* My Search Input Field in case of small Screens */
+/* this is my search input id*/
+.searchInput_class{
+    padding:.5rem  !important;
+    width: 100%;
+}
+.searchInput_class:hover{
+    border: solid 2px black;
+}
+
+/* this is my search icon button*/
+#searchBtn_1_id{
+    border: none;
+    background-color: white;
+    color: rgb(168, 162, 162);
+    height: 40%;
+    position: absolute;
+    top: 30%;
+    right: 2rem;
+}
+
+
+
+/* styling a vertical ruler */
+.verticalSpace{
+    height: 2rem;
+    width: .1rem;
+    background-color: rgb(194, 193, 191);
+}
+
+/* styling my links in the nav bar*/
+nav  a{
+    text-decoration: none;
+    color: white;
+}
+nav  a i{
+    color: inherit !important;
+}
+nav a:hover{
+    color: black;
+}
+
