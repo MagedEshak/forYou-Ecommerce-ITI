@@ -69,51 +69,125 @@
     </aside>
     
   
-    <main class="bg-white container-sm border" style="height: auto;">
-      <div class="row">
+    <main class="d-flex flex-column align-items-end align-items-sm-center ps-lg-3 col" style="height: auto;">
+
+       <!-- Start Nav Bar -->
+       <header class="container container-lg col-12 col-lg-11 p-3 ms-lg-3 ms-sm-0 me-md-0">
+        <nav class="col-12 d-flex justify-content-between">
+            <!-- Nav Left Side -->
+            <div class="d-flex">
+
+                <!-- Bars Icon -->
+                <div id="barsDiv-id" class="pe-2 d-lg-none fs-cf-4 ">
+                    <i class="bi bi-filter-left"></i>
+                </div>
+
+                <span class="fw-bolder fs-cf-2 fs-cf-4 ">Orders</span>
+            </div>
+
+            <div id="logoDiv-id">
+                <img src="../Images/logo/LLLOGO.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
+            </div>
+
+            <!-- Nav Left Side -->
+            <div>
+                <!-- Start profile img, search, notifications icons-->
+                <div class="d-flex gap-3">
+
+                    <!-- Search Icon -->
+                    <div id="searchDiv-id">
+                        <i class="bi bi-search fs-5"></i>
+                    </div>
+
+                    <!-- notifications Icon -->
+                    <div id="notificationsDiv-id">
+                        <i id="notificationsIcon-id" class="bi bi-bell fs-5">
+                            <span id="notificationsDot-id"
+                                class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                <span class="visually-hidden">New notification</span>
+                            </span>
+                        </i>
+                    </div>
+
+                    <!-- Profile -->
+                    <div id="profileDiv-id" class="fs-5 d-flex gap-3 position-relative">
+                        <!-- Profile Icon -->
+                        <div id="profileDiv-id">
+                            <i class="bi bi-person-circle "></i>
+                        </div>
+
+                        <!-- Admin Name -->
+                        <div class="d-none d-lg-flex flex-column">
+                            <span class="fw-bolder ">Maged Eshak</span>
+                            <span class="text-secondary ">Admin</span>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End Nav Bar -->
+
+    <section class="col-12">
+      <div class="row ">
         <!-- list of items  and stock-->
-         <div class="col-md-9  border d-flex flex-column">
+        <div class="col-md-9 bg-light  rounded-3">
           <!-- labels -->
-           <div class="container border-bottom">
-            <div class="row ">
-              <span class="col-4  text-start">product</span>
-              <span class="col-3  text-center">price</span>
-              <span class="col-3  text-center">quantity</span>
-              <span class="col-2  text-center">total amount</span>
-            </div>
-          </div>
+          
+          <table class="table table-hover text-center w-100">
+            <!-- labels -->
+            <thead>
+              <tr>
+                  <th scope="col" class="text-start">product</th>
+                  <th scope="col" class="text-center">price</th>
+                  <th scope="col" class="text-center">quantity</th>
+                  <th scope="col" class="text-center">total amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <!-- img and name -->
+                <td>
+                  <div class="align-content-center text-center d-flex ">
+                    <label for="file-input" >
+                      <i class="bi bi-card-image" style="font-size:40px;color:black"></i>
+                    </label>
+                    <input type="file" id="file-input" style="display: none;" accept="image/*">
+                    <div class="row">
+                      <span class=" text-start">product name</span>
+                      <span class="text-start">product id</span>  
+                    </div>
+                  </div>
+                </td>
+                <!-- price -->
+                <td class="text-center align-middle">
+                  <div class="d-flex align-items-center justify-content-center" style="height: auto;">
+                    <input class=" border-0 text-center" type="number" value="" placeholder="0" style="width: 40px;">
+                  </div>
+                </td>
+                <!-- quantity -->
+                <td class="text-center align-middle">
+                  <div class="d-flex align-items-center justify-content-center ">
+                    <input class="border-0 text-center" type="number" value="" placeholder="0" style="width: 40px;">
+                  </div>
+                </td>
+                <!-- amount -->
+                <td class="text-center align-middle">
+                  <span class="align-content-center text-center">4</span>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
 
-
-         <!-- items -->
-        <div class="container-md mb-md-2">
-          <div class="row border-bottom p-md-3">
-            <!-- prodect img and name -->
-            <div class="col-4 align-content-center text-center d-flex ">
-              <label for="file-input" >
-                <i class="bi bi-card-image" style="font-size:40px;color:black"></i>
-              </label>
-              <input type="file" id="file-input" style="display: none;" accept="image/*">
-              <!-- product name and id -->
-              <div class="row">
-                <span class="text-start">product name</span>
-                <span class="text-start">product id</span>  
-              </div>
-            </div>
-            <!--price  -->
-            <div class="col-3 align-content-center text-center">
-              <input class="border-0 text-center" type="number" value="" placeholder="0" style="width: 40%;">
-            </div>
-            <!-- quantity -->
-            <div class="col-3  align-content-center text-center">
-              <input class="border-0 text-center" type="number" value="" placeholder="0" style="width: 40%;">
-            </div><!-- total amount-->
-            <span class="col-2 bg-body align-content-center text-center">4</span>
-          </div>
-        </div>
       </div>
     
         <div class="col-md-3 bg-danger" style="height: 200px;">2</div>
       </div>
+    </section>
+      
       
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/umd/popper.min.js"></script>
