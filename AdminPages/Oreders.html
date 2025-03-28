@@ -18,173 +18,173 @@
 </head>
 
 <body class="col-12 p-lg-4 d-flex justify-content-around">
-    
 
-        <aside class="col-2 d-none d-lg-block rounded-4">
-            <ul class="d-flex flex-column justify-content-between p-4 gap-2">
-                <li>
-                    <div id="logoDiv-id" class="text-center">
-                        <img src="../Images/logo/LLLOGO.png" width="100px" alt="WebSite Logo">
+
+    <aside class="col-2 d-none d-lg-block rounded-4">
+        <ul class="d-flex flex-column justify-content-between p-4 gap-2">
+            <li>
+                <div id="logoDiv-id" class="text-center">
+                    <img src="../Images/logo/LLLOGO.png" width="100px" alt="WebSite Logo">
+                </div>
+            </li>
+            <li>
+                <span class="fw-bolder">Menu</span>
+            </li>
+            <hr class="mt-0">
+            <li>
+                <a href="#" class="list-links text-light">
+                    <i class="bi bi-house"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="#" class="list-links list-links-active text-light"><i class="bi bi-bag"></i> Orders</a>
+            </li>
+            <li>
+                <a href="#" class="list-links text-light">
+                    <i class="bi bi-house"></i> Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#" class="list-links text-light">
+                    <i class="bi bi-bag"></i> Orders</a>
+            </li>
+        </ul>
+
+        <ul class="d-flex flex-column justify-content-between p-4 gap-2">
+            <hr>
+            <li><a href="#" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
+            <li><a href="#" class="list-links text-light"><i class="bi bi-box-arrow-left"></i> LogOut</a></li>
+        </ul>
+    </aside>
+
+    <main class="d-flex flex-column align-items-end align-items-sm-center ps-lg-3 col">
+        <!-- Start Nav Bar -->
+        <header class="container container-lg col-12 col-lg-12 pt-3 pb-3 ms-0 me-0">
+            <nav class="col-12 d-flex justify-content-between">
+                <!-- Nav Left Side -->
+                <div class="d-flex">
+
+                    <!-- Bars Icon -->
+                    <div id="barsDiv-id" class="pe-2 d-lg-none fs-cf-4">
+                        <i class="bi bi-filter-left"></i>
                     </div>
-                </li>
-                <li>
-                    <span class="fw-bolder">Menu</span>
-                </li>
-                <hr class="mt-0">
-                <li>
-                    <a href="#" class="list-links text-light">
-                        <i class="bi bi-house"></i> Dashboard</a>
-                </li>
-                <li>
-                    <a href="#" class="list-links list-links-active text-light"><i class="bi bi-bag"></i> Orders</a>
-                </li>
-                <li>
-                    <a href="#" class="list-links text-light">
-                        <i class="bi bi-house"></i> Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="list-links text-light">
-                        <i class="bi bi-bag"></i> Orders</a>
-                </li>
-            </ul>
 
-            <ul class="d-flex flex-column justify-content-between p-4 gap-2">
-                <hr>
-                <li><a href="#" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
-                <li><a href="#" class="list-links text-light"><i class="bi bi-box-arrow-left"></i> LogOut</a></li>
-            </ul>
-        </aside>
+                    <span class="fw-bolder fs-cf-2 fs-cf-4">Orders</span>
+                </div>
 
-        <main class="d-flex flex-column align-items-end align-items-sm-center ps-lg-3 col">
-            <!-- Start Nav Bar -->
-            <header class="container container-lg col-12 col-lg-12 pt-3 pb-3 ms-0 me-0">
-                <nav class="col-12 d-flex justify-content-between">
-                    <!-- Nav Left Side -->
-                    <div class="d-flex">
+                <div id="logoDiv-id">
+                    <img src="../Images/logo/LLLOGO.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
+                </div>
 
-                        <!-- Bars Icon -->
-                        <div id="barsDiv-id" class="pe-2 d-lg-none fs-cf-4">
-                            <i class="bi bi-filter-left"></i>
+                <!-- Nav Left Side -->
+                <div>
+                    <!-- Start profile img, search, notifications icons-->
+                    <div class="d-flex gap-3">
+
+                        <!-- Search Icon -->
+                        <div id="searchDiv-id">
+                            <i class="bi bi-search fs-cf-3 fs-cf-4"></i>
                         </div>
 
-                        <span class="fw-bolder fs-cf-2 fs-cf-4">Orders</span>
-                    </div>
+                        <!-- notifications Icon -->
+                        <div id="notificationsDiv-id">
+                            <i id="notificationsIcon-id" class="bi bi-bell fs-cf-3 fs-cf-4">
+                                <span id="notificationsDot-id"
+                                    class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                    <span class="visually-hidden">New notification</span>
+                                </span>
+                            </i>
+                        </div>
 
-                    <div id="logoDiv-id">
-                        <img src="../Images/logo/LLLOGO.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
-                    </div>
-
-                    <!-- Nav Left Side -->
-                    <div>
-                        <!-- Start profile img, search, notifications icons-->
-                        <div class="d-flex gap-3">
-
-                            <!-- Search Icon -->
-                            <div id="searchDiv-id">
-                                <i class="bi bi-search fs-cf-3 fs-cf-4"></i>
+                        <!-- Profile -->
+                        <div id="profileDiv-id" class="fs-5 d-flex gap-3 position-relative">
+                            <!-- Profile Icon -->
+                            <div id="profileDiv-id">
+                                <i class="bi bi-person-circle fs-cf-3 fs-cf-4"></i>
                             </div>
 
-                            <!-- notifications Icon -->
-                            <div id="notificationsDiv-id">
-                                <i id="notificationsIcon-id" class="bi bi-bell fs-cf-3 fs-cf-4">
-                                    <span id="notificationsDot-id"
-                                        class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
-                                        <span class="visually-hidden">New notification</span>
-                                    </span>
-                                </i>
-                            </div>
-
-                            <!-- Profile -->
-                            <div id="profileDiv-id" class="fs-5 d-flex gap-3 position-relative">
-                                <!-- Profile Icon -->
-                                <div id="profileDiv-id">
-                                    <i class="bi bi-person-circle fs-cf-3 fs-cf-4"></i>
-                                </div>
-
-                                <!-- Admin Name -->
-                                <div class="d-none d-lg-flex flex-column">
-                                    <span class="fw-bolder ">Maged Eshak</span>
-                                    <span class="text-secondary ">Admin</span>
-                                </div>
-
+                            <!-- Admin Name -->
+                            <div class="d-none d-lg-flex flex-column">
+                                <span class="fw-bolder ">Maged Eshak</span>
+                                <span class="text-secondary ">Admin</span>
                             </div>
 
                         </div>
+
                     </div>
-                </nav>
-            </header>
-            <!-- End Nav Bar -->
+                </div>
+            </nav>
+        </header>
+        <!-- End Nav Bar -->
 
-            <!-- Start Order Table -->
-            <section class="col-12">
-                <div class="bg-light p-3 m-3 rounded-3 table-responsive">
-                    <table class="table table-hover text-center w-100">
-                        <thead>
-                            <tr>
-                                <th scope="col" class="d-none d-md-flex justify-content-center p-3">#</th>
-                                <th scope="col" class="">Customer</th>
-                                <th scope="col" class="fs-cf-6">Total Price</th>
-                                <th scope="col" class="d-none d-md-flex justify-content-center p-3">Payment Method</th>
-                                <th scope="col" class="">Order Date</th>
-                                <th scope="col" class="">Status</th>
-                                <th scope="col" class="d-none d-md-flex justify-content-center p-3">
-                                    Confirming
-                                </th>
-                            </tr>
-                        </thead>
+        <!-- Start Order Table -->
+        <section class="col-12">
+            <div class="bg-light p-3 m-3 rounded-3 table-responsive">
+                <table class="table table-hover text-center w-100">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="d-none d-md-flex justify-content-center p-3">#</th>
+                            <th scope="col" class="">Customer</th>
+                            <th scope="col" class="fs-cf-6">Total Price</th>
+                            <th scope="col" class="d-none d-md-flex justify-content-center p-3">Payment Method</th>
+                            <th scope="col" class="">Order Date</th>
+                            <th scope="col" class="">Status</th>
+                            <th scope="col" class="d-none d-md-flex justify-content-center p-3">
+                                Confirming
+                            </th>
+                        </tr>
+                    </thead>
 
-                        <tbody class="col-1 col-sm-1 w-50">
+                    <tbody class="col-1 col-sm-1 w-50">
 
-                            <tr>
-                                <th class="d-none d-md-flex justify-content-center p-3">#251Owd5</th>
-                                <td class="">Maged Eshak</td>
-                                <td class="">300 EGP</td>
-                                <td class="d-none d-md-flex justify-content-center p-3">Card</td>
-                                <td class="">Mar 27, 2025</td>
+                        <tr>
+                            <th class="d-none d-md-flex justify-content-center p-3">#251Owd5</th>
+                            <td class="">Maged Eshak</td>
+                            <td class="">300 EGP</td>
+                            <td class="d-none d-md-flex justify-content-center p-3">Card</td>
+                            <td class="">Mar 27, 2025</td>
 
-                                <!-- Order Status -->
-                                <td class="">
+                            <!-- Order Status -->
+                            <td class="">
 
-                                    <!-- Order Status If New -->
-                                    <a href="../index.html"
-                                        class="text-primary border border-1 border-primary p-2 rounded-3 text-center badge text-decoration-none">
-                                        New
-                                    </a>
+                                <!-- Order Status If New -->
+                                <a href="../index.html"
+                                    class="text-primary border border-1 border-primary p-2 rounded-3 text-center badge text-decoration-none">
+                                    New
+                                </a>
 
-                                    <!-- Order Status If Approved -->
-                                    <!-- <div
+                                <!-- Order Status If Approved -->
+                                <!-- <div
                                         class="text-success border border-1 border-success p-2 rounded-3 text-center badge">
                                         Approved
                                     </div> -->
 
-                                    <!-- Order Status If Canceled -->
-                                    <!-- <div
+                                <!-- Order Status If Canceled -->
+                                <!-- <div
                                         class="text-danger border border-1 border-danger p-2 rounded-3 text-center badge">
                                         Canceled
                                     </div> -->
 
-                                </td>
+                            </td>
 
-                                <td class="d-none d-md-flex justify-content-between gap-2">
-                                    <button type="button" class="btn btn-success d-flex gap-1">
-                                        <i class="bi bi-check-lg"></i>
-                                        Approve
-                                    </button>
+                            <td class="d-none d-md-flex justify-content-around">
+                                <button type="button" class="btn btn-success d-flex gap-1">
+                                    <i class="bi bi-check-lg"></i>
+                                    Approve
+                                </button>
 
-                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
-                                        <i class="bi bi-x-lg "></i>
-                                        Decline
-                                    </button>
-                                </td>
-                            </tr>
+                                <button type="button" class="btn btn-danger d-flex gap-1 ">
+                                    <i class="bi bi-x-lg "></i>
+                                    Decline
+                                </button>
+                            </td>
+                        </tr>
 
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-            <!-- End Order Table -->
-        </main>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <!-- End Order Table -->
+    </main>
 
     </main>
 
