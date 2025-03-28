@@ -17,8 +17,7 @@
     <title>Orders Page</title>
 </head>
 
-<body class="col-12 p-lg-4 d-flex justify-content-around">
-
+<body class="d-flex justify-content-around p-4">
 
     <aside class="col-2 d-none d-lg-block rounded-4">
         <ul class="d-flex flex-column justify-content-between p-4 gap-3">
@@ -58,10 +57,10 @@
         </ul>
     </aside>
 
-    <main class="d-flex flex-column align-items-end align-items-sm-center ps-lg-3 col">
+    <main class="w-100">
         <!-- Start Nav Bar -->
-        <header class="container container-lg col-12 col-lg-12 pt-3 pb-3 ms-0 me-0">
-            <nav class="col-12 d-flex justify-content-between">
+        <header class="p-lg-4">
+            <nav class="col-12 d-flex justify-content-between ps-2">
                 <!-- Nav Left Side -->
                 <div class="d-flex">
 
@@ -121,34 +120,36 @@
         <!-- End Nav Bar -->
 
         <!-- Start Order Table -->
-        <section class="col-12">
-            <div class="bg-light p-3 m-3 rounded-3 table-responsive">
-                <table class="table table-hover text-center w-100">
+        <section class="bg-light p-3 ms-3 mt-3 rounded-3">
+
+            <!-- Table d-lg-block in Large Screens and none in MD and SM Screens -->
+            <div class="d-none d-lg-block">
+                <table class="table table-hover text-center">
                     <thead>
                         <tr>
-                            <th scope="col" class="d-none d-md-flex justify-content-center p-3">#</th>
-                            <th scope="col" class="">Customer</th>
-                            <th scope="col" class="fs-cf-6">Total Price</th>
-                            <th scope="col" class="d-none d-md-flex justify-content-center p-3">Payment Method</th>
-                            <th scope="col" class="">Order Date</th>
-                            <th scope="col" class="">Status</th>
-                            <th scope="col" class="d-none d-md-flex justify-content-center p-3">
+                            <th scope="col">#</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Payment Method</th>
+                            <th scope="col">Order Date</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">
                                 Confirming
                             </th>
                         </tr>
                     </thead>
 
-                    <tbody class="col-1 col-sm-1 w-50">
+                    <tbody>
 
                         <tr>
-                            <th class="d-none d-md-flex justify-content-center p-3">#251Owd5</th>
-                            <td class="">Maged Eshak</td>
-                            <td class="">300 EGP</td>
-                            <td class="d-none d-md-flex justify-content-center p-3">Card</td>
-                            <td class="">Mar 27, 2025</td>
+                            <th>#251Owd5</th>
+                            <td>Maged Eshak</td>
+                            <td>300 EGP</td>
+                            <td>Card</td>
+                            <td>Mar 27, 2025</td>
 
                             <!-- Order Status -->
-                            <td class="">
+                            <td>
 
                                 <!-- Order Status If New -->
                                 <a href="../index.html"
@@ -171,7 +172,7 @@
                             </td>
 
                             <td class="d-none d-md-flex justify-content-around">
-                                <button type="button" class="btn btn-success d-flex gap-1">
+                                <button type="button" class="btn btn-success d-flex gap-1 btn-color">
                                     <i class="bi bi-check-lg"></i>
                                     Approve
                                 </button>
@@ -188,8 +189,6 @@
             </div>
         </section>
         <!-- End Order Table -->
-    </main>
-
     </main>
 
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
