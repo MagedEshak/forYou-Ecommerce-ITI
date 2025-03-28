@@ -20,7 +20,7 @@
 <body class="d-flex justify-content-around p-4">
 
     <aside class="col-2 d-none d-lg-block rounded-4">
-        <ul class="d-flex flex-column justify-content-between p-4 gap-3">
+        <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
             <li>
                 <div id="logoDiv-id" class="text-center">
                     <a href="../index.html" target="_blank">
@@ -120,9 +120,46 @@
         <!-- End Nav Bar -->
 
         <!-- Start Order Table -->
-        <section class="bg-light p-3 ms-3 mt-3 rounded-3">
+        <section class="bg-light p-3 ms-lg-3 mt-3 rounded-3">
 
-            <!-- Table d-lg-block in Large Screens and none in MD and SM Screens -->
+            <!-- Search and Filters -->
+            <div>
+                <div class="form-floating mb-3">
+                    <input type="search" class="form-control" id="floatingInput">
+                    <label for="floatingInput">
+                        <i class="bi bi-search searchInput-color me-2"></i>
+                        Search Order ...
+                    </label>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="d-sm-flex flex-md-column flex-sm-wrap position-relative">
+                    <div
+                        class="border border-1 rounded-2 btn-color text-light me-2 end p-2 ps-3 pe-3 cursor-pointer badge text-end">
+                        <i class="bi bi-funnel"></i>
+                        <span class="d-none d-lg-inline d-md-inline">Filter</span>
+                    </div>
+                    <hr class="d-lg-none d-md-none ">
+
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">All Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link searchInput-color" href="#">New</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link searchInput-color" href="#">Approved</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link searchInput-color" href="#">Canceled</a>
+                        </li>
+                    </ul>
+                </div>
+                <hr>
+            </div>
+
+            <!-- Table d-lg-block in Large Screens and None in MD and SM Screens -->
             <div class="d-none d-lg-block">
                 <table class="table table-hover text-center">
                     <thead>
@@ -150,33 +187,22 @@
                             <!-- Order Status -->
                             <td>
                                 <!-- Order Status If New -->
-                                <div
-                                    class="text-primary border border-1 border-primary p-2 rounded-3 text-center badge text-decoration-none">
+                                <div class="text-primary p-2 rounded-3 text-center badge text-decoration-none">
                                     New
                                 </div>
-
-                                <!-- Order Status If Approved -->
-                                <!-- <div
-                                        class="text-success border border-1 border-success p-2 rounded-3 text-center badge">
-                                        Approved
-                                    </div> -->
-
-                                <!-- Order Status If Canceled -->
-                                <!-- <div
-                                        class="text-danger border border-1 border-danger p-2 rounded-3 text-center badge">
-                                        Canceled
-                                    </div> -->
                             </td>
-                            <td class="d-none d-md-flex justify-content-around">
-                                <button type="button" class="btn btn-success d-flex gap-1 btn-color">
-                                    <i class="bi bi-check-lg"></i>
-                                    Approve
-                                </button>
+                            <td>
+                                <div class="d-flex justify-content-around gap-1">
+                                    <button type="button" class="btn btn-success d-flex gap-1 btn-color">
+                                        <i class="bi bi-check-lg"></i>
+                                        Approve
+                                    </button>
 
-                                <button type="button" class="btn btn-danger d-flex gap-1 ">
-                                    <i class="bi bi-x-lg "></i>
-                                    Decline
-                                </button>
+                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
+                                        <i class="bi bi-x-lg "></i>
+                                        Decline
+                                    </button>
+                                </div>
                             </td>
                         </tr>
 
@@ -189,34 +215,23 @@
 
                             <!-- Order Status -->
                             <td>
-                                <!-- Order Status If New -->
-                                <!-- <div
-                                    class="text-primary border border-1 border-primary p-2 rounded-3 text-center badge text-decoration-none">
-                                    New
-                            </div> -->
-
                                 <!-- Order Status If Approved -->
-                                <div
-                                    class="text-success border border-1 border-success p-2 rounded-3 text-center badge">
+                                <div class="text-success p-2 rounded-3 text-center badge">
                                     Approved
                                 </div>
-
-                                <!-- Order Status If Canceled -->
-                                <!-- <div class="text-danger border border-1 border-danger p-2 rounded-3 text-center badge">
-                                    Canceled
-                                </div> -->
                             </td>
+                            <td>
+                                <div class="d-flex justify-content-around gap-1">
+                                    <button type="button" class="btn btn-success d-flex gap-1 btn-color">
+                                        <i class="bi bi-check-lg"></i>
+                                        Approve
+                                    </button>
 
-                            <td class="d-none d-md-flex justify-content-around">
-                                <button type="button" class="btn btn-success d-flex gap-1 btn-color">
-                                    <i class="bi bi-check-lg"></i>
-                                    Approve
-                                </button>
-
-                                <button type="button" class="btn btn-danger d-flex gap-1 ">
-                                    <i class="bi bi-x-lg "></i>
-                                    Decline
-                                </button>
+                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
+                                        <i class="bi bi-x-lg "></i>
+                                        Decline
+                                    </button>
+                                </div>
                             </td>
                         </tr>
 
@@ -229,39 +244,192 @@
 
                             <!-- Order Status -->
                             <td>
-                                <!-- Order Status If New -->
-                                <!-- <div
-                                    class="text-primary border border-1 border-primary p-2 rounded-3 text-center badge text-decoration-none">
-                                    New
-                                </div> -->
-
-                                <!-- Order Status If Approved -->
-                                <!-- <div
-                                    class="text-success border border-1 border-success p-2 rounded-3 text-center badge">
-                                    Approved
-                                </div> -->
-
                                 <!-- Order Status If Canceled -->
-                                <div class="text-danger border border-1 border-danger p-2 rounded-3 text-center badge">
+                                <div class="text-danger   p-2 rounded-3 text-center badge">
                                     Canceled
                                 </div>
                             </td>
+                            <td>
+                                <div class="d-flex justify-content-around gap-1">
+                                    <button type="button" class="btn btn-success d-flex gap-1 btn-color">
+                                        <i class="bi bi-check-lg"></i>
+                                        Approve
+                                    </button>
 
-                            <td class="d-none d-md-flex justify-content-around">
-                                <button type="button" class="btn btn-success d-flex gap-1 btn-color">
-                                    <i class="bi bi-check-lg"></i>
-                                    Approve
-                                </button>
-
-                                <button type="button" class="btn btn-danger d-flex gap-1 ">
-                                    <i class="bi bi-x-lg "></i>
-                                    Decline
-                                </button>
+                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
+                                        <i class="bi bi-x-lg "></i>
+                                        Decline
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+            <!-- Cards display block in MD and SM Screens and None in Large Screens  -->
+            <div class="d-lg-none ps-md-5 pe-md-5">
+                <div class="row ">
+                    <div class="mb-sm-0 d-md-flex flex-md-wrap justify-content-md-between card-md-w">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Maged Eshak
+                                    <span class="card-subtitle mb-2 ms-4 text-body-secondary fs-cf-5">#251Owd5</span>
+                                </h5>
+                                <div class="card-text">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><span class="fw-bold">Total Price: </span>300 EGP
+                                        </li>
+                                        <li class="list-group-item"><span class="fw-bold">Payment Method: </span>Card
+                                        </li>
+                                        <li class="list-group-item"><span class="fw-bold">Order Date: </span>Mar 27,
+                                            2025</li>
+                                        <li class="list-group-item"><span class="fw-bold me-3">Status: </span>
+                                            <!-- Order Status If New -->
+                                            <div
+                                                class="text-primary p-2 rounded-3 text-center badge text-decoration-none">
+                                                New
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <hr>
+                                    <h6 class="fw-bold text-center">Confirming</h6>
+                                </div>
+                                <div class="d-flex justify-content-between mt-3">
+                                    <button type="button" class="btn btn-success d-flex gap-1 btn-color">
+                                        <i class="bi bi-check-lg"></i>
+                                        Approve
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
+                                        <i class="bi bi-x-lg "></i>
+                                        Decline
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="card-body">
+
+                                <h5 class="card-title">Maged Eshak
+                                    <span class="card-subtitle mb-2 ms-4 text-body-secondary fs-cf-5">#251Owd5</span>
+                                </h5>
+
+                                <div class="card-text">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><span class="fw-bold">Total Price: </span>300 EGP
+                                        </li>
+                                        <li class="list-group-item"><span class="fw-bold">Payment Method: </span>Card
+                                        </li>
+                                        <li class="list-group-item"><span class="fw-bold">Order Date: </span>Mar 27,
+                                            2025</li>
+                                        <li class="list-group-item"><span class="fw-bold me-3">Status: </span>
+                                            <!-- Order Status If New -->
+                                            <div class="text-success p-2 rounded-3 text-center badge">
+                                                Approved
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <hr>
+                                    <h6 class="fw-bold text-center">Confirming</h6>
+                                </div>
+                                <div class="d-flex justify-content-between mt-3">
+                                    <button type="button" class="btn btn-success d-flex gap-1 btn-color">
+                                        <i class="bi bi-check-lg"></i>
+                                        Approve
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
+                                        <i class="bi bi-x-lg "></i>
+                                        Decline
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="card-body">
+
+                                <h5 class="card-title">Maged Eshak
+                                    <span class="card-subtitle mb-2 ms-4 text-body-secondary fs-cf-5">#251Owd5</span>
+                                </h5>
+
+                                <div class="card-text">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><span class="fw-bold">Total Price: </span>300 EGP
+                                        </li>
+                                        <li class="list-group-item"><span class="fw-bold">Payment Method: </span>Card
+                                        </li>
+                                        <li class="list-group-item"><span class="fw-bold">Order Date: </span>Mar 27,
+                                            2025</li>
+                                        <li class="list-group-item"><span class="fw-bold me-3">Status: </span>
+                                            <!-- Order Status If New -->
+                                            <div class="text-danger p-2 rounded-3 text-center badge">
+                                                Canceled
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <hr>
+                                    <h6 class="fw-bold text-center">Confirming</h6>
+                                </div>
+                                <div class="d-flex justify-content-between mt-3">
+                                    <button type="button" class="btn btn-success d-flex gap-1 btn-color">
+                                        <i class="bi bi-check-lg"></i>
+                                        Approve
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
+                                        <i class="bi bi-x-lg "></i>
+                                        Decline
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mb-3">
+                            <div class="card-body">
+
+                                <h5 class="card-title">Maged Eshak
+                                    <span class="card-subtitle mb-2 ms-4 text-body-secondary fs-cf-5">#251Owd5</span>
+                                </h5>
+
+                                <div class="card-text">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><span class="fw-bold">Total Price: </span>300 EGP
+                                        </li>
+                                        <li class="list-group-item"><span class="fw-bold">Payment Method: </span>Card
+                                        </li>
+                                        <li class="list-group-item"><span class="fw-bold">Order Date: </span>Mar 27,
+                                            2025</li>
+                                        <li class="list-group-item"><span class="fw-bold me-3">Status: </span>
+                                            <!-- Order Status If New -->
+                                            <div class="text-danger p-2 rounded-3 text-center badge">
+                                                Canceled
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <hr>
+                                    <h6 class="fw-bold text-center">Confirming</h6>
+                                </div>
+                                <div class="d-flex justify-content-between mt-3">
+                                    <button type="button" class="btn btn-success d-flex gap-1 btn-color">
+                                        <i class="bi bi-check-lg"></i>
+                                        Approve
+                                    </button>
+
+                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
+                                        <i class="bi bi-x-lg "></i>
+                                        Decline
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </section>
         <!-- End Order Table -->
     </main>

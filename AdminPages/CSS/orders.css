@@ -35,11 +35,21 @@ aside {
     background-color: #006766 !important;
 }
 
+
 .btn-color:hover {
     background-color: #004140 !important;
 }
 
-#profileDiv-id {
+.searchInput-color {
+    color: #006766 !important;
+}
+
+.end {
+    right: 7%;
+}
+
+#profileDiv-id,
+.cursor-pointer {
     cursor: pointer;
 }
 
@@ -81,13 +91,22 @@ ul li .list-links-active {
 
 
 /* للشاشات المتوسطة (md) وما فوق */
-@media (min-width: 768px) {
+@media (min-width: 765px) {
     .fs-cf-3 {
         font-size: 1.5rem !important;
     }
 
     .img-md-w {
         width: 100px;
+    }
+
+    .card-md-w {
+        width: 100%;
+    }
+
+    .end {
+        right: 3% !important;
+        position: absolute;
     }
 }
 
@@ -107,5 +126,10 @@ ul li .list-links-active {
 
     .table-lg-w {
         width: 100%;
+    }
+
+    .end {
+        right: 3% !important;
+        position: absolute;
     }
 }
