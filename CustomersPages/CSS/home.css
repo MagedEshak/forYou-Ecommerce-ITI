@@ -80,7 +80,7 @@ nav a:hover{
 /* Styling MyCarousel*/
 .MyCarousel{
     height: 90vh !important;
-    background-image: url('../images/carusoal_images/1.jpg');
+    background-image: url('../Home_Page/images/carusoal_images/1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

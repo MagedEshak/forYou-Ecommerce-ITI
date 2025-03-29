@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ForYou</title>
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="../CSS/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -138,18 +139,19 @@
                       in case of large width   : screen divided by 4-->
                 <div class="categories  row justify-content-center p-2 py-3 ">
 
-                    <!-- category item , it is considered a link that takes you to items of this category -->
+                    <!-- category item , it is considered a link that takes you to items of this category : cookers category -->
                     <div class="category col-6 col-md-4 col-lg-3 d-flex p-1">
-                            <!-- this is the link , if clicked you must go to items of this category -->
-                            <a class="bg-warning-subtle w-100 d-flex flex-column align-items-center justify-content-between" href="#">
+                            <!-- this is the link , if clicked you must go to items of cookers category -->
+                            <a class="bg-warning-subtle w-100 d-flex flex-column align-items-center justify-content-between" href="#cookersSection_id">
                                 <p>cookers</p>
                                 <img class="w-50 catImg" src="images/Category_images/Fresh_cookers.png" alt="">
                             </a>
                     </div>
 
-                    
+                    <!-- category item , it is considered a link that takes you to items of this category : TVs category -->
                     <div class="category col-6 col-md-4 col-lg-3 d-flex p-1">
-                            <a class="bg-success-subtle w-100 d-flex flex-column align-items-center justify-content-between" href="#">
+                            <!-- this is the link , if clicked you must go to items of TVs category -->
+                            <a class="bg-success-subtle w-100 d-flex flex-column align-items-center justify-content-between" href="#televesionsSection_id">
                                 <p>Televesions</p>
                                 <img class="w-75 catImg" src="images/Category_images/TV.png" alt="">
                             </a>
@@ -205,6 +207,141 @@
     </section>
 
 
+<!-- ****************************************************************** -->
+
+    <!-- in this section we will display all products by category name -->
+    <!-- first category : cookers for example -->
+    <section id="productsSection_id ">
+        <div class="container-fluid  pb-5 px-3">
+
+            <!-- this is header of cookers category -->
+            <h2 class="p-4 text-center" id="cookersSection_id">Shop Cookers</h2>
+
+            <!-- this is products container , contains all products of cookers category -->
+            <div class="products d-flex row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4">
+                <!-- this is product item from cookers category -->
+                <div class="product col-10 col-md-4 col-lg-3 row justify-content-center">
+                    <div class="productInnercontainer row justify-content-center">
+                        <!-- this contains the discount percentage  -->
+                        <!-- and a button to add the product to wishlist -->
+                        <div class="productHeader d-flex row justify-content-between align-items-center col-12 p-2">
+
+                            <p id="prodDiscount_id" class="prodDiscount_class col-auto">OFF 24% cash</p>
+                            
+                            <button id="addToWishListBtn_id" class=" addToWishListBtn_class col-2">
+                                <i class="fa fa-heart"></i>
+                            </button>
+
+                        </div>
+
+                        <!-- this is the product image -->
+                        <img class="w-75" src="images/Product_imges/cookers/oven.jpg" alt="">
+
+                        <!-- this is the product description -->
+                        <div class="productDesc px-2 ">
+                            <p>Fresh Cooker Hood 90 cm - Classic Black Stainless - FHS90SB40ML</p>
+                        </div>
+
+                        <!-- this is the product price -->
+                        <div class="productPrice row align-items-center p-2 ">
+                            <span class="EGP col-auto">
+                                <span id="productPrice_id" class="productPrice_class">5,500</span>
+                                EGP
+                            </span>
+                            <span id="oldPrice_id" class="oldPrice_class col-auto">7,120</span>
+                        </div>
+
+                        <!-- button to add product to cart -->
+                        <div class="cartBtn col-8 py-3 row justify-content-center ">
+                            <button id="addToCartBtn_id_1" class="w-75 btn btn-outline-success addToCartBtn_class">Add to cart</button>
+
+                            <!-- in case of customer pressed add to cart button the below div appears -->
+                            <div id="productCountAndBin_id_1" class="productCountAndBin w-75 row justify-content-between align-items-center px-3 py-2 d-none">
+                                <!-- this button to remove product from cart -->
+                                <button id="removeProductCartBtn_id_1" class="col-auto"><i class="fa fa-trash-o"></i></button>
+
+                                <!-- this button to decrement number of this products from your cart -->
+                                <button id="decrementProductCountBtn_id_1" class="d-none col-auto"><i class="fa fa-minus"></i></button>
+
+                                <span id="productCount_id_1" class="col-auto">0</span>
+
+                                <!-- this button to icrement number of this products from your cart -->
+                                <button id="incrementProductCountBtn_id_1" class="col-auto"><i class="fa fa-plus"></i></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                
+               
+            </div>
+
+            <!-- this is header of Televesions category -->
+            <h2 class="p-4 text-center" id="televesionsSection_id">Shop Televesions</h2>
+
+            <!-- this is products container , contains all products of Televesions category -->
+            <div class="products d-flex row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4">
+
+                <!-- this is product item from Televesions category -->
+                <div class="product col-10 col-md-4 col-lg-3 row justify-content-center">
+                    <div class="productInnercontainer row justify-content-center">
+                        <!-- this contains the discount percentage  -->
+                        <!-- and a button to add the product to wishlist -->
+                        <div class="productHeader d-flex row justify-content-between align-items-center col-12 p-2">
+
+                            <p id="prodDiscount_id" class="prodDiscount_class col-auto">OFF 24% cash</p>
+                            
+                            <button id="addToWishListBtn_id" class=" addToWishListBtn_class col-2">
+                                <i class="fa fa-heart"></i>
+                            </button>
+
+                        </div>
+
+                        <!-- this is the product image -->
+                        <img class="w-75" src="images/Product_imges/TVs/TV.jpg" alt="">
+
+                        <!-- this is the product description -->
+                        <div class="productDesc px-2 ">
+                            <p>Fresh Cooker Hood 90 cm - Classic Black Stainless - FHS90SB40ML</p>
+                        </div>
+
+                        <!-- this is the product price -->
+                        <div class="productPrice row align-items-center p-2 ">
+                            <span class="EGP col-auto">
+                                <span id="productPrice_id" class="productPrice_class">5,500</span>
+                                EGP
+                            </span>
+                            <span id="oldPrice_id" class="oldPrice_class col-auto">7,120</span>
+                        </div>
+
+                        <!-- button to add product to cart -->
+                        <div class="cartBtn col-8 py-3 row justify-content-center ">
+                            <button id="addToCartBtn_id" class="w-75 btn btn-outline-success addToCartBtn_class">Add to cart</button>
+
+                            <!-- in case of customer pressed add to cart button the below div appears -->
+                            <div class="productCountAndBin w-75 row justify-content-between align-items-center px-3 py-2 d-none">
+                                <!-- this button to remove product from cart -->
+                                <button class="col-auto btn"><i class="fa fa-trash-o"></i></button>
+
+                                <!-- this button to decrement number of this products from your cart -->
+                                <button class="d-none col-auto btn"><i class="fa fa-minus"></i></button>
+
+                                <span id="productCount_id" class="col-auto">0</span>
+
+                                <!-- this button to icrement number of this products from your cart -->
+                                <button class="col-auto btn"><i class="fa fa-plus"></i></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </section>
 
 
 
