@@ -32,11 +32,42 @@ html{
     color: white;
 }
 
+/* styling the side menu bar , only displayed when menu bar pressed*/
+#sideNavBar_id{
+    position: fixed;
+    top: 0;
+    left: -75%;
+    z-index: 2;
+    transition: left .7s ease;
+    font-size: 1.5rem;
+}
+#sideNavBar_id .manageProfile{
+    background-color: #006766;
+    color: white;
+}
+.sideNavLinksContainer{
+    border-right: solid 1px #006766;
+    border-bottom: solid 1px #006766;
+}
+.categoriesLinks{
+    background-color: white;
+}
+.categoriesLinks >  a{
+    padding: 1rem .5rem !important;
+    color: black !important; 
+    border-bottom: 1px solid #037876 ;
+}
+
+.categoriesLinks a:last-child{
+    border: none;
+}
+
 
 
 /* My Search Input Field in case of small Screens */
 /* this is my search input id*/
 .searchInput_class{
+    font-size: 1.5rem;
     padding:.5rem  !important;
     width: 100%;
     border: solid 1px #006766;
@@ -47,6 +78,7 @@ html{
 
 /* this is my search icon button*/
 #searchBtn_1_id{
+    font-size: 1.5rem;
     border: none;
     background-color: white;
     color: #006766;
@@ -162,6 +194,7 @@ footer .socialMediaLinks a{
 
 .category a p{
     padding-top: 1rem !important;
+    font-size: 1.5rem;
 }
 
 /*************************************************/
@@ -202,6 +235,16 @@ footer .socialMediaLinks a{
 }
 .addToWishListBtn_class:hover i{
     -webkit-text-stroke: 1px red; /* Border around the heart */
+}
+
+/* product image container*/
+.productImageContainer{
+    height: 30vh;
+}
+.product img{
+    width: 75%;
+    object-fit: contain;
+    flex-grow: 1;
 }
 
 /* this is product description paragraph*/
