@@ -47,7 +47,21 @@ p {
 
 
 .createAccount {
-  background-color: #008c81;
+  /** button color for create account    */
+  background-color: #006766;
+
+}
+
+.singIn {
+  /** button color for Sign in    */
+  background-color: #006766;
+}
+
+/** button hover in form*/
+
+.buttonForms:hover {
+  background-color: #004140;
+  color: white
 }
 
 @media screen and (min-width: 700px) {
