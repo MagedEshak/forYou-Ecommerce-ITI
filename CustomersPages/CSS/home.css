@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 html{
-    font-size: 16px;
+    font-size: 12px;
 }
 
 /* My Nav Bar in case of small screens : */
@@ -80,11 +80,11 @@ nav a:hover{
 /* Styling MyCarousel*/
 .MyCarousel{
     height: 90vh !important;
-    background-image: url('../images/carusoal_images/1.jpg');
+    background-image: url('../../Images/CustomerImages/carusoal_images/1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transition: height 2s ease , background-image 1s ease;
+    transition: background-image .5s ease;
 }
 
 /* styling carusoal buttons*/
@@ -148,10 +148,10 @@ footer .socialMediaLinks a{
 .category a{
     text-decoration: none;
     color: black;
-    transition: transform 1s ease ;
+    transition: transform .4s ease ;
 }
 .category:hover a{
-    transform: scale(1.2);
+    transform: scale(1.1);
     z-index: 2;
     border: 1px solid black;
 }
@@ -160,21 +160,106 @@ footer .socialMediaLinks a{
     padding-top: 1rem !important;
 }
 
+/*************************************************/
+
+/* styling my products section */
+/* Our product header that contains discount percentage and button to add product to wishlist*/
+/* my product container */
+.product{
+    padding: .4rem !important;
+    position: relative;
+    transition :transform .5s ease;
+}
+.product:hover{
+    transform: scale(1.05);
+}
+.productInnercontainer{
+    background-color: white;
+}
+
+/* product discount paragraph*/
+.prodDiscount_class {
+    background-color: yellow;
+    padding: 0 .5rem !important;
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+}
+
+/* the button to add the product to wishlist */
+.addToWishListBtn_class{
+    padding: 0 .5rem !important;
+    border: none !important;
+    color: white;
+    background-color: inherit;
+    font-size: 1.3rem;
+}
+.addToWishListBtn_class i{
+    -webkit-text-stroke: 1px rgb(11, 11, 11); /* Border around the heart */
+}
+.addToWishListBtn_class:hover i{
+    -webkit-text-stroke: 1px red; /* Border around the heart */
+}
+
+/* this is product description paragraph*/
+.productDesc{
+    color: rgb(90, 87, 87);
+}
+
+
+/* Product price */
+.productPrice_class{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.EGP{
+    font-size: .8rem;
+}
+/* product old price */
+.oldPrice_class{
+    text-decoration: line-through;
+    padding-left: .8rem !important;
+    font-size: 1.1rem;
+    color: rgb(90, 87, 87);
+}
+
+/* this is the div that contains the add to cart button */
+.cartBtn{
+    border-top: 1px solid black;
+}
+.addToCartBtn_class{
+    padding: .5rem .5rem !important;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 2px solid #198754 !important;
+}
 
 
 
+/* the number of products you want to add to cart , and bin to remove last item*/
+.productCountAndBin{
+    border: 1px solid black;
+    border-radius: .4rem;
+    font-size: 1.3rem;
+}
 
+.productCountAndBin button {
+    font-size: 1.3rem;
+    border: none !important;
+    color: rgb(153, 152, 152);
+    background-color: white;
+}
 
+.productCountAndBin button:hover{
+    color: black;
+}
 
+/* to handel font size in small devices*/
 
-@media (max-width: 550px) { /* For small devices */
-    .MyCarousel{
-        height: 40vh !important;
-    }
-  }
-
-@media (min-width: 550px) and (max-width: 720px) { /* For small devices */
-    .MyCarousel{
-        height: 50vh !important;
+@media (min-width: 700px) { /* For medium devices */
+    html{
+        font-size: 14px;
     }
 }
+
+
