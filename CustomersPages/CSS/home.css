@@ -7,6 +7,10 @@ html{
     font-size: 12px;
 }
 
+.siteColorClass{
+    background-color: #006766;
+}
+
 /* My Nav Bar in case of small screens : */
 /* this is Menue Bar Button */
 #menuBarBtn_id{
@@ -35,17 +39,17 @@ html{
 .searchInput_class{
     padding:.5rem  !important;
     width: 100%;
-    border: solid 1px rgb(83, 81, 81);
+    border: solid 1px #006766;
 }
 .searchInput_class:hover{
-    border: solid 2px black;
+    border: solid 2px #006766;
 }
 
 /* this is my search icon button*/
 #searchBtn_1_id{
     border: none;
     background-color: white;
-    color: rgb(168, 162, 162);
+    color: #006766;
     height: 40%;
     position: absolute;
     top: 30%;
