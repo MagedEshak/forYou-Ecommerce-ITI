@@ -15,6 +15,15 @@ body,
 header,
 main {
     background-color: #f2efe3 !important;
+    transition: transform 2s ease, opacity .5s ease-out;
+    -webkit-transition: transform 2s ease, opacity .5s ease-out;
+    -moz-transition: transform 2s ease, opacity .5s ease-out;
+    -ms-transition: transform 2s ease, opacity .5s ease-out;
+    -o-transition: transform 2s ease, opacity .5s ease-out;
+}
+
+nav {
+    justify-content: flex-start;
 }
 
 aside {
@@ -22,7 +31,25 @@ aside {
     height: 650px;
 }
 
-#profileDiv-id {
+.btn-color {
+    background-color: #006766 !important;
+}
+
+
+.btn-color:hover {
+    background-color: #004140 !important;
+}
+
+.searchInput-color {
+    color: #006766 !important;
+}
+
+.end {
+    right: 7%;
+}
+
+#profileDiv-id,
+.cursor-pointer {
     cursor: pointer;
 }
 
@@ -46,4 +73,63 @@ ul li .list-links:hover {
 
 ul li .list-links-active {
     color: #000 !important;
+}
+
+/* Custom Fonts */
+.img-sm-w {
+    width: 70px;
+}
+
+
+.fs-cf-4 {
+    font-size: 1.25rem !important;
+}
+
+.fs-cf-5 {
+    font-size: 1rem !important;
+}
+
+
+/* للشاشات المتوسطة (md) وما فوق */
+@media (min-width: 765px) {
+    .fs-cf-3 {
+        font-size: 1.5rem !important;
+    }
+
+    .img-md-w {
+        width: 100px;
+    }
+
+    .card-md-w {
+        width: 100%;
+    }
+
+    .end {
+        right: 3% !important;
+        position: absolute;
+    }
+}
+
+/* للشاشات الكبيرة (lg) وما فوق */
+@media (min-width: 992px) {
+    .fs-cf-1 {
+        font-size: 2.5rem !important;
+    }
+
+    .fs-cf-2 {
+        font-size: 2rem !important;
+    }
+
+    .img-cf-w {
+        width: 150px;
+    }
+
+    .table-lg-w {
+        width: 100%;
+    }
+
+    .end {
+        right: 3% !important;
+        position: absolute;
+    }
 }
