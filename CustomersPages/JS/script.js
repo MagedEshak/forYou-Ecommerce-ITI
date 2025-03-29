@@ -1,9 +1,9 @@
 
 /* this code handels our crusoal and its background images */
 let backgroundImagesUrls = [
-    '../images/carusoal_images/1.jpg' , 
-    '../images/carusoal_images/2.jpg',
-    '../images/carusoal_images/3.jpeg'
+    '../../Images/CustomerImages/carusoal_images/1.jpg' , 
+    '../../Images/CustomerImages/carusoal_images/2.jpg',
+    '../../Images/CustomerImages/carusoal_images/3.jpeg'
     ]
 
 let MyCarousel = document.getElementById('MyCarousel_id'); // crausoal div 
