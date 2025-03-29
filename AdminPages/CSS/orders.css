@@ -57,14 +57,28 @@ ul li .list-links-active {
     font-size: 1.25rem !important;
 }
 
+.fs-cf-5 {
+    font-size: 1rem !important;
+}
+
+
 /* للشاشات المتوسطة (md) وما فوق */
-@media (min-width: 768px) {
+@media (min-width: 765px) {
     .fs-cf-3 {
         font-size: 1.5rem !important;
     }
 
     .img-md-w {
         width: 100px;
+    }
+
+    .card-md-w {
+        width: 100%;
+    }
+
+    .end {
+        right: 3% !important;
+        position: absolute;
     }
 }
 
@@ -80,5 +94,14 @@ ul li .list-links-active {
 
     .img-cf-w {
         width: 150px;
+    }
+
+    .table-lg-w {
+        width: 100%;
+    }
+
+    .end {
+        right: 3% !important;
+        position: absolute;
     }
 }
