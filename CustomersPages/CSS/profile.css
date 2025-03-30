@@ -24,14 +24,14 @@ a {
 }
 
 .sideAndmain_nav a:hover {
-  color: red;
-  border-bottom: solid 1px red;
+  color: #006766;
+  border-bottom: solid 1px #006766;
 }
 
 /** contant profiel*/
 .containers {
   margin: auto !important;
-  width: 90% !important;
+  width: 80% !important;
 }
 
 .contentProfile_bg {
@@ -49,16 +49,20 @@ a {
 .saideLft a {
   /** icon and linkes color for toggel profile contant*/
   color: black;
-  font-size: 1.7rem;
+
 }
 
 .saideLft a:hover {
-  color: red;
+  color: #006766;
 }
 
 /** contant profiel*/
 .gaps {
-  gap: 2%;
+  gap: 1%;
+}
+
+.mStart {
+  margin-left: 7% !important;
 }
 
 .btn_bg {
@@ -70,3 +74,24 @@ a {
   background-color: #004140;
   color: white
 }
+
+
+
+
+
+/** cntent details pages **/
+
+.clousuer_btn {
+
+  border: solid 1px #006766;
+}
+
+.btn_col:hover {
+  /** hover button colors */
+  color: #CC0000;
+
+}
+
+/* .btn_col:hover .heart_color {
+  background-color: #CC0000;
+} */
