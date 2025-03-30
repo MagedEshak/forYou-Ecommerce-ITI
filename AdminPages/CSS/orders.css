@@ -22,9 +22,6 @@ aside {
     height: 650px;
 }
 
-<<<<<<< HEAD
-#profileDiv-id {
-=======
 .btn-color {
     background-color: #006766 !important;
 }
@@ -76,7 +73,6 @@ aside {
 
 #profileDiv_id,
 .cursor-pointer {
->>>>>>> ae76febda71f1e23a635670bd285e95cae466690
     cursor: pointer;
 }
 
