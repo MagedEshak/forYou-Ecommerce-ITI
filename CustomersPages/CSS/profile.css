@@ -1,0 +1,72 @@
+/* globel style*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* mobile profile linkes*/
+
+.sideAndmain_nav {
+  background-color: white;
+  margin-bottom: 10px
+}
+
+.sideAndmain_nav a {
+  background-color: white;
+  color: black;
+  padding-left: 2% !important;
+}
+
+.sideAndmain_nav a:hover {
+  color: red;
+  border-bottom: solid 1px red;
+}
+
+/** contant profiel*/
+.containers {
+  margin: auto !important;
+  width: 90% !important;
+}
+
+.contentProfile_bg {
+  background-color: whitesmoke;
+}
+
+/** left secation*/
+.saideLft {
+  /** left secation*/
+  height: 500Px;
+
+}
+
+
+.saideLft a {
+  /** icon and linkes color for toggel profile contant*/
+  color: black;
+  font-size: 1.7rem;
+}
+
+.saideLft a:hover {
+  color: red;
+}
+
+/** contant profiel*/
+.gaps {
+  gap: 2%;
+}
+
+.btn_bg {
+  background-color: #006766;
+  color: white;
+}
+
+.btn_bg:hover {
+  background-color: #004140;
+  color: white
+}
