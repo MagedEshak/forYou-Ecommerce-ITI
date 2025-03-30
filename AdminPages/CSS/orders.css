@@ -35,6 +35,17 @@ aside {
     background-color: #006766 !important;
 }
 
+.btn-color-fa {
+    background-color: #fafafa !important;
+    color: #006766 !important;
+    border: 2px solid #006766 !important;
+}
+
+.btn-color-fa:hover {
+    background-color: #006766 !important;
+    color: #fafafa !important;
+    border: 2px solid #006766 !important;
+}
 
 .btn-color:hover {
     background-color: #004140 !important;
@@ -42,6 +53,23 @@ aside {
 
 .searchInput-color {
     color: #006766 !important;
+}
+
+.Arrow-color {
+    color: #006766 !important;
+}
+
+.Arrow-color:hover {
+    transform: translate(20px);
+    -webkit-transform: translate(20px);
+    -moz-transform: translate(20px);
+    -ms-transform: translate(20px);
+    -o-transform: translate(20px);
+    transition: transform 0.3s ease-in-out;
+    -webkit-transition: transform 0.3s ease-in-out;
+    -moz-transition: transform 0.3s ease-in-out;
+    -ms-transition: transform 0.3s ease-in-out;
+    -o-transition: transform 0.3s ease-in-out;
 }
 
 .end {
