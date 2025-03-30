@@ -11,6 +11,7 @@ html{
     background-color: #006766;
 }
 
+/* styling nav bar*/
 /* My Nav Bar in case of small screens : */
 /* this is Menue Bar Button */
 #menuBarBtn_id{
@@ -18,9 +19,6 @@ html{
     background-color: inherit;
     color: white;
     font-size: 2rem;
-}
-#menuBarBtn_id:hover{
-    color: black;
 }
 
 .imgLogo_class{
@@ -31,7 +29,7 @@ html{
     font-size: 2rem;
     color: white;
 }
-
+/*******************************************************************************/
 /* styling the side menu bar , only displayed when menu bar pressed*/
 #sideNavBar_id{
     position: fixed;
@@ -61,9 +59,7 @@ html{
 .categoriesLinks a:last-child{
     border: none;
 }
-
-
-
+/*******************************************************************************/
 /* My Search Input Field in case of small Screens */
 /* this is my search input id*/
 .searchInput_class{
@@ -71,9 +67,6 @@ html{
     padding:.5rem  !important;
     width: 100%;
     border: solid 1px #006766;
-}
-.searchInput_class:hover{
-    border: solid 2px #006766;
 }
 
 /* this is my search icon button*/
@@ -87,18 +80,14 @@ html{
     top: 30%;
     right: 2rem;
 }
-#searchBtn_1_id:hover{
-    color: black;
-}
-
-
+/*******************************************************************************/
 /* styling a vertical ruler */
 .verticalSpace{
     height: 2rem;
     width: .1rem;
     background-color: rgb(194, 193, 191);
 }
-
+/*******************************************************************************/
 /* styling my links in the nav bar*/
 nav  a{
     text-decoration: none;
@@ -107,12 +96,7 @@ nav  a{
 nav  a i{
     color: inherit !important;
 }
-nav a:hover{
-    color: black;
-}
-
-/*************************************************/
-
+/********************************************************************************/
 /* Styling MyCarousel*/
 .MyCarousel{
     height: 90vh !important;
@@ -157,9 +141,7 @@ nav a:hover{
         height: 70vh !important;
     }
 }
-
-
-/*************************************************/
+/*******************************************************************************/
 
 /* Styling my Footer*/
 footer{
@@ -177,28 +159,19 @@ footer .someInfo a:hover , footer .socialMediaLinks a:hover{
 footer .socialMediaLinks a{
     font-size: 1.4rem;
 }
-/*************************************************/
-
+/*******************************************************************************/
 /* styling my category container*/
-
 .category a{
     text-decoration: none;
     color: black;
     transition: transform .4s ease ;
-}
-.category:hover a{
-    transform: scale(1.1);
-    z-index: 2;
-    border: 1px solid black;
 }
 
 .category a p{
     padding-top: 1rem !important;
     font-size: 1.5rem;
 }
-
-/*************************************************/
-
+/*******************************************************************************/
 /* styling my products section */
 /* Our product header that contains discount percentage and button to add product to wishlist*/
 /* my product container */
@@ -206,9 +179,6 @@ footer .socialMediaLinks a{
     padding: .4rem !important;
     position: relative;
     transition :transform .5s ease;
-}
-.product:hover{
-    transform: scale(1.05);
 }
 .productInnercontainer{
     background-color: white;
@@ -232,9 +202,6 @@ footer .socialMediaLinks a{
 }
 .addToWishListBtn_class i{
     -webkit-text-stroke: 1px rgb(11, 11, 11); /* Border around the heart */
-}
-.addToWishListBtn_class:hover i{
-    -webkit-text-stroke: 1px red; /* Border around the heart */
 }
 
 /* product image container*/
@@ -272,20 +239,25 @@ footer .socialMediaLinks a{
 
 /* this is the div that contains the add to cart button */
 .cartBtn{
-    border-top: 1px solid black;
+    border-top: 1px solid #006766;
 }
+/* this is the button its self*/
 .addToCartBtn_class{
     padding: .5rem .5rem !important;
     font-size: 1.2rem;
     font-weight: 600;
-    border: 2px solid #198754 !important;
+    color: #006766 ;
+    border: 2px solid #006766;
+}
+.addToCartBtn_class:hover{
+    background-color: #006766;;
 }
 
 
 
 /* the number of products you want to add to cart , and bin to remove last item*/
 .productCountAndBin{
-    border: 1px solid black;
+    border: 1px solid #006766;
     border-radius: .4rem;
     font-size: 1.3rem;
 }
@@ -297,9 +269,6 @@ footer .socialMediaLinks a{
     background-color: white;
 }
 
-.productCountAndBin button:hover{
-    color: black;
-}
 
 /* to handel font size in small devices*/
 
@@ -308,5 +277,51 @@ footer .socialMediaLinks a{
         font-size: 14px;
     }
 }
+
+
+
+/**********************************************************************/
+/* hover only on large devices*/
+
+@media (min-width: 1000px) {
+    /* My Search Input Field*/
+    /* this is my search input id*/
+    .searchInput_class:hover{
+        border: solid 2px #006766;
+    }
+    /* the search icon btn*/
+    #searchBtn_1_id:hover{
+        color: black;
+    }
+    /* links of navbar*/
+    nav a:hover{
+        color: black;
+    }
+
+    /* cateogry container*/
+    .category:hover a{
+        transform: scale(1.1);
+        z-index: 2;
+        border: 1px solid black;
+    }
+
+    /* product container*/
+    .product:hover{
+        transform: scale(1.03);
+    }
+    /* product wishlist icon button*/
+    .addToWishListBtn_class:hover i{
+        -webkit-text-stroke: 1px red; /* Border around the heart */
+    }
+
+    /* product count and bin*/
+    .productCountAndBin:hover{
+        border: 2px solid #006766;
+    }
+    .productCountAndBin button:hover{
+        color: black;
+    }
+}
+/**********************************************************************/
 
 
