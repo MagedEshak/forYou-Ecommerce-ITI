@@ -1,3 +1,31 @@
+/* this code handels the side nav bar  */
+/* when menu bar btn clicked the side bar must appear from left side */
+let menuBarBtn = document.getElementById('menuBarBtn_id');
+let sideNavBar = document.getElementById('sideNavBar_id');
+
+// this event handels appearance of side bar 
+// when you click on the menu bar btn , we display the side nav
+// then when you click on any part of the document , we remove the side nav
+document.addEventListener('click' , (e)=>{
+    // in case menu bar btn clicked , display the side bar , and 
+    if(menuBarBtn.contains(e.target))
+        displaySideNavBar(sideNavBar);
+    else
+        disappearSideNavBar(sideNavBar);  
+})
+
+/* this function displays my side bar , by positioning it in my screen */
+function displaySideNavBar(navBar){
+    navBar.style.left = "0px";
+}
+/* this function removes my side bar , by positioning it out of my screen */
+function disappearSideNavBar(navBar) {
+    navBar.style.left = "-75%"; // Hide sidebar off-screen
+}
+
+
+
+
 
 /* this code handels our crusoal and its background images */
 let backgroundImagesUrls = [
@@ -31,6 +59,12 @@ function getNextImage(){
     
     MyCarousel.style.backgroundImage = `url(${backgroundImagesUrls[counter]})` ;
 }
+
+
+
+
+
+
 
 
 /* this code handels our add to cart btn */
