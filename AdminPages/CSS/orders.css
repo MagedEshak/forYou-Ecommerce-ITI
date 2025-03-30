@@ -72,11 +72,15 @@ aside {
     -o-transition: transform 0.3s ease-in-out;
 }
 
+.bar-tran {
+    overflow: hidden;
+}
+
 .end {
     right: 7%;
 }
 
-#profileDiv-id,
+#profileDiv_id,
 .cursor-pointer {
     cursor: pointer;
 }

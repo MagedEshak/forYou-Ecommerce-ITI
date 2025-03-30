@@ -22,10 +22,16 @@
 
     <!-- Start Left Side Dashboard Tabs -->
 
-    <aside class="col-2 d-none d-lg-block rounded-4 position-sticky top-0 mt-4">
+    <aside id="sideDashboard_id" class="col-2 d-none d-lg-block rounded-4 position-sticky top-0 mt-4">
         <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
+            <!-- Start Bars showing when Dashboard be full width -->
+            <div id="barsLeftSideDiv_id" class="pe-2 d-block d-lg-none fs-1 cursor-pointer text-light">
+                <i class="bi bi-filter-left"></i>
+            </div>
+            <!-- End Bars showing when Dashboard be full width -->
+
             <li>
-                <div id="logoDiv-id" class="text-center">
+                <div id="logoDiv_id" class="text-center">
                     <a href="../index.html" target="_blank">
                         <img src="../Images/logo/LLLOGOWhite.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
                     </a>
@@ -40,7 +46,7 @@
                     <i class="bi bi-house"></i> Dashboard</a>
             </li>
             <li>
-                <a href="#" class="list-links text-light"><i class="bi bi-bag"></i> Orders</a>
+                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i> Orders</a>
             </li>
             <li>
                 <a href="#" class="list-links text-light">
@@ -68,7 +74,7 @@
     <!-- End Left Side Dashboard Tabs -->
 
     <!-- Start Main -->
-    <main class="w-100">
+    <main id="main_id" class="w-100">
         <!-- Start Nav Bar -->
         <header class="p-lg-4">
             <nav class="col-12 d-flex justify-content-between ps-2">
@@ -76,14 +82,14 @@
                 <div class="d-flex">
 
                     <!-- Bars Icon -->
-                    <div id="barsDiv-id" class="pe-2 d-lg-none fs-cf-4">
+                    <div id="barsDiv_id" class="pe-2 d-lg-none fs-cf-4 cursor-pointer">
                         <i class="bi bi-filter-left"></i>
                     </div>
 
                     <span class="fw-bolder fs-cf-2 fs-cf-4">Settings</span>
                 </div>
 
-                <div id="logoDiv-id">
+                <div id="logoDiv_id">
                     <a href="../index.html" target="_blank">
                         <img src="../Images/logo/LLLOGO.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
                     </a>
@@ -95,14 +101,14 @@
                     <div class="d-flex gap-3">
 
                         <!-- Search Icon -->
-                        <div id="searchDiv-id">
+                        <div id="searchDiv_id">
                             <i class="bi bi-search fs-cf-3 fs-cf-4"></i>
                         </div>
 
                         <!-- notifications Icon -->
-                        <div id="notificationsDiv-id">
-                            <i id="notificationsIcon-id" class="bi bi-bell fs-cf-3 fs-cf-4">
-                                <span id="notificationsDot-id"
+                        <div id="notificationsDiv_id">
+                            <i id="notificationsIcon_id" class="bi bi-bell fs-cf-3 fs-cf-4">
+                                <span id="notificationsDot_id"
                                     class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
                                     <span class="visually-hidden">New notification</span>
                                 </span>
@@ -110,9 +116,9 @@
                         </div>
 
                         <!-- Profile -->
-                        <div id="profileDiv-id" class="fs-5 d-flex gap-3 position-relative">
+                        <div id="profileDiv_id" class="fs-5 d-flex gap-3 position-relative">
                             <!-- Profile Icon -->
-                            <div id="profileDiv-id">
+                            <div id="profileDiv_id">
                                 <i class="bi bi-person-circle fs-cf-3 fs-cf-4"></i>
                             </div>
 
@@ -121,7 +127,6 @@
                                 <span class="fw-bolder ">Maged Eshak</span>
                                 <span class="text-secondary ">Admin</span>
                             </div>
-
                         </div>
 
                     </div>
@@ -131,7 +136,7 @@
         <!-- End Nav Bar -->
 
         <!-- Start Content Section {My Profile, Admins, Edit Profile, Change Password} -->
-        <section class="container-fluid col-md-12 d-md-flex justify-content-between gap-3">
+        <section id="mainContentSec_id" class="container-fluid col-md-12 d-md-flex justify-content-between gap-3">
             <!-- Start Left side Section {My Profile, Admins} -->
             <article>
                 <!-- Start Profile Section -->
@@ -427,6 +432,8 @@
 
     <!-- Bootstrap JS -->
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+
+    <script src="./JS/navBar_sideBarFun.js"></script>
 </body>
 
 </html>
