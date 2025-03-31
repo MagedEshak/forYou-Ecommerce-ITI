@@ -1,32 +1,42 @@
-*{
+* {
     padding: 0 !important;
     margin: 0 !important;
     box-sizing: border-box;
 }
-html{
-    font-size: 12px;
-}
 
-
-.siteColorClass{
+.siteColorClass {
     background-color: #006766;
 }
 
-/* styling nav bar*/
+a {
+    text-decoration: none;
+    color: #006766;
+}
+
+
+
 /* My Nav Bar in case of small screens : */
 /* this is Menue Bar Button */
-#menuBarBtn_id{
+#menuBarBtn_id {
     border: none;
     background-color: inherit;
     color: white;
     font-size: 2rem;
+
 }
 
-.imgLogo_class{
+.btn-color-fa {
+    background-color: #fafafa !important;
+    color: #006766 !important;
+    border: 2px solid #006766 !important;
+}
+
+.imgLogo_class {
     width: 100%;
 }
+
 /* this is Shopping Cart Icon */
-#shoppingCartIcon_id{
+#shoppingCartIcon_id {
     font-size: 2rem;
     color: white;
 }
@@ -38,7 +48,7 @@ html{
     left: -75%;
     z-index: 2;
     transition: left .7s ease;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 #sideNavBar_id .manageProfile{
     background-color: #006766;
@@ -72,15 +82,16 @@ html{
 /*******************************************************************************/
 /* My Search Input Field in case of small Screens */
 /* this is my search input id*/
-.searchInput_class{
+.searchInput_class {
     font-size: 1.5rem;
-    padding:.5rem  !important;
+    padding: .5rem !important;
     width: 100%;
     border: solid 1px #006766;
 }
 
+
 /* this is my search icon button*/
-#searchBtn_1_id{
+#searchBtn_1_id {
     font-size: 1.5rem;
     border: none;
     background-color: white;
@@ -90,25 +101,30 @@ html{
     top: 30%;
     right: 2rem;
 }
-/*******************************************************************************/
+
+
+
 /* styling a vertical ruler */
-.verticalSpace{
+.verticalSpace {
     height: 2rem;
     width: .1rem;
     background-color: rgb(194, 193, 191);
 }
 /*******************************************************************************/
 /* styling my links in the nav bar*/
-.largeDevicesNav  a{
+nav a {
     text-decoration: none;
     color: white;
 }
-.largeDevicesNav  a i{
+
+nav a i {
     color: inherit !important;
 }
-/********************************************************************************/
+
+/*************************************************/
+
 /* Styling MyCarousel*/
-.MyCarousel{
+.MyCarousel {
     height: 90vh !important;
     background-image: url('../../Images/CustomerImages/carusoal_images/1.jpg');
     background-size: cover;
@@ -118,7 +134,7 @@ html{
 }
 
 /* styling carusoal buttons*/
-.carusoalBtns{
+.carusoalBtns {
     position: absolute;
     top: 45%;
     left: 0;
@@ -128,52 +144,66 @@ html{
 }
 
 /* styling the height of my crusoal in different widths :*/
-@media (max-width: 550px) { /* For small devices */
-    .MyCarousel{
+@media (max-width: 550px) {
+
+    /* For small devices */
+    .MyCarousel {
         height: 40vh !important;
     }
-  }
+}
 
-@media (min-width: 550px) and (max-width: 720px) { /* For small devices */
-    .MyCarousel{
+@media (min-width: 550px) and (max-width: 720px) {
+
+    /* For small devices */
+    .MyCarousel {
         height: 50vh !important;
     }
 }
 
-@media (min-width: 720px) and (max-width: 860px) { /* For small devices */
-    .MyCarousel{
+@media (min-width: 720px) and (max-width: 860px) {
+
+    /* For small devices */
+    .MyCarousel {
         height: 60vh !important;
     }
 }
 
-@media (min-width: 860px) and (max-width: 1000px) { /* For small devices */
-    .MyCarousel{
+@media (min-width: 860px) and (max-width: 1000px) {
+
+    /* For small devices */
+    .MyCarousel {
         height: 70vh !important;
     }
 }
-/*******************************************************************************/
+
+/*************************************************/
 
 /* Styling my Footer*/
-footer{
+footer {
     color: white;
 }
-footer .someInfo a, footer .socialMediaLinks a{
-    text-decoration: none;
-    color: inherit;
+
+footer .someInfo a,
+footer .socialMediaLinks a {
+
+    color: #ffff;
 }
 
-footer .socialMediaLinks a{
+footer .socialMediaLinks a {
     font-size: 1.4rem;
 }
-/*******************************************************************************/
+
+/*************************************************/
+
 /* styling my category container*/
-.category a{
+
+.category a {
     text-decoration: none;
     color: black;
-    transition: transform .4s ease ;
+    transition: transform .4s ease;
 }
 
-.category a p{
+.category a p {
     padding-top: 1rem !important;
     font-size: 1.5rem;
 }
@@ -181,12 +211,13 @@ footer .socialMediaLinks a{
 /* styling my products section */
 /* Our product header that contains discount percentage and button to add product to wishlist*/
 /* my product container */
-.product{
+.product {
     padding: .4rem !important;
     position: relative;
-    transition :transform .5s ease;
+    transition: transform .5s ease;
 }
-.productInnercontainer{
+
+.productInnercontainer {
     background-color: white;
 }
 
@@ -199,44 +230,49 @@ footer .socialMediaLinks a{
 }
 
 /* the button to add the product to wishlist */
-.addToWishListBtn_class{
+.addToWishListBtn_class {
     padding: 0 .5rem !important;
     border: none !important;
     color: white;
     background-color: inherit;
     font-size: 1.3rem;
 }
-.addToWishListBtn_class i{
-    -webkit-text-stroke: 1px rgb(11, 11, 11); /* Border around the heart */
+
+.addToWishListBtn_class i {
+    -webkit-text-stroke: 1px rgb(11, 11, 11);
+    /* Border around the heart */
 }
 
+
 /* product image container*/
-.productImageContainer{
+.productImageContainer {
     height: 30vh;
 }
-.product img{
+
+.product img {
     width: 75%;
     object-fit: contain;
     flex-grow: 1;
 }
 
 /* this is product description paragraph*/
-.productDesc{
+.productDesc {
     color: rgb(90, 87, 87);
 }
 
 
 /* Product price */
-.productPrice_class{
+.productPrice_class {
     font-size: 1.4rem;
     font-weight: 600;
 }
 
-.EGP{
+.EGP {
     font-size: .8rem;
 }
+
 /* product old price */
-.oldPrice_class{
+.oldPrice_class {
     text-decoration: line-through;
     padding-left: .8rem !important;
     font-size: 1.1rem;
@@ -244,11 +280,11 @@ footer .socialMediaLinks a{
 }
 
 /* this is the div that contains the add to cart button */
-.cartBtn{
-    border-top: 1px solid #006766;
+.cartBtn {
+    border-top: 1px solid black;
 }
-/* this is the button its self*/
-.addToCartBtn_class{
+
+.addToCartBtn_class {
     padding: .5rem .5rem !important;
     font-size: 1.2rem;
     font-weight: 600;
@@ -260,8 +296,8 @@ footer .socialMediaLinks a{
 
 
 /* the number of products you want to add to cart , and bin to remove last item*/
-.productCountAndBin{
-    border: 1px solid #006766;
+.productCountAndBin {
+    border: 1px solid black;
     border-radius: .4rem;
     font-size: 1.3rem;
 }
@@ -276,8 +312,10 @@ footer .socialMediaLinks a{
 
 /* to handel font size in small devices*/
 
-@media (min-width: 700px) { /* For medium devices */
-    html{
+@media (min-width: 700px) {
+
+    /* For medium devices */
+    html {
         font-size: 14px;
     }
 }
@@ -288,6 +326,23 @@ footer .socialMediaLinks a{
 /* hover only on large devices*/
 
 @media (min-width: 1000px) {
+   
+    a:hover {
+
+        color: #000;
+    }
+
+    .btn-color-fa:hover {
+        background-color: #006766 !important;
+        color: #fafafa !important;
+        border: 2px solid #006766 !important;
+    }
+
+    #menuBarBtn_id:hover {
+        color: black;
+    }
+    
+
     /* My Search Input Field*/
     /* this is my search input id*/
     .searchInput_class:hover{
@@ -334,9 +389,11 @@ footer .socialMediaLinks a{
 
     /* footer*/
     
-    footer .someInfo a:hover , footer .socialMediaLinks a:hover{
-    color: black;
+    footer .someInfo a:hover ,
+    footer .socialMediaLinks a:hover{
+    color: #006766;
     }
+
 }
 /**********************************************************************/
 

@@ -22,7 +22,7 @@ function displaySideNavBar(navBar){
 function disappearSideNavBar(navBar) {
     navBar.style.left = "-75%"; // Hide sidebar off-screen
 }
-
+/*************************************************************************************************************** */
 
 
 
@@ -60,7 +60,7 @@ function getNextImage(){
     MyCarousel.style.backgroundImage = `url(${backgroundImagesUrls[counter]})` ;
 }
 
-
+/**************************************************************************************************** */
 
 
 
@@ -83,10 +83,6 @@ function display(element){
 }
 
 
-
-
-
-
 /* handel all add to cart btn */
 let addToCartBtns = document.getElementsByClassName('addToCartBtn_class');/* hold all add to cart btns in this variable */
 let productCountAndBin = document.getElementsByClassName('productCountAndBin');/* hold all product count and bin divs */
@@ -95,6 +91,7 @@ let incrProdCountBtns = document.querySelectorAll('.productCountAndBin .plus');/
 let removeProductCartBtns = document.querySelectorAll('.productCountAndBin .bin');/* hold all bin btn to remove product from cart */
 let decrProdCountBtns = document.querySelectorAll('.productCountAndBin .minus');/* hold all increment product count btn */
 
+/* handeling when add to cart btn pressed */
 for(let index = 0 ; index < addToCartBtns.length ; index++){
     addToCartBtns[index].addEventListener('click' , ()=>{
         displayNone(addToCartBtns[index]); // remove add to cart button from the page
@@ -102,7 +99,6 @@ for(let index = 0 ; index < addToCartBtns.length ; index++){
         ++productCountSpans[index].innerHTML;// when the button clicked , count of product = 1
     })
 }
-
 
 
 /* handeling when + sign pressed */
@@ -128,7 +124,7 @@ for(let index = 0 ; index < removeProductCartBtns.length ; index++){
 for(let index = 0 ; index < decrProdCountBtns.length; index++){
     decrProdCountBtns[index].addEventListener('click', ()=>{
         if(productCountSpans[index].innerHTML == 2){
-            productCountSpans[index].innerHTML--;
+            productCountSpans[index].innerHTML--;//decrement number of products by 1
             displayNone(decrProdCountBtns[index]);//remove my - sign from the div
             display(removeProductCartBtns[index]);//dispaly bin btn  instead
         }

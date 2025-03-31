@@ -3,37 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ForYou</title>
-    <link rel="stylesheet" href="CustomersPages/CSS/bootstrap.css">
-    <link rel="stylesheet" href="CustomersPages/CSS/home.css">
+    <title>Home - ForYou</title>
+
+    <link rel="shortcut icon" href="./Images/logo/LLLOGO.png" type="image/x-icon">
+    <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./CSS/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
     <!-- in case of small devices -->
 
-     <!-- my nav bar in small devices : it appears on the top of the page-->
+    <!-- my nav bar in small devices : it appears on the top of the page-->
     <nav class="d-lg-none siteColorClass">
         <div class="container-fluid p-2 p-md-3">
             <div class="row text-center justify-content-between align-items-center">
                 <!-- this is menue bar button -->
-                <button id="menuBarBtn_id" class="col-auto"> 
+                <button id="menuBarBtn_id" class="col-auto">
                     <i class="fa fa-bars"></i>
                 </button>
 
                 <!-- this is My Site Logo -->
                 <div class="siteLogo col-2">
                     <a href="#">
-                        <img class="imgLogo_class" src="Images/logo/LLLOGOWhite.png" alt="">
+                        <img class="imgLogo_class" src="../Images/logo/LLLOGOWhite.png" alt="">
                     </a>
                 </div>
 
                 <!-- this is Shopping Cart Icon -->
-                <a href="#" class="col-auto"><i id="shoppingCartIcon_id" class="fa fa-shopping-cart" ></i></a>
+                <a href="#" class="col-auto">
+                    <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
+                </a>
             </div>
         </div>
-    </nav>
-    
+    </nav><!-- checked -->
+
     <!-- my  side nav bar , appears only when the menu bar button clicked -->
     <nav id="sideNavBar_id" class="w-75">
         <div class="sideNavLinksContainer d-flex flex-column align-items-start justify-content-center w-100 bg-danger">
@@ -56,7 +59,7 @@
     <!-- ****************************************************************** -->
 
     <!-- in case of small devices this header appears as a search input only
-     but in large devices it appears with logo and some links on the top of the page-->
+    but in large devices it appears with logo and some links on the top of the page-->
     <!-- my header in large devices -->
     <header class="">
         <div class="containert-fluid">
@@ -83,27 +86,34 @@
                 <!-- this is some links whatsapp, support and branches -->
                 <div class="d-none d-lg-flex col-3 row someLinks justify-content-evenly align-items-center">
                     <div class="whatsapp col-auto">
-                        whatsapp
+                        <a href="https://wa.me/+20/?text=Check out this link: YOUR_LINK_HERE" target="_blank"
+                            class="whatsapp col-auto">
+                            WhatsApp
+                        </a>
                     </div>
 
                     <div class="verticalSpace"></div>
 
                     <div class="support col-auto">
-                        call support
+                        <a href="#" class="support col-auto">
+                            Call Support
+                        </a>
                     </div>
 
                     <div class="verticalSpace"></div>
 
                     <div class="branches col-auto">
-                        Branches
+                        <a href="#" class="branches col-auto">
+                            Branches
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </header> <!-- updated -->
 
     <!-- my nav in large devices , it only appears on large devices -->
-    <nav class="largeDevicesNav d-none d-lg-block siteColorClass">
+    <nav class="d-none d-lg-block siteColorClass">
         <div class="container-fluid p-3">
             <div class="row justify-content-evenly align-items-center links">
                 <a href="#cookersSection_id" class="col-auto"> Cookers</a>
@@ -111,20 +121,22 @@
                 <a href="#televesionsSection_id" class="col-auto"> Televesions</a>
                 <a href="#" class="col-auto"> Cooling Appliances</a>
                 <a href="#" class="col-auto"> Air Conditioners</a>
-                <a href="#" class="col-auto"> Washing Mashines</a>
-                <a href="#" class="col-auto"> Sign in</a>
+                <a href="#" class="col-auto"> Washing Machines</a>
+                <a href="./CustomersPages/Rejester.html" class="col-auto"> Sign In</a>
                 <a href="#" class="col-auto d-none"> Profile</a>
-                <a href="#" class="col-auto"><i id="shoppingCartIcon_id" class="fa fa-shopping-cart" ></i></a>
+                <a href="../CustomersPages/cart.html" class="col-auto">
+                    <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
+                </a>
             </div>
         </div>
-    </nav>
+    </nav><!-- updated -->
 
     <!-- ****************************************************************** -->
-    <!-- this is my crusoal  -->
+    <!-- this is my crusoal -->
     <section id="crusoalSection_id">
         <div class="container-fluid px-2 px-sm-3 px-md-4 p-lg-5">
             <div id="carouselExample" class="carousel slide position-relative">
-                
+
                 <!-- this is the div that contains the back ground image -->
                 <div id="MyCarousel_id" class="MyCarousel">
                 </div>
@@ -138,12 +150,11 @@
                         <i class="fa fa-angle-right"></i>
                     </button>
                 </div>
-                
             </div>
         </div>
     </section>
-    
-<!-- ****************************************************************** -->
+
+    <!-- ****************************************************************** -->
     <!-- my categories section -->
     <section id="categoriesSection_id">
         <div class="container-fluid">
@@ -182,7 +193,7 @@
     </section>
 
 
-<!-- ****************************************************************** -->
+    <!-- ****************************************************************** -->
 
     <!-- in this section we will display all products by category name -->
     <!-- first category : cookers for example -->
@@ -432,15 +443,13 @@
         </div>
     </section>
 
-
-
     <!-- ****************************************************************** -->
-     <!-- Footer -->
-      <footer>
+    <!-- Footer -->
+    <footer>
         <div class="container-fluid">
-            <div class="row justify-content-evenly align-items-center p-3 siteColorClass">
+            <div class="row justify-content-evenly align-items-center p-3 bg-black">
                 <!-- some information linkes like  about us , customer service , more   -->
-                <div class="someInfo d-flex justify-content-evenly align-items-center col-12 col-lg-6 p-2 ">
+                <div class="someInfo row justify-content-evenly align-items-center col-12 col-lg-6 p-2 ">
                     <div class="aboutus col-auto">
                         <a href="#">About Us</a>
                     </div>
@@ -453,30 +462,36 @@
                 </div>
 
                 <!-- Our social media links , facebook , insta , youtube and linked in -->
-                <div class="socialMediaLinks d-flex justify-content-evenly align-items-center col-8 col-lg-4 p-2">
-                    <div class="col-1"><a  href="#"><i class="fa fa-facebook-f"></i></a></div>
-                    <div class="col-1"><a href="#"><i class="fa fa-instagram"></i></a></div>
-                    <div class="col-1"><a href="#"><i class="fa fa-youtube-play"></i></a></div>
-                    <div class="col-1"><a href="#"><i class="fa fa-linkedin"></i></a></div>
+                <div class="socialMediaLinks row justify-content-evenly align-items-center col-8 col-lg-4 p-2">
+                    <a class="col-1" href="#"><i class="fa fa-facebook-f"></i></a>
+                    <a class="col-1" href="#"><i class="fa fa-instagram"></i></i></a>
+                    <a class="col-1" href="#"><i class="fa fa-youtube-play"></i></a>
+                    <a class="col-1" href="#"><i class="fa fa-linkedin"></i></a>
                 </div>
 
                 <!-- Payment methods , paypal , visa and premium card -->
-                <div class="paymentMethods d-flex justify-content-center align-items-center col-8 col-lg-6 p-2 ">
-                    <div class="col-2 px-2 px-lg-4"><a href="#"><img class="w-100" src="Images/CustomerImages/pay_images/premium_card.png" alt=""></a></div>
-                    <div class="col-2 px-2 px-lg-4"><a href="#"><img class="w-100" src="Images/CustomerImages/pay_images/visa.png" alt=""></a></div>
-                    <div class="col-2 px-2 px-lg-4"><a href="#"><img class="w-100" src="Images/CustomerImages/pay_images/payPal.png" alt=""></a></div>
+                <div class="paymentMethods row justify-content-center align-items-center col-8 col-lg-6 p-2 ">
+                    <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
+                            src="../Images/CustomerImages/pay_images/premium_card.png" alt=""></a>
+                    <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
+                            src="../Images/CustomerImages/pay_images/visa.png" alt=""></a>
+                    <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
+                            src="../Images/CustomerImages/pay_images/payPal.png" alt=""></a>
                 </div>
 
                 <!-- text about our rights reserved -->
-                <div class="rights d-flex justify-content-center align-items-center col-10 col-lg-4 p-2">
+                <div class="rights row justify-content-evenly align-items-center col-10 col-lg-4 p-2">
                     All rights reserved - forYou
                 </div>
 
             </div>
         </div>
-      </footer>
-    <script src="CustomersPages/JS/script.js"></script>
-   <script src="CustomersPages/JS/bootstrap.bundle.min.js"></script>
+    </footer>
+
+    <script src="./js/script.js"></script>
+    <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+
 </body>
 </html>
 
