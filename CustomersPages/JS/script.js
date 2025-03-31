@@ -71,45 +71,6 @@ function getNextImage(){
 /* when the button clicked , it must display none ,
 and the productCountAndBin must appear */
 
-let addToCartBtn = document.getElementById('addToCartBtn_id_1'); // cart button
-let productCountAndBinDiv = document.getElementById('productCountAndBin_id_1'); // container of product count and bin
-let productCountSpan = document.getElementById('productCount_id_1');// the span that dispalys product count
-let incrementProductCountBtn = document.getElementById('incrementProductCountBtn_id_1');// + sign to increment prodduct count
-let removeProductCartBtn = document.getElementById('removeProductCartBtn_id_1');// bin to remove the product from cart
-let decrementProductCountBtn = document.getElementById('decrementProductCountBtn_id_1');// - sign to decrement prodduct count
-
-/* handeling when add to cart pressed */
-addToCartBtn.addEventListener('click' , (e) => {
-    displayNone(addToCartBtn); // remove add to cart button from the page
-    display(productCountAndBinDiv); // add the div of count and bin instead
-    console.log(++productCountSpan.innerHTML)// when the button clicked , count of product = 1
-})
-
-/* handeling when + sign pressed */
-incrementProductCountBtn.addEventListener('click',()=>{
-    // when the button clicked increment product count and display minus sign instead of bin
-    console.log(++productCountSpan.innerHTML);
-    displayNone(removeProductCartBtn);//remove my bin from the div
-    display(decrementProductCountBtn);//dispaly - sign instead
-})
-
-/* handeling when - sign pressed */
-decrementProductCountBtn.addEventListener('click' , ()=>{
-    if(productCountSpan.innerHTML == 2){
-        productCountSpan.innerHTML--;
-        displayNone(decrementProductCountBtn);//remove my bin from the div
-        display(removeProductCartBtn);//dispaly - sign instead
-    }
-    else
-        productCountSpan.innerHTML--;
-})
-
-/* handeling when bin btn pressed */
-removeProductCartBtn.addEventListener('click',()=>{
-    productCountSpan.innerHTML--;
-    displayNone(productCountAndBinDiv); // remove add to cart button from the page
-    display(addToCartBtn); // add the div of count and bin instead
-})
     
 /* function to remove element with display none , param : your element */
 function displayNone(element){
@@ -120,3 +81,61 @@ function displayNone(element){
 function display(element){
     element.classList.remove("d-none");
 }
+
+
+
+
+
+
+/* handel all add to cart btn */
+let addToCartBtns = document.getElementsByClassName('addToCartBtn_class');/* hold all add to cart btns in this variable */
+let productCountAndBin = document.getElementsByClassName('productCountAndBin');/* hold all product count and bin divs */
+let productCountSpans = document.querySelectorAll('.productCountAndBin span'); /* hold all spans that holds product count */
+let incrProdCountBtns = document.querySelectorAll('.productCountAndBin .plus');/* hold all increment product count btn */
+let removeProductCartBtns = document.querySelectorAll('.productCountAndBin .bin');/* hold all bin btn to remove product from cart */
+let decrProdCountBtns = document.querySelectorAll('.productCountAndBin .minus');/* hold all increment product count btn */
+
+for(let index = 0 ; index < addToCartBtns.length ; index++){
+    addToCartBtns[index].addEventListener('click' , ()=>{
+        displayNone(addToCartBtns[index]); // remove add to cart button from the page
+        display(productCountAndBin[index]); // add the div of count and bin instead
+        ++productCountSpans[index].innerHTML;// when the button clicked , count of product = 1
+    })
+}
+
+
+
+/* handeling when + sign pressed */
+for(let index = 0 ; index < incrProdCountBtns.length ; index++){
+    incrProdCountBtns[index].addEventListener('click', (e)=>{
+        ++productCountSpans[index].innerHTML;// increment product count by 1
+        displayNone(removeProductCartBtns[index]);//remove my bin from the div
+        display(decrProdCountBtns[index]);//display - sign in the div
+    })
+}
+
+/* handeling when bin btn pressed */
+/* the  productCountAndBin div will disappear , and instead the addTOCart btn will be displayed*/
+for(let index = 0 ; index < removeProductCartBtns.length ; index++){
+    removeProductCartBtns[index].addEventListener('click', (e)=>{
+        --productCountSpans[index].innerHTML;// when the button clicked , count of product = 0
+        display(addToCartBtns[index]); // remove add to cart button from the page
+        displayNone(productCountAndBin[index]); // add the div of count and bin instead
+    })
+}
+
+/* handeling when - sign pressed */
+for(let index = 0 ; index < decrProdCountBtns.length; index++){
+    decrProdCountBtns[index].addEventListener('click', ()=>{
+        if(productCountSpans[index].innerHTML == 2){
+            productCountSpans[index].innerHTML--;
+            displayNone(decrProdCountBtns[index]);//remove my - sign from the div
+            display(removeProductCartBtns[index]);//dispaly bin btn  instead
+        }
+        else
+            productCountSpans[index].innerHTML--;
+    })
+}
+
+
+/******************************************************************************************************** */

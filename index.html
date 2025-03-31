@@ -1,14 +1,485 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>ForYou</title>
+    <link rel="stylesheet" href="CustomersPages/CSS/bootstrap.css">
+    <link rel="stylesheet" href="CustomersPages/CSS/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
 
-</body>
+    <!-- in case of small devices -->
 
+     <!-- my nav bar in small devices : it appears on the top of the page-->
+    <nav class="d-lg-none siteColorClass">
+        <div class="container-fluid p-2 p-md-3">
+            <div class="row text-center justify-content-between align-items-center">
+                <!-- this is menue bar button -->
+                <button id="menuBarBtn_id" class="col-auto"> 
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- this is My Site Logo -->
+                <div class="siteLogo col-2">
+                    <a href="#">
+                        <img class="imgLogo_class" src="Images/logo/LLLOGOWhite.png" alt="">
+                    </a>
+                </div>
+
+                <!-- this is Shopping Cart Icon -->
+                <a href="#" class="col-auto"><i id="shoppingCartIcon_id" class="fa fa-shopping-cart" ></i></a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- my  side nav bar , appears only when the menu bar button clicked -->
+    <nav id="sideNavBar_id" class="w-75">
+        <div class="sideNavLinksContainer d-flex flex-column align-items-start justify-content-center w-100 bg-danger">
+            <div class="manageProfile w-100 py-5 px-3">
+                <span><a href="#">Login</a> / <a href="#">Register</a></span>
+            </div>
+            <div class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
+                <div class="w-100"><a href="#cookersSection_id" class="w-100"> Cookers</a></div>
+                <div class="w-100"><a href="#">Small Home Appliances</a></div>
+                <div class="w-100"><a href="#televesionsSection_id" class="w-100"> Televesions</a></div>
+                <div class="w-100"><a href="#">Cooling Appliances</a></div>
+                <div class="w-100"><a href="#">Air Conditioners</a></div>
+                <div class="w-100"><a href="#" >Washing Mashines</a></div>
+                <div class="w-100 whatsapp col-auto"><a href="#">whatsapp</a></div>
+                <div class="w-100 support col-auto"><a href="#">call support</a></div>
+                <div class="w-100 branches col-auto"><a href="#">Branches</a></div>
+            </div>
+        </div>
+    </nav>
+    <!-- ****************************************************************** -->
+
+    <!-- in case of small devices this header appears as a search input only
+     but in large devices it appears with logo and some links on the top of the page-->
+    <!-- my header in large devices -->
+    <header class="">
+        <div class="containert-fluid">
+            <div class="row align-items-center justify-content-evenly p-2">
+
+                <!-- this is my site logo -->
+                <div class="d-none d-lg-block siteLogo col-1">
+                    <a href="#">
+                        <img class="imgLogo_class" src="Images/logo/LLLOGO.png" alt="">
+                    </a>
+                </div>
+
+                <!-- this is search input  -->
+                <div class="col-lg-5 p-3 position-relative">
+                    <!-- this is my search input tag -->
+                    <input id="searchInput_1_id" class="searchInput_class" type="text" name="searchProduct" placeholder="Search">
+                    
+                    <!-- this is my search icon button -->
+                    <button id="searchBtn_1_id" class="col-auto">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+
+                <!-- this is some links whatsapp, support and branches -->
+                <div class="d-none d-lg-flex col-3 row someLinks justify-content-evenly align-items-center">
+                    <div class="whatsapp col-auto">
+                        whatsapp
+                    </div>
+
+                    <div class="verticalSpace"></div>
+
+                    <div class="support col-auto">
+                        call support
+                    </div>
+
+                    <div class="verticalSpace"></div>
+
+                    <div class="branches col-auto">
+                        Branches
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- my nav in large devices , it only appears on large devices -->
+    <nav class="largeDevicesNav d-none d-lg-block siteColorClass">
+        <div class="container-fluid p-3">
+            <div class="row justify-content-evenly align-items-center links">
+                <a href="#cookersSection_id" class="col-auto"> Cookers</a>
+                <a href="#" class="col-auto"> Small Home Appliances</a>
+                <a href="#televesionsSection_id" class="col-auto"> Televesions</a>
+                <a href="#" class="col-auto"> Cooling Appliances</a>
+                <a href="#" class="col-auto"> Air Conditioners</a>
+                <a href="#" class="col-auto"> Washing Mashines</a>
+                <a href="#" class="col-auto"> Sign in</a>
+                <a href="#" class="col-auto d-none"> Profile</a>
+                <a href="#" class="col-auto"><i id="shoppingCartIcon_id" class="fa fa-shopping-cart" ></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ****************************************************************** -->
+    <!-- this is my crusoal  -->
+    <section id="crusoalSection_id">
+        <div class="container-fluid px-2 px-sm-3 px-md-4 p-lg-5">
+            <div id="carouselExample" class="carousel slide position-relative">
+                
+                <!-- this is the div that contains the back ground image -->
+                <div id="MyCarousel_id" class="MyCarousel">
+                </div>
+
+                <!-- my crusoal next and prev buttons -->
+                <div class="carusoalBtns">
+                    <button class="carousel-control-prev" type="button" id="controlPrevBtn_id">
+                        <i class="fa fa-angle-left"></i>
+                    </button>
+                    <button class="carousel-control-next" type="button" id="controlNextBtn_id">
+                        <i class="fa fa-angle-right"></i>
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+<!-- ****************************************************************** -->
+    <!-- my categories section -->
+    <section id="categoriesSection_id">
+        <div class="container-fluid">
+            <div class="shopByCategory row justify-content-evenly align-items-center text-center pt-3 px-md-4 px-lg-5">
+                <!-- my header -->
+                <h2 class="col-10  py-2">Shop By Category</h2>
+
+                <!-- this is my categories container  -->
+                 <!-- in case of small width   : screen divided by 2
+                      in case of medium width  : screen divided by 3
+                      in case of large width   : screen divided by 4-->
+                <div class="categories  d-flex justify-content-center p-2 py-3 ">
+
+                    <!-- category item , it is considered a link that takes you to items of this category : cookers category -->
+                    <div class="category col-6 col-md-4 col-lg-3 d-flex p-1">
+                            <!-- this is the link , if clicked you must go to items of cookers category -->
+                            <a class="bg-warning-subtle w-100 d-flex flex-column align-items-center justify-content-between" href="#cookersSection_id">
+                                <p>cookers</p>
+                                <img class="w-75 catImg" src="Images/CustomerImages/Category_images/Fresh_cookers.png" alt="">
+                            </a>
+                    </div>
+
+                    <!-- category item , it is considered a link that takes you to items of this category : TVs category -->
+                    <div class="category col-6 col-md-4 col-lg-3 d-flex p-1">
+                            <!-- this is the link , if clicked you must go to items of TVs category -->
+                            <a class="bg-success-subtle w-100 d-flex flex-column align-items-center justify-content-between" href="#televesionsSection_id">
+                                <p>Televesions</p>
+                                <img class="w-75 catImg" src="Images/CustomerImages/Category_images/TV.png" alt="">
+                            </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+<!-- ****************************************************************** -->
+
+    <!-- in this section we will display all products by category name -->
+    <!-- first category : cookers for example -->
+    <section id="productsSection_id ">
+        <div class="container-fluid  pb-5 px-3">
+            <!-- start of cookers category -->
+            <!-- this is header of cookers category -->
+            <h2 class="p-4 text-center" id="cookersSection_id">Shop Cookers</h2>
+
+            <!-- this is products container , contains all products of cookers category -->
+            <div id="cookerProducts_id" class="products row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4">
+                <!-- this is product 1 item from cookers category -->
+                <div id="cookerProduct_id_1" class="product col-10 col-md-4 col-lg-3 justify-content-center align-items-center">
+                    <div class="h-100 productInnercontainer d-flex flex-column justify-content-between align-items-center">
+                        <!-- this contains the discount percentage  -->
+                        <!-- and a button to add the product to wishlist -->
+                        <div class="productHeader w-100 d-flex justify-content-between align-items-center p-2">
+
+                            <p id="cookerProdDiscount_id_1" class="prodDiscount_class col-auto">OFF 24% cash</p>
+                            
+                            <button id="cookerProdAddToWishListBtn_id_1" class=" addToWishListBtn_class col-2">
+                                <i class="fa fa-heart"></i>
+                            </button>
+
+                        </div>
+
+                        <!-- this is the product image -->
+                        <img id="cookerProdImage_id_1" src="Images/CustomerImages/Product_imges/cookers/oven.jpg" alt="">
+
+                        <!-- this is the product description -->
+                        <div id="cookerProdDesc_id_1" class="productDesc px-2 align-self-start">
+                            <p>Fresh Cooker Hood 90 cm - Classic Black Stainless - FHS90SB40ML</p>
+                        </div>
+
+                        <!-- this is the product price -->
+                        <div id="cookerProdPrice_id_1" class="productPrice d-flex align-items-center p-2 ">
+                            <span class="EGP">
+                                <span class="productPrice_class">5,500</span>
+                                EGP
+                            </span>
+                            <span class="oldPrice_class">7,120</span>
+                        </div>
+
+                        <!-- button to add product to cart -->
+                        <div class="cartBtn w-75 py-3 d-flex justify-content-center ">
+                            <button id="cookerProdAddToCartBtn_id_1" class="w-75 addToCartBtn_class">Add to cart</button>
+
+                            <!-- in case of customer pressed add to cart button the below div appears -->
+                            <div id="cookerProdCountAndBinDiv_id_1" class="productCountAndBin w-75 d-flex justify-content-between align-items-center px-3 py-2 d-none">
+                                <!-- this button to remove product from cart -->
+                                <button id="cookerProdRemoveFromCartBtn_id_1" class="bin"><i class="fa fa-trash-o"></i></button>
+
+                                <!-- this button to decrement number of this products from your cart -->
+                                <button id="cookerProdDecrCountBtn_id_1" class="minus d-none"><i class="fa fa-minus"></i></button>
+
+                                <span id="cookerProdCountSpan_id_1" class="col-auto">0</span>
+
+                                <!-- this button to icrement number of this products from your cart -->
+                                <button id="cookerProdIncrCountBtn_id_1" class="plus"><i class="fa fa-plus"></i></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- this is product 2 item from cookers category -->
+                <div id="cookerProduct_id_2" class="product col-10 col-md-4 col-lg-3 justify-content-center align-items-center">
+                    <div class="h-100 productInnercontainer d-flex flex-column justify-content-between align-items-center">
+                        <!-- this contains the discount percentage  -->
+                        <!-- and a button to add the product to wishlist -->
+                        <div class="productHeader w-100 d-flex justify-content-between align-items-center p-2">
+
+                            <p id="cookerProdDiscount_id_2" class="prodDiscount_class col-auto">OFF 24% cash</p>
+                            
+                            <button id="cookerProdAddToWishListBtn_id_2" class=" addToWishListBtn_class col-2">
+                                <i class="fa fa-heart"></i>
+                            </button>
+
+                        </div>
+
+                        <!-- this is the product image -->
+                        <img id="cookerProdImage_id_2" src="Images/CustomerImages/Product_imges/cookers/oven2.jpg" alt="">
+
+                        <!-- this is the product description -->
+                        <div id="cookerProdDesc_id_2" class="productDesc px-2 align-self-start">
+                            <p>Fresh Cooker Hood 90 cm - Classic Black Stainless - FHS90SB40ML</p>
+                        </div>
+
+                        <!-- this is the product price -->
+                        <div id="cookerProdPrice_id_2" class="productPrice d-flex align-items-center p-2 ">
+                            <span class="EGP">
+                                <span class="productPrice_class">5,500</span>
+                                EGP
+                            </span>
+                            <span class="oldPrice_class">7,120</span>
+                        </div>
+
+                        <!-- button to add product to cart -->
+                        <div class="cartBtn w-75 py-3 d-flex justify-content-center ">
+                            <button id="cookerProdAddToCartBtn_id_2" class="w-75 addToCartBtn_class">Add to cart</button>
+
+                            <!-- in case of customer pressed add to cart button the below div appears -->
+                            <div id="cookerProdCountAndBinDiv_id_2" class="productCountAndBin w-75 d-flex justify-content-between align-items-center px-3 py-2 d-none">
+                                <!-- this button to remove product from cart -->
+                                <button id="cookerProdRemoveFromCartBtn_id_2" class="bin"><i class="fa fa-trash-o"></i></button>
+
+                                <!-- this button to decrement number of this products from your cart -->
+                                <button id="cookerProdDecrCountBtn_id_2" class="minus d-none"><i class="fa fa-minus"></i></button>
+
+                                <span id="cookerProdCountSpan_id_2" class="col-auto">0</span>
+
+                                <!-- this button to icrement number of this products from your cart -->
+                                <button id="cookerProdIncrCountBtn_id_2" class="plus"><i class="fa fa-plus"></i></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+        
+            </div>
+
+            <!-- end of cookers category -->
+<!-- ***********************************************************************************************************************************-->
+           
+            <!-- start of TVs category -->
+            <!-- this is header of Televesions category -->
+            <h2 class="p-4 text-center" id="televesionsSection_id">Shop Televesions</h2>
+
+            <!-- this is products container , contains all products of tvs category -->
+            <div id="tvProducts_id" class="products row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4">
+                <!-- this is product 1 item from tvs category -->
+                <div id="tvProduct_id_1" class="product col-10 col-md-4 col-lg-3 justify-content-center align-items-center">
+                    <div class="h-100 productInnercontainer d-flex flex-column justify-content-between align-items-center">
+                        <!-- this contains the discount percentage  -->
+                        <!-- and a button to add the product to wishlist -->
+                        <div class="productHeader w-100 d-flex justify-content-between align-items-center p-2">
+
+                            <p id="tvProdDiscount_id_1" class="prodDiscount_class col-auto">OFF 24% cash</p>
+                            
+                            <button id="tvProdAddToWishListBtn_id_1" class=" addToWishListBtn_class col-2">
+                                <i class="fa fa-heart"></i>
+                            </button>
+
+                        </div>
+
+                        <!-- this is the product image -->
+                        <img id="tvProdImage_id_1" src="Images/CustomerImages/Product_imges/TVs/TV1.jpg" alt="">
+
+                        <!-- this is the product description -->
+                        <div id="tvProdDesc_id_1" class="productDesc px-2 align-self-start">
+                            <p>Fresh tv Hood 90 cm - Classic Black Stainless - FHS90SB40ML</p>
+                        </div>
+
+                        <!-- this is the product price -->
+                        <div id="tvProdPrice_id_1" class="productPrice d-flex align-items-center p-2 ">
+                            <span class="EGP">
+                                <span class="productPrice_class">5,500</span>
+                                EGP
+                            </span>
+                            <span class="oldPrice_class">7,120</span>
+                        </div>
+
+                        <!-- button to add product to cart -->
+                        <div class="cartBtn w-75 py-3 d-flex justify-content-center ">
+                            <button id="tvProdAddToCartBtn_id_1" class="w-75 addToCartBtn_class">Add to cart</button>
+
+                            <!-- in case of customer pressed add to cart button the below div appears -->
+                            <div id="tvProdCountAndBinDiv_id_1" class="productCountAndBin w-75 d-flex justify-content-between align-items-center px-3 py-2 d-none">
+                                <!-- this button to remove product from cart -->
+                                <button id="tvProdRemoveFromCartBtn_id_1" class="bin"><i class="fa fa-trash-o"></i></button>
+
+                                <!-- this button to decrement number of this products from your cart -->
+                                <button id="tvProdDecrCountBtn_id_1" class="minus d-none"><i class="fa fa-minus"></i></button>
+
+                                <span id="tvProdCountSpan_id_1" class="col-auto">0</span>
+
+                                <!-- this button to icrement number of this products from your cart -->
+                                <button id="tvProdIncrCountBtn_id_1" class="plus"><i class="fa fa-plus"></i></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- this is product 2 item from tvs category -->
+                <div id="tvProduct_id_2" class="product col-10 col-md-4 col-lg-3 justify-content-center align-items-center">
+                    <div class="h-100 productInnercontainer d-flex flex-column justify-content-between align-items-center">
+                        <!-- this contains the discount percentage  -->
+                        <!-- and a button to add the product to wishlist -->
+                        <div class="productHeader w-100 d-flex justify-content-between align-items-center p-2">
+
+                            <p id="tvProdDiscount_id_2" class="prodDiscount_class col-auto">OFF 24% cash</p>
+                            
+                            <button id="tvProdAddToWishListBtn_id_2" class=" addToWishListBtn_class col-2">
+                                <i class="fa fa-heart"></i>
+                            </button>
+
+                        </div>
+
+                        <!-- this is the product image -->
+                        <img id="tvProdImage_id_2" src="Images/CustomerImages/Product_imges/TVs/TV2.jpg" alt="">
+
+                        <!-- this is the product description -->
+                        <div id="tvProdDesc_id_2" class="productDesc px-2 align-self-start">
+                            <p>Fresh tv Hood 90 cm - Classic Black Stainless - FHS90SB40ML</p>
+                        </div>
+
+                        <!-- this is the product price -->
+                        <div id="tvProdPrice_id_2" class="productPrice d-flex align-items-center p-2 ">
+                            <span class="EGP">
+                                <span class="productPrice_class">5,500</span>
+                                EGP
+                            </span>
+                            <span class="oldPrice_class">7,120</span>
+                        </div>
+
+                        <!-- button to add product to cart -->
+                        <div class="cartBtn w-75 py-3 d-flex justify-content-center ">
+                            <button id="tvProdAddToCartBtn_id_2" class="w-75 addToCartBtn_class">Add to cart</button>
+
+                            <!-- in case of customer pressed add to cart button the below div appears -->
+                            <div id="tvProdCountAndBinDiv_id_2" class="productCountAndBin w-75 d-flex justify-content-between align-items-center px-3 py-2 d-none">
+                                <!-- this button to remove product from cart -->
+                                <button id="tvProdRemoveFromCartBtn_id_2" class="bin"><i class="fa fa-trash-o"></i></button>
+
+                                <!-- this button to decrement number of this products from your cart -->
+                                <button id="tvProdDecrCountBtn_id_2" class="minus d-none"><i class="fa fa-minus"></i></button>
+
+                                <span id="tvProdCountSpan_id_2" class="col-auto">0</span>
+
+                                <!-- this button to icrement number of this products from your cart -->
+                                <button id="tvProdIncrCountBtn_id_2" class="plus"><i class="fa fa-plus"></i></button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                
+            </div>
+            
+            <!-- end of TVs category -->
+        </div>
+    </section>
+
+
+
+    <!-- ****************************************************************** -->
+     <!-- Footer -->
+      <footer>
+        <div class="container-fluid">
+            <div class="row justify-content-evenly align-items-center p-3 siteColorClass">
+                <!-- some information linkes like  about us , customer service , more   -->
+                <div class="someInfo d-flex justify-content-evenly align-items-center col-12 col-lg-6 p-2 ">
+                    <div class="aboutus col-auto">
+                        <a href="#">About Us</a>
+                    </div>
+                    <div class="customerService col-auto">
+                        <a href="#">Customer Service</a>
+                    </div>
+                    <div class="more col-auto">
+                        <a href="#">More</a>
+                    </div>
+                </div>
+
+                <!-- Our social media links , facebook , insta , youtube and linked in -->
+                <div class="socialMediaLinks d-flex justify-content-evenly align-items-center col-8 col-lg-4 p-2">
+                    <div class="col-1"><a  href="#"><i class="fa fa-facebook-f"></i></a></div>
+                    <div class="col-1"><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    <div class="col-1"><a href="#"><i class="fa fa-youtube-play"></i></a></div>
+                    <div class="col-1"><a href="#"><i class="fa fa-linkedin"></i></a></div>
+                </div>
+
+                <!-- Payment methods , paypal , visa and premium card -->
+                <div class="paymentMethods d-flex justify-content-center align-items-center col-8 col-lg-6 p-2 ">
+                    <div class="col-2 px-2 px-lg-4"><a href="#"><img class="w-100" src="Images/CustomerImages/pay_images/premium_card.png" alt=""></a></div>
+                    <div class="col-2 px-2 px-lg-4"><a href="#"><img class="w-100" src="Images/CustomerImages/pay_images/visa.png" alt=""></a></div>
+                    <div class="col-2 px-2 px-lg-4"><a href="#"><img class="w-100" src="Images/CustomerImages/pay_images/payPal.png" alt=""></a></div>
+                </div>
+
+                <!-- text about our rights reserved -->
+                <div class="rights d-flex justify-content-center align-items-center col-10 col-lg-4 p-2">
+                    All rights reserved - forYou
+                </div>
+
+            </div>
+        </div>
+      </footer>
+    <script src="CustomersPages/JS/script.js"></script>
+   <script src="CustomersPages/JS/bootstrap.bundle.min.js"></script>
+</body>
 </html>
+
+
+<!-- products section updated -->
+<!-- footer section updated  -->

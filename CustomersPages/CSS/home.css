@@ -41,7 +41,11 @@ html{
 }
 #sideNavBar_id .manageProfile{
     background-color: #006766;
+    
+}
+#sideNavBar_id .manageProfile span,#sideNavBar_id .manageProfile  a{
     color: white;
+    text-decoration: none;
 }
 .sideNavLinksContainer{
     border-right: solid 1px #006766;
@@ -50,13 +54,18 @@ html{
 .categoriesLinks{
     background-color: white;
 }
-.categoriesLinks >  a{
+.categoriesLinks >  div{
     padding: 1rem .5rem !important;
     color: black !important; 
     border-bottom: 1px solid #037876 ;
 }
 
-.categoriesLinks a:last-child{
+.categoriesLinks >  div a{
+    text-decoration: none;
+    color: black;
+}
+
+.categoriesLinks div:last-child{
     border: none;
 }
 /*******************************************************************************/
@@ -89,11 +98,11 @@ html{
 }
 /*******************************************************************************/
 /* styling my links in the nav bar*/
-nav  a{
+.largeDevicesNav  a{
     text-decoration: none;
     color: white;
 }
-nav  a i{
+.largeDevicesNav  a i{
     color: inherit !important;
 }
 /********************************************************************************/
@@ -150,10 +159,6 @@ footer{
 footer .someInfo a, footer .socialMediaLinks a{
     text-decoration: none;
     color: inherit;
-}
-
-footer .someInfo a:hover , footer .socialMediaLinks a:hover{
-    color: black;
 }
 
 footer .socialMediaLinks a{
@@ -248,11 +253,9 @@ footer .socialMediaLinks a{
     font-weight: 600;
     color: #006766 ;
     border: 2px solid #006766;
+    border-radius: .3rem;
+    background-color: white;
 }
-.addToCartBtn_class:hover{
-    background-color: #006766;;
-}
-
 
 
 /* the number of products you want to add to cart , and bin to remove last item*/
@@ -320,6 +323,18 @@ footer .socialMediaLinks a{
     }
     .productCountAndBin button:hover{
         color: black;
+    }
+
+    /* add to cart btn*/
+    .addToCartBtn_class:hover{
+        background-color: #006766;
+        color: white;
+    }
+
+    /* footer*/
+    
+    footer .someInfo a:hover , footer .socialMediaLinks a:hover{
+    color: black;
     }
 }
 /**********************************************************************/
