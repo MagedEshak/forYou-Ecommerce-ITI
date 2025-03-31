@@ -1,0 +1,17 @@
+.profile-img {
+    width: 70px;
+}
+
+/* للشاشات المتوسطة (md) وما فوق */
+@media (min-width: 765px) {
+    .profile-camera-icon {
+        bottom: 3%;
+    }
+}
+
+/* للشاشات الكبيرة (lg) وما فوق */
+@media (min-width: 992px) {
+    .profile-camera-icon {
+        bottom: 3%;
+    }
+}

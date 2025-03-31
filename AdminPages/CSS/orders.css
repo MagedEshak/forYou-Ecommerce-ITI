@@ -15,15 +15,6 @@ body,
 header,
 main {
     background-color: #f2efe3 !important;
-    transition: transform 2s ease, opacity .5s ease-out;
-    -webkit-transition: transform 2s ease, opacity .5s ease-out;
-    -moz-transition: transform 2s ease, opacity .5s ease-out;
-    -ms-transition: transform 2s ease, opacity .5s ease-out;
-    -o-transition: transform 2s ease, opacity .5s ease-out;
-}
-
-nav {
-    justify-content: flex-start;
 }
 
 aside {
@@ -35,6 +26,17 @@ aside {
     background-color: #006766 !important;
 }
 
+.btn-color-fa {
+    background-color: #fafafa !important;
+    color: #006766 !important;
+    border: 2px solid #006766 !important;
+}
+
+.btn-color-fa:hover {
+    background-color: #006766 !important;
+    color: #fafafa !important;
+    border: 2px solid #006766 !important;
+}
 
 .btn-color:hover {
     background-color: #004140 !important;
@@ -44,11 +46,32 @@ aside {
     color: #006766 !important;
 }
 
+.Arrow-color {
+    color: #006766 !important;
+}
+
+.Arrow-color:hover {
+    transform: translate(20px);
+    -webkit-transform: translate(20px);
+    -moz-transform: translate(20px);
+    -ms-transform: translate(20px);
+    -o-transform: translate(20px);
+    transition: transform 0.3s ease-in-out;
+    -webkit-transition: transform 0.3s ease-in-out;
+    -moz-transition: transform 0.3s ease-in-out;
+    -ms-transition: transform 0.3s ease-in-out;
+    -o-transition: transform 0.3s ease-in-out;
+}
+
+.bar-tran {
+    overflow: hidden;
+}
+
 .end {
     right: 7%;
 }
 
-#profileDiv-id,
+#profileDiv_id,
 .cursor-pointer {
     cursor: pointer;
 }
@@ -79,7 +102,6 @@ ul li .list-links-active {
 .img-sm-w {
     width: 70px;
 }
-
 
 .fs-cf-4 {
     font-size: 1.25rem !important;
