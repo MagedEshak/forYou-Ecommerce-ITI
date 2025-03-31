@@ -1,156 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Admin Dashboard</title>
-        <link rel="stylesheet"
-            href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-    </head>
-    <body class="d-flex justify-content-around p-4">
-        <aside class="col-2 d-none d-lg-block rounded-4">
-            <ul
-                class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
-                <li>
-                    <div id="logoDiv-id" class="text-center">
-                        <a href="../index.html" target="_blank">
-                            <img src="../Images/logo/LLLOGOWhite.png"
-                                class="img-lg-w img-md-w img-sm-w"
-                                alt="WebSite Logo">
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <span class="fw-bolder"><i class="bi bi-menu-button"></i>
-                        Menu</span>
-                </li>
-                <hr class="mt-0">
-                <li>
-                    <a href="#" class="list-links text-light list-links-active">
-                        <i class="bi bi-house"></i> Dashboard</a>
-                </li>
-                <li>
-                    <a href="#" class="list-links  text-light"><i
-                            class="bi bi-bag"></i> Orders</a>
-                </li>
-                <li>
-                    <a href="#" class="list-links text-light">
-                        <i class="bi bi-tag"></i> Categories
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../ui-ux/icons/layout.png" type="image/x-icon">
+    <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./CSS/allAdminPages.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>Admin Dashboard</title>
+</head>
+
+<body class="d-flex justify-content-around p-4">
+    <!-- Start Left Side Dashboard Tabs -->
+
+    <aside id="sideDashboard_id" class="col-2 d-none d-lg-block rounded-4 position-sticky top-0 mt-4">
+        <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
+            <!-- Start Bars showing when Dashboard be full width -->
+            <div id="barsLeftSideDiv_id" class="pe-2 d-block d-lg-none fs-1 cursor-pointer text-light">
+                <i class="bi bi-filter-left"></i>
+            </div>
+            <!-- End Bars showing when Dashboard be full width -->
+
+            <li>
+                <div id="logoDiv_id" class="text-center">
+                    <a href="../index.html" target="_blank">
+                        <img src="../Images/logo/LLLOGOWhite.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
                     </a>
-                </li>
-                <li>
-                    <a href="#" class="list-links text-light">
-                        <i class="bi bi-people"></i> View Admins</a>
-                </li>
-            </ul>
+                </div>
+            </li>
+            <li>
+                <span class="fw-bolder"><i class="bi bi-menu-button"></i> Menu</span>
+            </li>
+            <hr class="mt-0">
+            <li>
+                <a href="./admin-home.html" class="list-links text-light  list-links-active">
+                    <i class="bi bi-house"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i> Orders</a>
+            </li>
+            <li>
+                <a href="./addCategory.html" class="list-links text-light">
+                    <i class="bi bi-tag"></i> Categories
+                </a>
+            </li>
+            <li>
+                <a href="#" class="list-links text-light">
+                    <i class="bi bi-people"></i> View Admins</a>
+            </li>
+        </ul>
 
-            <ul class="d-flex flex-column justify-content-between p-4 gap-2">
-                <hr>
-                <li><a href="#" class="list-links text-light"><i
-                            class="bi bi-gear"></i> Setting</a></li>
-                <li><a href="#" class="list-links text-light"><i
-                            class="bi bi-box-arrow-left"></i> LogOut</a></li>
-            </ul>
-        </aside>
-        <!-- End Left Side Dashboard Tabs -->
-        <!-- Navbar -->
-        <main class="w-100">
-            <!-- Start Nav Bar -->
-            <header class="p-lg-4">
-                <nav class="col-12 d-flex justify-content-between ps-2">
-                    <!-- Nav Left Side -->
-                    <div class="d-flex">
+        <ul class="d-flex flex-column justify-content-between p-4 gap-2">
+            <hr>
 
-                        <!-- Bars Icon -->
-                        <div id="barsDiv-id" class="pe-2 d-lg-none fs-cf-4">
-                            <i class="bi bi-filter-left"></i>
-                        </div>
+            <li>
+                <!-- Adding class list-links-active to color page name tab  -->
+                <a href="../AdminPages/AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i>
+                    Setting</a>
+            </li>
+            <li>
+                <a href="../CustomersPages/Rejester.html" class="list-links text-light"><i
+                        class="bi bi-box-arrow-left"></i>
+                    LogOut</a>
+            </li>
+        </ul>
+    </aside>
+    <!-- End Left Side Dashboard Tabs -->
+    <!-- Navbar -->
+    <main id="main_id" class="w-100">
+        <!-- Start Nav Bar -->
+        <header class="p-lg-4">
+            <nav class="col-12 d-flex justify-content-between ps-2">
+                <!-- Nav Left Side -->
+                <div class="d-flex">
 
-                        <span class="fw-bolder fs-cf-2 fs-cf-4">Home</span>
+                    <!-- Bars Icon -->
+                    <div id="barsDiv_id" class="pe-2 d-lg-none fs-cf-4">
+                        <i class="bi bi-filter-left"></i>
                     </div>
 
-                    <div id="logoDiv-id">
-                        <a href="../index.html" target="_blank">
-                            <img src="/Images/logo/LLLOGO.png"
-                                class="img-lg-w img-md-w img-sm-w"
-                                alt="WebSite Logo">
-                        </a>
-                    </div>
-
-                    <!-- Nav Left Side -->
-                    <div>
-                        <!-- Start profile img, search, notifications icons-->
-                        <div class="d-flex gap-3">
-
-                            <!-- Search Icon -->
-                            <div id="searchDiv-id">
-                                <i class="bi bi-search fs-cf-3 fs-cf-4"></i>
-                            </div>
-
-                            <!-- notifications Icon -->
-                            <div id="notificationsDiv-id">
-                                <i id="notificationsIcon-id"
-                                    class="bi bi-bell fs-cf-3 fs-cf-4">
-                                    <span id="notificationsDot-id"
-                                        class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
-                                        <span class="visually-hidden">New
-                                            notification</span>
-                                    </span>
-                                </i>
-                            </div>
-
-                            <!-- Profile -->
-                            <div id="profileDiv-id"
-                                class="fs-5 d-flex gap-3 position-relative">
-                                <!-- Profile Icon -->
-                                <div id="profileDiv-id">
-                                    <i
-                                        class="bi bi-person-circle fs-cf-3 fs-cf-4"></i>
-                                </div>
-
-                                <!-- Admin Name -->
-                                <div class="d-none d-lg-flex flex-column">
-                                    <span class="fw-bolder ">Wesam</span>
-                                    <span class="text-secondary ">Admin</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </nav>
-            </header>
-            <!-- End Nav Bar -->
-
-            <!-- Main Content -->
-            <div id="main-content" class="container ">
-                <h1 class="text-center">E-Commerce Store</h1>
-
-                <!-- Add New Product Form -->
-                <!-- Centering the Card -->
-                <div
-                    class="d-flex justify-content-center align-items-center ">
-                    <div class="card p-4 shadow" style="width: 400px;">
-                        <h3 class="text-center">Add New Product</h3>
-                        <div class="mt-3">
-                            <button onclick="addProduct()"
-                                class="btn btn-success w-100">Add</button>
-                        </div>
-                    </div>
+                    <span class="fw-bolder fs-cf-2 fs-cf-4">Home</span>
                 </div>
 
+                <div id="logoDiv_id">
+                    <a href="../index.html" target="_blank">
+                        <img src="/Images/logo/LLLOGO.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
+                    </a>
+                </div>
+
+                <!-- Nav Left Side -->
+                <div>
+                    <!-- Start profile img, search, notifications icons-->
+                    <div class="d-flex gap-3">
+
+                        <!-- Search Icon -->
+                        <div id="searchDiv_id">
+                            <i class="bi bi-search fs-cf-3 fs-cf-4"></i>
+                        </div>
+
+                        <!-- notifications Icon -->
+                        <div id="notificationsDiv_id">
+                            <i id="notificationsIcon_id" class="bi bi-bell fs-cf-3 fs-cf-4">
+                                <span id="notificationsDot_id"
+                                    class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                    <span class="visually-hidden">
+                                        New notification</span>
+                                </span>
+                            </i>
+                        </div>
+
+                        <!-- Profile -->
+                        <div id="profileDiv_id" class="fs-5 d-flex gap-3 position-relative">
+                            <!-- Profile Icon -->
+                            <div id="profileDiv_id">
+                                <i class="bi bi-person-circle fs-cf-3 fs-cf-4"></i>
+                            </div>
+
+                            <!-- Admin Name -->
+                            <div class="d-none d-lg-flex flex-column">
+                                <span class="fw-bolder ">Wesam</span>
+                                <span class="text-secondary ">Admin</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- End Nav Bar -->
+
+        <!-- Main Content -->
+        <div id="main-content" class="container ">
+            <h1 class="text-center mb-4">E-Commerce Store</h1>
+
+            <!-- Add New Product Form -->
+            <!-- Centering the Card -->
+            <div class="d-flex justify-content-center align-items-center ">
+                <div class="card p-4 shadow" style="width: 400px;">
+                    <h3 class="text-center">Add New Product</h3>
+                    <div class="mt-3 text-center">
+                        <button onclick="addProduct()" class="btn btn-color text-light w-50">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <section class="bg-light p-4 mt-5">
                 <!-- Display Products -->
                 <h1 class="text-center">Manage Products</h1>
 
                 <!-- Table for displaying products -->
                 <table class="table table-bordered mt-3">
-                    <thead class="table-dark">
+                    <thead>
                         <tr>
-                            <th >ID</th>
+                            <th>ID</th>
                             <th>Image</th>
                             <th>Name</th>
                             <th>Category</th>
@@ -162,36 +166,39 @@
                         <!-- Products will be inserted here dynamically -->
                     </tbody>
                 </table>
-            </div>
+            </section>
 
-        </main>
-        <script>
-            
-            document.addEventListener("DOMContentLoaded", function () {
-                fetchProducts();
-            });
+        </div>
 
-            function fetchProducts() {
-                fetch("https://fakestoreapi.com/products")
-                    .then((response) => response.json())
-                    .then((products) => {
-                        displayProducts(products);
-                    })
-                    .catch((error) => console.error("Error fetching products:", error));
-            }
+    </main>
 
-            function displayProducts(products) {
-    let productsTable = document.getElementById("productsTable");
-    productsTable.innerHTML = ""; // تفريغ المحتوى السابق
+    <script>
 
-    products.forEach((product) => {
-        let row = document.createElement("tr");
-        row.style.cursor = "pointer"; // تغيير مؤشر الفأرة
-        row.onclick = function() {
-            window.location.href = `admin-product-details.html?id=${product.id}`;
-        };
+        document.addEventListener("DOMContentLoaded", function () {
+            fetchProducts();
+        });
 
-        row.innerHTML = `
+        function fetchProducts() {
+            fetch("https://fakestoreapi.com/products")
+                .then((response) => response.json())
+                .then((products) => {
+                    displayProducts(products);
+                })
+                .catch((error) => console.error("Error fetching products:", error));
+        }
+
+        function displayProducts(products) {
+            let productsTable = document.getElementById("productsTable");
+            productsTable.innerHTML = ""; // تفريغ المحتوى السابق
+
+            products.forEach((product) => {
+                let row = document.createElement("tr");
+                row.style.cursor = "pointer"; // تغيير مؤشر الفأرة
+                row.onclick = function () {
+                    window.location.href = `admin-product-details.html?id=${product.id}`;
+                };
+
+                row.innerHTML = `
             <td>${product.id}</td>
             <td><img src="${product.image}" width="50" height="50"></td>
             <td>${product.title}</td>
@@ -199,47 +206,47 @@
             <td>$${product.price}</td>
             <td>
                 
-                <button class="btn btn-sm" onclick="event.stopPropagation(); deleteProduct(${product.id})"  
-                        style="background-color: #b52b27; color: #ffffff">Delete</button>
+                <button class="btn btn-sm btn-danger" onclick="event.stopPropagation(); deleteProduct(${product.id})"  
+                        >Delete</button>
             </td>
         `;
 
-        productsTable.appendChild(row);
-    });
-}
+                productsTable.appendChild(row);
+            });
+        }
 
 
-            // Function to open the edit modal
-            function editProduct(id, title, price) {
-                document.getElementById("editProductId").value = id;
-                document.getElementById("editProductName").value = title;
-                document.getElementById("editProductPrice").value = price;
-                let modal = new bootstrap.Modal(document.getElementById("editModal"));
-                modal.show();
-            }
+        // Function to open the edit modal
+        function editProduct(id, title, price) {
+            document.getElementById("editProductId").value = id;
+            document.getElementById("editProductName").value = title;
+            document.getElementById("editProductPrice").value = price;
+            let modal = new bootstrap.Modal(document.getElementById("editModal"));
+            modal.show();
+        }
 
-            // Function to save changes (Simulated)
-            function saveChanges() {
-                let id = document.getElementById("editProductId").value;
-                let newName = document.getElementById("editProductName").value;
-                let newPrice = document.getElementById("editProductPrice").value;
+        // Function to save changes (Simulated)
+        function saveChanges() {
+            let id = document.getElementById("editProductId").value;
+            let newName = document.getElementById("editProductName").value;
+            let newPrice = document.getElementById("editProductPrice").value;
 
-                document.querySelector(`#product-${id} td:nth-child(3)`).innerText = newName;
-                document.querySelector(`#product-${id} td:nth-child(4)`).innerText = `$${newPrice}`;
+            document.querySelector(`#product-${id} td:nth-child(3)`).innerText = newName;
+            document.querySelector(`#product-${id} td:nth-child(4)`).innerText = `$${newPrice}`;
 
-                alert(`Product ${id} updated successfully!`);
-                let modal = bootstrap.Modal.getInstance(document.getElementById("editModal"));
-                modal.hide();
-            }
+            alert(`Product ${id} updated successfully!`);
+            let modal = bootstrap.Modal.getInstance(document.getElementById("editModal"));
+            modal.hide();
+        }
 
-            // Function to delete product
-                    function deleteProduct(id) {
-                document.getElementById(`product-${id}`).remove();
-                alert(`Product ${id} deleted successfully!`);
-            }
-        </script>
-            <script src="app.js"></script>
-        <script
-            src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+        // Function to delete product
+        function deleteProduct(id) {
+            document.getElementById(`product-${id}`).remove();
+            alert(`Product ${id} deleted successfully!`);
+        }
+    </script>
+    <script src="./JS/navBar_sideBarFun.js"></script>
+    <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
