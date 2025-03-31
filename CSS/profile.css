@@ -1,0 +1,115 @@
+/* globel style*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* mobile profile linkes*/
+
+.sideAndmain_nav {
+  background-color: white;
+  margin-bottom: 10px
+}
+
+.sideAndmain_nav a {
+  background-color: white;
+  color: black;
+  padding-left: 2% !important;
+}
+
+.sideAndmain_nav a:hover {
+  color: #006766;
+  border-bottom: solid 1px #006766;
+}
+
+/** contant profiel*/
+.containers {
+  margin: auto !important;
+  width: 80% !important;
+}
+
+.contentProfile_bg {
+  background-color: whitesmoke;
+}
+
+/** left secation*/
+.saideLft {
+  /** left secation*/
+  height: 500Px;
+
+}
+
+
+.saideLft a {
+  /** icon and linkes color for toggel profile contant*/
+  color: black;
+
+}
+
+.saideLft a:hover {
+  color: #006766;
+}
+
+/** contant profiel*/
+.gaps {
+  gap: 1%;
+}
+
+.mStart {
+  margin-left: 7% !important;
+}
+
+.btn_bg {
+  background-color: #006766;
+  color: white;
+}
+
+
+.btn-color,
+.btn-color-fa:hover,
+.btn-color:hover {
+  background-color: #006766 !important;
+
+}
+
+.btn-color-fa {
+  background-color: #fafafa !important;
+  border: 2px solid #006766 !important;
+}
+
+.btn-color,
+.btn-color-fa:hover {
+  color: #fff !important;
+}
+
+.btn-color-fa {
+  color: #006766 !important;
+}
+
+.btn-color:hover {
+  background-color: #004140 !important;
+}
+
+
+/** cntent details pages **/
+
+.clousuer_btn {
+
+  border: solid 1px #006766;
+}
+
+.btn_col:hover {
+  /** hover button colors */
+  color: #CC0000;
+
+}
+
+/* .btn_col:hover .heart_color {
+  background-color: #CC0000;
+} */

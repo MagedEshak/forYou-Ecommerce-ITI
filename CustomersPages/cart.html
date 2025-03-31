@@ -1,52 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="../ui-ux/icons/shopping-cart.png" type="image/x-icon">
     <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="../CSS/cart.css">
+    <link rel="stylesheet" href="../CSS/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-       
-    </style>
+    <title>Cart</title>
 </head>
-<body style="width: 100%;">
-     <!-- my nav bar in small devices : it appears on the top of the page-->
-     <nav class="d-lg-none">
-        <div class="container-fluid p-2 p-md-3 bg-success">
+
+<body>
+    <!-- in case of small devices -->
+
+    <!-- my nav bar in small devices : it appears on the top of the page-->
+    <nav class="d-lg-none siteColorClass">
+        <div class="container-fluid p-2 p-md-3">
             <div class="row text-center justify-content-between align-items-center">
                 <!-- this is menue bar button -->
-                <button id="menuBarBtn_id" class="col-auto"> 
+                <button id="menuBarBtn_id" class="col-auto">
                     <i class="fa fa-bars"></i>
                 </button>
 
                 <!-- this is My Site Logo -->
                 <div class="siteLogo col-2">
-                    <a href="#">
-                        <img class="imgLogo_class" src="../Images/logo/LLLOGO.png" alt="">
+                    <a href="../index.html">
+                        <img class="imgLogo_class" src="../Images/logo/LLLOGOWhite.png" alt="">
                     </a>
                 </div>
 
                 <!-- this is Shopping Cart Icon -->
-                <a href="#" class="col-auto"><i id="shoppingCartIcon_id" class="fa fa-shopping-cart" ></i></a>
+                <a href="#" class="col-auto">
+                    <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
+                </a>
             </div>
         </div>
     </nav>
-    
 
+    <!-- my  side nav bar , appears only when the menu bar button clicked -->
+    <nav id="sideNavBar_id" class="w-75">
+        <div class="sideNavLinksContainer d-flex flex-column align-items-start justify-content-center w-100 bg-danger">
+            <div class="manageProfile w-100 py-5 px-3">
+                <span><a href="#">LogIn</a> / <a href="./Rejester.html">Register</a></span>
+            </div>
+            <div class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
+                <a href="#cookersSection_id" class="w-100"> Cookers</a>
+                <a href="#" class="w-100"> Small Home Appliances</a>
+                <a href="#televesionsSection_id" class="w-100"> Televesions</a>
+                <a href="#" class="w-100"> Cooling Appliances</a>
+                <a href="#" class="w-100"> Air Conditioners</a>
+                <a href="#" class="w-100"> Washing Machines</a>
+            </div>
+        </div>
+    </nav>
     <!-- ****************************************************************** -->
 
     <!-- in case of small devices this header appears as a search input only
-     but in large devices it appears with logo and some links on the top of the page-->
+        but in large devices it appears with logo and some links on the top of the page-->
     <!-- my header in large devices -->
-    <header class="">
+    <header>
         <div class="containert-fluid">
             <div class="row align-items-center justify-content-evenly p-2">
 
                 <!-- this is my site logo -->
                 <div class="d-none d-lg-block siteLogo col-1">
-                    <a href="#">
+                    <a href="../index.html">
                         <img class="imgLogo_class" src="../Images/logo/LLLOGO.png" alt="">
                     </a>
                 </div>
@@ -54,8 +74,9 @@
                 <!-- this is search input  -->
                 <div class="col-lg-5 row p-3 position-relative">
                     <!-- this is my search input tag -->
-                    <input id="searchInput_1_id" class="searchInput_class" type="text" name="searchProduct" placeholder="Search">
-                    
+                    <input id="searchInput_1_id" class="searchInput_class" type="text" name="searchProduct"
+                        placeholder="Search">
+
                     <!-- this is my search icon button -->
                     <button id="searchBtn_1_id" class="col-auto">
                         <i class="fa fa-search"></i>
@@ -64,68 +85,81 @@
 
                 <!-- this is some links whatsapp, support and branches -->
                 <div class="d-none d-lg-flex col-3 row someLinks justify-content-evenly align-items-center">
-                    <div class="whatsapp col-auto">
-                        whatsapp
-                    </div>
+                    <a href="https://wa.me/+20/?text=Check out this link: YOUR_LINK_HERE" target="_blank"
+                        class="whatsapp col-auto">
+                        WhatsApp
+                    </a>
 
                     <div class="verticalSpace"></div>
 
-                    <div class="support col-auto">
-                        call support
-                    </div>
+                    <a href="#" class="support col-auto">
+                        Call Support
+                    </a>
 
                     <div class="verticalSpace"></div>
 
-                    <div class="branches col-auto">
+                    <a href="#" class="branches col-auto">
                         Branches
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- my nav in large devices , it only appears on large devices -->
-    <nav class="d-none d-lg-block bg-success">
+    <nav class="d-none d-lg-block siteColorClass">
         <div class="container-fluid p-3">
             <div class="row justify-content-evenly align-items-center links">
-                <a href="#" class="col-auto"> Cookers</a>
+                <a href="#cookersSection_id" class="col-auto"> Cookers</a>
                 <a href="#" class="col-auto"> Small Home Appliances</a>
-                <a href="#" class="col-auto"> Televesions</a>
+                <a href="#televesionsSection_id" class="col-auto"> Televesions</a>
                 <a href="#" class="col-auto"> Cooling Appliances</a>
                 <a href="#" class="col-auto"> Air Conditioners</a>
-                <a href="#" class="col-auto"> Washing Mashines</a>
-                <a href="#" class="col-auto"> Sign in</a>
-                <a href="#" class="col-auto"><i id="shoppingCartIcon_id" class="fa fa-shopping-cart" ></i></a>
+                <a href="#" class="col-auto"> Washing Machines</a>
+                <a href="./Rejester.html" class="col-auto"> Sign In</a>
+                <a href="#" class="col-auto d-none"> Profile</a>
+                <a href="../CustomersPages/cart.html" class="col-auto">
+                    <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
+                </a>
             </div>
         </div>
     </nav>
 
-    
-        
-        <main style="height: 80vh">
-            <section>
-                <div class="row">
-                    <h2 class="ms-5">MY CART</h2>
-                    <!-- products list -->
-                    <div class="col-md-8 ms-md-5 border-bottom">
+    <!-- ****************************************************************** -->
+
+    <main style="height: 80vh">
+        <section>
+            <div class="row">
+                <h2 class="ms-5">MY CART</h2>
+                <!-- products list -->
+                <div class="col-md-8 ms-md-5 border-bottom">
                     <!-- product img and name -->
                     <div class="row">
                         <div class="col-md-9 align-content-center text-center">
                             <div class="d-flex">
-                                <img class="figure-img" style="width: 124px;" src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" >
+                                <img class="figure-img" style="width: 124px;"
+                                    src="../Images/CustomerImages/Product_imges/cookers/oven.jpg">
                                 <div class="container d-flex flex-column " style="word-break: break-all;">
 
-                                    <span class="text-start mt-3 ">product name <br>gfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</span>
-                                    <input  type="number" name="nOfItem" value="1" class="text-center ms-3 mt-2" style="height: 30px; width: 10%;">
+                                    <span class="text-start mt-3 ">product name
+                                        <br>
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero eum animi, error,
+                                        architecto laborum ad quod eligendi doloribus, excepturi iste quasi officiis
+                                        aperiam? Enim mollitia magnam nisi illo maxime veritatis.
+                                    </span>
+                                    <input type="number" name="nOfItem" value="1" class="text-center ms-3 mt-2"
+                                        style="height: 30px; width: 10%;">
                                 </div>
                             </div>
                         </div>
-                         
+
                         <div class="col-md-3  " style="box-sizing: border-box;">
                             <!-- icons and salary  -->
                             <div class="d-inline-block mt-4 container  text-md-end">
-                                <a href="#" class="me-3 "><i class="fa fa-heart" style="color: green; font-size: 20px;"></i></a>
-                                <a href="#" class="me-2"><i class="fa fa-trash" style="color: red; font-size: 20px;"></i></a>
+                                <a href="#" class="me-3 "><i class="fa fa-heart"
+                                        style="color: green; font-size: 20px;"></i></a>
+                                <a href="#" class="me-2"><i class="fa fa-trash"
+                                        style="color: red; font-size: 20px;"></i></a>
                             </div>
                             <div class="container text-end"><span class="fs-2">10000</span></div>
                         </div>
@@ -134,78 +168,92 @@
                     <div class="row">
                         <div class="col-md-9 align-content-center text-center">
                             <div class="d-flex">
-                                <img class="figure-img" style="width: 124px;" src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" >
+                                <img class="figure-img" style="width: 124px;"
+                                    src="../Images/CustomerImages/Product_imges/cookers/oven.jpg">
                                 <div class="container d-flex flex-column " style="word-break: break-all;">
 
-                                    <span class="text-start mt-3 ">product name <br>gfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</span>
-                                    <input  type="number" name="nOfItem" value="1" class="text-center ms-3 mt-2" style="height: 30px; width: 10%;">
+                                    <span class="text-start mt-3 ">product name
+                                        <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat
+                                        impedit maxime beatae, velit vitae atque sapiente optio omnis dolor ipsum iste
+                                        deserunt hic sunt totam mollitia ipsam iure dolorem?</span>
+                                    <input type="number" name="nOfItem" value="1" class="text-center ms-3 mt-2"
+                                        style="height: 30px; width: 10%;">
                                 </div>
                             </div>
                         </div>
-                         
+
                         <div class="col-md-3  " style="box-sizing: border-box;">
                             <!-- icons and salary  -->
                             <div class="d-inline-block mt-4 container  text-md-end">
-                                <a href="#" class="me-3 "><i class="fa fa-heart" style="color: green; font-size: 20px;"></i></a>
-                                <a href="#" class="me-2"><i class="fa fa-trash" style="color: red; font-size: 20px;"></i></a>
+                                <a href="#" class="me-3 "><i class="fa fa-heart"
+                                        style="color: green; font-size: 20px;"></i></a>
+                                <a href="#" class="me-2"><i class="fa fa-trash"
+                                        style="color: red; font-size: 20px;"></i></a>
                             </div>
                             <div class="container text-end"><span class="fs-2">10000</span></div>
                         </div>
                     </div>
 
+                </div>
+                <div class="col-md-3   ms-md-5 border" style="height: 13-vh;">
+                    <span class="fs-3  fw-bold ms-4">TOTAL</span>
+                    <span class="fs-4 fw-bold me-5" style="float: right;">100</span>
+                    <div class="mt-5" style="width: 100%;"><button style="width: 100%;">adasdas</button></div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ****************************************************************** -->
+    <!-- Footer -->
+    <footer>
+        <div class="container-fluid">
+            <div class="row justify-content-evenly align-items-center p-3 bg-black">
+                <!-- some information linkes like  about us , customer service , more   -->
+                <div class="someInfo row justify-content-evenly align-items-center col-12 col-lg-6 p-2 ">
+                    <div class="aboutus col-auto">
+                        <a href="#">About Us</a>
                     </div>
-                    <div class="col-md-3   ms-md-5 border" style="height: 13-vh;">
-                        <span class="fs-3  fw-bold ms-4">TOTAL</span>
-                        <span class="fs-4 fw-bold me-5" style="float: right;">100</span>
-                        <div class="mt-5" style="width: 100%;"><button style="width: 100%;">adasdas</button></div>
-              
+                    <div class="customerService col-auto">
+                        <a href="#">Customer Service</a>
+                    </div>
+                    <div class="more col-auto">
+                        <a href="#">More</a>
                     </div>
                 </div>
-            </section>
-        </main>
-         
-   
-     <!-- Footer -->
-    <footer class="bg-black" style="margin-top: auto;">
-    <div class="container-fluid bg-danger">
-        <div class="row justify-content-evenly align-items-center p-3 bg-success">
-            <!-- some information linkes like  about us , customer service , more   -->
-            <div class="someInfo row justify-content-evenly align-items-center col-12 col-lg-6 p-2 ">
-                <div class="aboutus col-auto">
-                    <a href="#">About Us</a>
+
+                <!-- Our social media links , facebook , insta , youtube and linked in -->
+                <div class="socialMediaLinks row justify-content-evenly align-items-center col-8 col-lg-4 p-2">
+                    <a class="col-1" href="#"><i class="fa fa-facebook-f"></i></a>
+                    <a class="col-1" href="#"><i class="fa fa-instagram"></i></i></a>
+                    <a class="col-1" href="#"><i class="fa fa-youtube-play"></i></a>
+                    <a class="col-1" href="#"><i class="fa fa-linkedin"></i></a>
                 </div>
-                <div class="customerService col-auto">
-                    <a href="#">Customer Service</a>
+
+                <!-- Payment methods , paypal , visa and premium card -->
+                <div class="paymentMethods row justify-content-center align-items-center col-8 col-lg-6 p-2 ">
+                    <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
+                            src="../Images/CustomerImages/pay_images/premium_card.png" alt=""></a>
+                    <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
+                            src="../Images/CustomerImages/pay_images/visa.png" alt=""></a>
+                    <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
+                            src="../Images/CustomerImages/pay_images/payPal.png" alt=""></a>
                 </div>
-                <div class="more col-auto">
-                    <a href="#">More</a>
+
+                <!-- text about our rights reserved -->
+                <div class="rights row justify-content-evenly align-items-center col-10 col-lg-4 p-2">
+                    All rights reserved - forYou
                 </div>
-            </div>
 
-            <!-- Our social media links , facebook , insta , youtube and linked in -->
-            <div class="socialMediaLinks row justify-content-evenly align-items-center col-8 col-lg-4 p-2">
-                <a class="col-1" href="#"><i class="fa fa-facebook-f"></i></a>
-                <a class="col-1" href="#"><i class="fa fa-instagram"></i></i></a>
-                <a class="col-1" href="#"><i class="fa fa-youtube-play"></i></a>
-                <a class="col-1" href="#"><i class="fa fa-linkedin"></i></a>
             </div>
-
-            <!-- Payment methods , paypal , visa and premium card -->
-            <div class="paymentMethods row justify-content-center align-items-center col-8 col-lg-6 p-2 ">
-                <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100" src="../Images/CustomerImages/pay_images/premium_card.png" alt=""></a>
-                <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100" src="../Images/CustomerImages/pay_images/visa.png" alt=""></a>
-                <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100" src="../Images/CustomerImages/pay_images/payPal.png" alt=""></a>
-            </div>
-
-            <!-- text about our rights reserved -->
-            <div class="rights row justify-content-evenly align-items-center col-10 col-lg-4 p-2">
-                All rights reserved - forYou
-            </div>
-
         </div>
-    </div>
     </footer>
-    <script src="js/script.js"></script>
-   <script src="js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="../JS/script.js"></script>
+    <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 </body>
+
 </html>
