@@ -20,6 +20,15 @@ let searchDiv = document.getElementById("searchDiv_id"); // This Variable is sea
 
 let search = document.getElementById("search_id"); // This Variable is search Section that search input for search any thing in admin pages
 
+let addCategory = document.getElementById("addCategory_id"); // This Variable is search Section that search input for search any thing in admin pages
+
+// ----------------------------------------------------- Buttons Variables ---------------------------------------------------------------------------------------
+
+let addNewCategoryBtn = document.getElementById("addNewCategoryBtn_id"); // This Variable is search Section that search input for search any thing in admin pages
+
+let CancelBtn = document.getElementById("CancelBtn_id"); // This Variable is search Section that search input for search any thing in admin pages
+
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /**
  * - Adding addEventListener click for {profile Logo Div}
@@ -122,3 +131,36 @@ searchDiv.addEventListener("click", function () {
     }
 });
 
+/**
+ * - Adding addEventListener click for {Add New Category}
+ * =========================================================
+ * -- To Show Add new Category Section
+ */
+
+addNewCategoryBtn.addEventListener("click", function () {
+    if (addCategory.classList.contains("d-none")) {
+        
+        addCategory.classList.remove("d-none");
+
+        document.getElementById("viewCategory_id").classList.remove("d-sm-flex");
+        
+        document.getElementById("viewCategory_id").classList.add("d-none"); // To Hide category content
+
+        addCategory.classList.add("d-block");
+        
+    } 
+});
+
+CancelBtn.addEventListener("click", function () {
+    if (addCategory.classList.contains("d-block")) {
+        
+        addCategory.classList.remove("d-block");
+
+      document.getElementById("viewCategory_id").classList.add("d-sm-flex");
+        
+        document.getElementById("viewCategory_id").classList.remove("d-none"); // To show category content
+
+        addCategory.classList.add("d-none");
+        
+    } 
+});
