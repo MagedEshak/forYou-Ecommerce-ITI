@@ -12,6 +12,15 @@ let barsLeftSideDiv = document.getElementById("barsLeftSideDiv_id"); // This Var
 
 let mainContentSec = document.getElementById("mainContentSec_id"); // This Variable is mainContentSec_id Section that contains all sections
 
+let notifiDropDownDiv = document.getElementById("notifiDropDownDiv_id"); // This Variable is notifiDropDownDiv Section that DropDown List for new notify
+
+let notificationsDiv = document.getElementById("notificationsDiv_id"); // This Variable is notificationsDiv Icon 
+
+let searchDiv = document.getElementById("searchDiv_id"); // This Variable is searchDiv Icon
+
+let search = document.getElementById("search_id"); // This Variable is search Section that search input for search any thing in admin pages
+
+
 /**
  * - Adding addEventListener click for {profile Logo Div}
  * =========================================================
@@ -75,4 +84,41 @@ barsLeftSideDiv.addEventListener("click", function () {
     }
 });
 
+
+
+/**
+ * - Adding addEventListener click for {notification Icon}
+ * =========================================================
+ * -- To Show new Notifications
+ */
+
+notificationsDiv.addEventListener("click", function () {
+    if (notifiDropDownDiv.classList.contains("d-none")) {
+        
+        notifiDropDownDiv.classList.remove("d-none");
+
+        notifiDropDownDiv.classList.add("d-block");        
+    } else {
+        notifiDropDownDiv.classList.remove("d-block"); 
+        notifiDropDownDiv.classList.add("d-none");
+    }
+});
+
+/**
+ * - Adding addEventListener click for {Search Icon}
+ * =========================================================
+ * -- To Show Search input
+ */
+
+searchDiv.addEventListener("click", function () {
+    if (search.classList.contains("d-none")) {
+        
+        search.classList.remove("d-none");
+
+        search.classList.add("d-block");        
+    } else {
+        search.classList.remove("d-block"); 
+        search.classList.add("d-none");
+    }
+});
 

@@ -96,25 +96,111 @@
                         <img src="../Images/logo/LLLOGO.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
                     </a>
                 </div>
-
-                <!-- Nav Left Side -->
+                <!-- Nav Right Side -->
                 <div>
                     <!-- Start profile img, search, notifications icons-->
                     <div class="d-flex gap-3">
 
                         <!-- Search Icon -->
-                        <div id="searchDiv_id">
+                        <div id="searchDiv_id" class="cursor-pointer">
                             <i class="bi bi-search fs-cf-3 fs-cf-4"></i>
                         </div>
 
+                        <!-- Search Drop list -->
+                        <div id="search_id" class="d-none">
+                            <div class="border border-3 rounded-3">
+                                <!-- Search and Filters -->
+                                <div class="form-floating">
+                                    <input type="search" class="form-control" id="floatingInput"
+                                        placeholder="Search any Thing in Admin Dashboard ...">
+                                    <label for="floatingInput">
+                                        <i class="bi bi-search searchInput-color me-2"></i>
+                                        Search any Thing in Admin Dashboard ...</label>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- notifications Icon -->
-                        <div id="notificationsDiv_id">
+                        <div id="notificationsDiv_id" class="cursor-pointer">
                             <i id="notificationsIcon_id" class="bi bi-bell fs-cf-3 fs-cf-4">
                                 <span id="notificationsDot_id"
                                     class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
                                     <span class="visually-hidden">New notification</span>
                                 </span>
                             </i>
+                        </div>
+
+                        <!-- Notifications Drop list -->
+                        <div id="notifiDropDownDiv_id" class="bg-light rounded-3 d-none">
+                            <div class="position-sticky top-0 bg-light z-3">
+                                <h4 class="p-3">Notifications</h4>
+                            </div>
+                            <hr>
+                            <div class="p-4">
+                                <div class="mb-2 border-bottom pb-4">
+                                    <div id="" class="fs-5 d-flex gap-3 position-relative">
+                                        <!-- Product Icon -->
+                                        <div>
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt=""
+                                                id="notifiPhoto_id" width="70px">
+                                        </div>
+
+                                        <!-- Product Name -->
+                                        <div class="d-lg-flex flex-column">
+                                            <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                                                Stainless</span>
+                                            <span class="text-secondary ">Maged Eshak</span>
+                                        </div>
+                                        <span id="redCircleNotifi_id"
+                                            class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New notification</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-2 border-bottom pb-4">
+                                    <div id="" class="fs-5 d-flex gap-3 position-relative">
+                                        <!-- Product Icon -->
+                                        <div>
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt=""
+                                                id="notifiPhoto_id" width="70px">
+                                        </div>
+
+                                        <!-- Product Name -->
+                                        <div class="d-lg-flex flex-column">
+                                            <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                                                Stainless</span>
+                                            <span class="text-secondary ">Maged Eshak</span>
+                                        </div>
+                                        <span id="redCircleNotifi_id"
+                                            class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New notification</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-2 border-bottom pb-4">
+                                    <div id="" class="fs-5 d-flex gap-3 position-relative">
+                                        <!-- Product Icon -->
+                                        <div>
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt=""
+                                                id="notifiPhoto_id" width="70px">
+                                        </div>
+
+                                        <!-- Product Name -->
+                                        <div class="d-lg-flex flex-column">
+                                            <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                                                Stainless</span>
+                                            <span class="text-secondary ">Maged Eshak</span>
+                                        </div>
+                                        <span id="redCircleNotifi_id"
+                                            class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New notification</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <!-- Profile -->
@@ -129,7 +215,6 @@
                                 <span class="fw-bolder ">Maged Eshak</span>
                                 <span class="text-secondary ">Admin</span>
                             </div>
-
                         </div>
 
                     </div>
@@ -147,8 +232,7 @@
                     <input type="search" class="form-control" id="floatingInput">
                     <label for="floatingInput">
                         <i class="bi bi-search searchInput-color me-2"></i>
-                        Search Order ...
-                    </label>
+                        Search Orders ...</label>
                 </div>
 
                 <!-- Filter Section -->
