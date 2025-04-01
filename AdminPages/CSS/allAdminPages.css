@@ -1,49 +1,27 @@
 /* Importing bootstrap icons */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
-/* Importing Custom Fonts */
-@font-face {
-    font-family: 'Headline Font';
-    src: url('../../fonts/Inter/Inter-VariableFont_opsz\,wght.ttf');
-
-    font-family: 'Main Font';
-    src: url('../../fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf');
-}
 
 html,
 body,
 header,
 main {
     background-color: #f2efe3 !important;
-    transition: transform 2s ease, opacity .5s ease-out;
-    -webkit-transition: transform 2s ease, opacity .5s ease-out;
-    -moz-transition: transform 2s ease, opacity .5s ease-out;
-    -ms-transition: transform 2s ease, opacity .5s ease-out;
-    -o-transition: transform 2s ease, opacity .5s ease-out;
-}
-
-nav {
-    justify-content: flex-start;
 }
 
 aside {
-    background-color: #006766 !important;
     height: 650px;
 }
 
-.btn-color {
+aside,
+.btn-color,
+.btn-color-fa:hover,
+.btn-color:hover {
     background-color: #006766 !important;
 }
 
 .btn-color-fa {
     background-color: #fafafa !important;
-    color: #006766 !important;
-    border: 2px solid #006766 !important;
-}
-
-.btn-color-fa:hover {
-    background-color: #006766 !important;
-    color: #fafafa !important;
     border: 2px solid #006766 !important;
 }
 
@@ -51,11 +29,14 @@ aside {
     background-color: #004140 !important;
 }
 
-.searchInput-color {
-    color: #006766 !important;
+.btn-color-fa:hover {
+    color: #fafafa !important;
+    border: 2px solid #006766 !important;
 }
 
-.Arrow-color {
+.searchInput-color,
+.Arrow-color,
+.btn-color-fa {
     color: #006766 !important;
 }
 
@@ -72,11 +53,15 @@ aside {
     -o-transition: transform 0.3s ease-in-out;
 }
 
+.bar-tran {
+    overflow: hidden;
+}
+
 .end {
     right: 7%;
 }
 
-#profileDiv-id,
+#profileDiv_id,
 .cursor-pointer {
     cursor: pointer;
 }
@@ -94,20 +79,54 @@ ul li .list-links {
     font-size: 20px;
 }
 
-ul li .list-links:hover {
+ul li .list-links:hover,
+ul li .list-links-active {
     color: black !important;
 
 }
 
-ul li .list-links-active {
-    color: #000 !important;
+.profile-img {
+    width: 70px;
+}
+
+#notifiDropDownDiv_id {
+    position: absolute;
+    width: 350px;
+    height: 500px;
+    overflow: auto;
+    transform: translate(-250px, 41px);
+    -webkit-transform: translate(-250px, 41px);
+    -moz-transform: translate(-250px, 41px);
+    -ms-transform: translate(-250px, 41px);
+    -o-transform: translate(-250px, 41px);
+
+    z-index: 99;
+}
+
+#search_id {
+    position: absolute;
+    width: 500px;
+    transform: translate(-470px, 35px);
+    -webkit-transform: translate(-470px, 35px);
+    -moz-transform: translate(-470px, 35px);
+    -ms-transform: translate(-470px, 35px);
+    -o-transform: translate(-470px, 35px);
+    z-index: 99;
+}
+
+#addCategory_id {
+    transform: translate(60%, -10%) !important;
+    -webkit-transform: translate(60%, -10%) !important;
+    -moz-transform: translate(60%, -10%) !important;
+    -ms-transform: translate(60%, -10%) !important;
+    -o-transform: translate(60%, -10%) !important;
+    z-index: 99 !important;
 }
 
 /* Custom Fonts */
 .img-sm-w {
     width: 70px;
 }
-
 
 .fs-cf-4 {
     font-size: 1.25rem !important;
@@ -116,6 +135,7 @@ ul li .list-links-active {
 .fs-cf-5 {
     font-size: 1rem !important;
 }
+
 
 
 /* للشاشات المتوسطة (md) وما فوق */
@@ -135,6 +155,10 @@ ul li .list-links-active {
     .end {
         right: 3% !important;
         position: absolute;
+    }
+
+    .profile-camera-icon {
+        bottom: 3%;
     }
 }
 
@@ -159,5 +183,9 @@ ul li .list-links-active {
     .end {
         right: 3% !important;
         position: absolute;
+    }
+
+    .profile-camera-icon {
+        bottom: 3%;
     }
 }
