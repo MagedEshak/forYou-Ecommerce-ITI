@@ -113,3 +113,13 @@ a {
 /* .btn_col:hover .heart_color {
   background-color: #CC0000;
 } */
+/**  progras bar*/
+svg {
+  height: 50px;
+}
+
+.line {
+
+  stroke-width: 4;
+  background-color: #006766;
+}

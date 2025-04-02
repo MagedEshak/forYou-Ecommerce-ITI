@@ -21,7 +21,7 @@
   <title>Categories</title>
 </head>
 
-<body class="cal-12 p-4 d-flex justify-content-around">
+<body class="cal-12 p-4 d-flex justify-content-around ">
   <!-- category dropList -->
   <!-- <div class="dropdown-center">
       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -81,12 +81,16 @@
         <a href="./AdminProfile.html" class="list-links text-light "><i class="bi bi-gear"></i> Setting</a>
       </li>
       <li>
-        <a href="../CustomersPages/Rejester.html" class="list-links text-light"><i class="bi bi-box-arrow-left"></i>
+        <a href="../CustomersPages/signin.html" class="list-links text-light"><i class="bi bi-box-arrow-left"></i>
           LogOut</a>
       </li>
     </ul>
   </aside>
   <!-- End Left Side Dashboard Tabs -->
+
+
+
+
 
 
   <main id="main_id" class="w-100">
@@ -111,24 +115,110 @@
           </a>
         </div>
 
-        <!-- Nav Left Side -->
+        <!-- Nav Right Side -->
         <div>
           <!-- Start profile img, search, notifications icons-->
           <div class="d-flex gap-3">
-
             <!-- Search Icon -->
-            <div id="searchDiv_id">
+            <div id="searchDiv_id" class="cursor-pointer">
               <i class="bi bi-search fs-cf-3 fs-cf-4"></i>
             </div>
 
+            <!-- Search Drop list -->
+            <div id="search_id" class="d-none">
+              <div class="border border-3 rounded-3">
+                <!-- Search and Filters -->
+                <div class="form-floating">
+                  <input type="search" class="form-control" id="floatingInput"
+                    placeholder="Search any Thing in Admin Dashboard ...">
+                  <label for="floatingInput">
+                    <i class="bi bi-search searchInput-color me-2"></i>
+                    Search any Thing in Admin Dashboard ...</label>
+                </div>
+              </div>
+            </div>
+
             <!-- notifications Icon -->
-            <div id="notificationsDiv_id">
+            <div id="notificationsDiv_id" class="cursor-pointer">
               <i id="notificationsIcon_id" class="bi bi-bell fs-cf-3 fs-cf-4">
                 <span id="notificationsDot_id"
                   class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
                   <span class="visually-hidden">New notification</span>
                 </span>
               </i>
+            </div>
+
+            <!-- Notifications Drop list -->
+            <div id="notifiDropDownDiv_id" class="bg-light rounded-3 d-none">
+              <div class="position-sticky top-0 bg-light z-3">
+                <h4 class="p-3">Notifications</h4>
+              </div>
+              <hr>
+              <div class="p-4">
+                <div class="mb-2 border-bottom pb-4">
+                  <div id="" class="fs-5 d-flex gap-3 position-relative">
+                    <!-- Product Icon -->
+                    <div>
+                      <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt="" id="notifiPhoto_id"
+                        width="70px">
+                    </div>
+
+                    <!-- Product Name -->
+                    <div class="d-lg-flex flex-column">
+                      <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                        Stainless</span>
+                      <span class="text-secondary ">Maged Eshak</span>
+                    </div>
+                    <span id="redCircleNotifi_id"
+                      class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+                      <span class="visually-hidden">New notification</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="mb-2 border-bottom pb-4">
+                  <div id="" class="fs-5 d-flex gap-3 position-relative">
+                    <!-- Product Icon -->
+                    <div>
+                      <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt="" id="notifiPhoto_id"
+                        width="70px">
+                    </div>
+
+                    <!-- Product Name -->
+                    <div class="d-lg-flex flex-column">
+                      <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                        Stainless</span>
+                      <span class="text-secondary ">Maged Eshak</span>
+                    </div>
+                    <span id="redCircleNotifi_id"
+                      class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+                      <span class="visually-hidden">New notification</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="mb-2 border-bottom pb-4">
+                  <div id="" class="fs-5 d-flex gap-3 position-relative">
+                    <!-- Product Icon -->
+                    <div>
+                      <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt="" id="notifiPhoto_id"
+                        width="70px">
+                    </div>
+
+                    <!-- Product Name -->
+                    <div class="d-lg-flex flex-column">
+                      <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                        Stainless</span>
+                      <span class="text-secondary ">Maged Eshak</span>
+                    </div>
+                    <span id="redCircleNotifi_id"
+                      class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+                      <span class="visually-hidden">New notification</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
             <!-- Profile -->
@@ -140,7 +230,7 @@
 
               <!-- Admin Name -->
               <div class="d-none d-lg-flex flex-column">
-                <span class="fw-bolder ">Sayed</span>
+                <span class="fw-bolder ">Maged Eshak</span>
                 <span class="text-secondary ">Admin</span>
               </div>
             </div>
@@ -154,106 +244,141 @@
     <!-- Start Content Section {My Profile, Admins, Edit Profile, Change Password} -->
     <section id="mainContentSec_id" class="container-fluid col-md-12 d-md-flex justify-content-between gap-3 mt-4">
 
-      <!-- list of items  and stock-->
-      <article class="col-lg-8">
-        <div class=" ms-md-2 bg-light rounded-3 p-4">
-          <!-- labels -->
+      <article id="addCategory_id" class="bg-light p-4 col-5 rounded-3 d-none shadow">
+        <!-- Start Edit Profile Section -->
+        <div class="row p-md-3 p-lg-3 pt-3">
+          <h2>Add New Category</h2>
+          <!-- Start Edit Profile Form -->
+          <form action="" class="g-3 border border-3 rounded-3 p-4">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label for="categoryNameInput_id" class="form-label">Category Name</label>
+                <input type="text" id="categoryNameInput_id" class="form-control" placeholder="Enter valid Name">
+              </div>
 
-          <button class="btn-color-fa mb-3 p-2 ps-3 pe-3 cursor-pointer badge">
-            <i class="bi bi-plus-circle"></i>
-            <span class="d-none d-lg-inline d-md-inline">Add New Category</span>
-          </button>
+              <div class="col-md-12 mb-3">
+                <label for="quantityInput_id" class="form-label">Quantity</label>
+                <input type="number" id="quantityInput_id" class="form-control">
+              </div>
 
-          <hr class="d-lg-none d-md-none ">
+              <div class="col-12 mb-3">
+                <label for="aboutMeInput_id" class="form-label">Description</label>
+                <textarea name="txtArea" id="aboutMeInput_id" class="form-control" placeholder="Text"></textarea>
+              </div>
 
-          <table class="table table-hover text-center w-100">
+              <div class="col-12 text-end mt-3">
+                <button type="submit" class="btn btn-color fw-bold text-light">Add New</button>
+                <button type="button" id="CancelBtn_id" class="btn btn-color-fa fw-bold">Cancel</button>
+              </div>
+            </div>
+          </form>
+          <!-- End Edit Profile Form -->
+        </div>
+        <!-- End Edit Profile Section -->
+      </article>
+
+      <div id="viewCategory_id" class="d-sm-flex flex-sm-column flex-md-row justify-content-between gap-5">
+        <!-- list of items  and stock-->
+        <article class="shadow col-lg-8">
+          <div class=" ms-md-2 bg-light rounded-3 p-4">
             <!-- labels -->
-            <thead>
-              <tr>
-                <th scope="col" class="text-start">Category</th>
-                <th scope="col" class="text-center">Quantity</th>
-                <th scope="col" class="text-center">Total Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <!-- img and name -->
-                <td>
-                  <div class="align-content-center text-center d-flex justify-content-around">
-                    <label for="file-input">
-                      <i class="bi bi-card-image" style="font-size:40px;color:black"></i>
-                    </label>
-                    <input type="file" id="file-input" style="display: none;" accept="image/*">
-                    <div class="row">
-                      <span class=" text-start">Category Name</span>
-                      <span class="text-start">Category Id</span>
+
+            <button id="addNewCategoryBtn_id" class="btn-color-fa mb-3 p-2 ps-3 pe-3 cursor-pointer badge">
+              <i class="bi bi-plus-circle"></i>
+              <span class="d-none d-lg-inline d-md-inline">Add New Category</span>
+            </button>
+
+            <hr class="d-lg-none d-md-none ">
+
+            <table class="table table-hover text-center w-100">
+              <!-- labels -->
+              <thead>
+                <tr>
+                  <th scope="col" class="text-start">Category</th>
+                  <th scope="col" class="text-center">Quantity</th>
+                  <th scope="col" class="text-center">Total Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <!-- img and name -->
+                  <td>
+                    <div class="align-content-center text-center d-flex justify-content-around">
+                      <label for="file-input">
+                        <i class="bi bi-card-image" style="font-size:40px;color:black"></i>
+                      </label>
+                      <input type="file" id="file-input" style="display: none;" accept="image/*">
+                      <div class="row">
+                        <span class=" text-start">Category Name</span>
+                        <span class="text-start">Category Id</span>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <!-- quantity -->
-                <td class="text-center align-middle">
-                  <div class="d-flex align-items-center justify-content-center">
-                    <input class="border-2 text-center form-control w-50" type="number" value="0" placeholder="0">
-                  </div>
-                </td>
-                <!-- amount -->
-                <td class="text-center align-middle">
-                  <span class="align-content-center text-center">4</span>
-                </td>
-              </tr>
-
-              <tr>
-                <!-- img and name -->
-                <td>
-                  <div class="align-content-center text-center d-flex justify-content-around">
-                    <label for="file-input">
-                      <i class="bi bi-card-image" style="font-size:40px;color:black"></i>
-                    </label>
-                    <input type="file" id="file-input" style="display: none;" accept="image/*">
-                    <div class="row">
-                      <span class=" text-start">Category Name</span>
-                      <span class="text-start">Category Id</span>
+                  </td>
+                  <!-- quantity -->
+                  <td class="text-center align-middle">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <input class="border-2 text-center form-control w-50" type="number" value="0" placeholder="0">
                     </div>
-                  </div>
-                </td>
-                <!-- quantity -->
-                <td class="text-center align-middle">
-                  <div class="d-flex align-items-center justify-content-center">
-                    <input class="border-2 text-center form-control w-50" type="number" value="0" placeholder="0">
-                  </div>
-                </td>
-                <!-- amount -->
-                <td class="text-center align-middle">
-                  <span class="align-content-center text-center">4</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </article>
+                  </td>
+                  <!-- amount -->
+                  <td class="text-center align-middle">
+                    <span class="align-content-center text-center">4</span>
+                  </td>
+                </tr>
 
-      <article class="col-lg-4 mt-3">
-        <div class="bg-light rounded-3 p-4">
-          <span class="fs-5 fw-bold">Category Summary</span>
-          <hr>
-
-          <div class="border-bottom mt-3 d-flex justify-content-between">
-            <span class="fw-bold">Quantity:</span>
-            <span class="fs-4 fw-bold">500</span>
+                <tr>
+                  <!-- img and name -->
+                  <td>
+                    <div class="align-content-center text-center d-flex justify-content-around">
+                      <label for="file-input">
+                        <i class="bi bi-card-image" style="font-size:40px;color:black"></i>
+                      </label>
+                      <input type="file" id="file-input" style="display: none;" accept="image/*">
+                      <div class="row">
+                        <span class=" text-start">Category Name</span>
+                        <span class="text-start">Category Id</span>
+                      </div>
+                    </div>
+                  </td>
+                  <!-- quantity -->
+                  <td class="text-center align-middle">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <input class="border-2 text-center form-control w-50" type="number" value="0" placeholder="0">
+                    </div>
+                  </td>
+                  <!-- amount -->
+                  <td class="text-center align-middle">
+                    <span class="align-content-center text-center">4</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+        </article>
 
-          <div class="border-bottom mt-3 d-flex justify-content-between">
-            <span class="fw-bold">Available in Stock:</span>
-            <span class="fs-4 fw-bold searchInput-color">400</span>
+        <article class="shadow col-lg-4 mt-3">
+          <div class="bg-light rounded-3 p-4">
+            <span class="fs-5 fw-bold">Category Summary</span>
+            <hr>
+
+            <div class="border-bottom mt-3 d-flex justify-content-between">
+              <span class="fw-bold">Quantity:</span>
+              <span class="fs-4 fw-bold">500</span>
+            </div>
+
+            <div class="border-bottom mt-3 d-flex justify-content-between">
+              <span class="fw-bold">Available in Stock:</span>
+              <span class="fs-4 fw-bold searchInput-color">400</span>
+            </div>
+
+            <div class="border-bottom mt-3 d-flex justify-content-between">
+              <span class="fw-bold">Not Available in Stock:</span>
+              <span class="fs-4 fw-bold text-danger">100</span>
+            </div>
+
           </div>
-
-          <div class="border-bottom mt-3 d-flex justify-content-between">
-            <span class="fw-bold">Not Available in Stock:</span>
-            <span class="fs-4 fw-bold text-danger">100</span>
-          </div>
-
-        </div>
-      </article>
+        </article>
+      </div>
 
     </section>
   </main>

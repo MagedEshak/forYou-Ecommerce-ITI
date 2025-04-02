@@ -6,7 +6,7 @@ html,
 body,
 header,
 main {
-    background-color: #f2efe3 !important;
+    background-color: #f5f5f5 !important;
 }
 
 aside {
@@ -89,6 +89,40 @@ ul li .list-links-active {
     width: 70px;
 }
 
+#notifiDropDownDiv_id {
+    position: absolute;
+    width: 350px;
+    height: 500px;
+    overflow: auto;
+    transform: translate(-250px, 41px);
+    -webkit-transform: translate(-250px, 41px);
+    -moz-transform: translate(-250px, 41px);
+    -ms-transform: translate(-250px, 41px);
+    -o-transform: translate(-250px, 41px);
+
+    z-index: 99;
+}
+
+#search_id {
+    position: absolute;
+    width: 500px;
+    transform: translate(-470px, 35px);
+    -webkit-transform: translate(-470px, 35px);
+    -moz-transform: translate(-470px, 35px);
+    -ms-transform: translate(-470px, 35px);
+    -o-transform: translate(-470px, 35px);
+    z-index: 99;
+}
+
+#addCategory_id {
+    transform: translate(60%, -10%) !important;
+    -webkit-transform: translate(60%, -10%) !important;
+    -moz-transform: translate(60%, -10%) !important;
+    -ms-transform: translate(60%, -10%) !important;
+    -o-transform: translate(60%, -10%) !important;
+    z-index: 99 !important;
+}
+
 /* Custom Fonts */
 .img-sm-w {
     width: 70px;
@@ -101,6 +135,7 @@ ul li .list-links-active {
 .fs-cf-5 {
     font-size: 1rem !important;
 }
+
 
 
 /* للشاشات المتوسطة (md) وما فوق */
