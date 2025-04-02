@@ -1,0 +1,33 @@
+user {
+    isadmn: true , false  
+    id:
+    name:
+    pass:
+    email:
+    wishlist:[product_id,]
+    shoppingCart:[{
+        product_id:
+        quantaty:
+        isPending:-1 0 1 defult 0
+    }]
+    lastOrders:[product_id]
+    retunOdrs: true false
+}
+
+product{
+    id:
+    name:
+    img:
+    disc:
+    cat_id:
+    inStock:defult
+    price:
+    discont: 0 (bouns)
+    rate: (bouns) 1-5
+    feedback: (bounce)
+}
+
+cat{
+    cat_id:
+    cat_name:
+}
