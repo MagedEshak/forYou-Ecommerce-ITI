@@ -259,6 +259,20 @@
                             <span class="input-group-text">EGP</span>
                         </div>
                     </div>
+                    <!-- discount--> 
+                     <div class="mb-3">
+                        <label for="productDiscount" class="form-label">Discount (%)</label>
+                        <input type="number" class="form-control" id="productDiscount" placeholder="Enter discount from 1 : 100"
+                            min="0" max="100">
+                    </div>
+
+                    <!-- Quantity -->
+                     <div class="mb-3">
+                        <label for="productQuantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" id="productQuantity" placeholder="Enter quantity"
+                            min="1" value="1" required>
+                    </div>
+                    
 
                     <!-- Description -->
                     <div class="mb-3">
@@ -266,6 +280,7 @@
                         <textarea id="productDescription" class="form-control" rows="3"
                             placeholder="Enter product description" required></textarea>
                     </div>
+
 
 
                     <!-- Submit Button -->
