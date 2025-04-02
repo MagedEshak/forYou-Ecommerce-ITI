@@ -126,7 +126,7 @@ nav a i {
 /* Styling MyCarousel*/
 .MyCarousel {
     height: 90vh !important;
-    background-image: url('../../Images/CustomerImages/carusoal_images/1.jpg');
+    background-image: url('../Images/CustomerImages/carusoal_images/1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
