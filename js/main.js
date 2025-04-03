@@ -80,37 +80,37 @@ export async function deleteDocumentByField(collectionName, field, value) {
 
 // Fetch all documents from a collection
 export async function getAllDocuments(collectionName) {
-    try {
-      const querySnapshot = await getDocs(collection(db, collectionName));
-      const results = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-  
-      console.log(`Fetched ${results.length} documents from '${collectionName}'`);
-      return results;
-    } catch (error) {
-      console.error(`Error fetching documents from '${collectionName}':`, error);
-      return [];
-    }
+  try {
+    const querySnapshot = await getDocs(collection(db, collectionName));
+    const results = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+    console.log(`Fetched ${results.length} documents from '${collectionName}'`);
+    return results;
+  } catch (error) {
+    console.error(`Error fetching documents from '${collectionName}':`, error);
+    return [];
   }
-  
-  export async function deleteAllDocuments(collectionName) {
-    try {
-        const querySnapshot = await getDocs(collection(db, collectionName));
+}
+  // delete all the docs
+export async function deleteAllDocuments(collectionName) {
+  try {
+      const querySnapshot = await getDocs(collection(db, collectionName));
 
-        if (querySnapshot.empty) {
-            console.log(`No documents found in '${collectionName}' to delete.`);
-            return;
-        }
+      if (querySnapshot.empty) {
+          console.log(`No documents found in '${collectionName}' to delete.`);
+          return;
+      }
 
-        querySnapshot.forEach(async (document) => {
-            const docRef = doc(db, collectionName, document.id);
-            await deleteDoc(docRef);
-            console.log(`Deleted document: ${document.id}`);
-        });
+      querySnapshot.forEach(async (document) => {
+          const docRef = doc(db, collectionName, document.id);
+          await deleteDoc(docRef);
+          console.log(`Deleted document: ${document.id}`);
+      });
 
-        console.log(`Successfully deleted all documents from '${collectionName}'`);
-    } catch (error) {
-        console.error(`Error deleting documents from '${collectionName}':`, error);
-    }
+      console.log(`Successfully deleted all documents from '${collectionName}'`);
+  } catch (error) {
+      console.error(`Error deleting documents from '${collectionName}':`, error);
+  }
 }
 
 // var cat ={
