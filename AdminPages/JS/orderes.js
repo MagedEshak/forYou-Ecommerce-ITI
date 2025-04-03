@@ -99,83 +99,62 @@ let usersTemp = [
 
 // we assume that in database , there are users with their shopping carts
 
+// adding events to tab btns (all , new , approved , canceled)
+function addEventsToTabBtns(){
 
-let allProducts = document.getElementById('allProducts_id');// btn that shows all orrders
-let newProducts = document.getElementById('newProductsId');// btn that shows new orders
-let approvedProducts = document.getElementById('approvedPoducts_id');// btn that shows approved orders
-let canceledProducts = document.getElementById('canceledProducts_id');// btn that shows canceled orders
+    let allProducts = document.getElementById('allProducts_id');// btn that shows all orrders
+    let newProducts = document.getElementById('newProductsId');// btn that shows new orders
+    let approvedProducts = document.getElementById('approvedPoducts_id');// btn that shows approved orders
+    let canceledProducts = document.getElementById('canceledProducts_id');// btn that shows canceled orders
 
-allProducts.addEventListener('click' , (e)=>{
-    addActiveClassToCurrentBtn(e.target);
-    displayProducts(usersTemp , "all");
-})
+    let btnsArray = [allProducts, newProducts, approvedProducts, canceledProducts];
 
-newProducts.addEventListener('click' , (e)=>{
-    addActiveClassToCurrentBtn(e.target);
-    displayProducts(usersTemp , "new");
-})
+    allProducts.addEventListener('click' , (e)=>{
+        // this function add active class to specific element from the nav bar btns (all , new , approved , declined)
+        addActiveClassToCurrentBtn(btnsArray , e.target);
+        displayProductsByStatus();// this function displays products depends on the tab
+    })
 
-approvedProducts.addEventListener('click' , (e)=>{
-    addActiveClassToCurrentBtn(e.target);
-    displayProducts(usersTemp , "approved");
-})
+    newProducts.addEventListener('click' , (e)=>{
+        debugger;
+        addActiveClassToCurrentBtn(btnsArray, e.target);
+        displayProductsByStatus(0);
+    })
 
-canceledProducts.addEventListener('click' , (e)=>{
-    addActiveClassToCurrentBtn(e.target);
-    displayProducts(usersTemp , "canceled");
-})
-
+    approvedProducts.addEventListener('click' , (e)=>{
+        addActiveClassToCurrentBtn(btnsArray, e.target);
+        displayProductsByStatus(1);
+    })
+    
+    canceledProducts.addEventListener('click' , (e)=>{
+        addActiveClassToCurrentBtn(btnsArray , e.target);
+        displayProductsByStatus(-1);
+    })
+}
 
 // this function add active class to specific element from the nav bar btns (all , new , approved , declined)
-function addActiveClassToCurrentBtn(btn){
+function addActiveClassToCurrentBtn(btns , currentBtn){
     // first remove the active class from all btns
-    allProducts.classList.remove('active');
-    newProducts.classList.remove('active');
-    approvedProducts.classList.remove('active');
-    canceledProducts.classList.remove('active');
+    btns.forEach( btn => {btn.classList.remove('active')})
 
     // then add the active class to your element
-    btn.classList.add('active');
+    currentBtn.classList.add('active');
 }
 
 // this function displays all oreders of all users
 // takes users as a parameter
-function displayProducts(users , type){
+function createProductsInHtml(users){
     // this is table body where we will put our products information
     let myTbodyContainer = document.getElementById('tbody_productsInfo_id');
-    myTbodyContainer.replaceChildren();// this function to clear entire body
+
     // the shopCart item contains , user id , and shopCart object contains
-//  products(id, catID , quantity , status) added to cart
+    //  products(id, catID , quantity , status) added to cart
      users.forEach((user) => {
 
         user.shoppingCart.forEach((shopCartProduct) => {
             // this is the row that contains our order info
             let tableRow = document.createElement('tr');
-            // conditions to display all or new or approved or declined orders
-            if(type == "all")
-                tableRow.classList.remove('d-none');
-            else if(type == "new")
-            {
-                if(shopCartProduct.PendingStatus == 0)
-                    tableRow.classList.remove('d-none');
-                else
-                    tableRow.classList.add('d-none');
-            }
-            else if(type == "approved")
-            {
-                if(shopCartProduct.PendingStatus == 1)
-                    tableRow.classList.remove('d-none');
-                else
-                    tableRow.classList.add('d-none');
-            }
-            else if(type == "canceled")
-            {
-                if(shopCartProduct.PendingStatus == -1)
-                    tableRow.classList.remove('d-none');
-                else
-                    tableRow.classList.add('d-none');
-            }
-
+            tableRow.id = `row_${user.id}_${shopCartProduct.cat_id}_${shopCartProduct.product_id}`;
 
             // first cell in the row : product id
             let productId = document.createElement('th');
@@ -214,7 +193,8 @@ function displayProducts(users , type){
 
                 // approve btn , contains icon and approve word
                 let approveBtn = document.createElement('button'); 
-                approveBtn.className = "btn btn-success d-flex gap-1 btn-color";
+                approveBtn.className = "btn btn-success d-flex gap-1 btn-color approve";
+                approveBtn.id = `user_${user.id}_cat_${shopCartProduct.cat_id}_prod_${shopCartProduct.product_id}_1`;
 
                 let approveIcon = document.createElement('i');
                 approveIcon.className = "bi bi-check-lg";
@@ -226,7 +206,9 @@ function displayProducts(users , type){
 
                 // cancel btn , contains icon and cancel word
                 cancelBtn = document.createElement('button'); // cancel btn , contains icon and cancel word
-                cancelBtn.className = "btn btn-danger d-flex gap-1 ";
+                cancelBtn.className = "btn btn-danger d-flex gap-1 cancel";
+                cancelBtn.id = `user_${user.id}_cat_${shopCartProduct.cat_id}_prod_${shopCartProduct.product_id}_2`;
+
 
                 let cancelIcon = document.createElement('i');
                 cancelIcon.className = "bi bi-x-lg";
@@ -268,28 +250,118 @@ function displayProducts(users , type){
         })
 
     })
+
 }
 
-// initial display : dispaly all products
-displayProducts(usersTemp , "all");
+// this function displays products depending on status
+// if status = 1      => displays approved  orders
+// if status = 0      => displays pending   orders
+// if status = -1     => displays canceled  orders
+// if status = none   => displays All   orders
+function displayProductsByStatus(status){
+    usersTemp.forEach( user => {
+        user.shoppingCart.forEach( product => {
+            let productRow = document.getElementById(`row_${user.id}_${product.cat_id}_${product.product_id}`);
+            if(product.PendingStatus == status || status == undefined)
+                productRow.classList.remove('d-none');
+            else
+                productRow.classList.add('d-none');
+        })
+    })
+}
 
+// this function is to add events to both approve and cancel btns
+function addEventsToApproveAndCancelBtns(){
+    // we get all approve btns
+    let approveBtns = document.querySelectorAll('.approve');
+    // we get all cancel btns
+    let cancelBtns = document.querySelectorAll('.cancel');
 
+    // adding the events here to approve btns
+    approveBtns.forEach( approveBtn => {
+        approveBtn.addEventListener('click' , (e) => {
+            approveAndCancelBtnAction( 1 , e.target);
+        })
+    })
 
+    // adding the events here to cancel btns
+    cancelBtns.forEach( cancelBtn => {
+        cancelBtn.addEventListener('click' , (e) => {
+            approveAndCancelBtnAction( -1 , e.target);
+        })
+    })
+}
 
+// this function is called when the approve or cancel btns clicked
+// it takes state : it is 1 if approved , and -1 if canceled
+// it takes the btn clicked
+function approveAndCancelBtnAction(state , btn){
+    // the button has id that consists of : userID , catID , prodID
+    let btnId = btn.id.split('_');
+    userId =  btnId[1];
+    catId = btnId[3];
+    prodId = btnId[5];
 
+    // when the button clicked we update the product status depending on the btn clicked
+    // we update specific prod in specific category in specific user
+    updateOrderStatus(userId , catId, prodId , state);
 
-
-
-
-
-
-
-
-// in case order status is pending , we have to create two buttons : cancel and approve
-// if(status == 0){
+    // here i get the current tab that we are on (all , new , approved , canceled)
+    let currentTab =  document.querySelector('.active').innerHTML;
     
+    // depending on our tab , i refresh the table to be displayed with latest update
+    if(currentTab == "New")
+        displayProductsByStatus(0); // in case of we are in new tab
+    else if(currentTab == "Approved")
+        displayProductsByStatus(1); // in case of we are in approved tab
+    else if(currentTab == "Canceled")
+        displayProductsByStatus(-1); // in case of we are in canceled tab 
+    else
+        displayProductsByStatus(); // in case of we are in all tab
+}
 
-// }
+// function to update the product status (approve / cancel)
+function updateOrderStatus(userId , catId , prodID , status){
+    // finding the user with his id
+    let myUser =  usersTemp.find( user => user.id == userId );
+    // then finding the product in his shopping cart
+    let myProduct = myUser.shoppingCart.find( product =>
+                    (product.cat_id == catId) && (product.product_id == prodID) );
+    // then we update the product status
+    myProduct.PendingStatus = status;
+
+    // we update the row that contains this product
+    myRow = document.getElementById(`row_${userId}_${catId}_${prodID}`);    
+    myRow.removeChild(myRow.lastElementChild); // we removed approve and cancel btns from the row
+
+    // in case of status approved = 1
+    if(status == 1)
+    {
+        // we change the status to approved
+        myRow.lastElementChild.lastElementChild.innerHTML = "Approved";
+        myRow.lastElementChild.lastElementChild.className = "text-success p-2 rounded-3 text-center badge";    
+    }
+    // in case of status canceled = -1
+    else if(status == -1){
+        // we change the status to canceled
+        myRow.lastElementChild.lastElementChild.innerHTML = "Canceled";
+        myRow.lastElementChild.lastElementChild.className = "text-danger   p-2 rounded-3 text-center badge";    
+    }
+   
+}
+
+// add events to tab btns (all , new , approved , canceled)
+addEventsToTabBtns();
+
+// initial display : dispaly all products
+createProductsInHtml(usersTemp);
+
+// add events to both approve and cancel btns 
+addEventsToApproveAndCancelBtns();
+
+
+
+
 
 
 

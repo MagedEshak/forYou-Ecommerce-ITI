@@ -246,16 +246,20 @@
 
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">All Products</a>
+                            <button id="allProducts_id" 
+                                    class="nav-link searchInput-color active" aria-current="page" href="#">All</button>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link searchInput-color" href="#">New</a>
+                            <button id="newProductsId" 
+                                    class="nav-link searchInput-color" href="#">New</button>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link searchInput-color" href="#">Approved</a>
+                            <button id="approvedPoducts_id" 
+                                    class="nav-link searchInput-color" href="#">Approved</button>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link searchInput-color" href="#">Canceled</a>
+                            <button id="canceledProducts_id" 
+                                    class="nav-link searchInput-color" href="#">Canceled</button>
                         </li>
                     </ul>
                 </div>
@@ -264,14 +268,14 @@
 
             <!-- Table d-lg-block in Large Screens and None in MD and SM Screens -->
             <div class="d-none d-lg-block">
-                <table class="table table-hover text-center">
+                <table id="table_productsInfo_id" class="table table-hover text-center">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Customer</th>
                             <th scope="col">Total Price</th>
                             <th scope="col">Payment Method</th>
-                            <th scope="col">Order Date</th>
+                            <th scope="col">Order Quantity</th>
                             <th scope="col">Status</th>
                             <th scope="col">
                                 Confirming
@@ -279,17 +283,17 @@
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <tr>
+                    <tbody id="tbody_productsInfo_id">
+                        <!-- <tr>
                             <th>#251Owd5</th>
                             <td>Maged Eshak</td>
                             <td>300 EGP</td>
                             <td>Card</td>
                             <td>Mar 27, 2025</td>
 
-                            <!-- Order Status -->
+                            Order Status
                             <td>
-                                <!-- Order Status If New -->
+                                Order Status If New
                                 <div class="text-primary p-2 rounded-3 text-center badge text-decoration-none">
                                     New
                                 </div>
@@ -307,18 +311,18 @@
                                     </button>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> -->
 
-                        <tr>
+                        <!-- <tr>
                             <th>#251Owd5</th>
                             <td>Maged Eshak</td>
                             <td>300 EGP</td>
                             <td>Card</td>
                             <td>Mar 27, 2025</td>
 
-                            <!-- Order Status -->
+                            Order Status
                             <td>
-                                <!-- Order Status If Approved -->
+                                Order Status If Approved
                                 <div class="text-success p-2 rounded-3 text-center badge">
                                     Approved
                                 </div>
@@ -336,18 +340,18 @@
                                     </button>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> -->
 
-                        <tr>
+                        <!-- <tr>
                             <th>#251Owd5</th>
                             <td>Maged Eshak</td>
                             <td>300 EGP</td>
                             <td>Card</td>
                             <td>Mar 27, 2025</td>
 
-                            <!-- Order Status -->
+                            Order Status
                             <td>
-                                <!-- Order Status If Canceled -->
+                                Order Status If Canceled
                                 <div class="text-danger   p-2 rounded-3 text-center badge">
                                     Canceled
                                 </div>
@@ -365,7 +369,7 @@
                                     </button>
                                 </div>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -541,6 +545,7 @@
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 
     <script src="./JS/navBar_sideBarFun.js"></script>
+    <script src="JS/orderes.js"></script>
 </body>
 
 </html>
