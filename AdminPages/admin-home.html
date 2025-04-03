@@ -18,8 +18,7 @@
     <body class="d-flex justify-content-around p-4">
         <!-- Start Left Side Dashboard Tabs -->
 
-        <aside id="sideDashboard_id"
-            class="col-2 d-none d-lg-block rounded-4 position-sticky top-0 mt-4">
+        <aside class="col-2 d-none d-lg-block rounded-4">
             <ul
                 class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
                 <!-- Start Bars showing when Dashboard be full width -->
@@ -81,6 +80,66 @@
             </ul>
         </aside>
         <!-- End Left Side Dashboard Tabs -->
+
+        <!-- Start Left Side Dashboard Tabs in Tablet and Mobile Only-->
+        <aside id="sideDashboard_id"
+            class="col-7 col-md-4 sideBarMobile rounded-4">
+            <ul
+                class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
+                <li>
+                    <div id="logoDiv_id" class="text-center">
+                        <a href="../index.html" target="_blank">
+                            <img src="../Images/logo/LLLOGOWhite.png"
+                                class="img-lg-w img-md-w img-sm-w"
+                                alt="WebSite Logo">
+                        </a>
+                        <!-- Bars Icon -->
+
+                    </div>
+                </li>
+                <li>
+                    <span class="fw-bolder"><i class="bi bi-menu-button"></i>
+                        Menu</span>
+                </li>
+                <hr class="mt-0">
+                <li>
+                    <a href="./admin-home.html"
+                        class="list-links text-light  list-links-active ">
+                        <i class="bi bi-house"></i> Dashboard</a>
+                </li>
+                <li>
+                    <!-- Adding class list-links-active to color page name tab  -->
+                    <a href="./Oreders.html" class="list-links text-light"><i
+                            class="bi bi-bag"></i>
+                        Orders</a>
+                </li>
+                <li>
+                    <a href="./addCategory.html" class="list-links text-light">
+                        <i class="bi bi-tag"></i> Categories
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="list-links text-light">
+                        <i class="bi bi-people"></i> View Admins</a>
+                </li>
+            </ul>
+
+            <ul class="d-flex flex-column justify-content-between p-4 gap-2">
+                <hr>
+                <li><a href="./AdminProfile.html"
+                        class="list-links text-light"><i class="bi bi-gear"></i>
+                        Setting</a></li>
+                <li>
+                    <a href="../CustomersPages/signin.html"
+                        class="list-links text-light"><i
+                            class="bi bi-box-arrow-left"></i>
+                        LogOut
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <!-- End Left Side Dashboard Tabs in Tablet and Mobile Only-->
+
         <!-- Navbar -->
         <main id="main_id" class="w-100">
             <!-- Start Nav Bar -->
@@ -99,7 +158,7 @@
 
                     <div id="logoDiv_id">
                         <a href="../index.html" target="_blank">
-                            <img src="/Images/logo/LLLOGO.png"
+                            <img src="../Images/logo/LLLOGO.png"
                                 class="img-lg-w img-md-w img-sm-w"
                                 alt="WebSite Logo">
                         </a>
@@ -148,15 +207,15 @@
 
                             <!-- Notifications Drop list -->
                             <div id="notifiDropDownDiv_id"
-                                class="bg-light rounded-3 d-none">
-                                <div class="position-sticky top-0 bg-light z-3">
+                                class="bg-white rounded-3 d-none">
+                                <div class="position-sticky top-0 bg-white z-3">
                                     <h4 class="p-3">Notifications</h4>
                                 </div>
                                 <hr>
                                 <div class="p-4">
                                     <div class="mb-2 border-bottom pb-4">
                                         <div id
-                                            class="fs-5 d-flex gap-3 position-relative">
+                                            class="fs-cf-5 d-flex gap-3 position-relative">
                                             <!-- Product Icon -->
                                             <div>
                                                 <img
@@ -172,7 +231,7 @@
                                                     Hood 90 cm - Classic Black
                                                     Stainless</span>
                                                 <span
-                                                    class="text-secondary ">Maged
+                                                    class="text-secondary">Maged
                                                     Eshak</span>
                                             </div>
                                             <span id="redCircleNotifi_id"
@@ -186,7 +245,7 @@
 
                                     <div class="mb-2 border-bottom pb-4">
                                         <div id
-                                            class="fs-5 d-flex gap-3 position-relative">
+                                            class="fs-cf-5 d-flex gap-3 position-relative">
                                             <!-- Product Icon -->
                                             <div>
                                                 <img
@@ -202,7 +261,7 @@
                                                     Hood 90 cm - Classic Black
                                                     Stainless</span>
                                                 <span
-                                                    class="text-secondary ">Maged
+                                                    class="text-secondary">Maged
                                                     Eshak</span>
                                             </div>
                                             <span id="redCircleNotifi_id"
@@ -216,7 +275,7 @@
 
                                     <div class="mb-2 border-bottom pb-4">
                                         <div id
-                                            class="fs-5 d-flex gap-3 position-relative">
+                                            class="fs-cf-5 d-flex gap-3 position-relative">
                                             <!-- Product Icon -->
                                             <div>
                                                 <img
@@ -232,7 +291,7 @@
                                                     Hood 90 cm - Classic Black
                                                     Stainless</span>
                                                 <span
-                                                    class="text-secondary ">Maged
+                                                    class="text-secondary">Maged
                                                     Eshak</span>
                                             </div>
                                             <span id="redCircleNotifi_id"
@@ -243,6 +302,7 @@
                                             </span>
                                         </div>
                                     </div>
+
                                 </div>
 
                             </div>
