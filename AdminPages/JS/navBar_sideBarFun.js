@@ -132,9 +132,12 @@ CancelBtn.addEventListener("click", function () {
     } 
 });
 
+
+// to redirect to add product page
   function redirectToAddProduct() {
             window.location.href = "admin-add-product.html";
 }
+// to redirect to admin home page
      function redirectToDashboard() {
             window.location.href = "admin-home.html";
 }     
