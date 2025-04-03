@@ -54,16 +54,10 @@ aside,
 }
 
 .Arrow-color:hover {
-    transform: translate(20px);
-    -webkit-transform: translate(20px);
-    -moz-transform: translate(20px);
-    -ms-transform: translate(20px);
-    -o-transform: translate(20px);
-    transition: transform 0.3s ease-in-out;
-    -webkit-transition: transform 0.3s ease-in-out;
-    -moz-transition: transform 0.3s ease-in-out;
-    -ms-transition: transform 0.3s ease-in-out;
-    -o-transition: transform 0.3s ease-in-out;
+    .Arrow-color:hover {
+        transform: translateX(20px);
+        transition: all 0.3s ease-in-out;
+    }
 }
 
 .bar-tran {

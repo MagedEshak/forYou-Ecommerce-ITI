@@ -271,8 +271,9 @@
 
             <!-- Main Content -->
             <div id="main-content" class="container ">
-           
-                <section id="productSummary" class="bg-white p-3 mb-4 rounded shadow-lg card text-center">
+
+                <section id="productSummary"
+                    class="bg-white p-3 mb-4 rounded shadow-lg card text-center">
                     <h3 class="text-center mb-3">Product Summary</h3>
                     <div class="d-flex justify-content-around">
                         <div>
@@ -285,8 +286,9 @@
                         </div>
                     </div>
                 </section>
-                
-                <section class="bg-light p-4 mt-5  shadow-lg rounded">
+
+                <section
+                    class="bg-light p-2 mt-5  shadow-lg rounded align-content-lg-around">
                     <!-- Display Products -->
                     <h1 class="text-center">Manage Products</h1>
                     <!-- Add New Product Form -->
@@ -294,24 +296,27 @@
                         class="btn-color-fa mb-3 p-2 ps-3 pe-3 cursor-pointer badge"
                         onclick="redirectToAddProduct()">
                         <i class="bi bi-plus-circle"></i>
-                        <span class="d-none d-lg-inline d-md-inline">Add New Product</span>
+                        <span class="d-none d-lg-inline d-md-inline">Add New
+                            Product</span>
                     </button>
                     <!-- Table for displaying products -->
-                    <table class="table table-bordered mt-3">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Category</th>
-                                <th>Price</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="productsTable">
-                            <!-- Products will be inserted here dynamically -->
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-bordered mt-3 table-hover ">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTable">
+                                <!-- Products will be inserted here dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
             </div>
 
