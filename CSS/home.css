@@ -248,7 +248,9 @@ footer .socialMediaLinks a {
 .productImageContainer {
     height: 30vh;
 }
-
+.product a{
+    flex-grow: 1;
+}
 .product img {
     width: 75%;
     object-fit: contain;
