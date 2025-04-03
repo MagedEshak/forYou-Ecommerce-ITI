@@ -1,0 +1,17 @@
+[
+    {
+        "isAdmin": false,
+        "id": 0,
+        "name":"",
+        "password": "",
+        "email": "",
+        "wishlist":[] , 
+        "shoppingCart":[{
+            "product_id": 0,
+            "quantaty": 0,
+            "isPending": 0
+        }],
+        "lastOrders":[],
+        "retunOdrs": false
+    }
+]
