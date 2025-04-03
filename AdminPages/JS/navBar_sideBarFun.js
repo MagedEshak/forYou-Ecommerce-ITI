@@ -45,64 +45,31 @@ profileLogoDiv.addEventListener("click", function () {
  * -- To Show Side Dashboard in Tablet and Mobile Phone
  */
 
-barsDiv.addEventListener("click", function () {
-    if (sideDashboard.classList.contains("d-none")) {
-        
-        sideDashboard.classList.remove("col-2", "d-none");
-
-        document.getElementById("main_id").classList.add("d-none", "d-md-block"); // To Hide main Tag 
-
-        mainContentSec.classList.add("flex-md-column");
-        
-
-        barsLeftSideDiv.classList.add("d-block","d-md-none");
-
-        sideDashboard.classList.add("col-9", "col-md-4", "d-block", "me-5");
-        
+document.addEventListener("click", (e) => {
+    if (barsDiv.contains(e.target)) {
+        appear(sideDashboard);
     } else {
-        sideDashboard.classList.remove("col-sm-9", "d-block", "me-5");
-
-        barsLeftSideDiv.classList.remove("d-block");
-
-        document.getElementById("main_id").classList.remove("d-none"); // To show main Tag 
-
-        mainContentSec.classList.remove("flex-md-column");
-
-        sideDashboard.classList.add("col-2", "d-none");
-
-        barsLeftSideDiv.classList.remove("d-block","d-md-none");
+        disappear(sideDashboard);
     }
 });
 
-/**
- * - Adding addEventListener click for {bars Left SideDiv}
- * =========================================================
- * -- To Hide Side Dashboard in Mobile Phone
- */
+function appear(sideBar) {
+    sideBar.style.left = "0px";
+    document.getElementById("main_id").classList.add("opacity-50");
+}
 
-barsLeftSideDiv.addEventListener("click", function () {
-    if (barsLeftSideDiv.classList.contains("d-block")) {
-
-        sideDashboard.classList.remove("col-sm-9", "d-block", "me-5");
-
-        barsLeftSideDiv.classList.remove("d-block");
-
-        document.getElementById("main_id").classList.remove("d-none");
-
-        sideDashboard.classList.add("col-2", "d-none");
-    }
-});
-
-
-
+function disappear(sideBar) {
+    sideBar.style.left = "-75%";
+    document.getElementById("main_id").classList.remove("opacity-50");
+}
 /**
  * - Adding addEventListener click for {notification Icon}
  * =========================================================
  * -- To Show new Notifications
  */
 
-notificationsDiv.addEventListener("click", function () {
-    if (notifiDropDownDiv.classList.contains("d-none")) {
+document.addEventListener("click", function (e) {
+    if (notificationsDiv.contains(e.target)) {
         
         notifiDropDownDiv.classList.remove("d-none");
 
@@ -164,3 +131,10 @@ CancelBtn.addEventListener("click", function () {
         
     } 
 });
+
+  function redirectToAddProduct() {
+            window.location.href = "admin-add-product.html";
+}
+     function redirectToDashboard() {
+            window.location.href = "admin-home.html";
+}     
