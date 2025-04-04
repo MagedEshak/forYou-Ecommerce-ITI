@@ -37,7 +37,7 @@ async function addProduct(event) {
     const productPrice = document.getElementById("product-price").value;
     const productCategory = document.getElementById("product-category").value;
     const productDescription = document.getElementById("product-description").value;
-    const fileInput = document.getElementById("product-image");
+    const productImageFile = document.getElementById("product-image").files[0]; // Get the file input element
     const productDiscount = document.getElementById("product-discount").value;
     const productQuantity = document.getElementById("product-quantity").value;
 
@@ -46,9 +46,15 @@ async function addProduct(event) {
         return;
     }
 
+    try {
     // Upload image to Firebase Storage
-    const imageUrl = await uploadImage(fileInput); // Ensure this is awaited correctly
-
+    const imageUrl = await uploadImage(productImageFile); // Ensure this is awaited correctly
+    } catch (error) {
+        console.error("Error uploading image:", error);
+        alert("Failed to upload image. Please try again.");
+        imageUrl= "none"; // Set imageUrl to none if upload fails
+        return;
+    }
     try {
         // Create product object
         const product = {
@@ -56,7 +62,7 @@ async function addProduct(event) {
             price: parseFloat(productPrice),
             category_id: productCategory,
             description: productDescription,
-            imageUrl: imageUrl || "none", // Use default if no image URL
+            imageUrl: imageUrl, // Use default if no image URL
             discount: parseFloat(productDiscount),
             quantity: parseInt(productQuantity),
             createdAt: new Date(),
@@ -83,3 +89,16 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("product-form").addEventListener("submit", addProduct);
     loadCategories();
 });
+
+
+// Handle upload event
+function handleUpload() {
+    const fileInput = document.getElementById("imageInput");
+    const file = fileInput.files[0]; // Get the file selected by the user
+    uploadImage(file).then((downloadURL) => {
+        if (downloadURL) {
+            console.log("File uploaded successfully, Download URL: ", downloadURL);
+            // You can now save the download URL to Firestore or display it on your page
+        }
+    });
+}
