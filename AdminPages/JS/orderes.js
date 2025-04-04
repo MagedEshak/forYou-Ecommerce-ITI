@@ -143,13 +143,13 @@ function addActiveClassToCurrentBtn(btns , currentBtn){
 
 // this function displays all oreders of all users
 // takes users as a parameter
-function createProductsInHtml(users){
+function createProductsInHtmlLargeWidthScreen(){
     // this is table body where we will put our products information
     let myTbodyContainer = document.getElementById('tbody_productsInfo_id');
 
     // the shopCart item contains , user id , and shopCart object contains
     //  products(id, catID , quantity , status) added to cart
-     users.forEach((user) => {
+     usersTemp.forEach((user) => {
 
         user.shoppingCart.forEach((shopCartProduct) => {
             // this is the row that contains our order info
@@ -331,39 +331,236 @@ function updateOrderStatus(userId , catId , prodID , status){
     myProduct.PendingStatus = status;
 
     // we update the row that contains this product
-    myRow = document.getElementById(`row_${userId}_${catId}_${prodID}`);    
-    myRow.removeChild(myRow.lastElementChild); // we removed approve and cancel btns from the row
+    myRow = document.getElementById(`row_${userId}_${catId}_${prodID}`);
 
-    // in case of status approved = 1
-    if(status == 1)
+    // handeleing in case of large screen
+    if(window.innerWidth >= 992)
+        {
+            myRow.removeChild(myRow.lastElementChild); // we removed approve and cancel btns from the row
+            // in case of status approved = 1
+            if(status == 1)
+            {
+                // we change the status to approved
+                myRow.lastElementChild.lastElementChild.innerHTML = "Approved";
+                myRow.lastElementChild.lastElementChild.className = "text-success p-2 rounded-3 text-center badge";    
+            }
+            // in case of status canceled = -1
+            else if(status == -1){
+                // we change the status to canceled
+                myRow.lastElementChild.lastElementChild.innerHTML = "Canceled";
+                myRow.lastElementChild.lastElementChild.className = "text-danger   p-2 rounded-3 text-center badge";    
+            }
+        }  
+    // handeleing in case of small screen
+    else
     {
-        // we change the status to approved
-        myRow.lastElementChild.lastElementChild.innerHTML = "Approved";
-        myRow.lastElementChild.lastElementChild.className = "text-success p-2 rounded-3 text-center badge";    
+        myRow.lastElementChild.removeChild(myRow.lastElementChild.lastElementChild);
+
+        // i want to change my status , i have to retreive the div that continas this value first
+        myStatusDiv = document.querySelector(`#row_${userId}_${catId}_${prodID} > div 
+            > div > ul > li > div`)
+        
+        if(status == 1)
+        {
+            // we change the status to approved
+            myStatusDiv.innerHTML = "Approved";
+            myStatusDiv.className = "text-success p-2 rounded-3 text-center badge";    
+        }
+        // in case of status canceled = -1
+        else if(status == -1){
+            // we change the status to canceled
+            myStatusDiv.innerHTML = "Canceled";
+            myStatusDiv.className = "text-danger p-2 rounded-3 text-center badge";    
+        }
     }
-    // in case of status canceled = -1
-    else if(status == -1){
-        // we change the status to canceled
-        myRow.lastElementChild.lastElementChild.innerHTML = "Canceled";
-        myRow.lastElementChild.lastElementChild.className = "text-danger   p-2 rounded-3 text-center badge";    
-    }
-   
+}
+
+// this function to creat products in html in small width screens
+function createProductsInHtmlSmallWidthScreen(){
+    // this is the div that contains all cards
+    let allCardContainer = document.getElementById('cardsContainer_id');
+
+    usersTemp.forEach( user => {
+        debugger;
+        user.shoppingCart.forEach( product => {
+            // this is our card container
+            let myCardContainer = document.createElement('div');
+            myCardContainer.className = "card mb-3";
+            myCardContainer.id = `row_${user.id}_${product.cat_id}_${product.product_id}`;
+
+            // this is card inner container
+            let cardInnerContainer = document.createElement('div');
+            cardInnerContainer.className = "card-body";
+
+            /********************************************************************/
+            // this is the header of our card , contains name and ID
+            /********************************************************************/
+            let cardheader = document.createElement('h5');
+            cardheader.className = "card-title";
+
+            let userName = document.createTextNode(user.name);// this is user name
+
+            let userId = document.createElement('span');// this span contains user id
+            userId.className = "card-subtitle mb-2 ms-4 text-body-secondary fs-cf-5";
+            userId.innerText = user.id;
+
+            // append the user name and user id to the header
+            cardheader.appendChild(userName);
+            cardheader.appendChild(userId);
+
+            /********************************************************************/
+            // card information about product : contains list , hr , h6
+            /********************************************************************/
+            let cardInfo = document.createElement('div');
+
+            // first create the list : contains Total price , pay method , quantity , status
+            let cardInfoList = document.createElement('ul');
+            cardInfoList.className =  "list-group list-group-flush" ;
+
+                // product total price : contains span and text node
+                let prodTotalPrice = document.createElement('li');
+                prodTotalPrice.className = "list-group-item";
+                // total price span
+                let totalPriceSpan = document.createElement('span');
+                totalPriceSpan.className = "fw-bold";
+                totalPriceSpan.innerText = "Total Price: ";
+                let totalPriceTextNode = document.createTextNode(`3500 EGP`); // should be handeled dynamically
+                prodTotalPrice.appendChild(totalPriceSpan);
+                prodTotalPrice.appendChild(totalPriceTextNode);
+
+                // product payment method : contains span and text node
+                let prodPayMthod = document.createElement('li');
+                prodPayMthod.className = "list-group-item";
+                // payment method span
+                let payMethodSpan = document.createElement('span');
+                payMethodSpan.className = "fw-bold";
+                payMethodSpan.innerText = "Payment Method: ";
+                let payMethodTextNode = document.createTextNode('Card'); // should be handeled dynamically
+                prodPayMthod.appendChild(payMethodSpan);
+                prodPayMthod.appendChild(payMethodTextNode);
+
+                // product quantity : contains span and text node
+                let prodQuantity = document.createElement('li');
+                prodQuantity.className = "list-group-item";
+                // product quantity span
+                let quantitySpan = document.createElement('span');
+                quantitySpan.className = "fw-bold";
+                quantitySpan.innerText = "Quantity: ";
+                let quantityTextNode = document.createTextNode(product.quantaty);
+                prodQuantity.appendChild(quantitySpan);
+                prodQuantity.appendChild(quantityTextNode);
+    /************************************************************************************************/
+                // product status : pending , approved , canceled 
+                let prodStatus = document.createElement('li');
+                prodStatus.className = "list-group-item";
+                // product status span
+                let statusSpan = document.createElement('span');
+                statusSpan.className = "fw-bold";
+                statusSpan.innerText = "Status: ";
+                let statusDiv = document.createElement('div');
+
+                if(product.PendingStatus == 0)
+                {
+                    statusDiv.className = "text-primary p-2 rounded-3 text-center badge text-decoration-none";
+                    statusDiv.innerText = "  New";
+
+                    prodStatus.appendChild(statusSpan);
+                    prodStatus.appendChild(statusDiv);
+
+                    let cardInfoHr = document.createElement('hr');
+
+                    let cardInfoH6 = document.createElement('h6');
+                    cardInfoH6.className = "fw-bold text-center";
+                    cardInfoH6.innerText = "Confirming";
+                    cardInfoList.appendChild(prodTotalPrice);
+                    cardInfoList.appendChild(prodPayMthod);
+                    cardInfoList.appendChild(prodQuantity);
+                    cardInfoList.appendChild(prodStatus);
+
+                    cardInfo.appendChild(cardInfoList);
+                    cardInfo.appendChild(cardInfoHr);
+                    cardInfo.appendChild(cardInfoH6);
+
+                    /********************************************************************/
+                    // approve and cancel btns container
+                    /********************************************************************/
+                    let approveAndCancelBtnsDiv = document.createElement('div');
+                    approveAndCancelBtnsDiv.className = "d-flex justify-content-between mt-3";
+
+                    let approveBtn = document.createElement('button');
+                    approveBtn.className = "btn btn-success d-flex gap-1 btn-color approve";
+                    approveBtn.id = `user_${user.id}_cat_${product.cat_id}_prod_${product.product_id}_1`;
+                    let approveIcon = document.createElement('i');
+                    approveIcon.className = "bi bi-check-lg";
+                    let approveTextNode = document.createTextNode("Approve");
+                    approveBtn.appendChild(approveIcon);
+                    approveBtn.appendChild(approveTextNode);
+
+
+                    let cancelBtn = document.createElement('button');
+                    cancelBtn.className = "btn btn-danger d-flex gap-1 cancel";
+                    cancelBtn.id = `user_${user.id}_cat_${product.cat_id}_prod_${product.product_id}_2`;
+                    let cancelIcon = document.createElement('i');
+                    cancelIcon.className = "bi bi-x-lg ";
+                    let cancelTextNode = document.createTextNode("Cancel");
+                    cancelBtn.appendChild(cancelIcon);
+                    cancelBtn.appendChild(cancelTextNode);
+
+                    approveAndCancelBtnsDiv.appendChild(approveBtn);
+                    approveAndCancelBtnsDiv.appendChild(cancelBtn);
+
+                    cardInnerContainer.appendChild(cardheader);
+                    cardInnerContainer.appendChild(cardInfo);
+                    cardInnerContainer.appendChild(approveAndCancelBtnsDiv);
+                }
+                else 
+                {
+                    if(product.PendingStatus == 1)
+                    {
+                        statusDiv.className = "text-success p-2 rounded-3 text-center badge";
+                        statusDiv.innerText = "  Approved";
+                    }
+                    else if(product.PendingStatus == -1)
+                    {
+                        statusDiv.className = "text-danger p-2 rounded-3 text-center badge";
+                        statusDiv.innerText = "  Canceled";
+                    }
+
+                    prodStatus.appendChild(statusSpan);
+                    prodStatus.appendChild(statusDiv);
+
+                    let cardInfoHr = document.createElement('hr');
+
+                    let cardInfoH6 = document.createElement('h6');
+                    cardInfoH6.className = "fw-bold text-center";
+                    cardInfoH6.innerText = "Confirming";
+                    cardInfoList.appendChild(prodTotalPrice);
+                    cardInfoList.appendChild(prodPayMthod);
+                    cardInfoList.appendChild(prodQuantity);
+                    cardInfoList.appendChild(prodStatus);
+
+                    cardInfo.appendChild(cardInfoList);
+                    cardInfo.appendChild(cardInfoHr);
+                    cardInfo.appendChild(cardInfoH6);
+
+                    cardInnerContainer.appendChild(cardheader);
+                    cardInnerContainer.appendChild(cardInfo);
+                }
+                
+                myCardContainer.appendChild(cardInnerContainer);
+                allCardContainer.appendChild(myCardContainer);
+        })
+    })
 }
 
 // add events to tab btns (all , new , approved , canceled)
 addEventsToTabBtns();
 
 // initial display : dispaly all products
-createProductsInHtml(usersTemp);
+if(window.innerWidth >= 992)
+    createProductsInHtmlLargeWidthScreen();
+else
+    createProductsInHtmlSmallWidthScreen();
 
 // add events to both approve and cancel btns 
 addEventsToApproveAndCancelBtns();
-
-
-
-
-
-
-
-
-
