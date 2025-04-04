@@ -5,9 +5,15 @@
         "name":"",
         "password": "",
         "email": "",
+        "phone":"",
+        "address":{
+            "country":"",
+            "city":""
+        },
         "wishlist":[] , 
         "shoppingCart":[{
             "product_id": 0,
+            "cat_id":0,
             "quantaty": 0,
             "isPending": 0
         }],
