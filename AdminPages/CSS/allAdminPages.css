@@ -54,16 +54,10 @@ aside,
 }
 
 .Arrow-color:hover {
-    transform: translate(20px);
-    -webkit-transform: translate(20px);
-    -moz-transform: translate(20px);
-    -ms-transform: translate(20px);
-    -o-transform: translate(20px);
-    transition: transform 0.3s ease-in-out;
-    -webkit-transition: transform 0.3s ease-in-out;
-    -moz-transition: transform 0.3s ease-in-out;
-    -ms-transition: transform 0.3s ease-in-out;
-    -o-transition: transform 0.3s ease-in-out;
+    .Arrow-color:hover {
+        transform: translateX(20px);
+        transition: all 0.3s ease-in-out;
+    }
 }
 
 .bar-tran {
@@ -201,4 +195,18 @@ ul li .list-links-active {
     .profile-camera-icon {
         bottom: 3%;
     }
+}
+
+/* Admin-add-product  Text Area input */
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
 }

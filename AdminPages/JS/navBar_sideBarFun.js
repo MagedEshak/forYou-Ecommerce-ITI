@@ -131,10 +131,3 @@ CancelBtn.addEventListener("click", function () {
         
     } 
 });
-
-  function redirectToAddProduct() {
-            window.location.href = "admin-add-product.html";
-}
-     function redirectToDashboard() {
-            window.location.href = "admin-home.html";
-}     
