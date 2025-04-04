@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore();
+const db = getFirestore(app);
 
 // 🚀 Add a new document to any collection
 export async function addDocument(collectionName, data) {
@@ -118,3 +118,73 @@ export async function deleteAllDocuments(collectionName) {
 //     "cat_name": "TV"
 // }
 // addDocument("category", cat)
+
+
+
+////////////////////////////////
+//
+//          adding a new product
+//
+////////////////////////////////
+
+
+// // Function to add a new product
+export async function addProductToFire(productData) {
+  return await addDocument("products", productData);
+}
+
+// // Function to get all product 
+export async function getAllProductsToFire()
+{
+  return await getAllDocuments("products");
+}
+
+
+// // Function to get a product by ID
+export async function getProductByIdFromFire(productId) {
+  try {
+      const docRef = doc(db, "products", productId);
+      const docSnap = await getDoc(docRef);
+
+      if (!docSnap.exists()) {
+          console.log("No product found with this ID.");
+          return null;
+      }
+
+      const productData = { id: docSnap.id, ...docSnap.data() };
+      console.log("Fetched product:", productData);
+      return productData;
+  } catch (error) {
+      console.error("Error fetching product:", error);
+      return null;
+  }
+}
+
+
+// // Function to update a product by ID
+export async function updateProductTofire(productId, updatedData) {
+  try {
+      const docRef = doc(db, "products", productId);
+      await updateDoc(docRef, updatedData);
+      console.log("Product updated successfully.");
+     
+  }
+  catch (error) {
+      console.error("Error updating product:", error);
+      return false;
+  }
+}
+
+/// // Function to delete a product by ID
+export async function deleteProductFromFire(productId) {
+  try {
+      const docRef = doc(db, "products", productId);
+      await deleteDoc(docRef);
+      console.log("Product deleted successfully.");
+      return true;
+  }
+  catch (error) {
+      console.error("Error deleting product:", error);
+      return false;
+  }
+}
