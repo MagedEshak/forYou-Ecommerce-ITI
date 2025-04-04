@@ -1,101 +1,36 @@
+import { addDocument,deleteAllDocuments,getDocumentByField,getAllDocuments ,updateDocumentByField} from "../../js/main.js";
+
+let usersTemp = [];
+let productsTemp = [];
+
+async function getAllUsersFromFireBase() {
+    usersTemp = await getAllDocuments("aliUsers");
+}
+async function getAllProductsFromFireBase() {
+    productsTemp = await getAllDocuments("aliProducts");
+}
 
 
-let usersTemp = [
-    {
-        "isAdmin": false,
-        "id": 1,
-        "name":"Ali",
-        "password": "123",
-        "email": "ali@gmail.com",
-        "wishlist":[] , 
-        "shoppingCart":[{
-            "cat_id": 1,
-            "product_id": 1,
-            "quantaty": 2,
-            "PendingStatus": 0
-        }],
-        "lastOrders":[],
-        "retunOdrs": false
-    },
-    {
-        "isAdmin": false,
-        "id": 2,
-        "name":"Maged",
-        "password": "123",
-        "email": "ali@gmail.com",
-        "wishlist":[] , 
-        "shoppingCart":[
-            {
-            "cat_id": 1,
-            "product_id": 2,
-            "quantaty": 4,
-            "PendingStatus": 1
-            },
-            {
-                "cat_id": 1,
-                "product_id": 3,
-                "quantaty": 1,
-                "PendingStatus": 0
-            },
-            {
-                "cat_id": 1,
-                "product_id": 1,
-                "quantaty": 2,
-                "PendingStatus": -1
-            }
-        ],
-        "lastOrders":[],
-        "retunOdrs": false
-    },
-    {
-        "isAdmin": false,
-        "id": 3,
-        "name":"Sayed",
-        "password": "123",
-        "email": "ali@gmail.com",
-        "wishlist":[] , 
-        "shoppingCart":[{
-            "cat_id": 4,
-            "product_id": 10,
-            "quantaty": 5,
-            "PendingStatus": 1
-        }],
-        "lastOrders":[],
-        "retunOdrs": false
-    },
-    {
-        "isAdmin": false,
-        "id": 4,
-        "name":"Wesam",
-        "password": "123",
-        "email": "ali@gmail.com",
-        "wishlist":[] , 
-        "shoppingCart":[{
-            "cat_id": 8,
-            "product_id": 115,
-            "quantaty": 10,
-            "PendingStatus": 0
-        }],
-        "lastOrders":[],
-        "retunOdrs": false
-    },
-    {
-        "isAdmin": false,
-        "id": 5,
-        "name":"Samuel",
-        "password": "123",
-        "email": "ali@gmail.com",
-        "wishlist":[] , 
-        "shoppingCart":[{
-            "cat_id": 1,
-            "product_id": 5,
-            "quantaty": 1,
-            "PendingStatus": -1
-        }],
-        "lastOrders":[],
-        "retunOdrs": false
-    }
-]
+// this function get product price by product id
+function getProductPriceByProdId(products,id){
+    let myProd =  products.find( (product) => product.id == id )
+
+    return myProd?.price - (myProd?.discount/100)*myProd?.price;
+}
+
+// this function get user pay method  by user id
+function getPayMethodByUserId(users,id){
+    let myUser =  users.find( (user) => user.id == id )
+
+    return myUser.payMethod;
+}
+
+// added users to fire base
+
+
+// extract users from fire base
+
+
 
 // we assume that in database , there are users with their shopping carts
 
@@ -116,7 +51,6 @@ function addEventsToTabBtns(){
     })
 
     newProducts.addEventListener('click' , (e)=>{
-        debugger;
         addActiveClassToCurrentBtn(btnsArray, e.target);
         displayProductsByStatus(0);
     })
@@ -143,38 +77,43 @@ function addActiveClassToCurrentBtn(btns , currentBtn){
 
 // this function displays all oreders of all users
 // takes users as a parameter
-function createProductsInHtmlLargeWidthScreen(){
+async function createProductsInHtmlLargeWidthScreen(){
+    await getAllUsersFromFireBase();
+    await getAllProductsFromFireBase();
     // this is table body where we will put our products information
+
     let myTbodyContainer = document.getElementById('tbody_productsInfo_id');
 
     // the shopCart item contains , user id , and shopCart object contains
     //  products(id, catID , quantity , status) added to cart
      usersTemp.forEach((user) => {
-
-        user.shoppingCart.forEach((shopCartProduct) => {
+        
+        user.shoppingCart.forEach((product) => {
             // this is the row that contains our order info
             let tableRow = document.createElement('tr');
-            tableRow.id = `row_${user.id}_${shopCartProduct.cat_id}_${shopCartProduct.product_id}`;
+            tableRow.id = `row_${user.id}_${product.cat_id}_${product.product_id}`;
 
             // first cell in the row : product id
             let productId = document.createElement('th');
-            productId.innerText = shopCartProduct.product_id ;
+            productId.innerText = product.product_id ;
 
             // second cell in the row : user name 
             let userName = document.createElement('td');
             userName.innerText = user.name ;
 
             // third cell in the row : product price
+            let prodPrice = getProductPriceByProdId(productsTemp , product.product_id);
             let productPrice = document.createElement('td');
-            productPrice.innerText = shopCartProduct.quantaty * 4500; // this should be handeled dynamically
+            productPrice.innerText = product.quantaty * prodPrice; 
 
             // fourth cell in the row : pay method
+            let payMethodString = getPayMethodByUserId(usersTemp , user.id);
             let payMethod = document.createElement('td');
-            payMethod.innerText = "PayPal";  // this should be handeled dynamically
+            payMethod.innerText = payMethodString;  // this should be handeled dynamically
 
             // fifth cell in the row : product quantity
             let productQuantitiy = document.createElement('td');
-            productQuantitiy.innerText = shopCartProduct.quantaty;
+            productQuantitiy.innerText = product.quantaty;
 
             // sixth cell in the row : product status (pending = 0 , canceled = -1 , approved = 1)
             let productStatusTD = document.createElement('td');
@@ -182,7 +121,7 @@ function createProductsInHtmlLargeWidthScreen(){
             let productStatusDiv = document.createElement('div');
 
             let cancelApproveBtnsTD =  document.createElement('td'); // table cell contains the div that contains the two btns
-            if(shopCartProduct.PendingStatus == 0)
+            if(product.PendingStatus == 0)
             {
                 productStatusDiv.className = "text-primary p-2 rounded-3 text-center badge text-decoration-none";
                 productStatusDiv.innerText = "New";
@@ -194,7 +133,7 @@ function createProductsInHtmlLargeWidthScreen(){
                 // approve btn , contains icon and approve word
                 let approveBtn = document.createElement('button'); 
                 approveBtn.className = "btn btn-success d-flex gap-1 btn-color approve";
-                approveBtn.id = `user_${user.id}_cat_${shopCartProduct.cat_id}_prod_${shopCartProduct.product_id}_1`;
+                approveBtn.id = `user_${user.id}_cat_${product.cat_id}_prod_${product.product_id}_1`;
 
                 let approveIcon = document.createElement('i');
                 approveIcon.className = "bi bi-check-lg";
@@ -205,9 +144,9 @@ function createProductsInHtmlLargeWidthScreen(){
                 approveBtn.appendChild(approveText);
 
                 // cancel btn , contains icon and cancel word
-                cancelBtn = document.createElement('button'); // cancel btn , contains icon and cancel word
+                let cancelBtn = document.createElement('button'); // cancel btn , contains icon and cancel word
                 cancelBtn.className = "btn btn-danger d-flex gap-1 cancel";
-                cancelBtn.id = `user_${user.id}_cat_${shopCartProduct.cat_id}_prod_${shopCartProduct.product_id}_2`;
+                cancelBtn.id = `user_${user.id}_cat_${product.cat_id}_prod_${product.product_id}_2`;
 
 
                 let cancelIcon = document.createElement('i');
@@ -224,13 +163,13 @@ function createProductsInHtmlLargeWidthScreen(){
                 cancelApproveBtnsTD.appendChild(cancelApproveBtnsDiv);// append the div that contains the two btns
 
             }
-            else if(shopCartProduct.PendingStatus == 1)
+            else if(product.PendingStatus == 1)
             {
                 productStatusDiv.className = "text-success p-2 rounded-3 text-center badge";
                 productStatusDiv.innerText = "Approved";
                 productStatusTD.appendChild(productStatusDiv);
             }
-            else if(shopCartProduct.PendingStatus == -1)
+            else if(product.PendingStatus == -1)
             {
                 productStatusDiv.className = "text-danger   p-2 rounded-3 text-center badge";
                 productStatusDiv.innerText = "Declined";
@@ -244,7 +183,7 @@ function createProductsInHtmlLargeWidthScreen(){
             tableRow.appendChild(productQuantitiy);
             tableRow.appendChild(productStatusTD);
             tableRow.appendChild(cancelApproveBtnsTD);
-            
+        
             myTbodyContainer.appendChild(tableRow);
 
         })
@@ -298,9 +237,9 @@ function addEventsToApproveAndCancelBtns(){
 function approveAndCancelBtnAction(state , btn){
     // the button has id that consists of : userID , catID , prodID
     let btnId = btn.id.split('_');
-    userId =  btnId[1];
-    catId = btnId[3];
-    prodId = btnId[5];
+    let userId =  btnId[1];
+    let catId = btnId[3];
+    let prodId = btnId[5];
 
     // when the button clicked we update the product status depending on the btn clicked
     // we update specific prod in specific category in specific user
@@ -331,7 +270,7 @@ function updateOrderStatus(userId , catId , prodID , status){
     myProduct.PendingStatus = status;
 
     // we update the row that contains this product
-    myRow = document.getElementById(`row_${userId}_${catId}_${prodID}`);
+    let myRow = document.getElementById(`row_${userId}_${catId}_${prodID}`);
 
     // handeleing in case of large screen
     if(window.innerWidth >= 992)
@@ -357,7 +296,7 @@ function updateOrderStatus(userId , catId , prodID , status){
         myRow.lastElementChild.removeChild(myRow.lastElementChild.lastElementChild);
 
         // i want to change my status , i have to retreive the div that continas this value first
-        myStatusDiv = document.querySelector(`#row_${userId}_${catId}_${prodID} > div 
+        let myStatusDiv = document.querySelector(`#row_${userId}_${catId}_${prodID} > div 
             > div > ul > li > div`)
         
         if(status == 1)
@@ -376,12 +315,13 @@ function updateOrderStatus(userId , catId , prodID , status){
 }
 
 // this function to creat products in html in small width screens
-function createProductsInHtmlSmallWidthScreen(){
+async function createProductsInHtmlSmallWidthScreen(){
+    await getAllUsersFromFireBase();
+    await getAllProductsFromFireBase();
     // this is the div that contains all cards
     let allCardContainer = document.getElementById('cardsContainer_id');
 
     usersTemp.forEach( user => {
-        debugger;
         user.shoppingCart.forEach( product => {
             // this is our card container
             let myCardContainer = document.createElement('div');
@@ -424,18 +364,20 @@ function createProductsInHtmlSmallWidthScreen(){
                 let totalPriceSpan = document.createElement('span');
                 totalPriceSpan.className = "fw-bold";
                 totalPriceSpan.innerText = "Total Price: ";
-                let totalPriceTextNode = document.createTextNode(`3500 EGP`); // should be handeled dynamically
+                let prodPrice = getProductPriceByProdId(productsTemp , product.product_id);
+                let totalPriceTextNode = document.createTextNode(`${prodPrice*product.quantaty} EGP`); 
                 prodTotalPrice.appendChild(totalPriceSpan);
                 prodTotalPrice.appendChild(totalPriceTextNode);
 
                 // product payment method : contains span and text node
+                let payMethodString = getPayMethodByUserId(usersTemp , user.id);
                 let prodPayMthod = document.createElement('li');
                 prodPayMthod.className = "list-group-item";
                 // payment method span
                 let payMethodSpan = document.createElement('span');
                 payMethodSpan.className = "fw-bold";
                 payMethodSpan.innerText = "Payment Method: ";
-                let payMethodTextNode = document.createTextNode('Card'); // should be handeled dynamically
+                let payMethodTextNode = document.createTextNode(payMethodString);
                 prodPayMthod.appendChild(payMethodSpan);
                 prodPayMthod.appendChild(payMethodTextNode);
 
@@ -553,14 +495,32 @@ function createProductsInHtmlSmallWidthScreen(){
     })
 }
 
+
+// function to update users in fireBase
+async function updateUsersProductStatus(users) {
+    for(let user of users){
+        await updateDocumentByField("aliUsers" , "id" , user.id , user );
+    }
+}
+// this button to save changes to fire base
+document.getElementById('saveToFireBase_id').addEventListener('click' , ()=>{
+    updateUsersProductStatus(usersTemp);
+})
+
+
+
 // add events to tab btns (all , new , approved , canceled)
 addEventsToTabBtns();
+initializeThePage();
 
-// initial display : dispaly all products
-if(window.innerWidth >= 992)
-    createProductsInHtmlLargeWidthScreen();
-else
-    createProductsInHtmlSmallWidthScreen();
+async function initializeThePage(){
+    // initial display : dispaly all products
 
-// add events to both approve and cancel btns 
-addEventsToApproveAndCancelBtns();
+    if(window.innerWidth >= 992)
+        await createProductsInHtmlLargeWidthScreen();
+    else
+        await createProductsInHtmlSmallWidthScreen();
+
+    // add events to both approve and cancel btns 
+    addEventsToApproveAndCancelBtns();
+}
