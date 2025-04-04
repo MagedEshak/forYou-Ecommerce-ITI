@@ -1,38 +1,31 @@
-import { addDocument,deleteAllDocuments,getDocumentByField,getAllDocuments ,updateDocumentByField} from "../../js/main.js";
+import { addDocument,getProductById,updateProduct,updateUser,getAllDocuments ,updateDocumentByField} from "../../js/main.js";
 
 let usersTemp = [];
 let productsTemp = [];
 
+// function to get all users from fire base
 async function getAllUsersFromFireBase() {
     usersTemp = await getAllDocuments("aliUsers");
 }
+
+// function to get all products from fire base
 async function getAllProductsFromFireBase() {
     productsTemp = await getAllDocuments("aliProducts");
 }
 
-
-// this function get product price by product id
-function getProductPriceByProdId(products,id){
+// this function get product price by product id , take products  and prod id , returns the product
+function getProductPriceByProdId(products,id){  
     let myProd =  products.find( (product) => product.id == id )
 
-    return myProd?.price - (myProd?.discount/100)*myProd?.price;
+    return myProd?.price - (myProd?.discount/100)*myProd?.price;// returen price after discount
 }
 
-// this function get user pay method  by user id
+// this function get user pay method  by user id, take users  and user id , returns the user
 function getPayMethodByUserId(users,id){
     let myUser =  users.find( (user) => user.id == id )
 
     return myUser.payMethod;
 }
-
-// added users to fire base
-
-
-// extract users from fire base
-
-
-
-// we assume that in database , there are users with their shopping carts
 
 // adding events to tab btns (all , new , approved , canceled)
 function addEventsToTabBtns(){
@@ -75,8 +68,7 @@ function addActiveClassToCurrentBtn(btns , currentBtn){
     currentBtn.classList.add('active');
 }
 
-// this function displays all oreders of all users
-// takes users as a parameter
+// this function to creat products in html in large width screens
 async function createProductsInHtmlLargeWidthScreen(){
     await getAllUsersFromFireBase();
     await getAllProductsFromFireBase();
@@ -93,9 +85,9 @@ async function createProductsInHtmlLargeWidthScreen(){
             let tableRow = document.createElement('tr');
             tableRow.id = `row_${user.id}_${product.cat_id}_${product.product_id}`;
 
-            // first cell in the row : product id
+            // first cell in the row : user id
             let productId = document.createElement('th');
-            productId.innerText = product.product_id ;
+            productId.innerText = user.id ;
 
             // second cell in the row : user name 
             let userName = document.createElement('td');
@@ -190,128 +182,6 @@ async function createProductsInHtmlLargeWidthScreen(){
 
     })
 
-}
-
-// this function displays products depending on status
-// if status = 1      => displays approved  orders
-// if status = 0      => displays pending   orders
-// if status = -1     => displays canceled  orders
-// if status = none   => displays All   orders
-function displayProductsByStatus(status){
-    usersTemp.forEach( user => {
-        user.shoppingCart.forEach( product => {
-            let productRow = document.getElementById(`row_${user.id}_${product.cat_id}_${product.product_id}`);
-            if(product.PendingStatus == status || status == undefined)
-                productRow.classList.remove('d-none');
-            else
-                productRow.classList.add('d-none');
-        })
-    })
-}
-
-// this function is to add events to both approve and cancel btns
-function addEventsToApproveAndCancelBtns(){
-    // we get all approve btns
-    let approveBtns = document.querySelectorAll('.approve');
-    // we get all cancel btns
-    let cancelBtns = document.querySelectorAll('.cancel');
-
-    // adding the events here to approve btns
-    approveBtns.forEach( approveBtn => {
-        approveBtn.addEventListener('click' , (e) => {
-            approveAndCancelBtnAction( 1 , e.target);
-        })
-    })
-
-    // adding the events here to cancel btns
-    cancelBtns.forEach( cancelBtn => {
-        cancelBtn.addEventListener('click' , (e) => {
-            approveAndCancelBtnAction( -1 , e.target);
-        })
-    })
-}
-
-// this function is called when the approve or cancel btns clicked
-// it takes state : it is 1 if approved , and -1 if canceled
-// it takes the btn clicked
-function approveAndCancelBtnAction(state , btn){
-    // the button has id that consists of : userID , catID , prodID
-    let btnId = btn.id.split('_');
-    let userId =  btnId[1];
-    let catId = btnId[3];
-    let prodId = btnId[5];
-
-    // when the button clicked we update the product status depending on the btn clicked
-    // we update specific prod in specific category in specific user
-    updateOrderStatus(userId , catId, prodId , state);
-
-    // here i get the current tab that we are on (all , new , approved , canceled)
-    let currentTab =  document.querySelector('.active').innerHTML;
-    
-    // depending on our tab , i refresh the table to be displayed with latest update
-    if(currentTab == "New")
-        displayProductsByStatus(0); // in case of we are in new tab
-    else if(currentTab == "Approved")
-        displayProductsByStatus(1); // in case of we are in approved tab
-    else if(currentTab == "Canceled")
-        displayProductsByStatus(-1); // in case of we are in canceled tab 
-    else
-        displayProductsByStatus(); // in case of we are in all tab
-}
-
-// function to update the product status (approve / cancel)
-function updateOrderStatus(userId , catId , prodID , status){
-    // finding the user with his id
-    let myUser =  usersTemp.find( user => user.id == userId );
-    // then finding the product in his shopping cart
-    let myProduct = myUser.shoppingCart.find( product =>
-                    (product.cat_id == catId) && (product.product_id == prodID) );
-    // then we update the product status
-    myProduct.PendingStatus = status;
-
-    // we update the row that contains this product
-    let myRow = document.getElementById(`row_${userId}_${catId}_${prodID}`);
-
-    // handeleing in case of large screen
-    if(window.innerWidth >= 992)
-        {
-            myRow.removeChild(myRow.lastElementChild); // we removed approve and cancel btns from the row
-            // in case of status approved = 1
-            if(status == 1)
-            {
-                // we change the status to approved
-                myRow.lastElementChild.lastElementChild.innerHTML = "Approved";
-                myRow.lastElementChild.lastElementChild.className = "text-success p-2 rounded-3 text-center badge";    
-            }
-            // in case of status canceled = -1
-            else if(status == -1){
-                // we change the status to canceled
-                myRow.lastElementChild.lastElementChild.innerHTML = "Canceled";
-                myRow.lastElementChild.lastElementChild.className = "text-danger   p-2 rounded-3 text-center badge";    
-            }
-        }  
-    // handeleing in case of small screen
-    else
-    {
-        myRow.lastElementChild.removeChild(myRow.lastElementChild.lastElementChild);
-
-        // i want to change my status , i have to retreive the div that continas this value first
-        let myStatusDiv = document.querySelector(`#row_${userId}_${catId}_${prodID} > div 
-            > div > ul > li > div`)
-        
-        if(status == 1)
-        {
-            // we change the status to approved
-            myStatusDiv.innerHTML = "Approved";
-            myStatusDiv.className = "text-success p-2 rounded-3 text-center badge";    
-        }
-        // in case of status canceled = -1
-        else if(status == -1){
-            // we change the status to canceled
-            myStatusDiv.innerHTML = "Canceled";
-            myStatusDiv.className = "text-danger p-2 rounded-3 text-center badge";    
-        }
-    }
 }
 
 // this function to creat products in html in small width screens
@@ -495,27 +365,149 @@ async function createProductsInHtmlSmallWidthScreen(){
     })
 }
 
+// this function displays products depending on status
+// if status = 1      => displays approved  orders
+// if status = 0      => displays pending   orders
+// if status = -1     => displays canceled  orders
+// if status = none   => displays All   orders
+function displayProductsByStatus(status){
+    usersTemp.forEach( user => {
+        user.shoppingCart.forEach( product => {
+            let productRow = document.getElementById(`row_${user.id}_${product.cat_id}_${product.product_id}`);
+            if(product.PendingStatus == status || status == undefined)
+                productRow.classList.remove('d-none');
+            else
+                productRow.classList.add('d-none');
+        })
+    })
+}
+
+// this function is to add events to both approve and cancel btns
+function addEventsToApproveAndCancelBtns(){
+    // we get all approve btns
+    let approveBtns = document.querySelectorAll('.approve');
+    // we get all cancel btns
+    let cancelBtns = document.querySelectorAll('.cancel');
+
+    // adding the events here to approve btns
+    approveBtns.forEach( approveBtn => {
+        approveBtn.addEventListener('click' , (e) => {
+            approveAndCancelBtnAction( 1 , e.target);
+        })
+    })
+
+    // adding the events here to cancel btns
+    cancelBtns.forEach( cancelBtn => {
+        cancelBtn.addEventListener('click' , (e) => {
+            approveAndCancelBtnAction( -1 , e.target);
+        })
+    })
+}
+
+// this function is called when the approve or cancel btns clicked
+// it takes state : it is 1 if approved , and -1 if canceled
+// it takes the btn clicked
+function approveAndCancelBtnAction(state , btn){
+    // the button has id that consists of : userID , catID , prodID
+    let btnId = btn.id.split('_');
+    let userId =  btnId[1];
+    let catId = btnId[3];
+    let prodId = btnId[5];
+
+    // when the button clicked we update the product status depending on the btn clicked
+    // we update specific prod in specific category in specific user
+    updateOrderStatus(userId , catId, prodId , state);
+
+    // here i get the current tab that we are on (all , new , approved , canceled)
+    let currentTab =  document.querySelector('.active').innerHTML;
+    
+    // depending on our tab , i refresh the table to be displayed with latest update
+    if(currentTab == "New")
+        displayProductsByStatus(0); // in case of we are in new tab
+    else if(currentTab == "Approved")
+        displayProductsByStatus(1); // in case of we are in approved tab
+    else if(currentTab == "Canceled")
+        displayProductsByStatus(-1); // in case of we are in canceled tab 
+    else
+        displayProductsByStatus(); // in case of we are in all tab
+}
+
+// function to update the product status (approve / cancel)
+function updateOrderStatus(userId , catId , prodID , status){
+    debugger;
+    // finding the user with his id
+    let myUser =  usersTemp.find( user => user.id == userId );
+    // then finding the product in his shopping cart
+    let myProduct = myUser.shoppingCart.find( product =>
+                    (product.cat_id == catId) && (product.product_id == prodID) );
+    // then we update the product status
+    myProduct.PendingStatus = status;
+
+    // we update the row that contains this product
+    let myRow = document.getElementById(`row_${userId}_${catId}_${prodID}`);
+
+    // handeleing in case of large screen
+    if(window.innerWidth >= 992)
+        {
+            myRow.removeChild(myRow.lastElementChild); // we removed approve and cancel btns from the row
+            // in case of status approved = 1
+            if(status == 1)
+            {
+                // we change the status to approved
+                myRow.lastElementChild.lastElementChild.innerHTML = "Approved";
+                myRow.lastElementChild.lastElementChild.className = "text-success p-2 rounded-3 text-center badge";    
+            }
+            // in case of status canceled = -1
+            else if(status == -1){
+                // we change the status to canceled
+                myRow.lastElementChild.lastElementChild.innerHTML = "Canceled";
+                myRow.lastElementChild.lastElementChild.className = "text-danger   p-2 rounded-3 text-center badge";    
+            }
+        }  
+    // handeleing in case of small screen
+    else
+    {
+        myRow.lastElementChild.removeChild(myRow.lastElementChild.lastElementChild);
+
+        // i want to change my status , i have to retreive the div that continas this value first
+        let myStatusDiv = document.querySelector(`#row_${userId}_${catId}_${prodID} > div 
+            > div > ul > li > div`)
+        
+        if(status == 1)
+        {
+            // we change the status to approved
+            myStatusDiv.innerHTML = "Approved";
+            myStatusDiv.className = "text-success p-2 rounded-3 text-center badge";    
+        }
+        // in case of status canceled = -1
+        else if(status == -1){
+            // we change the status to canceled
+            myStatusDiv.innerHTML = "Canceled";
+            myStatusDiv.className = "text-danger p-2 rounded-3 text-center badge";    
+        }
+    }
+}
 
 // function to update users in fireBase
 async function updateUsersProductStatus(users) {
     for(let user of users){
-        await updateDocumentByField("aliUsers" , "id" , user.id , user );
+        await updateUser(user.id , user );
     }
 }
+
 // this button to save changes to fire base
 document.getElementById('saveToFireBase_id').addEventListener('click' , ()=>{
-    updateUsersProductStatus(usersTemp);
+    let confirmAction = window.confirm("Are you sure you want to save changes ?");
+    if(confirmAction)
+        updateUsersProductStatus(usersTemp);
 })
 
-
-
-// add events to tab btns (all , new , approved , canceled)
-addEventsToTabBtns();
-initializeThePage();
-
+// function to initialize our page with the content
 async function initializeThePage(){
-    // initial display : dispaly all products
+    // tab btns are already exists in html
+    addEventsToTabBtns();
 
+    // initial display : dispaly all products
     if(window.innerWidth >= 992)
         await createProductsInHtmlLargeWidthScreen();
     else
@@ -524,3 +516,6 @@ async function initializeThePage(){
     // add events to both approve and cancel btns 
     addEventsToApproveAndCancelBtns();
 }
+
+
+initializeThePage();
