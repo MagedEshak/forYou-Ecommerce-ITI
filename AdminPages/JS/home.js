@@ -1,81 +1,98 @@
 
-     
-document.addEventListener("DOMContentLoaded", function () {
-    fetchProducts();
-});
+import { db } from "./main.js";
+import { collection, getDocs ,deleteDoc,doc} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
-function fetchProducts() {
-    fetch("https://fakestoreapi.com/products")
-        .then((response) => response.json())
-        .then((products) => {
-            displayProducts(products);
-            updateProductSummary(products);
 
-        })
-        .catch((error) => console.error("Error fetching products:", error));
+// Function to fetch products from Firestore
+async function fetchProducts() {
+    const productsCollection = document.getElementById("productsTable");
+    productsCollection.innerHTML = ""; // Clear previous content
+ 
+    try{
+        const querySnapshot = await getDocs(collection(db, "products"));
+        querySnapshot.forEach((doc) => {
+            const product = doc.data();
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${doc.id}</td>
+                <td>${product.name}</td>
+                <td><img src="${product.imageUrl}" width="50" height="50"></td>
+                
+                <td>${product.category_id}</td>
+                <td>$${product.price}</td>
+                <td>${product.quantity}</td>
+                <td>${product.discount}</td>
+               <td>
+                  <button class="btn btn-sm btn-danger delete-btn" data-id="${doc.id}">Delete</button>
+
+                </td>
+
+            `;
+            productsCollection.appendChild(row);
+
+        });
+
+         // Attach event listeners to delete buttons
+         document.querySelectorAll(".delete-btn").forEach((button) => {
+            button.addEventListener("click", function () {
+                const id = this.getAttribute("data-id");
+                deleteProduct(id);
+            });
+        });
+
+    } catch (error) {
+        console.error("Error fetching products:", error);
+    }
 }
 
-function displayProducts(products) {
-    let productsTable = document.getElementById("productsTable");
-    productsTable.innerHTML = ""; // تفريغ المحتوى السابق
+async function deleteProduct(productId) {
+    if (!confirm("Are you sure you want to delete this product?")) {
+        return;
+    }
 
-    products.forEach((product) => {
-        let row = document.createElement("tr");
-        row.style.cursor = "pointer"; // تغيير مؤشر الفأرة
-        row.onclick = function () {
-            window.location.href = `admin-product-details.html?id=${product.id}`;
-        };
-
-        row.innerHTML = `
-    <td>${product.id}</td>
-    <td><img src="${product.image}" width="50" height="50"></td>
-    <td>${product.title}</td>
-    <td>${product.category}</td>
-    <td>$${product.price}</td>
-    <td>
-        
-        <button class="btn btn-sm btn-danger" onclick="event.stopPropagation(); deleteProduct(${product.id})"  
-                >Delete</button>
-    </td>
-`;
-
-        productsTable.appendChild(row);
-    });
+    try {
+        await deleteDoc(doc(db, "products", productId));
+        alert("Product deleted successfully!");
+        fetchProducts(); // Refresh product list
+    } catch (error) {
+        console.error("Error deleting product:", error);
+        alert("Failed to delete product.");
+    }
 }
+  
 
 
+
+// Function to update product summary
 function updateProductSummary(products) {
     let totalProducts = products.length;
-    let uniqueCategories = new Set(products.map(product => product.category)).size;
+    let uniqueCategories = new Set(products.map((product) => product.category_id)).size;
 
     document.getElementById("totalProducts").innerText = totalProducts;
     document.getElementById("totalCategories").innerText = uniqueCategories;
 }
-// Function to open the edit modal
-function editProduct(id, title, price) {
-    document.getElementById("editProductId").value = id;
-    document.getElementById("editProductName").value = title;
-    document.getElementById("editProductPrice").value = price;
-    let modal = new bootstrap.Modal(document.getElementById("editModal"));
-    modal.show();
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    
+    // Fetch products from Firestore
+    fetchProducts().then(() => updateProductSummary());
+    
+    const addNewProductBtn = document.getElementById("addNewProductBtn_id");
+
+    if (addNewProductBtn) {
+        addNewProductBtn.addEventListener("click", redirectToAddProduct);
+    }
+});
+
+
+// Handle redirects
+
+function redirectToAddProduct() {
+    window.location.href = "admin-add-product.html";
+}
+function redirectToDashboard() {
+    window.location.href = "admin-home.html";
 }
 
-// Function to save changes (Simulated)
-function saveChanges() {
-    let id = document.getElementById("editProductId").value;
-    let newName = document.getElementById("editProductName").value;
-    let newPrice = document.getElementById("editProductPrice").value;
-
-    document.querySelector(`#product-${id} td:nth-child(3)`).innerText = newName;
-    document.querySelector(`#product-${id} td:nth-child(4)`).innerText = `$${newPrice}`;
-
-    alert(`Product ${id} updated successfully!`);
-    let modal = bootstrap.Modal.getInstance(document.getElementById("editModal"));
-    modal.hide();
-}
-
-// Function to delete product
-function deleteProduct(id) {
-    document.getElementById(`product-${id}`).remove();
-    alert(`Product ${id} deleted successfully!`);
-}

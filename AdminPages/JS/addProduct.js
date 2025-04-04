@@ -1,100 +1,34 @@
-// var productName = document.getElementById("productName");
-// var productCategory = document.getElementById("productCategory");
-// var productPrice = document.getElementById("productPrice");
-// var productDiscount = document.getElementById("productDiscount");
-// var productQuantity = document.getElementById("productQuantity");
-// var productDescription = document.getElementById("productDescription");
-
-
-// var products=[];
-// // Check if products already exist in local storage
-// if (localStorage.getItem("products") == null) {
-//     products = []; // Initialize products array if it doesn't exist
-// }
-// else {  
-//     products = JSON.parse(localStorage.getItem("products")); // Parse the existing products from local storage
-// }
-
-
-// function addProduct() {
-
-//     event.preventDefault();
-//     var productImage = document.getElementById("productImage").files[0];
-//     var product ={
-//         name: productName.value,
-//         image: productImage ? productImage.name : "", // Get file name
-//         category: productCategory.value,
-//         price: productPrice.value,
-//         discount: productDiscount.value,
-//         quantity: productQuantity.value,
-//         description: productDescription.value
-//     }
-//     products.unshift(product); // Add product to the beginning of the array
-    
-//     localStorage.setItem("products", JSON.stringify(products)); // Store products in local storage
-    
-//     console.log(product);
-//     alert(product.name + " added successfully");
-//     clearForm(); // Clear the form after submission
-   
-// }
-
-// function clearForm() {
-//     productName.value = "";
-//     productCategory.value = "";
-//     productPrice.value = "";
-//     productDiscount.value = "";
-//     productQuantity.value = "";
-//     productDescription.value = "";
-//     document.getElementById("productImage").value = ""; // Clear file input
-// }
-
-
-
-
-
-
-// to redirect to the add product page
-function redirectToAddProduct() {
-    window.location.href = "admin-add-product.html";
-}
-// to redirect to admin home page
-     function redirectToDashboard() {
-            window.location.href = "admin-home.html";
-}
-
-
+import { db, uploadImage } from "./main.js";
+import { collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
 
 /////////////////////////////////////////////////////////
 //
-//          adding a new product
+//          Adding a new product
 //
 ////////////////////////////////////////////////////////
 
-import { getAllProductsToFire,addProductToFire } from "../../js/main.js";
-import { getProductByIdFromFire } from "../../js/main.js";
-import { updateProductTofire } from "../../js/main.js";
-import { deleteProductFromFire } from "../../js/main.js";
+// Function to load categories into the dropdown
+async function loadCategories() {
+    const categorySelect = document.getElementById("product-category"); // Get the dropdown element
+    categorySelect.innerHTML = '<option value="">Select a category</option>'; // Reset the dropdown
 
+    try {
+        const querySnapshot = await getDocs(collection(db, "category")); // Get categories from Firestore
+        querySnapshot.forEach((doc) => {
+            const category = doc.data();
+            const option = document.createElement("option"); // Create a new option element
+            option.value = doc.id; // Set the value to the category's ID
+            option.textContent = category.cat_name; // Set the option text to the category's name
+            categorySelect.appendChild(option); // Append the option to the dropdown
+        });
+    } catch (error) {
+        console.error("Error loading categories:", error);
+        categorySelect.innerHTML = '<option value="">Error loading categories</option>';
+    }
+}
 
-// const newProduct = {
-//     name: "Smartphone XYZ",
-//     category: "Electronics",
-//     price: 799.99,
-//     stock: 50,
-//     description: "A high-end smartphone with a 64MP camera and OLED display.",
-//     imageUrl: "https://example.com/smartphone.jpg"
-// };
-
-// addProduct(newProduct);
-
-// getAllProducts().then(products => console.log(products));
-
-
-
-
-// Function to Add Product
+// Function to add a new product
 async function addProduct(event) {
     event.preventDefault(); // Prevent form from refreshing the page
 
@@ -103,36 +37,40 @@ async function addProduct(event) {
     const productPrice = document.getElementById("product-price").value;
     const productCategory = document.getElementById("product-category").value;
     const productDescription = document.getElementById("product-description").value;
-    const productImage = document.getElementById("product-image").files[0]; // Get the file input
+    const fileInput = document.getElementById("product-image");
     const productDiscount = document.getElementById("product-discount").value;
     const productQuantity = document.getElementById("product-quantity").value;
-    
 
-    if (!productName || !productPrice || !productCategory||!productDescription ) {
+    if (!productName || !productPrice || !productCategory || !productDescription) {
         alert("Please fill in all required fields!");
         return;
     }
 
+    // Upload image to Firebase Storage
+    const imageUrl = await uploadImage(fileInput); // Ensure this is awaited correctly
+
     try {
-        var  product= {
+        // Create product object
+        const product = {
             name: productName,
             price: parseFloat(productPrice),
-            category: productCategory,
+            category_id: productCategory,
             description: productDescription,
-            imageUrl: productImage ? productImage.name : "", // Store file name
+            imageUrl: imageUrl || "none", // Use default if no image URL
             discount: parseFloat(productDiscount),
             quantity: parseInt(productQuantity),
-           
             createdAt: new Date(),
+            rating: 0,
+            reviews: [],
         };
+
         // Add product to Firestore
-        const docRef = await addProductToFire(product);
-        console.log("Product added successfully!");
-        console.log("Document ID:", docRef.id);
+        const docRef = await addDoc(collection(db, "products"), product);
+        console.log("Product added with ID: ", docRef.id);
 
         alert(`Product added successfully! ID: ${docRef.id}`);
 
-        // Clear form fields after submission
+        // Clear form fields
         document.getElementById("product-form").reset();
     } catch (error) {
         console.error("Error adding product:", error);
@@ -140,6 +78,8 @@ async function addProduct(event) {
     }
 }
 
-
-// Attach event listener to form
-document.getElementById("product-form").addEventListener("submit", addProduct);
+// Attach event listener to form when the DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("product-form").addEventListener("submit", addProduct);
+    loadCategories();
+});
