@@ -128,7 +128,7 @@ for(let product of myProducts){
         /*****************************************************************/
         let productDetailsLink = document.createElement('a');
         productDetailsLink.className = "d-flex flex-column align-items-center justify-content-center";
-        productDetailsLink.href = `CustomersPages/detailes.html?cat_id=${product.cat_id}&product_id=${product.id}`
+        productDetailsLink.href = `../CustomersPages/detailes.html?cat_id=${product.cat_id}&product_id=${product.id}`
         /*****************************************************************/
         // this contains the product image  : must be appended in a
         let productImage = document.createElement('img');
