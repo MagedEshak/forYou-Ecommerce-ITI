@@ -1,6 +1,6 @@
 
 
-import { db ,getDocById} from "./main.js";
+import { db ,getDocById} from "../../js/main.js";
 import { doc, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
 
