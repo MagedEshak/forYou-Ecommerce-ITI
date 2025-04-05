@@ -38,10 +38,10 @@ export async function getAllProducts() {
     }
 }
 
-// Function to get a product by ID
-export async function getProductById(productId) {
+// Function to get a any doc by ID
+export async function getDocById(docName ,Id) {
     try {
-        const docRef = doc(db, "products", productId);
+        const docRef = doc(db, docName, Id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
             console.log("Fetched product: ", docSnap.data());
