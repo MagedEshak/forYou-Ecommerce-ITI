@@ -24,10 +24,6 @@ let addCategory = document.getElementById("addCategory_id"); // This Variable is
 
 // ----------------------------------------------------- Buttons Variables ---------------------------------------------------------------------------------------
 
-let addNewCategoryBtn = document.getElementById("addNewCategoryBtn_id"); // This Variable is search Section that search input for search any thing in admin pages
-
-let CancelBtn = document.getElementById("CancelBtn_id"); // This Variable is search Section that search input for search any thing in admin pages
-
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /**
@@ -104,30 +100,42 @@ searchDiv.addEventListener("click", function () {
  * -- To Show Add new Category Section
  */
 
-addNewCategoryBtn.addEventListener("click", function () {
-    if (addCategory.classList.contains("d-none")) {
-        
-        addCategory.classList.remove("d-none");
+window.onload = () => {
+    
+let addNewCategoryBtn = document.getElementById("addNewCategoryBtn_id"); // This Variable is search Section that search input for search any thing in admin pages
 
-        document.getElementById("viewCategory_id").classList.remove("d-sm-flex");
-        
-        document.getElementById("viewCategory_id").classList.add("d-none"); // To Hide category content
+let CancelBtn = document.getElementById("CancelBtn_id"); // This Variable is search Section that search input for search any thing in admin pages
+    if (addNewCategoryBtn) {
 
-        addCategory.classList.add("d-block");
+        addNewCategoryBtn.addEventListener("click", () => {
+    
+            if (addCategory.classList.contains("d-none")) {
         
-    } 
-});
+                addCategory.classList.remove("d-none");
 
-CancelBtn.addEventListener("click", function () {
-    if (addCategory.classList.contains("d-block")) {
+                document.getElementById("viewCategory_id").classList.remove("d-sm-flex");
         
-        addCategory.classList.remove("d-block");
+                document.getElementById("viewCategory_id").classList.add("d-none"); // To Hide category content
 
-      document.getElementById("viewCategory_id").classList.add("d-sm-flex");
+                addCategory.classList.add("d-block");
         
-        document.getElementById("viewCategory_id").classList.remove("d-none"); // To show category content
+            }
+        });
 
-        addCategory.classList.add("d-none");
+
+         CancelBtn.addEventListener("click", function () {
+        if (addCategory.classList.contains("d-block")) {
         
-    } 
-});
+            addCategory.classList.remove("d-block");
+
+            document.getElementById("viewCategory_id").classList.add("d-sm-flex");
+        
+            document.getElementById("viewCategory_id").classList.remove("d-none"); // To show category content
+
+            addCategory.classList.add("d-none");
+        
+        }
+    });
+    }
+};
+

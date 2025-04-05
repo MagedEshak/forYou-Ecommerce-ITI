@@ -121,9 +121,94 @@ export async function deleteAllDocuments(collectionName) {
 
 
 
-////////////////////////////////
-//
-//          adding a new product
-//
-////////////////////////////////
 
+
+///////////////////////////////
+//
+// CRUD operations for documents by ID
+//
+////////////////////////////
+
+
+
+// Get a document by ID
+export async function getDocById(docName ,Id) {
+  try {
+      const docRef = doc(db, docName, Id);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+          console.log("Fetched product: ", docSnap.data());
+          return { id: docSnap.id, ...docSnap.data() };
+      } else {
+          console.log("No such product!");
+          return null;
+      }
+  } catch (error) {
+    console.error(`Error getting document ${Id} from ${docName}:`, error);
+    
+  }
+}
+
+
+// Update a document by ID
+export async function updateDocById(docName, Id, updatedData) {
+  try {
+      const docRef = doc(db, docName, Id);
+      await updateDoc(docRef, updatedData);
+      console.log(`document ${Id} updated  in ${docName} successfully.`);
+      return true;
+  }
+  catch (error) {
+      console.error("Error updating product: ", error);
+  }
+
+}
+
+// Delete a document by ID
+export async function deleteDocById(docName, Id) {
+  try {
+      const docRef = doc(db, docName, Id);
+      await deleteDoc(docRef);
+      console.log(`Document ${Id} deleted from ${docName} successfully.`);
+      return true;
+     
+  }
+    catch (error) {
+      console.error(`Error deleting document ${Id} from ${docName}:`, error);
+      
+  }
+}
+
+
+/////////////////////////////
+// handle image upload to Imgur
+/////////////////////////////
+
+// Imgur upload function
+export async function uploadToImgur(file) {
+  const clientId = '5c51da6457cf182';  
+
+  const formData = new FormData();
+  formData.append('image', file);
+  
+  try {
+      const response = await fetch('https://api.imgur.com/3/image', {
+          method: 'POST',
+          headers: {
+              'Authorization': `Client-ID ${clientId}`,
+          },
+          body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+          console.log('Image uploaded successfully!', data.data.link);
+          return data.data.link; // Return the image URL
+      } else {
+          console.error('Imgur upload failed:', data.data.error);
+      }
+  } catch (error) {
+      console.error('Error uploading image:', error);
+  }
+}
