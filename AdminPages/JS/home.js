@@ -1,6 +1,5 @@
 import { db } from "./main.js";
 import { collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
-
 // Cache DOM elements
 const dom = {
     productsTable: document.getElementById("productsTable"),
@@ -56,7 +55,7 @@ function createProductRow(id, product) {
         <td>${product.name}</td>
         <td class="img-container">
             <img src="${product.imageUrl}" alt="${product.name}" 
-                 referrerpolicy="no-referrer" width="50" height="50">
+                 referrerpolicy="no-referrer"width="50" height="50">
         </td>
         <td>${categoryCache.get(product.category_id) || 'Unknown Category'}</td>
         <td>$${product.price.toFixed(2)}</td>
@@ -127,3 +126,17 @@ function redirectToAddProduct() {
         window.location.href = "admin-add-product.html";
     }
 }
+
+// Event delegation for the entire row
+const tableBody = document.querySelector("#productsTable");
+
+tableBody.addEventListener("click", (event) => {
+    const row = event.target.closest("tr"); // Get the closest <tr> to the clicked element
+    if (!row) return; // Exit if no <tr> was clicked (this could happen if you clicked an empty space)
+
+    const productId = row.querySelector("td:first-child").textContent; // Assuming the ID is in the first column
+    if (productId) {
+        // Redirect to the product details page
+        window.location.href = `admin-product-details.html?id=${productId}`;
+    }
+});

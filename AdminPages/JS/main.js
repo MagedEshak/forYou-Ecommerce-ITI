@@ -19,31 +19,6 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 export { db };
 
-/// Upload Image Function
-async function uploadImage(file) {
-    if (!file) {
-        alert("Please select an image.");
-        return;
-    }
-
-    // Create a reference to the location in Firebase Storage
-    const storageRef = ref(storage, `images/${Date.now()}_${file.name}`);
-
-    try {
-        // Upload the file
-        const snapshot = await uploadBytes(storageRef, file);
-        console.log("Image uploaded successfully!");
-
-        // Get the download URL of the image
-        const downloadURL = await getDownloadURL(snapshot.ref());
-        console.log("Download URL: ", downloadURL);
-
-        // Now you can store the download URL in Firestore or use it as needed
-        return downloadURL;
-    } catch (error) {
-        console.error("Error uploading image: ", error);
-    }
-}
 
 
 
