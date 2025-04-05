@@ -20,20 +20,15 @@
 <body class="d-flex justify-content-around pt-4 pb-4 ps-lg-4 pe-lg-4 ps-3 pe-3 ">
 
     <!-- Start Left Side Dashboard Tabs -->
-
-    <aside id="sideDashboard_id" class="col-2 d-none d-lg-block rounded-4 position-sticky top-0 mt-4">
+    <aside id="" class="col-2 d-none d-lg-block rounded-4 position-sticky top-0">
         <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
-            <!-- Start Bars showing when Dashboard be full width -->
-            <div id="barsLeftSideDiv_id" class="pe-2 d-block d-lg-none fs-1 cursor-pointer text-light">
-                <i class="bi bi-filter-left"></i>
-            </div>
-            <!-- End Bars showing when Dashboard be full width -->
-
             <li>
                 <div id="logoDiv_id" class="text-center">
                     <a href="../index.html" target="_blank">
                         <img src="../Images/logo/LLLOGOWhite.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
                     </a>
+                    <!-- Bars Icon -->
+
                 </div>
             </li>
             <li>
@@ -45,7 +40,9 @@
                     <i class="bi bi-house"></i> Dashboard</a>
             </li>
             <li>
-                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i> Orders</a>
+                <!-- Adding class list-links-active to color page name tab  -->
+                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i>
+                    Orders</a>
             </li>
             <li>
                 <a href="./addCategory.html" class="list-links text-light">
@@ -60,20 +57,68 @@
 
         <ul class="d-flex flex-column justify-content-between p-4 gap-2">
             <hr>
-
-            <li>
-                <!-- Adding class list-links-active to color page name tab  -->
-                <a href="../AdminPages/AdminProfile.html" class="list-links text-light list-links-active"><i
-                        class="bi bi-gear"></i> Setting</a>
-            </li>
+            <li><a href="./AdminProfile.html" class="list-links text-light list-links-active"><i class="bi bi-gear"></i>
+                    Setting</a></li>
             <li>
                 <a href="../CustomersPages/signin.html" class="list-links text-light"><i
                         class="bi bi-box-arrow-left"></i>
-                    LogOut</a>
+                    LogOut
+                </a>
             </li>
         </ul>
     </aside>
     <!-- End Left Side Dashboard Tabs -->
+
+    <!-- Start Left Side Dashboard Tabs in Tablet and Mobile Only-->
+    <aside id="sideDashboard_id" class="col-7 col-md-4 sideBarMobile rounded-4">
+        <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
+            <li>
+                <div id="logoDiv_id" class="text-center">
+                    <a href="../index.html" target="_blank">
+                        <img src="../Images/logo/LLLOGOWhite.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
+                    </a>
+                    <!-- Bars Icon -->
+
+                </div>
+            </li>
+            <li>
+                <span class="fw-bolder"><i class="bi bi-menu-button"></i> Menu</span>
+            </li>
+            <hr class="mt-0">
+            <li>
+                <a href="./admin-home.html" class="list-links text-light">
+                    <i class="bi bi-house"></i> Dashboard</a>
+            </li>
+            <li>
+                <!-- Adding class list-links-active to color page name tab  -->
+                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i>
+                    Orders</a>
+            </li>
+            <li>
+                <a href="./addCategory.html" class="list-links text-light">
+                    <i class="bi bi-tag"></i> Categories
+                </a>
+            </li>
+            <li>
+                <a href="#" class="list-links text-light">
+                    <i class="bi bi-people"></i> View Admins</a>
+            </li>
+        </ul>
+
+        <ul class="d-flex flex-column justify-content-between p-4 gap-2">
+            <hr>
+            <li><a href="./AdminProfile.html" class="list-links list-links-active text-light"><i class="bi bi-gear"></i>
+                    Setting</a></li>
+            <li>
+                <a href="../CustomersPages/signin.html" class="list-links text-light"><i
+                        class="bi bi-box-arrow-left"></i>
+                    LogOut
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <!-- End Left Side Dashboard Tabs in Tablet and Mobile Only-->
+
 
     <!-- Start Main -->
     <main id="main_id" class="w-100">
@@ -97,18 +142,32 @@
                     </a>
                 </div>
 
-                <!-- Nav Left Side -->
+                <!-- Nav Right Side -->
                 <div>
                     <!-- Start profile img, search, notifications icons-->
                     <div class="d-flex gap-3">
 
                         <!-- Search Icon -->
-                        <div id="searchDiv_id">
+                        <div id="searchDiv_id" class="cursor-pointer">
                             <i class="bi bi-search fs-cf-3 fs-cf-4"></i>
                         </div>
 
+                        <!-- Search Drop list -->
+                        <div id="search_id" class="d-none">
+                            <div class="border border-3 rounded-3">
+                                <!-- Search and Filters -->
+                                <div class="form-floating">
+                                    <input type="search" class="form-control" id="floatingInput"
+                                        placeholder="Search any Thing in Admin Dashboard ...">
+                                    <label for="floatingInput">
+                                        <i class="bi bi-search searchInput-color me-2"></i>
+                                        Search any Thing in Admin Dashboard ...</label>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- notifications Icon -->
-                        <div id="notificationsDiv_id">
+                        <div id="notificationsDiv_id" class="cursor-pointer">
                             <i id="notificationsIcon_id" class="bi bi-bell fs-cf-3 fs-cf-4">
                                 <span id="notificationsDot_id"
                                     class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
@@ -117,6 +176,88 @@
                             </i>
                         </div>
 
+                        <!-- Notifications Drop list -->
+                        <div id="notifiDropDownDiv_id" class="bg-white rounded-3 d-none">
+                            <div class="position-sticky top-0 bg-white z-3">
+                                <h4 class="p-3">Notifications</h4>
+                            </div>
+                            <hr>
+                            <div class="p-4">
+                                <div class="mb-2 border-bottom pb-4">
+                                    <div id class="fs-cf-5 d-flex gap-3 position-relative">
+                                        <!-- Product Icon -->
+                                        <div>
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt
+                                                id="notifiPhoto_id" width="70px">
+                                        </div>
+
+                                        <!-- Product Name -->
+                                        <div class="d-lg-flex flex-column">
+                                            <span class="fs-6">Fresh Cooker
+                                                Hood 90 cm - Classic Black
+                                                Stainless</span>
+                                            <span class="text-secondary">Maged
+                                                Eshak</span>
+                                        </div>
+                                        <span id="redCircleNotifi_id"
+                                            class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New
+                                                notification</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-2 border-bottom pb-4">
+                                    <div id class="fs-cf-5 d-flex gap-3 position-relative">
+                                        <!-- Product Icon -->
+                                        <div>
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt
+                                                id="notifiPhoto_id" width="70px">
+                                        </div>
+
+                                        <!-- Product Name -->
+                                        <div class="d-lg-flex flex-column">
+                                            <span class="fs-6">Fresh Cooker
+                                                Hood 90 cm - Classic Black
+                                                Stainless</span>
+                                            <span class="text-secondary">Maged
+                                                Eshak</span>
+                                        </div>
+                                        <span id="redCircleNotifi_id"
+                                            class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New
+                                                notification</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-2 border-bottom pb-4">
+                                    <div id class="fs-cf-5 d-flex gap-3 position-relative">
+                                        <!-- Product Icon -->
+                                        <div>
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt
+                                                id="notifiPhoto_id" width="70px">
+                                        </div>
+
+                                        <!-- Product Name -->
+                                        <div class="d-lg-flex flex-column">
+                                            <span class="fs-6">Fresh Cooker
+                                                Hood 90 cm - Classic Black
+                                                Stainless</span>
+                                            <span class="text-secondary">Maged
+                                                Eshak</span>
+                                        </div>
+                                        <span id="redCircleNotifi_id"
+                                            class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New
+                                                notification</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
                         <!-- Profile -->
                         <div id="profileDiv_id" class="fs-5 d-flex gap-3 position-relative">
                             <!-- Profile Icon -->
@@ -138,11 +279,11 @@
         <!-- End Nav Bar -->
 
         <!-- Start Content Section {My Profile, Admins, Edit Profile, Change Password} -->
-        <section id="mainContentSec_id" class="container-fluid col-md-12 d-md-flex justify-content-between gap-3">
+        <section id="mainContentSec_id" class="container-fluid col-md-12 d-md-flex justify-content-between gap-3 ">
             <!-- Start Left side Section {My Profile, Admins} -->
             <article>
                 <!-- Start Profile Section -->
-                <div class="col-lg-4 bg-light p-3 ms-lg-3 mt-3 rounded-3 w-100">
+                <div class="col-lg-4 shadow p-3 ms-lg-3 mt-3 rounded-3 w-100 bg-white">
                     <div class="row p-md-3 p-lg-3 pt-3">
                         <h2>My Profile</h2>
                         <!-- Start Admin Photo and Name Div-->
@@ -197,13 +338,13 @@
                 <!-- End Profile Section -->
 
                 <!-- Start Add New Admin And View Admin Section -->
-                <div class="col-lg-4 bg-light p-3 ms-lg-3 mt-3 rounded-3 w-100">
+                <div class="col-lg-4 shadow p-3 ms-lg-3 mt-5 rounded-3 w-100 bg-white">
                     <div class="row p-md-3 p-lg-3">
                         <!-- Start Admin Photo and Name Div-->
                         <div class="d-flex justify-content-between p-3">
                             <h2>Admins</h2>
                             <div>
-                                <button type="button" class="btn btn-color-fa fw-bold"
+                                <button type="button" id="addNewAdmin_id" class="btn btn-color-fa fw-bold"
                                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .25rem;">
                                     Add Admin
                                 </button>
@@ -222,9 +363,9 @@
                                             alt="Profile Image">
                                     </div>
                                     <!-- Admin Name -->
-                                    <div class="d-flex flex-column mt-3">
-                                        <span class="fw-bolder">Maged Eshak</span>
-                                        <span class="text-secondary">Admin</span>
+                                    <div id="viewAdminsDiv_id" class="d-flex flex-column mt-3">
+                                        <span id="adminName_id" class="fw-bolder">Maged Eshak</span>
+                                        <span id="adminStat_id" class="text-secondary">Admin</span>
                                     </div>
                                 </div>
                                 <!-- Arrow -->
@@ -304,7 +445,7 @@
             <!-- End Left side Section {My Profile, Admins} -->
 
             <!-- Start Right side Section {Edit Profile, Change Password} -->
-            <article class="col-lg-7 bg-light p-3 ms-lg-3 mt-3 rounded-3">
+            <article class="col-lg-7 shadow p-3 ms-lg-3 mt-3 rounded-3 bg-white">
                 <!-- Start Right side Section -->
                 <div class="p-3">
                     <!-- Start Edit Profile Section -->
@@ -378,11 +519,10 @@
                                 </div>
                                 <!-- End Current Password Input and Show Password CheckBox -->
 
-
                                 <!-- Start New Password Input and Show Password CheckBox -->
                                 <div class="col-md-12 col-lg-6">
-                                    <label for="currentPassInput_id" class="form-label">New Password</label>
-                                    <input type="password" id="currentPassInput_id" class="form-control">
+                                    <label for="newPassInput_id" class="form-label">New Password</label>
+                                    <input type="password" id="newPassInput_id" class="form-control">
                                     <div class="col-12 mb-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox"
@@ -397,8 +537,8 @@
 
                                 <!-- Start Repeat New Password Input and Show Password CheckBox -->
                                 <div class="col-md-12 col-lg-6">
-                                    <label for="currentPassInput_id" class="form-label">Repeat New Password</label>
-                                    <input type="password" id="currentPassInput_id" class="form-control">
+                                    <label for="reNewPassInput_id" class="form-label">Repeat New Password</label>
+                                    <input type="password" id="reNewPassInput_id" class="form-control">
 
                                     <div class="col-12 mb-3">
                                         <div class="form-check">
@@ -431,11 +571,12 @@
         <!-- End Content Section {My Profile, Admins, Edit Profile, Change Password} -->
     </main>
 
-
     <!-- Bootstrap JS -->
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 
-    <script src="./JS/navBar_sideBarFun.js"></script>
+    <script type="module" src="./JS/navBar_sideBarFun.js"></script>
+
+    <script type="module" src="./JS/admins.js"></script>
 </body>
 
 </html>

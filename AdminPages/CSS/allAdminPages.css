@@ -6,7 +6,7 @@ html,
 body,
 header,
 main {
-    background-color: #f2efe3 !important;
+    background-color: #f5f5f5 !important;
 }
 
 aside {
@@ -20,8 +20,21 @@ aside,
     background-color: #006766 !important;
 }
 
+.sideBarMobile {
+    position: fixed;
+    top: 0;
+    left: -75%;
+    z-index: 99;
+    transition: left .7s ease;
+    font-size: 1rem;
+    -webkit-transition: left .7s ease;
+    -moz-transition: left .7s ease;
+    -ms-transition: left .7s ease;
+    -o-transition: left .7s ease;
+}
+
 .btn-color-fa {
-    background-color: #fafafa !important;
+    background-color: #ffff !important;
     border: 2px solid #006766 !important;
 }
 
@@ -30,7 +43,7 @@ aside,
 }
 
 .btn-color-fa:hover {
-    color: #fafafa !important;
+    color: #ffff !important;
     border: 2px solid #006766 !important;
 }
 
@@ -41,16 +54,10 @@ aside,
 }
 
 .Arrow-color:hover {
-    transform: translate(20px);
-    -webkit-transform: translate(20px);
-    -moz-transform: translate(20px);
-    -ms-transform: translate(20px);
-    -o-transform: translate(20px);
-    transition: transform 0.3s ease-in-out;
-    -webkit-transition: transform 0.3s ease-in-out;
-    -moz-transition: transform 0.3s ease-in-out;
-    -ms-transition: transform 0.3s ease-in-out;
-    -o-transition: transform 0.3s ease-in-out;
+    .Arrow-color:hover {
+        transform: translateX(20px);
+        transition: all 0.3s ease-in-out;
+    }
 }
 
 .bar-tran {
@@ -89,6 +96,40 @@ ul li .list-links-active {
     width: 70px;
 }
 
+#notifiDropDownDiv_id {
+    position: absolute;
+    width: 350px;
+    height: 500px;
+    overflow: auto;
+    transform: translate(-250px, 41px);
+    -webkit-transform: translate(-250px, 41px);
+    -moz-transform: translate(-250px, 41px);
+    -ms-transform: translate(-250px, 41px);
+    -o-transform: translate(-250px, 41px);
+
+    z-index: 99;
+}
+
+#search_id {
+    position: absolute;
+    width: 500px;
+    transform: translate(-470px, 35px);
+    -webkit-transform: translate(-470px, 35px);
+    -moz-transform: translate(-470px, 35px);
+    -ms-transform: translate(-470px, 35px);
+    -o-transform: translate(-470px, 35px);
+    z-index: 99;
+}
+
+#addCategory_id {
+    transform: translate(60%, -10%) !important;
+    -webkit-transform: translate(60%, -10%) !important;
+    -moz-transform: translate(60%, -10%) !important;
+    -ms-transform: translate(60%, -10%) !important;
+    -o-transform: translate(60%, -10%) !important;
+    z-index: 99 !important;
+}
+
 /* Custom Fonts */
 .img-sm-w {
     width: 70px;
@@ -101,6 +142,7 @@ ul li .list-links-active {
 .fs-cf-5 {
     font-size: 1rem !important;
 }
+
 
 
 /* للشاشات المتوسطة (md) وما فوق */
@@ -153,4 +195,18 @@ ul li .list-links-active {
     .profile-camera-icon {
         bottom: 3%;
     }
+}
+
+/* Admin-add-product  Text Area input */
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
 }

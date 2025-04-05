@@ -1,0 +1,23 @@
+[
+    {
+        "isAdmin": false,
+        "id": 0,
+        "name":"",
+        "password": "",
+        "email": "",
+        "phone":"",
+        "address":{
+            "country":"",
+            "city":""
+        },
+        "wishlist":[] , 
+        "shoppingCart":[{
+            "product_id": 0,
+            "cat_id":0,
+            "quantaty": 0,
+            "isPending": 0
+        }],
+        "lastOrders":[],
+        "retunOdrs": false
+    }
+]

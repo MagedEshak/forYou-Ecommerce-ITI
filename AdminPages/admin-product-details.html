@@ -12,21 +12,17 @@
 </head>
 
 <body class="d-flex justify-content-around p-4">
+
     <!-- Start Left Side Dashboard Tabs -->
-
-    <aside id="sideDashboard_id" class="col-2 d-none d-lg-block rounded-4 position-sticky top-0 mt-4">
+    <aside id="" class="col-2 d-none d-lg-block rounded-4">
         <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
-            <!-- Start Bars showing when Dashboard be full width -->
-            <div id="barsLeftSideDiv_id" class="pe-2 d-block d-lg-none fs-1 cursor-pointer text-light">
-                <i class="bi bi-filter-left"></i>
-            </div>
-            <!-- End Bars showing when Dashboard be full width -->
-
             <li>
                 <div id="logoDiv_id" class="text-center">
                     <a href="../index.html" target="_blank">
                         <img src="../Images/logo/LLLOGOWhite.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
                     </a>
+                    <!-- Bars Icon -->
+
                 </div>
             </li>
             <li>
@@ -34,11 +30,13 @@
             </li>
             <hr class="mt-0">
             <li>
-                <a href="./admin-home.html" class="list-links text-light">
+                <a href="./admin-home.html" class="list-links text-light list-links-active">
                     <i class="bi bi-house"></i> Dashboard</a>
             </li>
             <li>
-                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i> Orders</a>
+                <!-- Adding class list-links-active to color page name tab  -->
+                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i>
+                    Orders</a>
             </li>
             <li>
                 <a href="./addCategory.html" class="list-links text-light">
@@ -53,20 +51,66 @@
 
         <ul class="d-flex flex-column justify-content-between p-4 gap-2">
             <hr>
-
-            <li>
-                <!-- Adding class list-links-active to color page name tab  -->
-                <a href="../AdminPages/AdminProfile.html" class="list-links text-light"><i
-                        class="bi bi-gear"></i> Setting</a>
-            </li>
+            <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
             <li>
                 <a href="../CustomersPages/signin.html" class="list-links text-light"><i
                         class="bi bi-box-arrow-left"></i>
-                    LogOut</a>
+                    LogOut
+                </a>
             </li>
         </ul>
     </aside>
     <!-- End Left Side Dashboard Tabs -->
+
+    <!-- Start Left Side Dashboard Tabs in Tablet and Mobile Only-->
+    <aside id="sideDashboard_id" class="col-7 col-md-4 sideBarMobile rounded-4">
+        <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
+            <li>
+                <div id="logoDiv_id" class="text-center">
+                    <a href="../index.html" target="_blank">
+                        <img src="../Images/logo/LLLOGOWhite.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
+                    </a>
+                    <!-- Bars Icon -->
+
+                </div>
+            </li>
+            <li>
+                <span class="fw-bolder"><i class="bi bi-menu-button"></i> Menu</span>
+            </li>
+            <hr class="mt-0">
+            <li>
+                <a href="./admin-home.html" class="list-links text-light list-links-active">
+                    <i class="bi bi-house"></i> Dashboard</a>
+            </li>
+            <li>
+                <!-- Adding class list-links-active to color page name tab  -->
+                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i>
+                    Orders</a>
+            </li>
+            <li>
+                <a href="./addCategory.html" class="list-links text-light">
+                    <i class="bi bi-tag"></i> Categories
+                </a>
+            </li>
+            <li>
+                <a href="#" class="list-links text-light">
+                    <i class="bi bi-people"></i> View Admins</a>
+            </li>
+        </ul>
+
+        <ul class="d-flex flex-column justify-content-between p-4 gap-2">
+            <hr>
+            <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
+            <li>
+                <a href="../CustomersPages/signin.html" class="list-links text-light"><i
+                        class="bi bi-box-arrow-left"></i>
+                    LogOut
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <!-- End Left Side Dashboard Tabs in Tablet and Mobile Only-->
+
 
     <!-- Start Main -->
     <main id="main_id" class="w-100">
@@ -90,24 +134,111 @@
                     </a>
                 </div>
 
-                <!-- Nav Left Side -->
+                <!-- Nav Right Side -->
                 <div>
                     <!-- Start profile img, search, notifications icons-->
                     <div class="d-flex gap-3">
 
                         <!-- Search Icon -->
-                        <div id="searchDiv_id">
+                        <div id="searchDiv_id" class="cursor-pointer">
                             <i class="bi bi-search fs-cf-3 fs-cf-4"></i>
                         </div>
 
+                        <!-- Search Drop list -->
+                        <div id="search_id" class="d-none">
+                            <div class="border border-3 rounded-3">
+                                <!-- Search and Filters -->
+                                <div class="form-floating">
+                                    <input type="search" class="form-control" id="floatingInput"
+                                        placeholder="Search any Thing in Admin Dashboard ...">
+                                    <label for="floatingInput">
+                                        <i class="bi bi-search searchInput-color me-2"></i>
+                                        Search any Thing in Admin Dashboard ...</label>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- notifications Icon -->
-                        <div id="notificationsDiv_id">
+                        <div id="notificationsDiv_id" class="cursor-pointer">
                             <i id="notificationsIcon_id" class="bi bi-bell fs-cf-3 fs-cf-4">
                                 <span id="notificationsDot_id"
                                     class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
                                     <span class="visually-hidden">New notification</span>
                                 </span>
                             </i>
+                        </div>
+
+                        <!-- Notifications Drop list -->
+                        <div id="notifiDropDownDiv_id" class="bg-light rounded-3 d-none">
+                            <div class="position-sticky top-0 bg-light z-3">
+                                <h4 class="p-3">Notifications</h4>
+                            </div>
+                            <hr>
+                            <div class="p-4">
+                                <div class="mb-2 border-bottom pb-4">
+                                    <div id="" class="fs-5 d-flex gap-3 position-relative">
+                                        <!-- Product Icon -->
+                                        <div>
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt=""
+                                                id="notifiPhoto_id" width="70px">
+                                        </div>
+
+                                        <!-- Product Name -->
+                                        <div class="d-lg-flex flex-column">
+                                            <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                                                Stainless</span>
+                                            <span class="text-secondary ">Maged Eshak</span>
+                                        </div>
+                                        <span id="redCircleNotifi_id"
+                                            class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New notification</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-2 border-bottom pb-4">
+                                    <div id="" class="fs-5 d-flex gap-3 position-relative">
+                                        <!-- Product Icon -->
+                                        <div>
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt=""
+                                                id="notifiPhoto_id" width="70px">
+                                        </div>
+
+                                        <!-- Product Name -->
+                                        <div class="d-lg-flex flex-column">
+                                            <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                                                Stainless</span>
+                                            <span class="text-secondary ">Maged Eshak</span>
+                                        </div>
+                                        <span id="redCircleNotifi_id"
+                                            class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New notification</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="mb-2 border-bottom pb-4">
+                                    <div id="" class="fs-5 d-flex gap-3 position-relative">
+                                        <!-- Product Icon -->
+                                        <div>
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt=""
+                                                id="notifiPhoto_id" width="70px">
+                                        </div>
+
+                                        <!-- Product Name -->
+                                        <div class="d-lg-flex flex-column">
+                                            <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                                                Stainless</span>
+                                            <span class="text-secondary ">Maged Eshak</span>
+                                        </div>
+                                        <span id="redCircleNotifi_id"
+                                            class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New notification</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <!-- Profile -->
@@ -119,7 +250,7 @@
 
                             <!-- Admin Name -->
                             <div class="d-none d-lg-flex flex-column">
-                                <span class="fw-bolder ">Wesam</span>
+                                <span class="fw-bolder ">Maged Eshak</span>
                                 <span class="text-secondary ">Admin</span>
                             </div>
                         </div>
@@ -134,18 +265,24 @@
         <div class="card shadow p-4 ms-4">
             <div class="row">
                 <div class="col-md-4 text-center">
-                    <img id="productImage" class="img-fluid" src="" alt="Product Image" width="300">
+                    <img id="productImage" class="img-fluid" src="" alt="Product Image" width="100">
                 </div>
                 <div class="col-md-8">
-                    <h3 id="productTitle"></h3>
+                    <h3 id="productName"></h3>
                     <p id="productDescription"></p>
+                    <p><strong>Id:</strong> <span id="productId"></span></p>
+                   
                     <p><strong>Category:</strong> <span id="productCategory"></span></p>
-                    <p><strong>Price:</strong> $<span id="productPrice"></span></p>
-                    <p><strong>Stock:</strong> <span id="productStock">Available</span></p>
+                    <p><strong>Price:</strong> <span id="productPrice"></span></p>
+                    <p><strong>Discount</strong> <span id="productDiscount"></span></p>
+                    <p><strong>Stock:</strong> <span id="productQuantity">Available</span></p>
+                    <p><strong>Rating:</strong> <span id="productRating"></span></p>
+                    <p><strong>Reviews:</strong> <span id="productReviews"></span></p>
+
 
                     <!-- زر تعديل -->
-                    <button class="btn btn-color text-light me-2" onclick="enableEdit()">Edit</button>
-                    <button class="btn btn-danger" onclick="deleteProduct()">Delete</button>
+                    <button class="btn btn-color text-light me-2" id="editProductBtn" >Edit</button>
+                    <button class="btn btn-danger" id="deleteProductBtn">Delete</button>
 
                     <!-- نموذج تعديل (يكون مخفي في البداية) -->
                     <form id="editForm" class="mt-3 d-none">
@@ -171,82 +308,11 @@
     </main>
 
 
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get("id");
-
-        document.addEventListener("DOMContentLoaded", function () {
-            if (productId) {
-                fetchProductDetails(productId);
-            } else {
-                alert("Product ID is missing!");
-            }
-        });
-
-        function fetchProductDetails(productId) {
-            fetch(`https://fakestoreapi.com/products/${productId}`)
-                .then((response) => response.json())
-                .then((product) => {
-                    document.getElementById("productImage").src = product.image;
-                    document.getElementById("productTitle").innerText = product.title;
-                    document.getElementById("productDescription").innerText = product.description;
-                    document.getElementById("productCategory").innerText = product.category;
-                    document.getElementById("productPrice").innerText = product.price;
-
-                    // تعبئة نموذج التعديل
-                    document.getElementById("editProductName").value = product.title;
-                    document.getElementById("editProductDescription").value = product.description;
-                    document.getElementById("editProductPrice").value = product.price;
-                })
-                .catch((error) => console.error("Error fetching product:", error));
-
-        }
-
-
-        function enableEdit() {
-            document.getElementById("editForm").classList.remove("d-none");
-        }
-
-        function deleteProduct() {
-            if (confirm("Are you sure you want to delete this product?")) {
-                fetch(`https://fakestoreapi.com/products/${productId}`, {
-                    method: "DELETE"
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        alert("Product deleted successfully!");
-                        window.location.href = "admin-home.html"; // إعادة التوجيه إلى صفحة لوحة التحكم بعد الحذف
-                    })
-                    .catch(error => console.error("Error deleting product:", error));
-            }
-        }
-
-
-        function saveChanges() {
-            let newName = document.getElementById("editProductName").value;
-            let newDescription = document.getElementById("editProductDescription").value;
-            let newPrice = document.getElementById("editProductPrice").value;
-
-            document.getElementById("productTitle").innerText = newName;
-            document.getElementById("productDescription").innerText = newDescription;
-            document.getElementById("productPrice").innerText = newPrice;
-
-            alert(`Product updated successfully!`);
-            document.getElementById("editForm").classList.add("d-none");
-
-        }
-
-        // إلغاء التعديل
-        function cancelEdit() {
-            document.getElementById("editForm").classList.add("d-none");
-        }
-
-
-    </script>
     </main>
 
-    <script src="./JS/navBar_sideBarFun.js"></script>
-    <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./JS/productDetials.js" ></script>
+    <script src="./JS/navBar_sideBarFun.js" type="module"></script>
+    <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js" type="module" ></script>
 </body>
 
 </html>
