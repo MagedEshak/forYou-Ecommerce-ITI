@@ -1,4 +1,4 @@
-import { db } from "./main.js";
+import { db, getAllDocuments } from "../../js/main.js";
 import { collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 // Cache DOM elements
 const dom = {
@@ -11,11 +11,12 @@ const dom = {
 // Category cache for name lookups
 let categoryCache = new Map();
 
-// Fetch categories first to map IDs to names
 async function fetchCategories() {
     try {
-        const snapshot = await getDocs(collection(db, "category"));
-        snapshot.forEach(doc => categoryCache.set(doc.id, doc.data().cat_name));
+        const categories = await getAllDocuments("category");
+        categories.forEach(cat => {
+            categoryCache.set(cat.id, cat.cat_name);
+        });
     } catch (error) {
         console.error("Category fetch error:", error);
         showNotification("Failed to load categories", "error");
@@ -25,19 +26,17 @@ async function fetchCategories() {
 // Improved product fetching with category names
 async function fetchProducts() {
     try {
-        await fetchCategories(); // Ensure categories are loaded first
-        const snapshot = await getDocs(collection(db, "products"));
-        const products = [];
-        
+        const products = await getAllDocuments("products");
+
+
         // Clear table efficiently
         while (dom.productsTable.firstChild) {
             dom.productsTable.removeChild(dom.productsTable.firstChild);
         }
 
-        snapshot.forEach(doc => {
-            const product = doc.data();
-            products.push(product);
-            dom.productsTable.appendChild(createProductRow(doc.id, product));
+        products.forEach(product => {
+            const row = createProductRow(product.id, product);
+            dom.productsTable.appendChild(row);
         });
 
         updateProductSummary(products);
@@ -107,14 +106,15 @@ function showNotification(message, type = "info") {
     notification.className = `alert alert-${type} fixed-top`;
     notification.textContent = message;
     document.body.appendChild(notification);
-    
+
     setTimeout(() => notification.remove(), 3000);
 }
 
 // Initialize
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    await fetchCategories();
     fetchProducts();
-    
+
     if (dom.addNewProductBtn) {
         dom.addNewProductBtn.addEventListener("click", redirectToAddProduct);
     }
@@ -140,3 +140,4 @@ tableBody.addEventListener("click", (event) => {
         window.location.href = `admin-product-details.html?id=${productId}`;
     }
 });
+///////////testing
