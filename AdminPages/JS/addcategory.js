@@ -1,14 +1,5 @@
 import { addDocument,deleteAllDocuments,getDocumentByField } from "../../js/main.js"
 
-// console.log(getDocumentByField("category" , 'cat_id' , 1))
-
-// deleteAllDocuments("category")
-// var cat ={
-//     "cat_id": 1,
-//     "cat_name": "TV"
-// }
-// addDocument("category", cat)
-
 async function uploadToImgur(imageFile, clientId) {
     const formData = new FormData();
     formData.append("image", imageFile);
@@ -35,40 +26,58 @@ async function uploadToImgur(imageFile, clientId) {
     }
   }
 
-  const setUrl = document.getElementById("preview-img")
-  setUrl.src = "https://imgur.com/AhyEeor.png"
-  document.getElementById("img_icon").style.display = "none"; // Hide the icon
-  setUrl.style.display = "inline"; // Show the uploaded image
+// deleteAllDocuments("category")
+// var cat ={
+//     "cat_id": 1,
+//     "cat_name": "TV"
+// }
+// addDocument("category", cat)
+document.getElementById("form_id").addEventListener("submit", function(event){
+  event.preventDefault()
+  var catName = document.getElementById("categoryNameInput_id").value
+  var cat = {
+    "name": catName,
+    "img" : ""
+  }
+  addDocument("category" , cat)
+  document.getElementById("categoryNameInput_id").value=""
+
+})
+
+
+const setUrl = document.getElementById("preview-img")
+setUrl.src = "https://imgur.com/AhyEeor.png"
+document.getElementById("img_icon").style.display = "none"; // Hide the icon
+setUrl.style.display = "inline"; // Show the uploaded image
 
 document.getElementById("file-input").addEventListener("change",async() =>{
 
-    const currentImageUrl = document.getElementById("preview-img").src;
+const currentImageUrl = document.getElementById("preview-img").src;
 
-    if (currentImageUrl && currentImageUrl !== "") {
-        console.log("Image already exists:", currentImageUrl);
-    }
-    else{
-        
-    }
-    const imageFile = document.getElementById("file-input").files[0]
-    const clientId = "5c51da6457cf182"
-
-    if (imageFile) {
-        const imageUrl = await uploadToImgur(imageFile, clientId);
-        
-        if (imageUrl) {
-          console.log("Image URL:", imageUrl);
-          const reader = new FileReader();
-            reader.onload = () => {
-                const previewImg = document.getElementById("preview-img");
-                previewImg.src = reader.result; // Set image source
-                previewImg.style.display = "inline"; // Show the uploaded image
-            };
-            reader.readAsDataURL(imageFile)
-        } else {
-          console.log("Upload failed!");
-        }
-      }
+if (currentImageUrl && currentImageUrl !== "") {
+    console.log("Image already exists:", currentImageUrl);
+}
+else{
     
+}
+const imageFile = document.getElementById("file-input").files[0]
+const clientId = "5c51da6457cf182"
+
+if (imageFile) {
+  const imageUrl = await uploadToImgur(imageFile, clientId);
+        
+ /*  if (imageUrl) {
+    console.log("Image URL:", imageUrl);
+    const reader = new FileReader();
+    reader.onload = () => {
+      const previewImg = document.getElementById("preview-img");
+      previewImg.src = reader.result; // Set image source
+      previewImg.style.display = "inline"; // Show the uploaded image
+      };
+      reader.readAsDataURL(imageFile)
+      } else {
+        console.log("Upload failed!");
+      } */
+  } 
 } );
     

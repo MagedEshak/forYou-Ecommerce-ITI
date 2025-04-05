@@ -109,6 +109,7 @@ export async function getAllDocuments(collectionName) {
     return [];
   }
 }
+
   // delete all the docs
 export async function deleteAllDocuments(collectionName) {
   try {
@@ -130,15 +131,6 @@ export async function deleteAllDocuments(collectionName) {
       console.error(`Error deleting documents from '${collectionName}':`, error);
   }
 }
-
-// var cat ={
-//     "cat_id": 0,
-//     "cat_name": "TV"
-// }
-// addDocument("category", cat)
-
-
-
 
 
 ///////////////////////////////
@@ -192,13 +184,12 @@ export async function deleteDocById(docName, Id) {
      
   }
     catch (error) {
-      console.error(`Error deleting document ${Id} from ${docName}:`, error);
+      console.error(`Error deleting document ${Id} from ${Name}:`, error);
       
   }
 }
 
 
-/////////////////////////////
 // handle image upload to Imgur
 /////////////////////////////
 
@@ -230,4 +221,3 @@ export async function uploadToImgur(file) {
       console.error('Error uploading image:', error);
   }
 }
-

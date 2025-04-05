@@ -1,24 +1,51 @@
-import {  uploadToImgur,getAllDocuments,addDocument} from "../../js/main.js";
+import { db } from "./main.js";
+import { collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+
+// Imgur upload function
+async function uploadToImgur(imageFile, clientId) {
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    try {
+        const response = await fetch("https://api.imgur.com/3/image", {
+            method: "POST",
+            headers: {
+                "Authorization": `Client-ID ${clientId}`
+            },
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            return data.data.link;
+        } else {
+            throw new Error("Upload failed!");
+        }
+    } catch (error) {
+        console.error("Error uploading image:", error);
+        return null;
+    }
+}
 
 // Load categories
 async function loadCategories() {
     const categorySelect = document.getElementById("product-category");
     categorySelect.innerHTML = '<option value="">Select a category</option>';
-  
+
     try {
-        const categories = await getAllDocuments("category");
-        categories.forEach(cat => {
+        const querySnapshot = await getDocs(collection(db, "category"));
+        querySnapshot.forEach((doc) => {
+            const category = doc.data();
             const option = document.createElement("option");
-            option.value = cat.id; 
-            option.textContent = cat.cat_name; 
+            option.value = doc.id;
+            option.textContent = category.cat_name;
             categorySelect.appendChild(option);
-        
         });
     } catch (error) {
-        console.error("Category fetch error:", error);
+        console.error("Error loading categories:", error);
     }
 }
-
 
 // Add product function
 async function addProduct(event) {
@@ -60,7 +87,7 @@ async function addProduct(event) {
     };
 
     try {
-        const docRef = await addDocument("products", product);
+        const docRef = await addDoc(collection(db, "products"), product);
         alert(`Product added successfully! ID: ${docRef.id}`);
         document.getElementById("product-form").reset();
     } catch (error) {
@@ -74,8 +101,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("product-form").addEventListener("submit", addProduct);
     loadCategories();
 });
+<<<<<<< HEAD
 
 document.getElementById("CancelBtn_id").addEventListener("click", () => {
     window.location.href = "admin-home.html";
 });
 
+=======
+>>>>>>> 20ebefc38a23beca279d01ef597d093a3035e1ef

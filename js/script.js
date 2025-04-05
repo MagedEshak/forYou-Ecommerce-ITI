@@ -1,6 +1,11 @@
-import {getAllDocuments, getCategoryById,getDocumentByField} from "../../js/main.js";
+import {getAllDocuments, getDocumentByField} from "../../js/main.js";
 
 let categoriesTemp = [];
+let productsTemp = [];
+
+
+
+ 
 
 
 /* this code handels the side nav bar  */
@@ -152,11 +157,13 @@ async function initialzePage(){
     controlCrusoal();
     addEventsToAllCartBtns();
     if(window.innerWidth <= 992){
-        displayCategoriesinSideNavBar();
+        await displayCategoriesinSideNavBar();
     }
     else{
-        displayCategoriesinNavBar();
+        await displayCategoriesinNavBar();
     }
+
+    fillProductsInHtml();
 }
 
 initialzePage();
@@ -170,7 +177,9 @@ async function displayCategoriesinNavBar() {
     categoriesTemp = await getAllDocuments("aliCategories");
 
     let cateLinksContainer = document.getElementById('navCategoriesLinks_id');
-    categoriesTemp.forEach( category => {
+    let categoriesContainer = document.getElementById('categoriesContainer_id');
+
+    categoriesTemp.forEach( (category , index) => {
         let catLink = document.createElement('a');
         catLink.className = "col-auto px-5";
         // put the link to go to category you need
@@ -178,16 +187,21 @@ async function displayCategoriesinNavBar() {
         catLink.innerText = category.cat_name;
 
         cateLinksContainer.appendChild(catLink);
+
+        createCategoryInHtml(categoriesContainer , category , index);
     })
 }
 
 /* just called when the width of screen is small */
+/* it displays just links of my cats in the nav bar */
 async function displayCategoriesinSideNavBar() {
     categoriesTemp = await getAllDocuments("aliCategories");
     
     let cateLinksContainer = document.getElementById('sideNavCategoriesLinks_id');
     let whatsappLink = document.getElementById('whatsappLink_id');
-    categoriesTemp.forEach( category => {
+    let categoriesContainer = document.getElementById('categoriesContainer_id');
+
+    categoriesTemp.forEach( (category , index) => {
         
         let catLinkDiv = document.createElement('div');
         catLinkDiv.className = "w-100";
@@ -200,8 +214,245 @@ async function displayCategoriesinSideNavBar() {
         
         catLinkDiv.appendChild(catLink)
         cateLinksContainer.insertBefore(catLinkDiv , whatsappLink);
+
+        createCategoryInHtml(categoriesContainer , category , index);
         
     })
 
     
+}
+
+
+/* display categories */
+/* it displays my category as an image in the home */
+function createCategoryInHtml(categoriesContainer , category , index){
+   
+    // this is the category container
+    let categoryContainer = document.createElement('div');
+    categoryContainer.className = "category col-6 col-md-4 col-lg-3 d-flex p-1";
+
+    // this is a link that contains category contents
+    let categoryAncorContainer = document.createElement('a');
+    categoryAncorContainer.className = "bg-warning-subtle w-100 d-flex flex-column align-items-center justify-content-between";
+    categoryAncorContainer.id = `cat_id_${category.id}`;
+    categoryAncorContainer.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
+    if(index % 2 == 0){
+        categoryAncorContainer.classList.add("bg-success-subtle") ;
+        categoryAncorContainer.classList.remove("bg-warning-subtle") ;
+    } 
+
+    let categoryHeader = document.createElement('p');
+    categoryHeader.innerText = category.cat_name ;
+
+    let categoryImage = document.createElement('img');
+    categoryImage.className = "w-75 catImg";
+    categoryImage.src = category.img ;
+
+    categoryAncorContainer.appendChild(categoryHeader);
+    categoryAncorContainer.appendChild(categoryImage);
+
+    categoryContainer.appendChild(categoryAncorContainer);
+    categoriesContainer.appendChild(categoryContainer);
+}
+
+
+// this function fill products section randomly from all cats
+async function fillProductsInHtml(){
+
+    // this is the container of products
+    let productsContainer = document.createElement('div');
+    productsContainer.className = "products row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4";
+    //productsContainer.id = `${catName}Products_id`;
+
+    for(let category of categoriesTemp){
+        debugger;
+        productsTemp = []; // removing all elements from temp
+        let products = await getDocumentByField("aliProducts" , "cat_id" , category.id);
+        // we want to generate random indexes to fitch random products
+        let index = 0;
+        for(let i = 0 ; i < products?.length ; i++){ // this 1 must be changed
+            index = Math.round(Math.random() * (products.length) ) ;
+            productsTemp.push(products[i]);
+        }
+        createProductsInHtml(productsContainer, productsTemp , category.cat_name);
+    }
+}
+
+async function createProductsInHtml(productsContainer , products , catName) {
+
+    // this is the div that contains the category header and products container
+    let parentContainer = document.getElementById('parentContainer_id');
+
+    products.forEach( product => {
+        // this is the div that contains my product elements
+        let productContainer = document.createElement('div');
+        productContainer.id = `${catName}Product_id_${product.id}`; /* categoryName_id_prodID  : cookerProd_id_1 */
+        productContainer.className = "product col-10 col-md-4 col-lg-3 justify-content-center align-items-center";
+    
+        // this is inner container of my product to handel good view
+        let productInnerContainer = document.createElement('div'); 
+        productInnerContainer.className = "h-100 productInnercontainer d-flex flex-column justify-content-between align-items-center";
+    
+        /*****************************************************************/
+        // this header div contains the discount percentage , and the add to wishlist button
+        /*****************************************************************/
+        let productHeader = document.createElement('div');
+        productHeader.className = "productHeader w-100 d-flex justify-content-between align-items-center p-2";
+    
+        let discountPercentage = document.createElement('p');// paragraph contains discount percentage
+        discountPercentage.className = "prodDiscount_class col-auto";
+        discountPercentage.id = `${catName}ProdDiscount_id_${product.id}`; 
+        discountPercentage.innerText = `OFF ${product.discount}% cash`;
+
+        if(product.discount == 0){
+            discountPercentage.style.visibility = "hidden";
+        }
+    
+    
+        let addToWishListBtn = document.createElement('button');// add to wish list button , this contains heart icon
+        addToWishListBtn.className = " addToWishListBtn_class col-2";
+        addToWishListBtn.id = `${catName}ProdAddToWishListBtn_id_${product.id}`;
+    
+        let heartIcon = document.createElement("i");
+        heartIcon.className = "fa fa-heart";
+    
+        addToWishListBtn.appendChild(heartIcon); // putting heart icon inside add to wish list btn
+    
+        // here we put our discount percent and add to wish list btn in the product header
+        productHeader.appendChild(discountPercentage);
+        productHeader.appendChild(addToWishListBtn);
+        
+        /*****************************************************************/
+        // this ancor contains the product image, product description and product price
+        /*****************************************************************/
+        let productDetailsLink = document.createElement('a');
+        productDetailsLink.className = "d-flex flex-column align-items-center justify-content-center";
+        productDetailsLink.href = `../CustomersPages/detailes.html?cat_id=${product.cat_id}&product_id=${product.id}`
+        /*****************************************************************/
+        // this contains the product image  : must be appended in a
+        let productImage = document.createElement('img');
+        productImage.id = `cookerProdImage_id_${product.id}`;
+        productImage.src = `${product.img}`;
+        productImage.alt = "product image";
+    
+        /*****************************************************************/
+        // this div contains the product description : must be appended in a
+        let productDescriptionContainer = document.createElement('div');
+        productDescriptionContainer.id = `${catName}ProdDesc_id_${product.id}`;
+        productDescriptionContainer.className = "productDesc px-2 align-self-start";
+    
+        let productDescriptionText = document.createElement('p'); // my product description
+        productDescriptionText.innerText = `${product.disc}`;
+    
+        productDescriptionContainer.appendChild(productDescriptionText);// appending the text to the container
+    
+        /*****************************************************************/
+        // this div contains the product Price : must be appended in a
+        let prodductPriceContainer = document.createElement('div');
+        prodductPriceContainer.id = `${catName}ProdPrice_id_${product.id}`;
+        prodductPriceContainer.className = "productPrice d-flex align-items-center p-2 ";
+    
+        let currentPriceSpan = document.createElement('span');// span that contains the price span and EGP word
+        currentPriceSpan.className = "EGP";
+    
+        let currentPriceChildSpan = document.createElement('span');// span that contains the price text
+        currentPriceChildSpan.className = "productPrice_class";
+        currentPriceChildSpan.innerText = `${product.price - (product.price * product.discount)/100}`;
+    
+        // Add " EGP" as a text node after the price
+        let EGPText = document.createTextNode(" EGP");
+    
+        // appending the price text first , and then EGP word
+        currentPriceSpan.appendChild(currentPriceChildSpan);
+        currentPriceSpan.appendChild(EGPText);
+    
+        let oldPriceSpan = document.createElement('span');// this is old price span
+        oldPriceSpan.className = "oldPrice_class";
+        oldPriceSpan.innerText = `${product.price}`;
+    
+        // appending current price span and then the old price
+        prodductPriceContainer.appendChild(currentPriceSpan);
+        prodductPriceContainer.appendChild(oldPriceSpan);
+    
+        // appending the image , description and price in the ancor tag
+        productDetailsLink.appendChild(productImage); 
+        productDetailsLink.appendChild(productDescriptionContainer);
+        productDetailsLink.appendChild(prodductPriceContainer);
+    
+        /*****************************************************************/
+        // this div contains the add to cart btn , and count and bin btn
+        /*****************************************************************/
+        let cartBtnDiv = document.createElement("div"); // this div contains the add to cart btn , count and remove div
+        cartBtnDiv.className = "cartBtn w-75 py-3 d-flex justify-content-center";
+    
+        // this is the add to cart btn
+        let addToCartBtn = document.createElement("button");
+        addToCartBtn.id = `${catName}ProdAddToCartBtn_id_${product.id}`;
+        addToCartBtn.className = "w-75 addToCartBtn_class";
+        addToCartBtn.innerText = "Add to cart";
+    
+        // Counter & Bin div (Initially Hidden) , contains + sign , trash icon , and - sign all as buttons (initially hidden)
+        let countAndBinDiv = document.createElement("div");
+        countAndBinDiv.id = `${catName}ProdCountAndBinDiv_id_${product.id}`;
+        countAndBinDiv.className = "productCountAndBin w-75 d-flex justify-content-between align-items-center px-3 py-2 d-none";
+    
+        // remove Button that contains trash icon
+        let removeBtn = document.createElement("button");
+        removeBtn.id = `${catName}ProdRemoveFromCartBtn_id_${product.id}`;
+        removeBtn.className = "bin";
+        // creating trash icon
+        let trashIcon = document.createElement('i');
+        trashIcon.className = "fa fa-trash-o";
+        // appending the trah icon to remove btn
+        removeBtn.appendChild(trashIcon);
+    
+        // Decrease Button
+        let decrBtn = document.createElement("button");
+        decrBtn.id = `${catName}ProdDecrCountBtn_id_${product.id}`;
+        decrBtn.className = "minus d-none";
+        // creating minus icon
+        let minusIcon = document.createElement('i');
+        minusIcon.className = "fa fa-minus";
+        // appending the minus icon to decrement btn
+        decrBtn.appendChild(minusIcon);
+    
+        // Count Span
+        let countSpan = document.createElement("span");
+        countSpan.id = `${catName}ProdCountSpan_id_${product.id}`;
+        countSpan.className = "col-auto";
+        countSpan.innerText = "0";
+    
+        // Increase Button
+        let incrBtn = document.createElement("button");
+        incrBtn.id = `${catName}ProdIncrCountBtn_id_${product.id}`;
+        incrBtn.className = "plus";
+        // creating plus icon
+        let plusIcon = document.createElement('i');
+        plusIcon.className = "fa fa-plus";
+        // appending the plus icon to decrement btn
+        incrBtn.appendChild(plusIcon);
+    
+        // Append elements to counter div
+        countAndBinDiv.appendChild(removeBtn);
+        countAndBinDiv.appendChild(decrBtn);
+        countAndBinDiv.appendChild(countSpan);
+        countAndBinDiv.appendChild(incrBtn);
+    
+        // Append addToCart button & counter div
+        cartBtnDiv.appendChild(addToCartBtn);
+        cartBtnDiv.appendChild(countAndBinDiv);
+    
+        // we finished all content of the product inner container , append them to this contianer
+        productInnerContainer.appendChild(productHeader);
+        productInnerContainer.appendChild(productDetailsLink);
+        productInnerContainer.appendChild(cartBtnDiv);
+    
+        // append inner container to the prod container
+        productContainer.appendChild(productInnerContainer)
+    
+        // append the product container to the products container
+        productsContainer.appendChild(productContainer);
+    })
+
+    parentContainer.appendChild(productsContainer);
 }
