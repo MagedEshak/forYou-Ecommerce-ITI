@@ -174,7 +174,41 @@ export async function deleteDocById(docName, Id) {
      
   }
     catch (error) {
-      console.error(`Error deleting document ${Id} from ${Name}:`, error);
+      console.error(`Error deleting document ${Id} from ${docName}:`, error);
       
+  }
+}
+
+
+/////////////////////////////
+// handle image upload to Imgur
+/////////////////////////////
+
+// Imgur upload function
+export async function uploadToImgur(file) {
+  const clientId = '5c51da6457cf182';  // Replace with your Imgur client ID
+
+  const formData = new FormData();
+  formData.append('image', file);
+  
+  try {
+      const response = await fetch('https://api.imgur.com/3/image', {
+          method: 'POST',
+          headers: {
+              'Authorization': `Client-ID ${clientId}`,
+          },
+          body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+          console.log('Image uploaded successfully!', data.data.link);
+          return data.data.link; // Return the image URL
+      } else {
+          console.error('Imgur upload failed:', data.data.error);
+      }
+  } catch (error) {
+      console.error('Error uploading image:', error);
   }
 }
