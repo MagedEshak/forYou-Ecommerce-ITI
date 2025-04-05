@@ -1,7 +1,6 @@
 // Import necessary Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
 import { getFirestore, collection, getDocs, getDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-storage.js";
 
 // Firebase configuration
@@ -16,37 +15,38 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 // Initialize Firestore and Firebase Storage
 const db = getFirestore(app);
-const storage = getStorage(app);
-const auth = getAuth(app);
+export { db };
 
-// Export Firestore and Firebase Storage for other modules
-export { db, storage, auth };
-
-// Function to upload an image to Firebase Storage
-export async function uploadImage(file) {
+/// Upload Image Function
+async function uploadImage(file) {
     if (!file) {
-        alert("Please select an image!");
-        return null;
+        alert("Please select an image.");
+        return;
     }
 
-    const fileName = `products/${Date.now()}_${file.name}`;
-    const storageRef = ref(storage, fileName);
+    // Create a reference to the location in Firebase Storage
+    const storageRef = ref(storage, `images/${Date.now()}_${file.name}`);
 
     try {
+        // Upload the file
         const snapshot = await uploadBytes(storageRef, file);
         console.log("Image uploaded successfully!");
 
-        const downloadURL = await getDownloadURL(snapshot.ref);
+        // Get the download URL of the image
+        const downloadURL = await getDownloadURL(snapshot.ref());
+        console.log("Download URL: ", downloadURL);
+
+        // Now you can store the download URL in Firestore or use it as needed
         return downloadURL;
     } catch (error) {
-        console.error("Error uploading image:", error);
-        alert("Failed to upload image.");
-        return null;
+        console.error("Error uploading image: ", error);
     }
 }
+
+
+
 
 // Function to get all products
 export async function getAllProducts() {
