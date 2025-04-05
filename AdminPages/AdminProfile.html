@@ -344,7 +344,7 @@
                         <div class="d-flex justify-content-between p-3">
                             <h2>Admins</h2>
                             <div>
-                                <button type="button" class="btn btn-color-fa fw-bold"
+                                <button type="button" id="addNewAdmin_id" class="btn btn-color-fa fw-bold"
                                     style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .25rem;">
                                     Add Admin
                                 </button>
@@ -363,9 +363,9 @@
                                             alt="Profile Image">
                                     </div>
                                     <!-- Admin Name -->
-                                    <div class="d-flex flex-column mt-3">
-                                        <span class="fw-bolder">Maged Eshak</span>
-                                        <span class="text-secondary">Admin</span>
+                                    <div id="viewAdminsDiv_id" class="d-flex flex-column mt-3">
+                                        <span id="adminName_id" class="fw-bolder">Maged Eshak</span>
+                                        <span id="adminStat_id" class="text-secondary">Admin</span>
                                     </div>
                                 </div>
                                 <!-- Arrow -->
@@ -519,11 +519,10 @@
                                 </div>
                                 <!-- End Current Password Input and Show Password CheckBox -->
 
-
                                 <!-- Start New Password Input and Show Password CheckBox -->
                                 <div class="col-md-12 col-lg-6">
-                                    <label for="currentPassInput_id" class="form-label">New Password</label>
-                                    <input type="password" id="currentPassInput_id" class="form-control">
+                                    <label for="newPassInput_id" class="form-label">New Password</label>
+                                    <input type="password" id="newPassInput_id" class="form-control">
                                     <div class="col-12 mb-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox"
@@ -538,8 +537,8 @@
 
                                 <!-- Start Repeat New Password Input and Show Password CheckBox -->
                                 <div class="col-md-12 col-lg-6">
-                                    <label for="currentPassInput_id" class="form-label">Repeat New Password</label>
-                                    <input type="password" id="currentPassInput_id" class="form-control">
+                                    <label for="reNewPassInput_id" class="form-label">Repeat New Password</label>
+                                    <input type="password" id="reNewPassInput_id" class="form-control">
 
                                     <div class="col-12 mb-3">
                                         <div class="form-check">
@@ -572,11 +571,12 @@
         <!-- End Content Section {My Profile, Admins, Edit Profile, Change Password} -->
     </main>
 
-
     <!-- Bootstrap JS -->
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 
-    <script src="./JS/navBar_sideBarFun.js"></script>
+    <script type="module" src="./JS/navBar_sideBarFun.js"></script>
+
+    <script type="module" src="./JS/admins.js"></script>
 </body>
 
 </html>

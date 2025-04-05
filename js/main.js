@@ -131,9 +131,9 @@ export async function getProductById(productId) {
     }
 }
 
-export async function getUserById(productId) {
+export async function getUserById(userId) {
   try {
-      const docRef = doc(db, "aliUsers", productId);
+      const docRef = doc(db, "aliUsers", userId);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
           console.log("Fetched product: ", docSnap.data());
@@ -146,9 +146,9 @@ export async function getUserById(productId) {
       console.error("Error getting product by ID: ", error);
     }
 }
-export async function getCategoryById(productId) {
+export async function getCategoryById(userId) {
   try {
-      const docRef = doc(db, "aliCategories", productId);
+      const docRef = doc(db, "aliCategories", userId);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
           console.log("Fetched product: ", docSnap.data());
@@ -159,7 +159,7 @@ export async function getCategoryById(productId) {
       }
   } catch (error) {
       console.error("Error getting product by ID: ", error);
-    }
+  }
 }
 
 // Function to update a product
