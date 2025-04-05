@@ -7,16 +7,17 @@ import { addDocument,deleteAllDocuments,getDocumentByField,getAllDocuments } fro
 //     "cat_name": "TV"
 // }
 // addDocument("category", cat)
-document.getElementById("form_id").addEventListener("submit", function(event){
+document.getElementById("form_id").addEventListener("submit", async function(event){
   event.preventDefault()
   var catName = document.getElementById("categoryNameInput_id").value
   var cat = {
     "name": catName,
   }
-  addDocument("category" , cat)
+  await addDocument("category" , cat)
   document.getElementById("categoryNameInput_id").value=""
 
 })
+
 var categorys = await getAllDocuments("category")
 categorys.forEach(cat =>{
   // Create the <tr> element
@@ -49,6 +50,7 @@ tdCategory.appendChild(divContainer);
 // Create the <td> element for quantity
 const tdQuantity = document.createElement("td");
 tdQuantity.className = "text-center align-middle";
+
 
 const spanQuantity = document.createElement("span");
 spanQuantity.id = "catQuantity_id";
