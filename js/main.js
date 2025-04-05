@@ -1,6 +1,16 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs, addDoc, doc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+  addDoc,
+  doc,
+  getDoc,
+  updateDoc,
+  deleteDoc,
+} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -11,7 +21,7 @@ const firebaseConfig = {
   projectId: "e-commer-website",
   storageBucket: "e-commer-website.firebasestorage.app",
   messagingSenderId: "72350924893",
-  appId: "1:72350924893:web:28817a6b6d8eb470fa8db4"
+  appId: "1:72350924893:web:28817a6b6d8eb470fa8db4",
 };
 
 // Initialize Firebase
@@ -39,13 +49,21 @@ export async function getDocumentByField(collectionName, field, value) {
     return null;
   }
 
-  const docData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  const docData = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
   console.log("Fetched documents:", docData);
   return docData;
 }
 
 //  Update a document using a field instead of ID
-export async function updateDocumentByField(collectionName, field, value, newData) {
+export async function updateDocumentByField(
+  collectionName,
+  field,
+  value,
+  newData
+) {
   const q = query(collection(db, collectionName), where(field, "==", value));
   const querySnapshot = await getDocs(q);
 
@@ -82,7 +100,10 @@ export async function deleteDocumentByField(collectionName, field, value) {
 export async function getAllDocuments(collectionName) {
   try {
     const querySnapshot = await getDocs(collection(db, collectionName));
-    const results = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const results = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
     console.log(`Fetched ${results.length} documents from '${collectionName}'`);
     return results;
@@ -91,34 +112,117 @@ export async function getAllDocuments(collectionName) {
     return [];
   }
 }
+<<<<<<< HEAD
+
+// delete all the docs
+=======
   // delete all the docs
+>>>>>>> 4933fe51e2b9568643b649861800203ca4a327b8
 export async function deleteAllDocuments(collectionName) {
   try {
-      const querySnapshot = await getDocs(collection(db, collectionName));
+    const querySnapshot = await getDocs(collection(db, collectionName));
 
-      if (querySnapshot.empty) {
-          console.log(`No documents found in '${collectionName}' to delete.`);
-          return;
-      }
+    if (querySnapshot.empty) {
+      console.log(`No documents found in '${collectionName}' to delete.`);
+      return;
+    }
 
-      querySnapshot.forEach(async (document) => {
-          const docRef = doc(db, collectionName, document.id);
-          await deleteDoc(docRef);
-          console.log(`Deleted document: ${document.id}`);
-      });
+    querySnapshot.forEach(async (document) => {
+      const docRef = doc(db, collectionName, document.id);
+      await deleteDoc(docRef);
+      console.log(`Deleted document: ${document.id}`);
+    });
 
-      console.log(`Successfully deleted all documents from '${collectionName}'`);
+    console.log(`Successfully deleted all documents from '${collectionName}'`);
   } catch (error) {
-      console.error(`Error deleting documents from '${collectionName}':`, error);
+    console.error(`Error deleting documents from '${collectionName}':`, error);
   }
 }
 
+<<<<<<< HEAD
+export async function getProductById(productId) {
+  try {
+    const docRef = doc(db, "aliProducts", productId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log("Fetched product: ", docSnap.data());
+      return { id: docSnap.id, ...docSnap.data() };
+    } else {
+      console.log("No such product!");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting product by ID: ", error);
+  }
+}
+
+export async function getUserById(userId) {
+  try {
+    const docRef = doc(db, "aliUsers", userId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log("Fetched product: ", docSnap.data());
+      return { id: docSnap.id, ...docSnap.data() };
+    } else {
+      console.log("No such product!");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting product by ID: ", error);
+  }
+}
+export async function getCategoryById(userId) {
+  try {
+    const docRef = doc(db, "aliCategories", userId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log("Fetched product: ", docSnap.data());
+      return { id: docSnap.id, ...docSnap.data() };
+    } else {
+      console.log("No such product!");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting product by ID: ", error);
+  }
+}
+
+// Function to update a product
+export async function updateProduct(productId, updatedData) {
+  try {
+    const docRef = doc(db, "aliProducts", productId);
+    await updateDoc(docRef, updatedData);
+    console.log("Product updated successfully.");
+  } catch (error) {
+    console.error("Error updating product: ", error);
+  }
+}
+
+export async function updateUser(productId, updatedData) {
+  try {
+    const docRef = doc(db, "aliUsers", productId);
+    await updateDoc(docRef, updatedData);
+    console.log("Product updated successfully.");
+  } catch (error) {
+    console.error("Error updating product: ", error);
+  }
+}
+
+=======
+>>>>>>> 4933fe51e2b9568643b649861800203ca4a327b8
 // var cat ={
 //     "cat_id": 0,
 //     "cat_name": "TV"
 // }
 // addDocument("category", cat)
 
+<<<<<<< HEAD
+////////////////////////////////
+//
+//          adding a new product
+//
+////////////////////////////////
+=======
 
 
 
@@ -178,3 +282,4 @@ export async function deleteDocById(docName, Id) {
       
   }
 }
+>>>>>>> 4933fe51e2b9568643b649861800203ca4a327b8
