@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore();
+const db = getFirestore(app);
 
 // 🚀 Add a new document to any collection
 export async function addDocument(collectionName, data) {
@@ -188,3 +188,12 @@ export async function updateUser(productId, updatedData) {
 //     "cat_name": "TV"
 // }
 // addDocument("category", cat)
+
+
+
+////////////////////////////////
+//
+//          adding a new product
+//
+////////////////////////////////
+
