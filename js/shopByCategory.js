@@ -1,4 +1,4 @@
-import {getCategoryById,getDocumentByField,getAllDocuments} from "../../js/main.js";
+import {getDocById ,getDocumentByField,getAllDocuments} from "../../js/main.js";
 
 let productsTemp = [];
 let categoriesTemp = [];
@@ -34,9 +34,6 @@ function disappearSideNavBar(navBar) {
 
 
 /*************************************************************************************************************** */
-
-
-
 /******************************************************************************************************** */
 
 /* function to add products dynamically : */
@@ -49,7 +46,7 @@ let catId = urlParams.get("cat_id") ;
 // Get cateogry name by its id from fireBase
 async function getCategoryname(id) {
     debugger;
-    let myCategory = await getCategoryById(id);
+    let myCategory = await getDocById("aliCategories" ,id);
     console.log(myCategory.cat_name);
     return myCategory.cat_name;
 }
@@ -60,7 +57,6 @@ async function getProductsByCatId(catId){
     console.log(productsTemp);
     //productsTemp = await getAllDocuments("aliProducts");
 }
-
 
 
 
@@ -259,22 +255,6 @@ async function createProductsInHtml() {
     parentContainer.appendChild(productsContainer);
 }
 
-async function initializePage(){
-    controlSideNavBer();
-    if(window.innerWidth <= 992){
-        displayCategoriesinSideNavBar();
-    }
-    else{
-        displayCategoriesinNavBar();
-    }
-    await createProductsInHtml();
-    addEventsToAllCartBtns ()
-}
-
-
-initializePage();
-
-
 
 /************************************************************************************** */
 
@@ -414,3 +394,19 @@ async function displayCategoriesinSideNavBar() {
 
     
 }
+
+
+async function initializePage(){
+    controlSideNavBer();
+    if(window.innerWidth <= 992){
+        displayCategoriesinSideNavBar();
+    }
+    else{
+        displayCategoriesinNavBar();
+    }
+    await createProductsInHtml();
+    addEventsToAllCartBtns ()
+}
+
+
+initializePage();

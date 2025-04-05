@@ -24,6 +24,10 @@ let addCategory = document.getElementById("addCategory_id"); // This Variable is
 
 // ----------------------------------------------------- Buttons Variables ---------------------------------------------------------------------------------------
 
+let addNewCategoryBtn = document.getElementById("addNewCategoryBtn_id"); // This Variable is search Section that search input for search any thing in admin pages
+
+let CancelBtn = document.getElementById("CancelBtn_id"); // This Variable is search Section that search input for search any thing in admin pages
+
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /**
@@ -100,42 +104,37 @@ searchDiv.addEventListener("click", function () {
  * -- To Show Add new Category Section
  */
 
-window.onload = () => {
-    
-let addNewCategoryBtn = document.getElementById("addNewCategoryBtn_id"); // This Variable is search Section that search input for search any thing in admin pages
-
-let CancelBtn = document.getElementById("CancelBtn_id"); // This Variable is search Section that search input for search any thing in admin pages
-    if (addNewCategoryBtn) {
-
-        addNewCategoryBtn.addEventListener("click", () => {
-    
-            if (addCategory.classList.contains("d-none")) {
+addNewCategoryBtn.addEventListener("click", function () {
+    if (addCategory.classList.contains("d-none")) {
         
-                addCategory.classList.remove("d-none");
+        addCategory.classList.remove("d-none");
 
-                document.getElementById("viewCategory_id").classList.remove("d-sm-flex");
+        document.getElementById("viewCategory_id").classList.remove("d-sm-flex");
         
-                document.getElementById("viewCategory_id").classList.add("d-none"); // To Hide category content
+        document.getElementById("viewCategory_id").classList.add("d-none"); // To Hide category content
 
-                addCategory.classList.add("d-block");
+        addCategory.classList.add("d-block");
         
-            }
-        });
+    } 
+});
 
-
-         CancelBtn.addEventListener("click", function () {
-        if (addCategory.classList.contains("d-block")) {
+CancelBtn.addEventListener("click", function () {
+    if (addCategory.classList.contains("d-block")) {
         
-            addCategory.classList.remove("d-block");
+        addCategory.classList.remove("d-block");
 
-            document.getElementById("viewCategory_id").classList.add("d-sm-flex");
+      document.getElementById("viewCategory_id").classList.add("d-sm-flex");
         
-            document.getElementById("viewCategory_id").classList.remove("d-none"); // To show category content
+        document.getElementById("viewCategory_id").classList.remove("d-none"); // To show category content
 
-            addCategory.classList.add("d-none");
+        addCategory.classList.add("d-none");
         
-        }
-    });
-    }
-};
+    } 
+});
 
+  function redirectToAddProduct() {
+            window.location.href = "admin-add-product.html";
+}
+     function redirectToDashboard() {
+            window.location.href = "admin-home.html";
+}     
