@@ -4,30 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../ui-ux/icons/bag.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../ui-ux/icons/layout.png" type="image/x-icon">
     <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./CSS/allAdminPages.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-    <title>Create New Product</title>
+    <title>View All Admins</title>
 </head>
 
 <body class="d-flex justify-content-around p-4">
-
     <!-- Start Left Side Dashboard Tabs -->
-    <aside id="" class="col-2 d-none d-lg-block rounded-4 position-sticky top-0">
+
+    <aside class="col-2 d-none d-lg-block rounded-4">
         <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
+            <!-- Start Bars showing when Dashboard be full width -->
+            <div id="barsLeftSideDiv_id" class="pe-2 d-block d-lg-none fs-1 cursor-pointer text-light">
+                <i class="bi bi-filter-left"></i>
+            </div>
+            <!-- End Bars showing when Dashboard be full width -->
+
             <li>
                 <div id="logoDiv_id" class="text-center">
                     <a href="../index.html" target="_blank">
                         <img src="../Images/logo/LLLOGOWhite.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
                     </a>
-                    <!-- Bars Icon -->
-
                 </div>
             </li>
             <li>
-                <span class="fw-bolder"><i class="bi bi-menu-button  list-links-active "></i> Menu</span>
+                <span class="fw-bolder"><i class="bi bi-menu-button"></i>
+                    Menu</span>
             </li>
             <hr class="mt-0">
             <li>
@@ -35,9 +40,7 @@
                     <i class="bi bi-house"></i> Dashboard</a>
             </li>
             <li>
-                <!-- Adding class list-links-active to color page name tab  -->
-                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i>
-                    Orders</a>
+                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i> Orders</a>
             </li>
             <li>
                 <a href="./addCategory.html" class="list-links text-light">
@@ -45,19 +48,23 @@
                 </a>
             </li>
             <li>
-                <a href="./viewAllAdmins.html" class="list-links text-light">
+                <a href="#" class="list-links text-light list-links-active">
                     <i class="bi bi-people"></i> View Admins</a>
             </li>
         </ul>
 
         <ul class="d-flex flex-column justify-content-between p-4 gap-2">
             <hr>
-            <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
+
+            <li>
+                <!-- Adding class list-links-active to color page name tab  -->
+                <a href="../AdminPages/AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i>
+                    Setting</a>
+            </li>
             <li>
                 <a href="../CustomersPages/signin.html" class="list-links text-light"><i
                         class="bi bi-box-arrow-left"></i>
-                    LogOut
-                </a>
+                    LogOut</a>
             </li>
         </ul>
     </aside>
@@ -76,11 +83,12 @@
                 </div>
             </li>
             <li>
-                <span class="fw-bolder"><i class="bi bi-menu-button"></i> Menu</span>
+                <span class="fw-bolder"><i class="bi bi-menu-button"></i>
+                    Menu</span>
             </li>
             <hr class="mt-0">
             <li>
-                <a href="./admin-home.html" class="list-links text-light list-links-active ">
+                <a href="./admin-home.html" class="list-links text-light">
                     <i class="bi bi-house"></i> Dashboard</a>
             </li>
             <li>
@@ -94,14 +102,15 @@
                 </a>
             </li>
             <li>
-                <a href="./viewAllAdmins.html" class="list-links text-light">
+                <a href="#" class="list-links text-light list-links-active">
                     <i class="bi bi-people"></i> View Admins</a>
             </li>
         </ul>
 
         <ul class="d-flex flex-column justify-content-between p-4 gap-2">
             <hr>
-            <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
+            <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i>
+                    Setting</a></li>
             <li>
                 <a href="../CustomersPages/signin.html" class="list-links text-light"><i
                         class="bi bi-box-arrow-left"></i>
@@ -112,8 +121,7 @@
     </aside>
     <!-- End Left Side Dashboard Tabs in Tablet and Mobile Only-->
 
-
-    <!-- Main Content -->
+    <!-- Navbar -->
     <main id="main_id" class="w-100">
         <!-- Start Nav Bar -->
         <header class="p-lg-4">
@@ -122,11 +130,11 @@
                 <div class="d-flex">
 
                     <!-- Bars Icon -->
-                    <div id="barsDiv_id" class="pe-2 d-lg-none fs-cf-4 cursor-pointer">
+                    <div id="barsDiv_id" class="pe-2 d-lg-none fs-cf-4">
                         <i class="bi bi-filter-left"></i>
                     </div>
 
-                    <span class="fw-bolder fs-cf-2 fs-cf-4">Add New Product</span>
+                    <span class="fw-bolder fs-cf-2 fs-cf-4">View All Admins</span>
                 </div>
 
                 <div id="logoDiv_id">
@@ -134,6 +142,7 @@
                         <img src="../Images/logo/LLLOGO.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
                     </a>
                 </div>
+
                 <!-- Nav Right Side -->
                 <div>
                     <!-- Start profile img, search, notifications icons-->
@@ -153,7 +162,8 @@
                                         placeholder="Search any Thing in Admin Dashboard ...">
                                     <label for="floatingInput">
                                         <i class="bi bi-search searchInput-color me-2"></i>
-                                        Search any Thing in Admin Dashboard ...</label>
+                                        Search any Thing in Admin Dashboard
+                                        ...</label>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +173,8 @@
                             <i id="notificationsIcon_id" class="bi bi-bell fs-cf-3 fs-cf-4">
                                 <span id="notificationsDot_id"
                                     class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
-                                    <span class="visually-hidden">New notification</span>
+                                    <span class="visually-hidden">New
+                                        notification</span>
                                 </span>
                             </i>
                         </div>
@@ -176,67 +187,77 @@
                             <hr>
                             <div class="p-4">
                                 <div class="mb-2 border-bottom pb-4">
-                                    <div id="" class="fs-5 d-flex gap-3 position-relative">
+                                    <div id class="fs-cf-5 d-flex gap-3 position-relative">
                                         <!-- Product Icon -->
                                         <div>
-                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt=""
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt
                                                 id="notifiPhoto_id" width="70px">
                                         </div>
 
                                         <!-- Product Name -->
                                         <div class="d-lg-flex flex-column">
-                                            <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                                            <span class="fs-6">Fresh Cooker
+                                                Hood 90 cm - Classic Black
                                                 Stainless</span>
-                                            <span class="text-secondary ">Maged Eshak</span>
+                                            <span class="text-secondary">Maged
+                                                Eshak</span>
                                         </div>
                                         <span id="redCircleNotifi_id"
                                             class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
-                                            <span class="visually-hidden">New notification</span>
+                                            <span class="visually-hidden">New
+                                                notification</span>
                                         </span>
                                     </div>
                                 </div>
 
                                 <div class="mb-2 border-bottom pb-4">
-                                    <div id="" class="fs-5 d-flex gap-3 position-relative">
+                                    <div id class="fs-cf-5 d-flex gap-3 position-relative">
                                         <!-- Product Icon -->
                                         <div>
-                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt=""
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt
                                                 id="notifiPhoto_id" width="70px">
                                         </div>
 
                                         <!-- Product Name -->
                                         <div class="d-lg-flex flex-column">
-                                            <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                                            <span class="fs-6">Fresh Cooker
+                                                Hood 90 cm - Classic Black
                                                 Stainless</span>
-                                            <span class="text-secondary ">Maged Eshak</span>
+                                            <span class="text-secondary">Maged
+                                                Eshak</span>
                                         </div>
                                         <span id="redCircleNotifi_id"
                                             class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
-                                            <span class="visually-hidden">New notification</span>
+                                            <span class="visually-hidden">New
+                                                notification</span>
                                         </span>
                                     </div>
                                 </div>
 
                                 <div class="mb-2 border-bottom pb-4">
-                                    <div id="" class="fs-5 d-flex gap-3 position-relative">
+                                    <div id class="fs-cf-5 d-flex gap-3 position-relative">
                                         <!-- Product Icon -->
                                         <div>
-                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt=""
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt
                                                 id="notifiPhoto_id" width="70px">
                                         </div>
 
                                         <!-- Product Name -->
                                         <div class="d-lg-flex flex-column">
-                                            <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                                            <span class="fs-6">Fresh Cooker
+                                                Hood 90 cm - Classic Black
                                                 Stainless</span>
-                                            <span class="text-secondary ">Maged Eshak</span>
+                                            <span class="text-secondary">Maged
+                                                Eshak</span>
                                         </div>
                                         <span id="redCircleNotifi_id"
                                             class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
-                                            <span class="visually-hidden">New notification</span>
+                                            <span class="visually-hidden">New
+                                                notification</span>
                                         </span>
                                     </div>
                                 </div>
+
                             </div>
 
                         </div>
@@ -261,76 +282,118 @@
         </header>
         <!-- End Nav Bar -->
 
-        <!-- Product Creation Form -->
-        <div id="main-content" class="container mt-4">
-            <div class="mx-auto p-4 shadow" style="max-width: 600px;">
-                <form id="product-form" >
-                    <!-- Product Name -->
-                    <div class="mb-3">
-                        <label for="productName" class="form-label">Product Name</label>
-                        <input type="text" class="form-control" id="product-name" placeholder="Enter product name"
-                            required>
-                    </div>
+        <!-- Main Content -->
+        <section id="mainContent" class="container">
+            <section class="bg-white p-2 mt-5 shadow-lg rounded align-content-lg-around">
+                <!-- Display Products -->
+                <h1 class="text-center">All Admins</h1>
+                <!-- Add New Product Form -->
+                <button id="addNewAdmin_id" class="btn-color-fa mb-3 p-2 ps-3 pe-3 cursor-pointer badge">
+                    <i class="bi bi-plus-circle"></i>
+                    <span class="d-none d-lg-inline d-md-inline">Add New
+                        Admin</span>
+                </button>
+                <!-- Table for displaying products -->
+                <div class="table-responsive">
+                    <table class="table table-bordered mt-3 table-hover ">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>City</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminsTable">
+                            <!-- Products will be inserted here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </section>
 
-                    <!-- Upload Image -->
-                    <div class="mb-3">
-                        <label for="product-image" class="form-label">Product Image</label>
-                        <input  type="file" class="form-control" id="product-image" accept="image/*">
-                       
-                    </div>
 
-                    <!-- Category -->
-                    <div class="mb-3">
-                        <label for="product-category" class="form-label">Category</label>
-                        <select id="product-category" class="form-select" required>
-                           <option value="">loading Categories</option>
-                        </select>
-                    </div>
-
-                    <!-- Price -->
-                    <div class="mb-3">
-                        <label for="productPrice" class="form-label">Price (EGP)</label>
-
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="product-price" placeholder="Enter price" required
-                                aria-label="Amount (to the nearest egp)">
-                            <span class="input-group-text">EGP</span>
+        <section id="createNewAdmin_id" class="p-4 col-lg-5 rounded-3 d-none shadow bg-white">
+            <!-- Start Edit Profile Section -->
+            <div class="row p-md-3 p-lg-3 pt-3">
+                <h2>Add New Admin</h2>
+                <!-- Start Edit Profile Form -->
+                <form action="" method="get" class="g-3 border border-3 rounded-3 p-4">
+                    <div class="row">
+                        <div class=" col-12">
+                            <label for="userName_id">Name</label>
+                            <input id="userName_id" type="text" name="userName" placeholder="Please, Enter your name"
+                                class="form-control" />
+                            <span class="d-none text-danger"> This field is required</span>
+                            <span class="d-none text-danger">your name must be more than three characters</span>
                         </div>
-                    </div>
-                    <!-- discount--> 
-                     <div class="mb-3">
-                        <label for="productDiscount" class="form-label">Discount (%)</label>
-                        <input type="number" class="form-control" id="product-discount" placeholder="Enter discount from 1 : 100"
-                            min="0" max="100">
-                    </div>
+                        <div>
+                            <label for="phone_id">Phone</label>
+                            <input id="phone_id" type="text" name="phone" placeholder="Please, Enter your Phone Number"
+                                class="form-control" />
+                            <span class="d-none text-danger"> This field is required</span>
+                            <span class="d-none text-danger">This field must be Phone</span>
+                        </div>
+                        <div>
+                            <label for="email_id">Email</label>
+                            <input id="email_id" type="email" name="Email" placeholder="Please, Enter your email"
+                                class="form-control" />
+                            <span class="d-none text-danger"> This field is required</span>
+                            <span class="d-none text-danger">This field must be Email</span>
+                        </div>
 
-                    <!-- Quantity -->
-                     <div class="mb-3">
-                        <label for="productQuantity" class="form-label">Quantity</label>
-                        <input type="number" class="form-control" id="product-quantity" placeholder="Enter quantity"
-                            min="1" value="1" required>
-                    </div>
-                    
+                        <div>
+                            <label for="password_id">Password</label>
 
-                    <!-- Description -->
-                    <div class="mb-3">
-                        <label for="productDescription" class="form-label">Description</label>
-                        <textarea id="product-description" class="form-control" rows="3"
-                            placeholder="Enter product description" required></textarea>
-                    </div>
+                            <input id="password_id" type="password" name="pass" class="form-control" />
 
-                    <!-- Submit Button -->
-                    <div class="col-12 text-end mt-3">
-                        <button type="submit" class="btn btn-color fw-bold text-light" >Add New Product</button>
-                      
-                        <button type="button" id="CancelBtn_id" class="btn btn-color-fa fw-bold">Cancel</button>
-                    </div>
+                            <span class="d-none text-danger"> This field is required</span>
+                            <span class="d-none text-danger">your password must be matched</span>
+
+                            <div class="col-12 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="showCurrentPasswordCheck_id">
+                                    <label class="form-check-label" for="showCurrentPasswordCheck_id">
+                                        Show Password
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Start Repeat New Password Input and Show Password CheckBox -->
+                        <div class="col-md-12 col-lg-12">
+                            <label for="password_id" class="form-label">Repeat Your Password</label>
+                            <input type="password" id="password_id" class="form-control">
+                            <span class="d-none text-danger"> This field is required</span>
+                            <span class="d-none text-danger">your password must be matched</span>
+                            <div class="col-12 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="showRepeatPasswordCheck_id">
+                                    <label class="form-check-label" for="showRepeatPasswordCheck_id">
+                                        Show Password
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Repeat New Password Input and Show Password CheckBox -->
+
+                        <div class="d-flex flex-column">
+                            <input type="submit" value="Register" class="btn btn-color fw-bold text-light mb-3" />
+
+                            <button id="CancelBtn_id" type="button" class="btn border-2 border-dark">Cancel</button>
+                        </div>
                 </form>
+                <!-- End Edit Profile Form -->
             </div>
-        </div>
+            <!-- End Edit Profile Section -->
+            </div>
+        </section>
     </main>
-    <script type="module" src="JS/navBar_sideBarFun.js" ></script>
-    <script type="module" src="JS/addProduct.js" ></script>
-    <script type="module" src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js" ></script>
+
+    <script type="module" src="./JS/navBar_sideBarFun.js"></script>
+    <script type="module" src="./JS/admins.js"></script>
+
 </body>
+
 </html>

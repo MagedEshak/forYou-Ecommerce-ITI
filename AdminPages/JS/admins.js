@@ -1,32 +1,74 @@
 import {getAllDocuments,addDocument } from "../../js/main.js";
 
+let createNewAdmin = document.getElementById("createNewAdmin_id");
 
-let addAdmin = document.getElementById("addNewAdmin_id");
+window.onload = () => {
+    let addAdmin = document.getElementById("addNewAdmin_id");
+    let CancelBtn = document.getElementById("CancelBtn_id");
+    if (addAdmin && CancelBtn) {
+
+        addAdmin.addEventListener("click", () => {
+    
+            if (createNewAdmin.classList.contains("d-none")) {
+        
+                createNewAdmin.classList.remove("d-none");
+
+                if (window.location.href == "http://127.0.0.1:5500/AdminPages/viewAllAdmins.html") {
+                    document.getElementById("mainContent").classList.add("d-none"); // To Hide category content
+                } else {
+                    document.getElementById("mainContentSec_id").classList.remove("d-md-flex"); // To Hide category content
+                    document.getElementById("mainContentSec_id").classList.add("d-none"); // To Hide category content
+                }
+
+                createNewAdmin.classList.add("d-block");
+            }
+        });
+        
+        CancelBtn.addEventListener("click", () => {
+    
+            if (createNewAdmin.classList.contains("d-block")) {
+        
+                createNewAdmin.classList.add("d-none");
+            
+                if (window.location.href == "http://127.0.0.1:5500/AdminPages/viewAllAdmins.html") {
+                         document.getElementById("mainContent").classList.remove("d-none"); // To Hide category content
+                } else {
+                         document.getElementById("mainContentSec_id").classList.add("d-md-flex"); // To Hide category content
+                         document.getElementById("mainContentSec_id").classList.remove("d-none"); // To Hide category content
+                }
+                createNewAdmin.classList.remove("d-block");
+            }
+        });
+    }
+};
 
 
-
-addAdmin.addEventListener("click", () => {
-    window.location.assign("../../CustomersPages/signin.html");
-});
-
-// const adminsData = {
-//     Username: "Maged Eshak",
-//      email: "maged@admin.com",
+// const adminsData =
+// {
+//     Username: "Mina Maged",
+//     email: "mina@gmail.com",
 //     password: "123456",
-//     phone: "01234586544",
-//     isAdmin: true,
-//     address:["EG","Assiut"]
-
+//     phone: "01266686544",
+//     isAdmin: false,
+//     address: ["EG", "Cairo"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 1,
+//         cat_id: 1,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
 // };
 
-// addDocument("User",adminsData);
+  //addDocument("User",adminsData);
 
 let adminCache = new Map();
 
 async function getAllAdmins() {
     const admins = await getAllDocuments("User");
-    console.log(admins);
-      
+
     let viewAddminsCon = document.getElementById("viewAddminsCon_id");
 
     admins.forEach(element => {
@@ -78,5 +120,30 @@ async function getAllAdmins() {
         console.log(viewAddminsCon);
     });
 }
-
 getAllAdmins();
+
+
+const viewAdmins = new Map();
+// Create table row with proper error handling
+async function createAdminRow() {
+const admins = await getAllDocuments("User");
+   let body = document.getElementById("adminsTable");
+   
+    admins.forEach(element => {
+        viewAdmins.set(admins.id);
+        if (element.isAdmin === true) {
+    
+            const row = document.createElement("tr");
+            row.innerHTML = `
+        <td>${element.id}</td>
+        <td>${element.Username}</td>
+        <td>${element.email}</td>
+        <td>${element.phone}</td>
+        <td>${element.address[1]}</td>
+        `;
+            body.appendChild(row);
+            return row;
+        }
+    });
+}
+createAdminRow();

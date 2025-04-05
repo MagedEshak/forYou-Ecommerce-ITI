@@ -121,12 +121,13 @@ ul li .list-links-active {
     z-index: 99;
 }
 
-#addCategory_id {
-    transform: translate(60%, -10%) !important;
-    -webkit-transform: translate(60%, -10%) !important;
-    -moz-transform: translate(60%, -10%) !important;
-    -ms-transform: translate(60%, -10%) !important;
-    -o-transform: translate(60%, -10%) !important;
+#addCategory_id,
+#createNewAdmin_id {
+    transform: translate(0, 5%) !important;
+    -webkit-transform: translate(0, 5%) !important;
+    -moz-transform: translate(0, 5%) !important;
+    -ms-transform: translate(0, 5%) !important;
+    -o-transform: translate(0, 5%) !important;
     z-index: 99 !important;
 }
 
@@ -167,6 +168,7 @@ ul li .list-links-active {
     .profile-camera-icon {
         bottom: 3%;
     }
+
 }
 
 /* للشاشات الكبيرة (lg) وما فوق */
@@ -194,6 +196,16 @@ ul li .list-links-active {
 
     .profile-camera-icon {
         bottom: 3%;
+    }
+
+    #addCategory_id,
+    #createNewAdmin_id {
+        transform: translate(60%, 0%) !important;
+        -webkit-transform: translate(60%, 0%) !important;
+        -moz-transform: translate(60%, 0%) !important;
+        -ms-transform: translate(60%, 0%) !important;
+        -o-transform: translate(60%, 0%) !important;
+        z-index: 99 !important;
     }
 }
 
