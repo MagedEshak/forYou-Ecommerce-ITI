@@ -60,8 +60,7 @@ async function addProduct(event) {
     const productQuantity = document.getElementById("product-quantity").value;
 
     const imageFile = fileInput.files[0];
-    const clientId = "5c51da6457cf182";
-
+    
     if (!productName || !productPrice || !productCategory || !productDescription || !imageFile) {
         alert("Please fill in all required fields and upload an image!");
         return;
@@ -101,4 +100,7 @@ async function addProduct(event) {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("product-form").addEventListener("submit", addProduct);
     loadCategories();
+});
+document.getElementById("CancelBtn_id").addEventListener("click", () => {
+    window.location.href = "admin-home.html";
 });
