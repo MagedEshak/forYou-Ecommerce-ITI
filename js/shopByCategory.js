@@ -1,6 +1,7 @@
-import {getCategoryById,getDocumentByField} from "../../js/main.js";
+import {getCategoryById,getDocumentByField,getAllDocuments} from "../../js/main.js";
 
 let productsTemp = [];
+let categoriesTemp = [];
 let catName = undefined;
 
 /* this code handels the side nav bar  */
@@ -76,7 +77,7 @@ async function createProductsInHtml() {
     let categoryheader = document.createElement('h2');
     categoryheader.className = "p-4 text-center";
     categoryheader.id = `${catName}Section_id`;
-    categoryheader.innerText = `Shop ${catName}s`;
+    categoryheader.innerText = `Shop ${catName}`;
 
     // this is the container of products
     let productsContainer = document.createElement('div');
@@ -103,6 +104,10 @@ async function createProductsInHtml() {
         discountPercentage.className = "prodDiscount_class col-auto";
         discountPercentage.id = `${catName}ProdDiscount_id_${product.id}`; 
         discountPercentage.innerText = `OFF ${product.discount}% cash`;
+
+        if(product.discount == 0){
+            discountPercentage.style.visibility = "hidden";
+        }
     
     
         let addToWishListBtn = document.createElement('button');// add to wish list button , this contains heart icon
@@ -256,6 +261,12 @@ async function createProductsInHtml() {
 
 async function initializePage(){
     controlSideNavBer();
+    if(window.innerWidth <= 992){
+        displayCategoriesinSideNavBar();
+    }
+    else{
+        displayCategoriesinNavBar();
+    }
     await createProductsInHtml();
     addEventsToAllCartBtns ()
 }
@@ -337,7 +348,7 @@ function display(element){
 /************************************************************* */
 
 let myFilterRange =  document.getElementById('priceRangeInput_id');
-myFilterRange.addEventListener('change' , () => {
+myFilterRange.addEventListener('input' , () => {
     let myFilterValue = myFilterRange.value;
     let rangeValue = document.getElementById('rangeValue');
     rangeValue.innerHTML = myFilterValue;
@@ -360,4 +371,46 @@ function displayProductsDependsOnPriceValue(myFilterValue){
             display(myProdContainer);
         }
     })
+}
+
+
+/*************************************************************** */
+/* this function displays cat links in the nav bar */
+async function displayCategoriesinNavBar() {
+    categoriesTemp = await getAllDocuments("aliCategories");
+
+    let cateLinksContainer = document.getElementById('navCategoriesLinks_id');
+    categoriesTemp.forEach( category => {
+        let catLink = document.createElement('a');
+        catLink.className = "col-auto px-5";
+        catLink.href = `shopByCategory.html?cat_id=${category.id}`;
+        catLink.innerText = category.cat_name;
+
+        cateLinksContainer.appendChild(catLink);
+    })
+}
+
+/* just called when the width of screen is small */
+async function displayCategoriesinSideNavBar() {
+    categoriesTemp = await getAllDocuments("aliCategories");
+    
+    let cateLinksContainer = document.getElementById('sideNavCategoriesLinks_id');
+    let whatsappLink = document.getElementById('whatsappLink_id');
+    categoriesTemp.forEach( category => {
+        
+        let catLinkDiv = document.createElement('div');
+        catLinkDiv.className = "w-100";
+
+        let catLink = document.createElement('a');
+        catLink.className = "w-100";
+        // put the link to go to category you need
+        catLink.href = `shopByCategory.html?cat_id=${category.id}`;
+        catLink.innerText = category.cat_name;
+        
+        catLinkDiv.appendChild(catLink)
+        cateLinksContainer.insertBefore(catLinkDiv , whatsappLink);
+        
+    })
+
+    
 }

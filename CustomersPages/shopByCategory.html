@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="./Images/logo/LLLOGO.png" type="image/x-icon">
     <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../CSS/home.css">
+    <link rel="stylesheet" href="../CSS/shopByCategory.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -26,7 +27,7 @@
 
                 <!-- this is My Site Logo -->
                 <div class="siteLogo col-2">
-                    <a href="#">
+                    <a href="../index.html">
                         <img class="imgLogo_class" src="../Images/logo/LLLOGOWhite.png" alt="">
                     </a>
                 </div>
@@ -46,14 +47,9 @@
                 <span><a href="./CustomersPages/signin.html">Login</a> / <a
                         href="./CustomersPages/Rejester.html">Register</a></span>
             </div>
-            <div class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
-                <div class="w-100"><a href="CustomersPages/shopByCategory.html?cat_id=5mFr9lX80FPkfUUp9crj" class="w-100"> Cookers</a></div>
-                <div class="w-100"><a href="#">Small Home Appliances</a></div>
-                <div class="w-100"><a href="#televesionsSection_id" class="w-100"> Televesions</a></div>
-                <div class="w-100"><a href="#">Cooling Appliances</a></div>
-                <div class="w-100"><a href="#">Air Conditioners</a></div>
-                <div class="w-100"><a href="#">Washing Mashines</a></div>
-                <div class="w-100 whatsapp col-auto"><a href="#">whatsapp</a></div>
+            <div id="sideNavCategoriesLinks_id"
+            class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
+                <div id="whatsappLink_id" class="w-100 whatsapp col-auto"><a href="#">whatsapp</a></div>
                 <div class="w-100 support col-auto"><a href="#">call support</a></div>
                 <div class="w-100 branches col-auto"><a href="#">Branches</a></div>
             </div>
@@ -70,7 +66,7 @@
 
                 <!-- this is my site logo -->
                 <div class="d-none d-lg-block siteLogo col-1">
-                    <a href="#">
+                    <a href="../index.html">
                         <img class="imgLogo_class" src="../Images/logo/LLLOGO.png" alt="">
                     </a>
                 </div>
@@ -117,34 +113,36 @@
     </header> <!-- updated -->
 
     <!-- my nav in large devices , it only appears on large devices -->
+    <!-- my nav in large devices , it only appears on large devices -->
     <nav class="d-none d-lg-block siteColorClass">
         <div class="container-fluid p-3">
-            <div class="row justify-content-evenly align-items-center links">
-                <a href="shopByCategory.html?cat_id=5mFr9lX80FPkfUUp9crj" class="col-auto"> Cookers</a>
-                <a href="#" class="col-auto"> Small Home Appliances</a>
-                <a href="#televesionsSection_id" class="col-auto"> Televesions</a>
-                <a href="#" class="col-auto"> Cooling Appliances</a>
-                <a href="#" class="col-auto"> Air Conditioners</a>
-                <a href="#" class="col-auto"> Washing Machines</a>
-                <a href="./CustomersPages/Rejester.html" class="col-auto"> Sign In</a>
-                <a href="#" class="col-auto d-none"> Profile</a>
-                <a href="../CustomersPages/cart.html" class="col-auto">
-                    <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
-                </a>
+            <div class="links d-flex justify-content-between align-items-center">
+                <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links col-9">
+                    <!-- this is filled dynamically using js -->
+                </div>
+                <div class="row justify-content-end align-items-center links col-3">
+                    <a href="./CustomersPages/signin.html" class="col-auto px-5"> Sign In</a>
+                    <a href="#" class="col-auto px-5 d-none"> Profile</a>
+                    <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
+                        <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </nav><!-- updated -->
 
     <section class="pt-lg-5">
-        <div class="container  bg-danger py-3 m-auto">
-            <div class="d-flex flex-column  bg-dark p-2 justify-content-center align-items-center">
-                <label for="priceRangeInput_id" class=" text-light py-2">Filter By Price</label>
+        <div class="container py-3 m-auto">
+            <div class="d-flex flex-column  p-2 justify-content-center align-items-center text-dark">
+                <label for="priceRangeInput_id" class="range-txt pb-3">Filter By Price</label>
                 <input type="range" name="priceRange" min="0" max="10000" value="10000"
-                    id="priceRangeInput_id" class="w-50">
-                <div  class="text-light">from <span class="px-3">0</span> to <span id="rangeValue" class="px-3">10000</span></div>
+                    id="priceRangeInput_id" class="w-50 slider">
+                <div  class="pt-2 range-txt">from <span class="px-3">0</span> to <span id="rangeValue" class="px-3">10000</span></div>
             </div>
         </div>
     </section>
+
+
     <section>
         <div id="parentContainer_id" class="container-fluid  pb-5 px-3">
             <!-- this is filled dynamically using js -->

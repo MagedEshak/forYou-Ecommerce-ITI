@@ -46,14 +46,9 @@
                 <span><a href="./CustomersPages/signin.html">Login</a> / <a
                         href="./CustomersPages/Rejester.html">Register</a></span>
             </div>
-            <div class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
-                <div class="w-100"><a href="CustomersPages/shopByCategory.html?cat_id=5mFr9lX80FPkfUUp9crj" class="w-100"> Cookers</a></div>
-                <div class="w-100"><a href="#">Small Home Appliances</a></div>
-                <div class="w-100"><a href="#televesionsSection_id" class="w-100"> Televesions</a></div>
-                <div class="w-100"><a href="#">Cooling Appliances</a></div>
-                <div class="w-100"><a href="#">Air Conditioners</a></div>
-                <div class="w-100"><a href="#">Washing Mashines</a></div>
-                <div class="w-100 whatsapp col-auto"><a href="#">whatsapp</a></div>
+            <div id="sideNavCategoriesLinks_id"
+            class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
+                <div id="whatsappLink_id" class="w-100 whatsapp col-auto"><a href="#">whatsapp</a></div>
                 <div class="w-100 support col-auto"><a href="#">call support</a></div>
                 <div class="w-100 branches col-auto"><a href="#">Branches</a></div>
             </div>
@@ -119,18 +114,17 @@
     <!-- my nav in large devices , it only appears on large devices -->
     <nav class="d-none d-lg-block siteColorClass">
         <div class="container-fluid p-3">
-            <div class="row justify-content-evenly align-items-center links">
-                <a href="CustomersPages/shopByCategory.html?cat_id=5mFr9lX80FPkfUUp9crj" class="col-auto"> Cookers</a>
-                <a href="#" class="col-auto"> Small Home Appliances</a>
-                <a href="#televesionsSection_id" class="col-auto"> Televesions</a>
-                <a href="#" class="col-auto"> Cooling Appliances</a>
-                <a href="#" class="col-auto"> Air Conditioners</a>
-                <a href="#" class="col-auto"> Washing Machines</a>
-                <a href="./CustomersPages/Rejester.html" class="col-auto"> Sign In</a>
-                <a href="#" class="col-auto d-none"> Profile</a>
-                <a href="../CustomersPages/cart.html" class="col-auto">
-                    <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
-                </a>
+            <div class="links d-flex justify-content-between align-items-center">
+                <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links col-9">
+                    <!-- this is filled dynamically using js -->
+                </div>
+                <div class="row justify-content-end align-items-center links col-3">
+                    <a href="./CustomersPages/signin.html" class="col-auto px-5"> Sign In</a>
+                    <a href="#" class="col-auto px-5 d-none"> Profile</a>
+                    <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
+                        <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </nav><!-- updated -->
@@ -536,7 +530,7 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script type="module" src="js/script.js"></script>
     <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
     <script type="module" src="js/main.js"></script>
