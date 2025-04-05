@@ -1,4 +1,4 @@
-import { db, getAllDocuments } from "../../js/main.js";
+import { deleteDocById, getAllDocuments } from "../../js/main.js";
 import { collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
 // Cache DOM elements
@@ -61,32 +61,29 @@ function createProductRow(id, product) {
         <td>$${product.price.toFixed(2)}</td>
         <td>${product.quantity}</td>
         <td>${product.discount}%</td>
-        <td>
-            <button class="btn btn-sm btn-danger delete-btn" data-id="${id}">
-                Delete
-            </button>
-        </td>
+        <td>${product.rating}</td>
+
     `;
     return row;
 }
 
-// Event delegation for delete buttons
-dom.productsTable.addEventListener("click", async (event) => {
-    if (event.target.classList.contains("delete-btn")) {
-        const id = event.target.dataset.id;
-        if (confirm(`Delete product ${id}? This cannot be undone!`)) {
-            try {
-                await deleteDoc(doc(db, "products", id));
-                event.target.closest("tr").remove();
-                showNotification("Product deleted successfully", "success");
-                updateSummaryAfterDeletion();
-            } catch (error) {
-                console.error("Delete error:", error);
-                showNotification("Failed to delete product", "error");
-            }
-        }
-    }
-});
+// // Event delegation for delete buttons
+// dom.productsTable.addEventListener("click", async (event) => {
+//     if (event.target.classList.contains("delete-btn")) {
+//         const id = event.target.dataset.id;
+//         if (confirm(`Delete product ${id}? This cannot be undone!`)) {
+//             try {
+//                 await deleteDocById("products", id);
+//                 event.target.closest("tr").remove();
+//                 showNotification("Product deleted successfully", "success");
+//                 updateSummaryAfterDeletion();
+//             } catch (error) {
+//                 console.error("Delete error:", error);
+//                 showNotification("Failed to delete product", "error");
+//             }
+//         }
+//     }
+// });
 
 // Optimized summary updates
 function updateProductSummary(products) {
@@ -96,10 +93,6 @@ function updateProductSummary(products) {
     ).size;
 }
 
-function updateSummaryAfterDeletion() {
-    const currentCount = dom.productsTable.childElementCount;
-    dom.totalProducts.textContent = currentCount;
-}
 
 // UI feedback system
 function showNotification(message, type = "info") {
@@ -141,4 +134,3 @@ tableBody.addEventListener("click", (event) => {
         window.location.href = `admin-product-details.html?id=${productId}`;
     }
 });
-///////////testing
