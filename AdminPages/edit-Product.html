@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +7,8 @@
     <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./CSS/allAdminPages.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-
-    <title>Create New Product</title>
+    <title>Edit Product</title>
 </head>
-
 <body class="d-flex justify-content-around p-4">
 
     <!-- Start Left Side Dashboard Tabs -->
@@ -115,8 +112,8 @@
 
     <!-- Main Content -->
     <main id="main_id" class="w-100">
-        <!-- Start Nav Bar -->
-        <header class="p-lg-4">
+          <!-- Start Nav Bar -->
+          <header class="p-lg-4">
             <nav class="col-12 d-flex justify-content-between ps-2">
                 <!-- Nav Left Side -->
                 <div class="d-flex">
@@ -261,76 +258,69 @@
         </header>
         <!-- End Nav Bar -->
 
-        <!-- Product Creation Form -->
+        <!-- Product Edit Form -->
         <div id="main-content" class="container mt-4">
             <div class="mx-auto p-4 shadow" style="max-width: 600px;">
-                <form id="product-form" >
+                <form id="product-form">
                     <!-- Product Name -->
                     <div class="mb-3">
                         <label for="productName" class="form-label">Product Name</label>
-                        <input type="text" class="form-control" id="product-name" placeholder="Enter product name"
-                            required>
+                        <input type="text" class="form-control" id="product-name" placeholder="Enter product name" required>
                     </div>
 
                     <!-- Upload Image -->
                     <div class="mb-3">
                         <label for="product-image" class="form-label">Product Image</label>
-                        <input  type="file" class="form-control" id="product-image" accept="image/*">
-                       
+                        <input type="file" class="form-control" id="product-image" accept="image/*">
                     </div>
 
                     <!-- Category -->
                     <div class="mb-3">
                         <label for="product-category" class="form-label">Category</label>
                         <select id="product-category" class="form-select" required>
-                           <option value="">loading Categories</option>
+                            <option value="">Loading Categories...</option>
                         </select>
                     </div>
 
                     <!-- Price -->
                     <div class="mb-3">
                         <label for="productPrice" class="form-label">Price (EGP)</label>
-
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="product-price" placeholder="Enter price" required
-                                aria-label="Amount (to the nearest egp)">
+                            <input type="text" class="form-control" id="product-price" placeholder="Enter price" required>
                             <span class="input-group-text">EGP</span>
                         </div>
                     </div>
-                    <!-- discount--> 
-                     <div class="mb-3">
+
+                    <!-- Discount -->
+                    <div class="mb-3">
                         <label for="productDiscount" class="form-label">Discount (%)</label>
-                        <input type="number" class="form-control" id="product-discount" placeholder="Enter discount from 1 : 100"
-                            min="0" max="100">
+                        <input type="number" class="form-control" id="product-discount" placeholder="Enter discount" min="0" max="100">
                     </div>
 
                     <!-- Quantity -->
-                     <div class="mb-3">
+                    <div class="mb-3">
                         <label for="productQuantity" class="form-label">Quantity</label>
-                        <input type="number" class="form-control" id="product-quantity" placeholder="Enter quantity"
-                            min="1" value="1" required>
+                        <input type="number" class="form-control" id="product-quantity" placeholder="Enter quantity" min="1" required>
                     </div>
-                    
 
                     <!-- Description -->
                     <div class="mb-3">
                         <label for="productDescription" class="form-label">Description</label>
-                        <textarea id="product-description" class="form-control" rows="3"
-                            placeholder="Enter product description" required></textarea>
+                        <textarea id="product-description" class="form-control" rows="3" placeholder="Enter product description" required></textarea>
                     </div>
 
                     <!-- Submit Button -->
                     <div class="col-12 text-end mt-3">
-                        <button type="submit" class="btn btn-color fw-bold text-light" >Add New Product</button>
-                      
+                        <button type="submit" class="btn btn-color fw-bold text-light">Save Changes</button>
                         <button type="button" id="CancelBtn_id" class="btn btn-color-fa fw-bold">Cancel</button>
                     </div>
                 </form>
             </div>
         </div>
     </main>
+
     <script type="module" src="JS/navBar_sideBarFun.js" ></script>
-    <script type="module" src="JS/addProduct.js" ></script>
-    <script type="module" src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js" ></script>
+    <script type="module" src="JS/editProduct.js"></script>
+    <script type="module" src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
