@@ -141,4 +141,3 @@ tableBody.addEventListener("click", (event) => {
         window.location.href = `admin-product-details.html?id=${productId}`;
     }
 });
-///////////testing
