@@ -40,9 +40,10 @@ a {
     font-size: 2rem;
     color: white;
 }
+
 /*******************************************************************************/
 /* styling the side menu bar , only displayed when menu bar pressed*/
-#sideNavBar_id{
+#sideNavBar_id {
     position: fixed;
     top: 0;
     left: -75%;
@@ -50,35 +51,41 @@ a {
     transition: left .7s ease;
     font-size: 1rem;
 }
-#sideNavBar_id .manageProfile{
+
+#sideNavBar_id .manageProfile {
     background-color: #006766;
-    
+
 }
-#sideNavBar_id .manageProfile span,#sideNavBar_id .manageProfile  a{
+
+#sideNavBar_id .manageProfile span, #sideNavBar_id .manageProfile a {
     color: white;
     text-decoration: none;
 }
-.sideNavLinksContainer{
+
+.sideNavLinksContainer {
     border-right: solid 1px #006766;
     border-bottom: solid 1px #006766;
 }
-.categoriesLinks{
+
+.categoriesLinks {
     background-color: white;
 }
-.categoriesLinks >  div{
+
+.categoriesLinks>div {
     padding: 1rem .5rem !important;
-    color: black !important; 
-    border-bottom: 1px solid #037876 ;
+    color: black !important;
+    border-bottom: 1px solid #037876;
 }
 
-.categoriesLinks >  div a{
+.categoriesLinks>div a {
     text-decoration: none;
     color: black;
 }
 
-.categoriesLinks div:last-child{
+.categoriesLinks div:last-child {
     border: none;
 }
+
 /*******************************************************************************/
 /* My Search Input Field in case of small Screens */
 /* this is my search input id*/
@@ -110,6 +117,7 @@ a {
     width: .1rem;
     background-color: rgb(194, 193, 191);
 }
+
 /*******************************************************************************/
 /* styling my links in the nav bar*/
 nav a {
@@ -183,10 +191,13 @@ footer {
     color: white;
 }
 
-footer .someInfo a,
-footer .socialMediaLinks a {
+footer .someInfo a, footer .socialMediaLinks a {
+    text-decoration: none;
+    color: inherit;
+}
 
-    color: #ffff;
+footer .someInfo a:hover, footer .socialMediaLinks a:hover {
+    color: black;
 }
 
 footer .socialMediaLinks a {
@@ -207,6 +218,7 @@ footer .socialMediaLinks a {
     padding-top: 1rem !important;
     font-size: 1.5rem;
 }
+
 /*******************************************************************************/
 /* styling my products section */
 /* Our product header that contains discount percentage and button to add product to wishlist*/
@@ -248,9 +260,11 @@ footer .socialMediaLinks a {
 .productImageContainer {
     height: 30vh;
 }
-.product a{
+
+.product a {
     flex-grow: 1;
 }
+
 .product img {
     width: 75%;
     object-fit: contain;
@@ -290,7 +304,7 @@ footer .socialMediaLinks a {
     padding: .5rem .5rem !important;
     font-size: 1.2rem;
     font-weight: 600;
-    color: #006766 ;
+    color: #006766;
     border: 2px solid #006766;
     border-radius: .3rem;
     background-color: white;
@@ -328,7 +342,7 @@ footer .socialMediaLinks a {
 /* hover only on large devices*/
 
 @media (min-width: 1000px) {
-   
+
     a:hover {
 
         color: #000;
@@ -343,60 +357,76 @@ footer .socialMediaLinks a {
     #menuBarBtn_id:hover {
         color: black;
     }
-    
+
 
     /* My Search Input Field*/
     /* this is my search input id*/
-    .searchInput_class:hover{
+    .searchInput_class:hover {
         border: solid 2px #006766;
     }
+
     /* the search icon btn*/
-    #searchBtn_1_id:hover{
+    #searchBtn_1_id:hover {
         color: black;
     }
+
     /* links of navbar*/
-    nav a:hover{
+    nav a:hover {
         color: black;
     }
 
     /* cateogry container*/
-    .category:hover a{
+    .category:hover a {
         transform: scale(1.1);
         z-index: 2;
         border: 1px solid black;
     }
 
     /* product container*/
-    .product:hover{
+    .product:hover {
         transform: scale(1.03);
     }
+
     /* product wishlist icon button*/
-    .addToWishListBtn_class:hover i{
-        -webkit-text-stroke: 1px red; /* Border around the heart */
+    .addToWishListBtn_class:hover i {
+        -webkit-text-stroke: 1px red;
+        /* Border around the heart */
     }
 
     /* product count and bin*/
-    .productCountAndBin:hover{
+    .productCountAndBin:hover {
         border: 2px solid #006766;
     }
-    .productCountAndBin button:hover{
+
+    .productCountAndBin button:hover {
         color: black;
     }
 
     /* add to cart btn*/
-    .addToCartBtn_class:hover{
+    .addToCartBtn_class:hover {
         background-color: #006766;
         color: white;
     }
 
     /* footer*/
-    
-    footer .someInfo a:hover ,
-    footer .socialMediaLinks a:hover{
-    color: #006766;
+
+    footer .someInfo a:hover, footer .socialMediaLinks a:hover {
+        color: black;
+    }
+
+    /* add to cart btn*/
+    .addToCartBtn_class:hover {
+        background-color: #006766;
+        color: white;
+    }
+
+    /* footer*/
+
+    footer .someInfo a:hover,
+    footer .socialMediaLinks a:hover {
+        color: #006766;
     }
 
 }
+
 /**********************************************************************/
-
-
