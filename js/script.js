@@ -1,4 +1,4 @@
-import {getAllDocuments, getCategoryById,getDocumentByField} from "../../js/main.js";
+import {getAllDocuments} from "../../js/main.js";
 
 let categoriesTemp = [];
 

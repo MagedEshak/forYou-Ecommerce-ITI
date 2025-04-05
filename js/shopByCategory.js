@@ -1,4 +1,4 @@
-import {getCategoryById,getDocumentByField,getAllDocuments} from "../../js/main.js";
+import {getDocById ,getDocumentByField,getAllDocuments} from "../../js/main.js";
 
 let productsTemp = [];
 let categoriesTemp = [];
@@ -49,7 +49,7 @@ let catId = urlParams.get("cat_id") ;
 // Get cateogry name by its id from fireBase
 async function getCategoryname(id) {
     debugger;
-    let myCategory = await getCategoryById(id);
+    let myCategory = await getDocById("aliCategories" ,id);
     console.log(myCategory.cat_name);
     return myCategory.cat_name;
 }

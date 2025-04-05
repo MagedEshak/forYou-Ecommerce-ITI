@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const db = getFirestore();
 
 // 🚀 Add a new document to any collection
 export async function addDocument(collectionName, data) {
@@ -115,85 +115,58 @@ export async function deleteAllDocuments(collectionName) {
 }
 
 
-export async function getProductById(productId) {
-  try {
-      const docRef = doc(db, "aliProducts", productId);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-          console.log("Fetched product: ", docSnap.data());
-          return { id: docSnap.id, ...docSnap.data() };
-      } else {
-          console.log("No such product!");
-          return null;
-      }
-  } catch (error) {
-      console.error("Error getting product by ID: ", error);
-    }
-}
-
-export async function getUserById(productId) {
-  try {
-      const docRef = doc(db, "aliUsers", productId);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-          console.log("Fetched product: ", docSnap.data());
-          return { id: docSnap.id, ...docSnap.data() };
-      } else {
-          console.log("No such product!");
-          return null;
-      }
-  } catch (error) {
-      console.error("Error getting product by ID: ", error);
-    }
-}
-export async function getCategoryById(productId) {
-  try {
-      const docRef = doc(db, "aliCategories", productId);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-          console.log("Fetched product: ", docSnap.data());
-          return { id: docSnap.id, ...docSnap.data() };
-      } else {
-          console.log("No such product!");
-          return null;
-      }
-  } catch (error) {
-      console.error("Error getting product by ID: ", error);
-    }
-}
-
-// Function to update a product
-export async function updateProduct(productId, updatedData) {
-  try {
-      const docRef = doc(db, "aliProducts", productId);
-      await updateDoc(docRef, updatedData);
-      console.log("Product updated successfully.");
-  } catch (error) {
-      console.error("Error updating product: ", error);
-    }
-}
-
-export async function updateUser(productId, updatedData) {
-  try {
-      const docRef = doc(db, "aliUsers", productId);
-      await updateDoc(docRef, updatedData);
-      console.log("Product updated successfully.");
-  } catch (error) {
-      console.error("Error updating product: ", error);
-    }
-}
-
-// var cat ={
-//     "cat_id": 0,
-//     "cat_name": "TV"
-// }
-// addDocument("category", cat)
-
-
-
-////////////////////////////////
+///////////////////////////////
 //
-//          adding a new product
+// CRUD operations for documents by ID
 //
-////////////////////////////////
+////////////////////////////
 
+
+
+// Get a document by ID
+export async function getDocById(docName ,Id) {
+  try {
+      const docRef = doc(db, docName, Id);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+          console.log("Fetched product: ", docSnap.data());
+          return { id: docSnap.id, ...docSnap.data() };
+      } else {
+          console.log("No such product!");
+          return null;
+      }
+  } catch (error) {
+    console.error(`Error getting document ${Id} from ${docName}:`, error);
+    
+  }
+}
+
+
+// Update a document by ID
+export async function updateDocById(docName, Id, updatedData) {
+  try {
+      const docRef = doc(db, docName, Id);
+      await updateDoc(docRef, updatedData);
+      console.log(`document ${Id} updated  in ${docName} successfully.`);
+      return true;
+  }
+  catch (error) {
+      console.error("Error updating product: ", error);
+  }
+
+}
+
+// Delete a document by ID
+export async function deleteDocById(docName, Id) {
+  try {
+      const docRef = doc(db, docName, Id);
+      await deleteDoc(docRef);
+      console.log(`Document ${Id} deleted from ${docName} successfully.`);
+      return true;
+     
+  }
+    catch (error) {
+      console.error(`Error deleting document ${Id} from ${Name}:`, error);
+      
+  }
+}
