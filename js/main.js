@@ -91,6 +91,7 @@ export async function getAllDocuments(collectionName) {
     return [];
   }
 }
+
   // delete all the docs
 export async function deleteAllDocuments(collectionName) {
   try {
@@ -111,6 +112,75 @@ export async function deleteAllDocuments(collectionName) {
   } catch (error) {
       console.error(`Error deleting documents from '${collectionName}':`, error);
   }
+}
+
+
+export async function getProductById(productId) {
+  try {
+      const docRef = doc(db, "aliProducts", productId);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+          console.log("Fetched product: ", docSnap.data());
+          return { id: docSnap.id, ...docSnap.data() };
+      } else {
+          console.log("No such product!");
+          return null;
+      }
+  } catch (error) {
+      console.error("Error getting product by ID: ", error);
+    }
+}
+
+export async function getUserById(productId) {
+  try {
+      const docRef = doc(db, "aliUsers", productId);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+          console.log("Fetched product: ", docSnap.data());
+          return { id: docSnap.id, ...docSnap.data() };
+      } else {
+          console.log("No such product!");
+          return null;
+      }
+  } catch (error) {
+      console.error("Error getting product by ID: ", error);
+    }
+}
+export async function getCategoryById(productId) {
+  try {
+      const docRef = doc(db, "aliCategories", productId);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+          console.log("Fetched product: ", docSnap.data());
+          return { id: docSnap.id, ...docSnap.data() };
+      } else {
+          console.log("No such product!");
+          return null;
+      }
+  } catch (error) {
+      console.error("Error getting product by ID: ", error);
+    }
+}
+
+// Function to update a product
+export async function updateProduct(productId, updatedData) {
+  try {
+      const docRef = doc(db, "aliProducts", productId);
+      await updateDoc(docRef, updatedData);
+      console.log("Product updated successfully.");
+  } catch (error) {
+      console.error("Error updating product: ", error);
+    }
+}
+
+export async function updateUser(productId, updatedData) {
+  try {
+      const docRef = doc(db, "aliUsers", productId);
+      await updateDoc(docRef, updatedData);
+      console.log("Product updated successfully.");
+  } catch (error) {
+      console.error("Error updating product: ", error);
+    }
 }
 
 // var cat ={

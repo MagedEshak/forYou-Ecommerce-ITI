@@ -1,5 +1,6 @@
-import { addDocument,deleteAllDocuments } from "../../js/main.js"
+import { addDocument,deleteAllDocuments,getDocumentByField } from "../../js/main.js"
 
+// console.log(getDocumentByField("category" , 'cat_id' , 1))
 
 // deleteAllDocuments("category")
 // var cat ={
