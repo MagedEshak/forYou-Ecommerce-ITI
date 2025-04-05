@@ -13,12 +13,9 @@ window.onload = () => {
         
                 createNewAdmin.classList.remove("d-none");
 
-                if (window.location.href == "http://127.0.0.1:5500/AdminPages/viewAllAdmins.html") {
-                    document.getElementById("mainContent").classList.add("d-none"); // To Hide category content
-                } else {
                     document.getElementById("mainContentSec_id").classList.remove("d-md-flex"); // To Hide category content
                     document.getElementById("mainContentSec_id").classList.add("d-none"); // To Hide category content
-                }
+            
 
                 createNewAdmin.classList.add("d-block");
             }
@@ -29,13 +26,10 @@ window.onload = () => {
             if (createNewAdmin.classList.contains("d-block")) {
         
                 createNewAdmin.classList.add("d-none");
-            
-                if (window.location.href == "http://127.0.0.1:5500/AdminPages/viewAllAdmins.html") {
-                         document.getElementById("mainContent").classList.remove("d-none"); // To Hide category content
-                } else {
+           
                          document.getElementById("mainContentSec_id").classList.add("d-md-flex"); // To Hide category content
                          document.getElementById("mainContentSec_id").classList.remove("d-none"); // To Hide category content
-                }
+                
                 createNewAdmin.classList.remove("d-block");
             }
         });
