@@ -1,5 +1,6 @@
 import { deleteDocById, getAllDocuments } from "../../js/main.js";
 import { collection, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
+
 // Cache DOM elements
 const dom = {
     productsTable: document.getElementById("productsTable"),

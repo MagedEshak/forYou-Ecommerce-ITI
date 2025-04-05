@@ -4,39 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../ui-ux/icons/shopping-bag.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../ui-ux/icons/layout.png" type="image/x-icon">
     <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./CSS/allAdminPages.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <title>Product Details</title>
+
+    <title>View All Admins</title>
 </head>
 
 <body class="d-flex justify-content-around p-4">
-
     <!-- Start Left Side Dashboard Tabs -->
-    <aside id="" class="col-2 d-none d-lg-block rounded-4">
+
+    <aside class="col-2 d-none d-lg-block rounded-4">
         <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
+            <!-- Start Bars showing when Dashboard be full width -->
+            <div id="barsLeftSideDiv_id" class="pe-2 d-block d-lg-none fs-1 cursor-pointer text-light">
+                <i class="bi bi-filter-left"></i>
+            </div>
+            <!-- End Bars showing when Dashboard be full width -->
+
             <li>
                 <div id="logoDiv_id" class="text-center">
                     <a href="../index.html" target="_blank">
                         <img src="../Images/logo/LLLOGOWhite.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
                     </a>
-                    <!-- Bars Icon -->
-
                 </div>
             </li>
             <li>
-                <span class="fw-bolder"><i class="bi bi-menu-button"></i> Menu</span>
+                <span class="fw-bolder"><i class="bi bi-menu-button"></i>
+                    Menu</span>
             </li>
             <hr class="mt-0">
             <li>
-                <a href="./admin-home.html" class="list-links text-light list-links-active">
+                <a href="./admin-home.html" class="list-links text-light">
                     <i class="bi bi-house"></i> Dashboard</a>
             </li>
             <li>
-                <!-- Adding class list-links-active to color page name tab  -->
-                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i>
-                    Orders</a>
+                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i> Orders</a>
             </li>
             <li>
                 <a href="./addCategory.html" class="list-links text-light">
@@ -44,19 +48,23 @@
                 </a>
             </li>
             <li>
-                <a href="./viewAllAdmins.html" class="list-links text-light">
+                <a href="#" class="list-links text-light list-links-active">
                     <i class="bi bi-people"></i> View Admins</a>
             </li>
         </ul>
 
         <ul class="d-flex flex-column justify-content-between p-4 gap-2">
             <hr>
-            <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
+
+            <li>
+                <!-- Adding class list-links-active to color page name tab  -->
+                <a href="../AdminPages/AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i>
+                    Setting</a>
+            </li>
             <li>
                 <a href="../CustomersPages/signin.html" class="list-links text-light"><i
                         class="bi bi-box-arrow-left"></i>
-                    LogOut
-                </a>
+                    LogOut</a>
             </li>
         </ul>
     </aside>
@@ -75,11 +83,12 @@
                 </div>
             </li>
             <li>
-                <span class="fw-bolder"><i class="bi bi-menu-button"></i> Menu</span>
+                <span class="fw-bolder"><i class="bi bi-menu-button"></i>
+                    Menu</span>
             </li>
             <hr class="mt-0">
             <li>
-                <a href="./admin-home.html" class="list-links text-light list-links-active">
+                <a href="./admin-home.html" class="list-links text-light">
                     <i class="bi bi-house"></i> Dashboard</a>
             </li>
             <li>
@@ -93,14 +102,15 @@
                 </a>
             </li>
             <li>
-                <a href="./viewAllAdmins.html" class="list-links text-light">
+                <a href="#" class="list-links text-light list-links-active">
                     <i class="bi bi-people"></i> View Admins</a>
             </li>
         </ul>
 
         <ul class="d-flex flex-column justify-content-between p-4 gap-2">
             <hr>
-            <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
+            <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i>
+                    Setting</a></li>
             <li>
                 <a href="../CustomersPages/signin.html" class="list-links text-light"><i
                         class="bi bi-box-arrow-left"></i>
@@ -111,8 +121,7 @@
     </aside>
     <!-- End Left Side Dashboard Tabs in Tablet and Mobile Only-->
 
-
-    <!-- Start Main -->
+    <!-- Navbar -->
     <main id="main_id" class="w-100">
         <!-- Start Nav Bar -->
         <header class="p-lg-4">
@@ -121,11 +130,11 @@
                 <div class="d-flex">
 
                     <!-- Bars Icon -->
-                    <div id="barsDiv_id" class="pe-2 d-lg-none fs-cf-4 cursor-pointer">
+                    <div id="barsDiv_id" class="pe-2 d-lg-none fs-cf-4">
                         <i class="bi bi-filter-left"></i>
                     </div>
 
-                    <span class="fw-bolder fs-cf-2 fs-cf-4">Product Name</span>
+                    <span class="fw-bolder fs-cf-2 fs-cf-4">View All Admins</span>
                 </div>
 
                 <div id="logoDiv_id">
@@ -153,7 +162,8 @@
                                         placeholder="Search any Thing in Admin Dashboard ...">
                                     <label for="floatingInput">
                                         <i class="bi bi-search searchInput-color me-2"></i>
-                                        Search any Thing in Admin Dashboard ...</label>
+                                        Search any Thing in Admin Dashboard
+                                        ...</label>
                                 </div>
                             </div>
                         </div>
@@ -163,80 +173,91 @@
                             <i id="notificationsIcon_id" class="bi bi-bell fs-cf-3 fs-cf-4">
                                 <span id="notificationsDot_id"
                                     class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
-                                    <span class="visually-hidden">New notification</span>
+                                    <span class="visually-hidden">New
+                                        notification</span>
                                 </span>
                             </i>
                         </div>
 
                         <!-- Notifications Drop list -->
-                        <div id="notifiDropDownDiv_id" class="bg-light rounded-3 d-none">
-                            <div class="position-sticky top-0 bg-light z-3">
+                        <div id="notifiDropDownDiv_id" class="bg-white rounded-3 d-none">
+                            <div class="position-sticky top-0 bg-white z-3">
                                 <h4 class="p-3">Notifications</h4>
                             </div>
                             <hr>
                             <div class="p-4">
                                 <div class="mb-2 border-bottom pb-4">
-                                    <div id="" class="fs-5 d-flex gap-3 position-relative">
+                                    <div id class="fs-cf-5 d-flex gap-3 position-relative">
                                         <!-- Product Icon -->
                                         <div>
-                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt=""
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt
                                                 id="notifiPhoto_id" width="70px">
                                         </div>
 
                                         <!-- Product Name -->
                                         <div class="d-lg-flex flex-column">
-                                            <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                                            <span class="fs-6">Fresh Cooker
+                                                Hood 90 cm - Classic Black
                                                 Stainless</span>
-                                            <span class="text-secondary ">Maged Eshak</span>
+                                            <span class="text-secondary">Maged
+                                                Eshak</span>
                                         </div>
                                         <span id="redCircleNotifi_id"
                                             class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
-                                            <span class="visually-hidden">New notification</span>
+                                            <span class="visually-hidden">New
+                                                notification</span>
                                         </span>
                                     </div>
                                 </div>
 
                                 <div class="mb-2 border-bottom pb-4">
-                                    <div id="" class="fs-5 d-flex gap-3 position-relative">
+                                    <div id class="fs-cf-5 d-flex gap-3 position-relative">
                                         <!-- Product Icon -->
                                         <div>
-                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt=""
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt
                                                 id="notifiPhoto_id" width="70px">
                                         </div>
 
                                         <!-- Product Name -->
                                         <div class="d-lg-flex flex-column">
-                                            <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                                            <span class="fs-6">Fresh Cooker
+                                                Hood 90 cm - Classic Black
                                                 Stainless</span>
-                                            <span class="text-secondary ">Maged Eshak</span>
+                                            <span class="text-secondary">Maged
+                                                Eshak</span>
                                         </div>
                                         <span id="redCircleNotifi_id"
                                             class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
-                                            <span class="visually-hidden">New notification</span>
+                                            <span class="visually-hidden">New
+                                                notification</span>
                                         </span>
                                     </div>
                                 </div>
 
                                 <div class="mb-2 border-bottom pb-4">
-                                    <div id="" class="fs-5 d-flex gap-3 position-relative">
+                                    <div id class="fs-cf-5 d-flex gap-3 position-relative">
                                         <!-- Product Icon -->
                                         <div>
-                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt=""
+                                            <img src="../Images/CustomerImages/Product_imges/cookers/oven.jpg" alt
                                                 id="notifiPhoto_id" width="70px">
                                         </div>
 
                                         <!-- Product Name -->
                                         <div class="d-lg-flex flex-column">
-                                            <span class="fs-6">Fresh Cooker Hood 90 cm - Classic Black
+                                            <span class="fs-6">Fresh Cooker
+                                                Hood 90 cm - Classic Black
                                                 Stainless</span>
-                                            <span class="text-secondary ">Maged Eshak</span>
+                                            <span class="text-secondary">Maged
+                                                Eshak</span>
                                         </div>
                                         <span id="redCircleNotifi_id"
                                             class="position-absolute top-50 end-0 translate-middle p-2 bg-danger border border-light rounded-circle">
-                                            <span class="visually-hidden">New notification</span>
+                                            <span class="visually-hidden">New
+                                                notification</span>
                                         </span>
                                     </div>
                                 </div>
+
                             </div>
 
                         </div>
@@ -261,59 +282,36 @@
         </header>
         <!-- End Nav Bar -->
 
-
-        <div class="card shadow p-4 ms-4">
-            <div class="row">
-                <div class="col-md-4 text-center">
-                    <img id="productImage" class="img-fluid" src="" alt="Product Image" width="100">
+        <!-- Main Content -->
+        <section id="mainContent" class="container">
+            <section class="bg-white p-2 mt-5 shadow-lg rounded align-content-lg-around">
+                <!-- Display Products -->
+                <h1 class="text-center">All Admins</h1>
+                <!-- Table for displaying products -->
+                <div class="table-responsive">
+                    <table class="table table-bordered mt-3 table-hover ">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>City</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminsTable">
+                            <!-- Products will be inserted here dynamically -->
+                        </tbody>
+                    </table>
                 </div>
-                <div class="col-md-8">
-                    <h3 id="productName"></h3>
-                    <p id="productDescription"></p>
-                    <p><strong>Id:</strong> <span id="productId"></span></p>
-                   
-                    <p><strong>Category:</strong> <span id="productCategory"></span></p>
-                    <p><strong>Category_id:</strong> <span id="productCategory_id"></span></p>
-                    <p><strong>Price:</strong> <span id="productPrice"></span></p>
-                    <p><strong>Discount :</strong> <span id="productDiscount"></span></p>
-                    <p><strong>Stock:</strong> <span id="productQuantity">Available</span></p>
-                    <p><strong>Rating:</s trong> <span id="productRating"></span></p>
-                    <p><strong>Reviews:</strong> <span id="productReviews"></span></p>
-
-
-                    <!-- زر تعديل -->
-                    <button class="btn btn-color text-light me-2" id="editProductBtn" >Edit</button>
-                    <button class="btn btn-danger" id="deleteProductBtn">Delete</button>
-
-                    <!-- نموذج تعديل (يكون مخفي في البداية) -->
-                    <form id="editForm" class="mt-3 d-none">
-                        <div class="mb-3">
-                            <label class="form-label">Product Name</label>
-                            <input type="text" id="editProductName" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea id="editProductDescription" class="form-control"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Price</label>
-                            <input type="number" id="editProductPrice" class="form-control">
-                        </div>
-                        <button type="button" class="btn btn-color text-light" onclick="saveChanges()">Save
-                            Changes</button>
-                        <button type="button" class="btn btn-secondary" onclick="cancelEdit()">Cancel</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </main>
-
+            </section>
+        </section>
 
     </main>
 
-    <script type="module" src="./JS/productDetials.js" ></script>
-    <script src="./JS/navBar_sideBarFun.js" type="module"></script>
-    <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js" type="module" ></script>
+    <script type="module" src="./JS/navBar_sideBarFun.js"></script>
+    <script type="module" src="./JS/admins.js"></script>
+
 </body>
 
 </html>

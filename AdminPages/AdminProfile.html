@@ -8,7 +8,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./CSS/allAdminPages.css">
-
+    <link rel="stylesheet" href="../CSS/style_forms.css" />
     <!-- bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.css">
 
@@ -50,7 +50,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="list-links text-light">
+                <a href="./viewAllAdmins.html" class="list-links text-light">
                     <i class="bi bi-people"></i> View Admins</a>
             </li>
         </ul>
@@ -100,7 +100,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="list-links text-light">
+                <a href="./viewAllAdmins.html" class="list-links text-light">
                     <i class="bi bi-people"></i> View Admins</a>
             </li>
         </ul>
@@ -353,90 +353,10 @@
                         <!-- End Admin Photo and Name Div-->
 
                         <!-- Start Admin Details-->
-                        <div class="mt-4">
+                        <div id="viewAddminsCon_id" class="mt-4">
                             <!-- Start Admin Photo and Name Div-->
-                            <div class="d-flex justify-content-between gap-5 position-relative">
-                                <div class="d-flex gap-3">
-                                    <!-- Admin Photo -->
-                                    <div class="position-relative">
-                                        <img id="profile_img_id" src="../ui-ux/icons/user.png" class="profile-img"
-                                            alt="Profile Image">
-                                    </div>
-                                    <!-- Admin Name -->
-                                    <div id="viewAdminsDiv_id" class="d-flex flex-column mt-3">
-                                        <span id="adminName_id" class="fw-bolder">Maged Eshak</span>
-                                        <span id="adminStat_id" class="text-secondary">Admin</span>
-                                    </div>
-                                </div>
-                                <!-- Arrow -->
-                                <span class="position-absolute bottom-50 end-0 Arrow-color cursor-pointer ">
-                                    <i class="bi bi-arrow-right"></i>
-                                </span>
-                            </div>
-                            <hr>
 
-                            <!-- Start Admin Photo and Name Div-->
-                            <div class="d-flex justify-content-between gap-5 position-relative">
-                                <div class="d-flex gap-3">
-                                    <!-- Admin Photo -->
-                                    <div class="position-relative">
-                                        <img id="profile_img_id" src="../ui-ux/icons/user.png" class="profile-img"
-                                            alt="Profile Image">
-                                    </div>
-                                    <!-- Admin Name -->
-                                    <div class="d-flex flex-column mt-3">
-                                        <span class="fw-bolder">Maged Eshak</span>
-                                        <span class="text-secondary">Admin</span>
-                                    </div>
-                                </div>
-                                <!-- Arrow -->
-                                <span class="position-absolute bottom-50 end-0 Arrow-color cursor-pointer ">
-                                    <i class="bi bi-arrow-right"></i>
-                                </span>
-                            </div>
-                            <hr>
 
-                            <!-- Start Admin Photo and Name Div-->
-                            <div class="d-flex justify-content-between gap-5 position-relative">
-                                <div class="d-flex gap-3">
-                                    <!-- Admin Photo -->
-                                    <div class="position-relative">
-                                        <img id="profile_img_id" src="../ui-ux/icons/user.png" class="profile-img"
-                                            alt="Profile Image">
-                                    </div>
-                                    <!-- Admin Name -->
-                                    <div class="d-flex flex-column mt-3">
-                                        <span class="fw-bolder">Maged Eshak</span>
-                                        <span class="text-secondary">Admin</span>
-                                    </div>
-                                </div>
-                                <!-- Arrow -->
-                                <span class="position-absolute bottom-50 end-0 Arrow-color cursor-pointer ">
-                                    <i class="bi bi-arrow-right"></i>
-                                </span>
-                            </div>
-                            <hr>
-
-                            <!-- Start Admin Photo and Name Div-->
-                            <div class="d-flex justify-content-between gap-5 position-relative">
-                                <div class="d-flex gap-3">
-                                    <!-- Admin Photo -->
-                                    <div class="position-relative">
-                                        <img id="profile_img_id" src="../ui-ux/icons/user.png" class="profile-img"
-                                            alt="Profile Image">
-                                    </div>
-                                    <!-- Admin Name -->
-                                    <div class="d-flex flex-column mt-3">
-                                        <span class="fw-bolder">Maged Eshak</span>
-                                        <span class="text-secondary">Admin</span>
-                                    </div>
-                                </div>
-                                <!-- Arrow -->
-                                <span class="position-absolute bottom-50 end-0 Arrow-color cursor-pointer ">
-                                    <i class="bi bi-arrow-right"></i>
-                                </span>
-                            </div>
-                            <hr>
                         </div>
                     </div>
                 </div>
@@ -569,14 +489,91 @@
             <!-- End Right side Article {Edit Profile, Change Password} -->
         </section>
         <!-- End Content Section {My Profile, Admins, Edit Profile, Change Password} -->
+
+        <article id="createNewAdmin_id" class="p-4 col-lg-5 rounded-3 d-none shadow bg-white">
+            <!-- Start Edit Profile Section -->
+            <div class="row p-md-3 p-lg-3 pt-3">
+                <h2>Add New Admin</h2>
+                <!-- Start Edit Profile Form -->
+                <form action="" method="get" class="g-3 border border-3 rounded-3 p-4">
+                    <div class="row">
+                        <div class=" col-12">
+                            <label for="userName_id">Name</label>
+                            <input id="userName_id" type="text" name="userName" placeholder="Please, Enter your name"
+                                class="form-control" />
+                            <span class="d-none text-danger"> This field is required</span>
+                            <span class="d-none text-danger">your name must be more than three characters</span>
+                        </div>
+                        <div>
+                            <label for="phone_id">Phone</label>
+                            <input id="phone_id" type="text" name="phone" placeholder="Please, Enter your Phone Number"
+                                class="form-control" />
+                            <span class="d-none text-danger"> This field is required</span>
+                            <span class="d-none text-danger">This field must be Phone</span>
+                        </div>
+                        <div>
+                            <label for="email_id">Email</label>
+                            <input id="email_id" type="email" name="Email" placeholder="Please, Enter your email"
+                                class="form-control" />
+                            <span class="d-none text-danger"> This field is required</span>
+                            <span class="d-none text-danger">This field must be Email</span>
+                        </div>
+
+                        <div>
+                            <label for="password_id">Password</label>
+
+                            <input id="password_id" type="password" name="pass" class="form-control" />
+
+                            <span class="d-none text-danger"> This field is required</span>
+                            <span class="d-none text-danger">your password must be matched</span>
+
+                            <div class="col-12 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="showCurrentPasswordCheck_id">
+                                    <label class="form-check-label" for="showCurrentPasswordCheck_id">
+                                        Show Password
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Start Repeat New Password Input and Show Password CheckBox -->
+                        <div class="col-md-12 col-lg-12">
+                            <label for="password_id" class="form-label">Repeat Your Password</label>
+                            <input type="password" id="password_id" class="form-control">
+                            <span class="d-none text-danger"> This field is required</span>
+                            <span class="d-none text-danger">your password must be matched</span>
+                            <div class="col-12 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="showRepeatPasswordCheck_id">
+                                    <label class="form-check-label" for="showRepeatPasswordCheck_id">
+                                        Show Password
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Repeat New Password Input and Show Password CheckBox -->
+
+                        <div class="d-flex flex-column">
+                            <input type="submit" value="Register" class="btn btn-color fw-bold text-light mb-3" />
+
+                            <button id="CancelBtn_id" type="button" class="btn border-2 border-dark">Cancel</button>
+                        </div>
+                </form>
+                <!-- End Edit Profile Form -->
+            </div>
+            <!-- End Edit Profile Section -->
+            </div>
+        </article>
     </main>
+
+
+    <script type="module" src="./JS/admins.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 
-    <script type="module" src="./JS/navBar_sideBarFun.js"></script>
-
-    <script type="module" src="./JS/admins.js"></script>
+    <script src="./JS/navBar_sideBarFun.js"></script>
 </body>
 
 </html>
