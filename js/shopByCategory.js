@@ -259,6 +259,7 @@ async function createProductsInHtml() {
     parentContainer.appendChild(productsContainer);
 }
 
+
 async function initializePage(){
     controlSideNavBer();
     if(window.innerWidth <= 992){
