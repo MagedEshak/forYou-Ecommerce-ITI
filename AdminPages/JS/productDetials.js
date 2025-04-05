@@ -1,6 +1,6 @@
 
 
-import { db } from "./main.js";
+import { db ,getDocById} from "../../js/main.js";
 import { doc, getDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 
 
@@ -15,16 +15,9 @@ function getProductIdFromUrl() {
 //function to fetch product details by ID
 async function fetchProductDetails(productId) {
     try {
-        const docRef = doc(db, "products", productId);
-        const docSnap = await getDoc(docRef);
-
-        if (!docSnap.exists()) {
-            alert("Product not found!");
-            window.location.href = "admin-home.html";
-            return;
-        }
-
-        const product = docSnap.data();
+        
+    
+        const product = await getDocById("products", productId);
         displayProductDetails(product, productId);
     } catch (error) {
         console.error("Error fetching product details:", error);
