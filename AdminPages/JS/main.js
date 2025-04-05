@@ -21,8 +21,6 @@ export { db };
 
 
 
-
-
 // Function to get all products
 export async function getAllProducts() {
     try {
