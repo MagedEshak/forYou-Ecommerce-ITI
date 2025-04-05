@@ -101,11 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("product-form").addEventListener("submit", addProduct);
     loadCategories();
 });
-<<<<<<< HEAD
-
 document.getElementById("CancelBtn_id").addEventListener("click", () => {
     window.location.href = "admin-home.html";
 });
-
-=======
->>>>>>> 20ebefc38a23beca279d01ef597d093a3035e1ef
