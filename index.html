@@ -46,14 +46,9 @@
                 <span><a href="./CustomersPages/signin.html">Login</a> / <a
                         href="./CustomersPages/Rejester.html">Register</a></span>
             </div>
-            <div class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
-                <div class="w-100"><a href="#cookersSection_id" class="w-100"> Cookers</a></div>
-                <div class="w-100"><a href="#">Small Home Appliances</a></div>
-                <div class="w-100"><a href="#televesionsSection_id" class="w-100"> Televesions</a></div>
-                <div class="w-100"><a href="#">Cooling Appliances</a></div>
-                <div class="w-100"><a href="#">Air Conditioners</a></div>
-                <div class="w-100"><a href="#">Washing Mashines</a></div>
-                <div class="w-100 whatsapp col-auto"><a href="#">whatsapp</a></div>
+            <div id="sideNavCategoriesLinks_id"
+            class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
+                <div id="whatsappLink_id" class="w-100 whatsapp col-auto"><a href="#">whatsapp</a></div>
                 <div class="w-100 support col-auto"><a href="#">call support</a></div>
                 <div class="w-100 branches col-auto"><a href="#">Branches</a></div>
             </div>
@@ -119,18 +114,17 @@
     <!-- my nav in large devices , it only appears on large devices -->
     <nav class="d-none d-lg-block siteColorClass">
         <div class="container-fluid p-3">
-            <div class="row justify-content-evenly align-items-center links">
-                <a href="#cookersSection_id" class="col-auto"> Cookers</a>
-                <a href="#" class="col-auto"> Small Home Appliances</a>
-                <a href="#televesionsSection_id" class="col-auto"> Televesions</a>
-                <a href="#" class="col-auto"> Cooling Appliances</a>
-                <a href="#" class="col-auto"> Air Conditioners</a>
-                <a href="#" class="col-auto"> Washing Machines</a>
-                <a href="./CustomersPages/signin.html" class="col-auto"> Sign In</a>
-                <a href="#" class="col-auto d-none"> Profile</a>
-                <a href="../CustomersPages/cart.html" class="col-auto">
-                    <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
-                </a>
+            <div class="links d-flex justify-content-between align-items-center">
+                <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links col-9">
+                    <!-- this is filled dynamically using js -->
+                </div>
+                <div class="row justify-content-end align-items-center links col-3">
+                    <a href="./CustomersPages/signin.html" class="col-auto px-5"> Sign In</a>
+                    <a href="#" class="col-auto px-5 d-none"> Profile</a>
+                    <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
+                        <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </nav><!-- updated -->
@@ -175,9 +169,8 @@
                     <!-- category item , it is considered a link that takes you to items of this category : cookers category -->
                     <div class="category col-6 col-md-4 col-lg-3 d-flex p-1">
                         <!-- this is the link , if clicked you must go to items of cookers category -->
-                        <a id="cat_id_1"
-                            class="bg-warning-subtle w-100 d-flex flex-column align-items-center justify-content-between"
-                            href="CustomersPages/shopByCategory.html?cat_id=1">
+                        <a id="cat_id_1" class="bg-warning-subtle w-100 d-flex flex-column align-items-center justify-content-between"
+                           href="CustomersPages/shopByCategory.html?cat_id=5mFr9lX80FPkfUUp9crj">
                             <p>cookers</p>
                             <img class="w-75 catImg" src="Images/CustomerImages/Category_images/Fresh_cookers.png"
                                 alt="">
@@ -187,8 +180,7 @@
                     <!-- category item , it is considered a link that takes you to items of this category : TVs category -->
                     <div class="category col-6 col-md-4 col-lg-3 d-flex p-1">
                         <!-- this is the link , if clicked you must go to items of TVs category -->
-                        <a id="cat_id_2"
-                            class="bg-success-subtle w-100 d-flex flex-column align-items-center justify-content-between"
+                        <a id="cat_id_2" class="bg-success-subtle w-100 d-flex flex-column align-items-center justify-content-between"
                             href="CustomersPages/shopByCategory.html?cat_id=2">
                             <p>Televesions</p>
                             <img class="w-75 catImg" src="Images/CustomerImages/Category_images/TV.png" alt="">
@@ -218,7 +210,7 @@
                 <!-- this is product 1 item from cookers category -->
                 <div id="cookerProduct_id_1"
                     class="product col-10 col-md-4 col-lg-3 justify-content-center align-items-center">
-                    <div
+                    <div 
                         class="h-100 productInnercontainer d-flex flex-column justify-content-between align-items-center">
                         <!-- this contains the discount percentage  -->
                         <!-- and a button to add the product to wishlist -->
@@ -232,10 +224,10 @@
 
                         </div>
 
-                        <a href="CustomersPages/detailes.html?cat_id=1&product_id=1"
+                        <a href="CustomersPages/detailes.html?cat_id=1&product_id=1" 
                             class="d-flex flex-column align-items-center justify-content-center">
                             <img id="cookerProdImage_id_1" src="Images/CustomerImages/Product_imges/cookers/oven.jpg"
-                                alt="">
+                            alt="">
 
                             <!-- this is the product description -->
                             <div id="cookerProdDesc_id_1" class="productDesc px-2 align-self-start">
@@ -251,7 +243,7 @@
                                 <span class="oldPrice_class">7,120</span>
                             </div>
                         </a>
-
+                        
 
                         <!-- button to add product to cart -->
                         <div class="cartBtn w-75 py-3 d-flex justify-content-center ">
@@ -298,10 +290,10 @@
 
                         </div>
 
-                        <a href="CustomersPages/detailes.html?cat_id=1&product_id=2"
+                        <a href="CustomersPages/detailes.html?cat_id=1&product_id=2" 
                             class="d-flex flex-column align-items-center justify-content-center">
                             <img id="cookerProdImage_id_2" src="Images/CustomerImages/Product_imges/cookers/oven2.jpg"
-                                alt="">
+                            alt="">
 
                             <!-- this is the product description -->
                             <div id="cookerProdDesc_id_2" class="productDesc px-2 align-self-start">
@@ -374,9 +366,10 @@
 
                         </div>
 
-                        <a href="CustomersPages/detailes.html?cat_id=2&product_id=1"
+                        <a href="CustomersPages/detailes.html?cat_id=2&product_id=1" 
                             class="d-flex flex-column align-items-center justify-content-center">
-                            <img id="tvProdImage_id_1" src="Images/CustomerImages/Product_imges/TVs/TV1.jpg" alt="">
+                            <img id="tvProdImage_id_1" src="Images/CustomerImages/Product_imges/TVs/TV1.jpg"
+                            alt="">
 
                             <!-- this is the product description -->
                             <div id="tvProdDesc_id_1" class="productDesc px-2 align-self-start">
@@ -436,9 +429,10 @@
 
                         </div>
 
-                        <a href="CustomersPages/detailes.html?cat_id=2&product_id=2"
+                        <a href="CustomersPages/detailes.html?cat_id=2&product_id=2" 
                             class="d-flex flex-column align-items-center justify-content-center">
-                            <img id="tvProdImage_id_2" src="Images/CustomerImages/Product_imges/TVs/TV2.jpg" alt="">
+                            <img id="tvProdImage_id_2" src="Images/CustomerImages/Product_imges/TVs/TV2.jpg"
+                            alt="">
 
                             <!-- this is the product description -->
                             <div id="tvProdDesc_id_2" class="productDesc px-2 align-self-start">
@@ -536,12 +530,12 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script type="module" src="js/script.js"></script>
     <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
     <script type="module" src="js/main.js"></script>
 
-
+    
 </body>
 
 </html>
