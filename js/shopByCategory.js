@@ -32,8 +32,6 @@ function disappearSideNavBar(navBar) {
     navBar.style.left = "-75%"; // Hide sidebar off-screen
 }
 
-
-/*************************************************************************************************************** */
 /******************************************************************************************************** */
 
 /* function to add products dynamically : */
@@ -56,7 +54,6 @@ async function getProductsByCatId(catId){
     console.log(productsTemp);
     //productsTemp = await getAllDocuments("aliProducts");
 }
-
 
 
 async function createProductsInHtml() {
@@ -353,8 +350,6 @@ let mySliderEventFunc =  function (){
 
 
 filterOfferCheckBox.addEventListener('change' , ()=>{
-    debugger;
-    console.log(filterPriceCheckBox.value);
     // in case two filters works
     if(filterOfferCheckBox.checked){
         offersFlag = displayProductsDependsOnOffers();

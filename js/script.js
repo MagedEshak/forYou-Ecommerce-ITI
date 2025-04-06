@@ -3,11 +3,6 @@ import {getAllDocuments, getDocumentByField} from "../../js/main.js";
 let categoriesTemp = [];
 let productsTemp = [];
 
-
-
- 
-
-
 /* this code handels the side nav bar  */
 
 function controlSideNavBer(){
@@ -143,12 +138,6 @@ function display(element){
     element.classList.remove("d-none");
 }
 
-
-
-
-
-/******************************************************************************************************** */
-
 /***************************************************************************************************** */
 
 async function initialzePage(){
@@ -167,8 +156,6 @@ async function initialzePage(){
 }
 
 initialzePage();
-
-
 
 /******************************************************/
 /* this function displays cat links in the nav bar */
@@ -221,7 +208,6 @@ async function displayCategoriesinSideNavBar() {
 
     
 }
-
 
 /* display categories */
 /* it displays my category as an image in the home */

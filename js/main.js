@@ -1,23 +1,18 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs, addDoc, doc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
-
-
-/// authentication
-
-import { 
-  getAuth, 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-
+import {
+  getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+  addDoc,
+  doc,
+  getDoc,
+  updateDoc,
+  deleteDoc,
+} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
-
-
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -26,14 +21,12 @@ const firebaseConfig = {
   projectId: "e-commer-website",
   storageBucket: "e-commer-website.firebasestorage.app",
   messagingSenderId: "72350924893",
-  appId: "1:72350924893:web:28817a6b6d8eb470fa8db4"
+  appId: "1:72350924893:web:28817a6b6d8eb470fa8db4",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app);
-export { app, db, auth };
 
 
 // 🚀 Add a new document to any collection
@@ -57,13 +50,21 @@ export async function getDocumentByField(collectionName, field, value) {
     return null;
   }
 
-  const docData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  const docData = querySnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
   console.log("Fetched documents:", docData);
   return docData;
 }
 
 //  Update a document using a field instead of ID
-export async function updateDocumentByField(collectionName, field, value, newData) {
+export async function updateDocumentByField(
+  collectionName,
+  field,
+  value,
+  newData
+) {
   const q = query(collection(db, collectionName), where(field, "==", value));
   const querySnapshot = await getDocs(q);
 
@@ -100,7 +101,10 @@ export async function deleteDocumentByField(collectionName, field, value) {
 export async function getAllDocuments(collectionName) {
   try {
     const querySnapshot = await getDocs(collection(db, collectionName));
-    const results = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const results = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
     console.log(`Fetched ${results.length} documents from '${collectionName}'`);
     return results;
@@ -109,29 +113,33 @@ export async function getAllDocuments(collectionName) {
     return [];
   }
 }
-
-  // delete all the docs
+// delete all the docs
 export async function deleteAllDocuments(collectionName) {
   try {
-      const querySnapshot = await getDocs(collection(db, collectionName));
+    const querySnapshot = await getDocs(collection(db, collectionName));
 
-      if (querySnapshot.empty) {
-          console.log(`No documents found in '${collectionName}' to delete.`);
-          return;
-      }
+    if (querySnapshot.empty) {
+      console.log(`No documents found in '${collectionName}' to delete.`);
+      return;
+    }
 
-      querySnapshot.forEach(async (document) => {
-          const docRef = doc(db, collectionName, document.id);
-          await deleteDoc(docRef);
-          console.log(`Deleted document: ${document.id}`);
-      });
+    querySnapshot.forEach(async (document) => {
+      const docRef = doc(db, collectionName, document.id);
+      await deleteDoc(docRef);
+      console.log(`Deleted document: ${document.id}`);
+    });
 
-      console.log(`Successfully deleted all documents from '${collectionName}'`);
+    console.log(`Successfully deleted all documents from '${collectionName}'`);
   } catch (error) {
-      console.error(`Error deleting documents from '${collectionName}':`, error);
+    console.error(`Error deleting documents from '${collectionName}':`, error);
   }
 }
 
+// var cat ={
+//     "cat_id": 0,
+//     "cat_name": "TV"
+// }
+// addDocument("category", cat)
 
 ///////////////////////////////
 //
@@ -139,57 +147,50 @@ export async function deleteAllDocuments(collectionName) {
 //
 ////////////////////////////
 
-
-
 // Get a document by ID
-export async function getDocById(docName ,Id) {
+export async function getDocById(docName, Id) {
   try {
-      const docRef = doc(db, docName, Id);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-          console.log("Fetched product: ", docSnap.data());
-          return { id: docSnap.id, ...docSnap.data() };
-      } else {
-          console.log("No such product!");
-          return null;
-      }
+    const docRef = doc(db, docName, Id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log("Fetched product: ", docSnap.data());
+      return { id: docSnap.id, ...docSnap.data() };
+    } else {
+      console.log("No such product!");
+      return null;
+    }
   } catch (error) {
     console.error(`Error getting document ${Id} from ${docName}:`, error);
-    
   }
 }
-
 
 // Update a document by ID
 export async function updateDocById(docName, Id, updatedData) {
   try {
-      const docRef = doc(db, docName, Id);
-      await updateDoc(docRef, updatedData);
-      console.log(`document ${Id} updated  in ${docName} successfully.`);
-      return true;
+    const docRef = doc(db, docName, Id);
+    await updateDoc(docRef, updatedData);
+    console.log(`document ${Id} updated  in ${docName} successfully.`);
+    return true;
+  } catch (error) {
+    console.error("Error updating product: ", error);
   }
-  catch (error) {
-      console.error("Error updating product: ", error);
-  }
-
 }
 
 // Delete a document by ID
 export async function deleteDocById(docName, Id) {
   try {
-      const docRef = doc(db, docName, Id);
-      await deleteDoc(docRef);
-      console.log(`Document ${Id} deleted from ${docName} successfully.`);
-      return true;
-     
+    const docRef = doc(db, docName, Id);
+    await deleteDoc(docRef);
+    console.log(`Document ${Id} deleted from ${docName} successfully.`);
+    return true;
+  } catch (error) {
+    console.error(`Error deleting document ${Id} from ${docName}:`, error);
   }
-    catch (error) {
-      console.error(`Error deleting document ${Id} from ${Name}:`, error);
-      
-  }
+
 }
 
 
+/////////////////////////////
 // handle image upload to Imgur
 /////////////////////////////
 
@@ -221,3 +222,4 @@ export async function uploadToImgur(file) {
       console.error('Error uploading image:', error);
   }
 }
+
