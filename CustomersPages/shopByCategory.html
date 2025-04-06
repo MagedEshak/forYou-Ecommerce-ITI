@@ -9,8 +9,9 @@
     <link rel="shortcut icon" href="./Images/logo/LLLOGO.png" type="image/x-icon">
     <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="../CSS/home.css">
-    <link rel="stylesheet" href="../CSS/shopByCategory.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../CSS/shopByCategory.css">
+
 </head>
 <body>
 
@@ -121,29 +122,66 @@
             </div>
         </div>
     </nav><!-- updated -->
+    
+    
+    <div class="filterHeader text-center d-lg-none">
+        <h4>Filter Products</h4>
+    </div>
 
-    <section class="pt-lg-5">
-        <div class="container py-3 m-auto">
-            <div class="d-flex flex-column  p-2 justify-content-center align-items-center text-dark">
-                <label for="priceRangeInput_id" class="range-txt pb-3">Filter By Price</label>
-                <input type="range" name="priceRange" min="0" max="10000" value="10000"
-                    id="priceRangeInput_id" class="w-50 slider">
-                <div  class="pt-2 range-txt">from <span class="px-3">0</span> to <span id="rangeValue" class="px-3">10000</span></div>
+    <section id="filterationSection_id" class="d-flex flex-column justify-content-start px-3">
+            
+        <div id="checkBoxPriceFilter_id" class="d-flex justify-content-start justify-content-lg-center">
+            <div class="form-check">
+                <label class="form-check-label px-2 pb-1 pb-lg-3" for="checkIndeterminate1">
+                  Filter By Price
+                </label>
+              </div>
+        </div>
+
+        <div id="inputRangeSection_id" class="d-flex flex-column align-items-center ">
+            <div id="sliderContainer">
+                <div id="sliderTrack"></div>
+                <div id="sliderRange"></div>
+                <input type="range" id="minRange" min="0" max="50000" value="0">
+                <input type="range" id="maxRange" min="0" max="50000" value="50000">
+            </div>
+    
+            <div  class="py-3 py-lg-5">
+                <p id="rangeValuestxt">from 0 to 50000</p>
             </div>
         </div>
-    </section>
-    
-    
 
-    <section>
-        <div id="parentContainer_id" class="container-fluid  pb-5 px-3">
+        <div id="checkBoxOfferFilter_id" class="d-flex justify-content-start justify-content-lg-center">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkIndeterminate2">
+                <label class="form-check-label px-2 pb-lg-3" for="checkIndeterminate2">
+                  Filter By Offers
+                </label>
+              </div>
+        </div>
+
+    </section>
+
+    <div class="filterBtn text-center">
+        <button class="btn d-lg-none" id="filterProductsDisplayBtn"><i class="fa fa-angle-double-down"></i></button>
+    </div>
+   
+
+    <h2 id="filterationMessage_id" class="text-center pt-5 d-none">No Products Found With This Filteration</h2>
+
+    <section  class="d-flex justify-content-evenly">
+
+        <section id="emptySection_id" class="d-none  d-lg-flex flex-column justify-content-start align-items-center px-3 pt-lg-5">
+        </section>
+        
+        <div id="parentContainer_id" class="pb-5 px-3">
+            
             <!-- this is filled dynamically using js -->
         </div>
-    </section>
-    
-        
 
-    <footer>
+    </section>
+
+    <footer id="footer_id">
         <div class="container-fluid">
             <div class="row justify-content-evenly align-items-center p-3 bg-black">
                 <!-- some information linkes like  about us , customer service , more   -->
@@ -193,6 +231,5 @@
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 
-    
 </body>
 </html>

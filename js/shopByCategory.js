@@ -32,8 +32,6 @@ function disappearSideNavBar(navBar) {
     navBar.style.left = "-75%"; // Hide sidebar off-screen
 }
 
-
-/*************************************************************************************************************** */
 /******************************************************************************************************** */
 
 /* function to add products dynamically : */
@@ -45,7 +43,6 @@ let catId = urlParams.get("cat_id") ;
 
 // Get cateogry name by its id from fireBase
 async function getCategoryname(id) {
-    debugger;
     let myCategory = await getDocById("aliCategories" ,id);
     console.log(myCategory.cat_name);
     return myCategory.cat_name;
@@ -57,7 +54,6 @@ async function getProductsByCatId(catId){
     console.log(productsTemp);
     //productsTemp = await getAllDocuments("aliProducts");
 }
-
 
 
 async function createProductsInHtml() {
@@ -166,6 +162,9 @@ async function createProductsInHtml() {
         let oldPriceSpan = document.createElement('span');// this is old price span
         oldPriceSpan.className = "oldPrice_class";
         oldPriceSpan.innerText = `${product.price}`;
+
+        if(product.discount == 0)
+            oldPriceSpan.classList.add('d-none');
     
         // appending current price span and then the old price
         prodductPriceContainer.appendChild(currentPriceSpan);
@@ -326,33 +325,138 @@ function display(element){
 }
 
 /************************************************************* */
+/* filteration process */
 
-let myFilterRange =  document.getElementById('priceRangeInput_id');
-myFilterRange.addEventListener('input' , () => {
-    let myFilterValue = myFilterRange.value;
-    let rangeValue = document.getElementById('rangeValue');
-    rangeValue.innerHTML = myFilterValue;
-    displayProductsDependsOnPriceValue(myFilterValue);
+
+let filterPriceCheckBox = document.getElementById('checkIndeterminate1'); // price checkbox
+let filterOfferCheckBox = document.getElementById('checkIndeterminate2'); // offer checkbox
+let pricesFlag = 1;
+let offersFlag = 0;
+
+let minRange = document.getElementById('minRange');
+let maxRange = document.getElementById('maxRange');
+let rangeText = document.getElementById('rangeValuestxt');
+let sliderRange = document.getElementById('sliderRange');
+
+
+
+let mySliderEventFunc =  function (){
+    displayAllProducts();
+    if(filterOfferCheckBox.checked)
+        displayProductsDependsOnOffers();
+    updateMySliderAndFilterProducts(minRange , maxRange ,rangeText ,sliderRange);
+    actionAfterFiltering();
+} 
+
+
+filterOfferCheckBox.addEventListener('change' , ()=>{
+    // in case two filters works
+    if(filterOfferCheckBox.checked){
+        offersFlag = displayProductsDependsOnOffers();
+    }
+    actionAfterFiltering();
 })
 
-function displayProductsDependsOnPriceValue(myFilterValue){
+
+function actionAfterFiltering(){
+    // now we check if there are products passed from filter or not
+
+    let parentContainer = document.getElementById('parentContainer_id');
+    let myFooter = document.getElementById('footer_id');
+    let message = document.getElementById('filterationMessage_id');
     
+    if(pricesFlag == 1){
+        
+        let message = document.getElementById('filterationMessage_id');
+        displayNone(message);
+        parentContainer.style.visibility = "visible";
+        myFooter.classList.remove("position-absolute"); 
+    }
+    else 
+    {
+        display(message);
+        parentContainer.style.visibility = "hidden";
+        myFooter.classList.add("position-absolute");
+        myFooter.classList.add("bottom-0");
+    }
+
+}
+
+function updateMySliderAndFilterProducts(minRange , maxRange ,rangeText ,sliderRange){
+    let minValue = parseInt(minRange.value);
+    let maxValue = parseInt(maxRange.value);
+
+    if(minValue > maxValue){
+        [minValue , maxValue] = [maxValue , minValue]
+    }
+
+    const percent1 = (minValue / 50000) * 100;
+    const percent2 = (maxValue / 50000) * 100;
+
+    sliderRange.style.left = percent1 + "%";
+    sliderRange.style.width = (percent2 - percent1) + "%";
+
+    rangeText.innerHTML = `from ${minValue}   To   ${maxValue}`;
+
+    pricesFlag =  displayProductsDependsOnPriceValue(minValue , maxValue);
+}
+
+function displayProductsDependsOnPriceValue(minimumValue , maximumValue){
+    let flag = 0 ;
+
     productsTemp.forEach( product => {
         let currentPrice = product.price - (product.discount / 100) * product.price;
-        if(currentPrice > myFilterValue)
+        if(currentPrice >= minimumValue && currentPrice <= maximumValue)
         {
-            //${catName}Product_id_${product.id}
-            let myProdContainer = document.getElementById(`${catName}Product_id_${product.id}`);
-            displayNone(myProdContainer);
+            // in case product passed from the filter so leave it as it is displayed default
+            // but it is not displayed so leave it as it is
+            // let myProdContainer = document.getElementById(`${catName}Product_id_${product.id}`);
+            // display(myProdContainer);
+            flag = 1;
         }
         else
         {
+            //in case product doesnt pass from the filter
+            // so remove it
             let myProdContainer = document.getElementById(`${catName}Product_id_${product.id}`);
-            display(myProdContainer);
+            displayNone(myProdContainer);
         }
     })
+    // in case of one product at least passed from the filter return 1
+    // else return 0
+    return flag;
 }
 
+function displayProductsDependsOnOffers(){
+
+    let flag = 0 ;
+
+    productsTemp.forEach( product => {
+        if(product.discount != 0)
+        {
+            // in case product passed from the filter so leave it as it is displayed default
+            // but it is not displayed so leave it as it is
+            flag = 1;
+        }
+        else
+        {
+            //in case product doesnt pass from the filter
+            // so remove it
+            let myProdContainer = document.getElementById(`${catName}Product_id_${product.id}`);
+            displayNone(myProdContainer);
+        }
+    })
+    // in case of one product at least passed from the filter return 1
+    // else return 0
+    return flag;
+}
+
+function displayAllProducts(){
+    productsTemp.forEach( product => {
+        let myProdContainer = document.getElementById(`${catName}Product_id_${product.id}`);
+        display(myProdContainer);
+    })
+}
 
 /*************************************************************** */
 /* this function displays cat links in the nav bar */
@@ -372,6 +476,7 @@ async function displayCategoriesinNavBar() {
 
 /* just called when the width of screen is small */
 async function displayCategoriesinSideNavBar() {
+    debugger;
     categoriesTemp = await getAllDocuments("aliCategories");
     
     let cateLinksContainer = document.getElementById('sideNavCategoriesLinks_id');
@@ -400,13 +505,40 @@ async function initializePage(){
     controlSideNavBer();
     if(window.innerWidth <= 992){
         displayCategoriesinSideNavBar();
+        displayAndRemoveFilterationSection();
     }
     else{
         displayCategoriesinNavBar();
     }
     await createProductsInHtml();
-    addEventsToAllCartBtns ()
+    addEventsToAllCartBtns ();
+
+    minRange.addEventListener('input' , mySliderEventFunc);
+    maxRange.addEventListener('input' , mySliderEventFunc);
 }
 
 
 initializePage();
+
+
+function displayAndRemoveFilterationSection(){
+    let filterationBtn = document.getElementById('filterProductsDisplayBtn');
+
+    filterationBtn.addEventListener('click', (e)=> {
+        console.log('event added')
+        let filterationSection = document.getElementById('filterationSection_id');
+        if(filterationSection.style.maxHeight == '0px' || filterationSection.style.maxHeight == "")
+        {
+            filterationSection.style.maxHeight = '200px';
+            filterationSection.style.overflow = 'auto';
+            e.target.className = "fa fa-angle-double-up";
+        }   
+        else{
+            filterationSection.style.maxHeight = '0px';
+            filterationSection.style.overflow = 'hidden';
+            e.target.className = "fa fa-angle-double-down";
+        }
+    })
+
+}
+

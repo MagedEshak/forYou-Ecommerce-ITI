@@ -1,62 +1,36 @@
 import { getAllDocuments, addDocument } from "../../js/main.js";
+import { registerUser,createUserProfile} from "../../js/auth.js";
 
 let createNewAdmin = document.getElementById("createNewAdmin_id");
+let mainContentSec = document.getElementById("mainContentSec_id");
 
+//--------------------------------------------------------------------------------------
+
+let fullName = document.getElementById("");
+let email = document.getElementById("");
+let phone = document.getElementById("");
+let password = document.getElementById("");
+let repeatPassword = document.getElementById("");
+let city = document.getElementById("");
 window.onload = () => {
     let addAdmin = document.getElementById("addNewAdmin_id");
-    let CancelBtn = document.getElementById("CancelBtn_id");
-    if (addAdmin && CancelBtn) {
-
-        addAdmin.addEventListener("click", () => {
-
-            if (createNewAdmin.classList.contains("d-none")) {
-
-                createNewAdmin.classList.remove("d-none");
-
-                document.getElementById("mainContentSec_id").classList.remove("d-md-flex"); // To Hide category content
-                document.getElementById("mainContentSec_id").classList.add("d-none"); // To Hide category content
-
-
-                createNewAdmin.classList.add("d-block");
-            }
-        });
-
-        CancelBtn.addEventListener("click", () => {
-
-            if (createNewAdmin.classList.contains("d-block")) {
-
-                createNewAdmin.classList.add("d-none");
-
-                document.getElementById("mainContentSec_id").classList.add("d-md-flex"); // To Hide category content
-                document.getElementById("mainContentSec_id").classList.remove("d-none"); // To Hide category content
-
-                createNewAdmin.classList.remove("d-block");
-            }
-        });
+    let cancelBtn = document.getElementById("CancelBtn_id");
+    
+    if (addAdmin && cancelBtn) {
+        addAdmin.addEventListener("click", () => createNewAdminForm());
+        cancelBtn.addEventListener("click", () => cancelCreateNewAdminForm());
     }
 };
 
 
-// const adminsData =
-// {
-//     Username: "Mina Maged",
-//     email: "mina@gmail.com",
-//     password: "123456",
-//     phone: "01266686544",
-//     isAdmin: false,
-//     address: ["EG", "Cairo"],
-//     wishlist: [],
-//     shoppingCart: [{
-//         product_id: 1,
-//         cat_id: 1,
-//         quantaty: 0,
-//         isPending: 0
-//     }],
-//     lastOrders: [],
-//     retunOdrs: false
-// };
 
-//addDocument("User",adminsData);
+function createNewAdminForm() {
+    location.assign("../../AdminPages/addNewAdmin.html");
+}
+
+function cancelCreateNewAdminForm() {
+    history.back();
+}
 
 let adminCache = new Map();
 
@@ -104,6 +78,9 @@ async function getAllAdmins() {
 
             let arrow = document.createElement("span");
             arrow.classList.add("position-absolute", "bottom-50", "end-0", "Arrow-color", "cursor-pointer");
+            let i = document.createElement("i");
+            i.classList.add("bi", "bi-arrow-right");
+            arrow.appendChild(i);
             container.appendChild(arrow);
 
             viewAddminsCon.appendChild(container);
@@ -111,7 +88,6 @@ async function getAllAdmins() {
             viewAddminsCon.appendChild(hr);
 
         }
-        console.log(viewAddminsCon);
     });
 }
 getAllAdmins();
@@ -141,3 +117,261 @@ async function createAdminRow() {
     });
 }
 createAdminRow();
+
+
+//check form
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+    })
+})();
+
+// Create New Admins and Users
+
+// const adminsData =
+// {
+//     Username: "Mina Maged",
+//     email: "mina@gmail.com",
+//     password: "123456",
+//     phone: "01266686544",
+//     isAdmin: false,
+//     address: ["EG", "Cairo"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 1,
+//         cat_id: 1,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+//addDocument("User",adminsData);
+//-----------------------------------------------------------------------
+
+
+// const adminsData =
+// {
+//     Username: "Maged Eshak",
+//     email: "magede@gmail.com",
+//     password: "123456",
+//     phone: "01266686544",
+//     isAdmin: true,
+//     address: ["EG", "Assiut"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 0,
+//         cat_id: 0,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(adminsData.email, adminsData.password));
+
+// const id = " MYJQYEX0gYOhRTh5GuAaWXGIx6L2";
+
+// console.log(createUserProfile(id, adminsData));
+
+// //-----------------------------------------------------------------------------
+// const adminsData2 =
+// {
+//     Username: "Wesam Naser",
+//     email: "wesamN@gmail.com",
+//     password: "123456",
+//     phone: "01566686544",
+//     isAdmin: true,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 0,
+//         cat_id: 0,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(adminsData2.email, adminsData2.password));
+
+// const id2 = "VMPgngpfenWCUTwU30Wg0XQXZvu2";
+
+// console.log(createUserProfile(id2, adminsData2));
+
+// //-----------------------------------------------------------------------------
+// const adminsData3 =
+// {
+//     Username: "Sayed Ali",
+//     email: "sayedali@gmail.com",
+//     password: "123456",
+//     phone: "01066686544",
+//     isAdmin: true,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 0,
+//         cat_id: 0,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(adminsData3.email, adminsData3.password));
+
+// const id3 = "tkGfVdLV3qYWwKlzJgL1NReVLie2";
+
+// console.log(createUserProfile(id3, adminsData3));
+
+// //-----------------------------------------------------------------------------
+// const adminsData4 =
+// {
+//     Username: "Samuel",
+//     email: "sam@gmail.com",
+//     password: "123456",
+//     phone: "01566686544",
+//     isAdmin: true,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 0,
+//         cat_id: 0,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(adminsData4.email, adminsData4.password));
+
+// const id4 = "nuGFENkbLbh74O3Mt3JbCNokOzu1";
+
+// console.log(createUserProfile(id4, adminsData4));
+
+// //-----------------------------------------------------------------------------
+// const adminsData5 =
+// {
+//     Username: "Ali Gamal",
+//     email: "aliga@gmail.com",
+//     password: "123456",
+//     phone: "01166686544",
+//     isAdmin: true,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 0,
+//         cat_id: 0,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(adminsData5.email, adminsData5.password));
+
+// const id5 = "QBJIxvvm2sZriVTmBqCTf8SE9Eg1";
+
+// console.log(createUserProfile(id5, adminsData5));
+
+
+// //-----------------------------------------------------------------------------
+// const userData1 =
+// {
+//     Username: "Mohamed Ashraf",
+//     email: "mohammedA@gmail.com",
+//     password: "123456",
+//     phone: "01166686544",
+//     isAdmin: false,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 2,
+//         cat_id: 1,
+//         quantaty: 1,
+//         isPending: 1
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(userData1.email, userData1.password));
+
+// const usId1 = "rvo1JgwzEJc06oM31b6hZcDPSZ72";
+
+// console.log(createUserProfile(usId1, userData1));
+
+
+// //-----------------------------------------------------------------------------
+// const userData2 =
+// {
+//     Username: "Mina Maged",
+//     email: "minamaged@gmail.com",
+//     password: "123456",
+//     phone: "01252345789",
+//     isAdmin: false,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 2,
+//         cat_id: 2,
+//         quantaty: 2,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(userData2.email, userData2.password));
+
+// const usId2 = "bxqEejnR49NEKZVmYkfmDV5zEKD3";
+
+// console.log(createUserProfile(usId2, userData2));
+
+// //-----------------------------------------------------------------------------
+// const userData3 =
+// {
+//     Username: "user",
+//     email: "user@gmail.com",
+//     password: "123456",
+//     phone: "01252345789",
+//     isAdmin: false,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 2,
+//         cat_id: 2,
+//         quantaty: 2,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(userData3.email, userData3.password));
+
+// const usId3 = "jIfIO7DQd6UaEXNUuCtEIfoEZEZ2";
+
+// console.log(createUserProfile(usId3, userData3));
+
+// --------------------------------------------------------

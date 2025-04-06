@@ -1,22 +1,120 @@
-.slider{
-    -webkit-appearance: none;
-    background: #ddd;
-    border-radius: 8px;
-    
-}
 
-.slider::-webkit-slider-thumb {
+  #sliderContainer{
+    position: relative;
+    background-color: #070067;
+    width: 100%;
+  }
+
+  #sliderTrack{
+    position: absolute;
+    background-color: rgb(172, 169, 169);
+    height: 10px;
+    width: 100%;
+    border-radius: 5px;
+    z-index: 1;
+  }
+
+  #sliderRange{
+    position: absolute;
+    background-color: #006766;
+    height: 10px;
+    width: 100%;
+    border-radius: 5px;
+    z-index: 2;
+  }
+
+  input[type = "range"] {
     -webkit-appearance: none;
-    height: 20px;
-    width: 20px;
-    background: #006766; /* Thumb color */
-    border-radius: 50%;
+    position: absolute;
+    background: none;
+    pointer-events: none;
+    height: 10px;
+    width: 100%;
+    z-index: 3;
+  }
+
+  
+
+  input[type = "range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    position: relative;
+    pointer-events: all;
+    width: 20px !important; 
+    height: 20px !important; 
+    background-color: #006766 ; /* Thumb color */
+    border-radius: 50%; /* Make it round */
     cursor: pointer;
-    border: none;
-    box-shadow: 0 0 2px #000;
   }
 
-  .range-txt{
-    color: #000;
-    font-size: larger;
+
+  
+
+  #emptySection_id{
+    width: 19%;
+    height: 60vh;
   }
+
+  #inputRangeSection_id{
+    width: 60%;
+  }
+  #filterationSection_id{
+    width: 100%;
+    max-height: 0px;
+    overflow: hidden;
+    position: static;
+    padding-top: 2rem !important;
+    color: #006766;
+    transition: max-height 1s ease;
+  }
+
+ #checkBoxPriceFilter_id{
+    width: 100%;
+    border-top: #006766 1px solid;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+ }
+ #checkBoxOfferFilter_id{
+    width: 100%;
+    border-bottom: #006766 1px solid;
+    padding-bottom: 1rem !important;
+ }
+
+ input[type="checkbox"] {
+    outline: 1px solid #006766 /* Changes checkmark and border color */
+  }
+
+  #filterProductsDisplayBtn i{
+    font-size: 1.5rem !important;
+  }
+
+
+  @media (min-width : 992px) {
+    #parentContainer_id{
+      width: 75%;
+    }
+
+    #filterationSection_id{
+      max-height: 500px;
+      width: 19%;
+      position: absolute;
+      left : 2%;
+      padding-top: 5.5rem !important;
+      color: #006766;
+    }
+
+    #checkBoxPriceFilter_id{
+      width: 100%;
+      border-top: #006766 1px solid;
+      padding-top: 4rem !important;
+   }
+
+   #checkBoxOfferFilter_id{
+    width: 100%;
+    border-bottom: #006766 1px solid;
+    padding-bottom: 4rem !important;
+  }
+  #inputRangeSection_id{
+    width: 90%;
+  }
+
+  } 
