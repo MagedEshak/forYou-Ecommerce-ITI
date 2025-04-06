@@ -18,6 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+
 // 🚀 Add a new document to any collection
 export async function addDocument(collectionName, data) {
   try {

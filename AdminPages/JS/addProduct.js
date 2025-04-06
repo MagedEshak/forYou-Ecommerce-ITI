@@ -69,7 +69,7 @@ async function addProduct(event) {
     }
 }
 
-// Init
+// Init 
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("product-form").addEventListener("submit", addProduct);
     loadCategories();
