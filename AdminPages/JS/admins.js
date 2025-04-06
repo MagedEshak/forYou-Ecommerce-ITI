@@ -13,10 +13,9 @@ window.onload = () => {
 
                 createNewAdmin.classList.remove("d-none");
 
-                document.getElementById("mainContentSec_id").classList.remove("d-md-flex"); // To Hide category content
+document.getElementById("mainContentSec_id").classList.remove("d-md-flex"); // To Hide category content
                 document.getElementById("mainContentSec_id").classList.add("d-none"); // To Hide category content
-
-
+                
                 createNewAdmin.classList.add("d-block");
             }
         });
@@ -27,7 +26,7 @@ window.onload = () => {
 
                 createNewAdmin.classList.add("d-none");
 
-                document.getElementById("mainContentSec_id").classList.add("d-md-flex"); // To Hide category content
+               document.getElementById("mainContentSec_id").classList.add("d-md-flex"); // To Hide category content
                 document.getElementById("mainContentSec_id").classList.remove("d-none"); // To Hide category content
 
                 createNewAdmin.classList.remove("d-block");
@@ -104,6 +103,9 @@ async function getAllAdmins() {
 
             let arrow = document.createElement("span");
             arrow.classList.add("position-absolute", "bottom-50", "end-0", "Arrow-color", "cursor-pointer");
+            let i = document.createElement("i");
+            i.classList.add("bi", "bi-arrow-right");
+            arrow.appendChild(i);
             container.appendChild(arrow);
 
             viewAddminsCon.appendChild(container);
@@ -141,3 +143,25 @@ async function createAdminRow() {
     });
 }
 createAdminRow();
+
+
+//check form
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
