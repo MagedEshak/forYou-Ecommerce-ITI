@@ -4,56 +4,33 @@ import { registerUser,createUserProfile} from "../../js/auth.js";
 let createNewAdmin = document.getElementById("createNewAdmin_id");
 let mainContentSec = document.getElementById("mainContentSec_id");
 
+//--------------------------------------------------------------------------------------
+
+let fullName = document.getElementById("");
+let email = document.getElementById("");
+let phone = document.getElementById("");
+let password = document.getElementById("");
+let repeatPassword = document.getElementById("");
+let city = document.getElementById("");
 window.onload = () => {
     let addAdmin = document.getElementById("addNewAdmin_id");
     let cancelBtn = document.getElementById("CancelBtn_id");
     
     if (addAdmin && cancelBtn) {
-        addAdmin.addEventListener("click", ()=>createNewAdminForm(mainContentSec));
-        cancelBtn.addEventListener("click", ()=>cancelCreateNewAdminForm(mainContentSec));
+        addAdmin.addEventListener("click", () => createNewAdminForm());
+        cancelBtn.addEventListener("click", () => cancelCreateNewAdminForm());
     }
 };
 
 
 
-function createNewAdminForm(mainDivInHTMlDoc) {
-            if (createNewAdmin.classList.contains("d-none")) {
-                createNewAdmin.classList.remove("d-none");
-                mainDivInHTMlDoc.classList.remove("d-md-flex"); // To Hide category content
-                mainDivInHTMlDoc.classList.add("d-none"); // To Hide category content  
-                createNewAdmin.classList.add("d-block");
-            }
+function createNewAdminForm() {
+    location.assign("../../AdminPages/addNewAdmin.html");
 }
 
-function cancelCreateNewAdminForm(mainDivInHTMlDoc) {
-            if (createNewAdmin.classList.contains("d-block")) {
-                createNewAdmin.classList.add("d-none");
-                mainDivInHTMlDoc.classList.add("d-md-flex"); // To Hide category content
-                mainDivInHTMlDoc.classList.remove("d-none"); // To Hide category content
-                createNewAdmin.classList.remove("d-block");
-            }
+function cancelCreateNewAdminForm() {
+    history.back();
 }
-
-// const adminsData =
-// {
-//     Username: "Mina Maged",
-//     email: "mina@gmail.com",
-//     password: "123456",
-//     phone: "01266686544",
-//     isAdmin: false,
-//     address: ["EG", "Cairo"],
-//     wishlist: [],
-//     shoppingCart: [{
-//         product_id: 1,
-//         cat_id: 1,
-//         quantaty: 0,
-//         isPending: 0
-//     }],
-//     lastOrders: [],
-//     retunOdrs: false
-// };
-
-//addDocument("User",adminsData);
 
 let adminCache = new Map();
 
@@ -164,6 +141,29 @@ createAdminRow();
 })();
 
 // Create New Admins and Users
+
+// const adminsData =
+// {
+//     Username: "Mina Maged",
+//     email: "mina@gmail.com",
+//     password: "123456",
+//     phone: "01266686544",
+//     isAdmin: false,
+//     address: ["EG", "Cairo"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 1,
+//         cat_id: 1,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+//addDocument("User",adminsData);
+//-----------------------------------------------------------------------
+
 
 // const adminsData =
 // {
@@ -373,3 +373,5 @@ createAdminRow();
 // const usId3 = "jIfIO7DQd6UaEXNUuCtEIfoEZEZ2";
 
 // console.log(createUserProfile(usId3, userData3));
+
+// --------------------------------------------------------
