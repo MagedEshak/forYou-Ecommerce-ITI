@@ -1,23 +1,8 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
 import { getFirestore, collection, query, where, getDocs, addDoc, doc, getDoc, updateDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
-
-
-/// authentication
-
-import { 
-  getAuth, 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
-
-
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -32,8 +17,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app);
-export { app, db, auth };
 
 
 // 🚀 Add a new document to any collection
@@ -109,7 +92,6 @@ export async function getAllDocuments(collectionName) {
     return [];
   }
 }
-
   // delete all the docs
 export async function deleteAllDocuments(collectionName) {
   try {
@@ -131,6 +113,15 @@ export async function deleteAllDocuments(collectionName) {
       console.error(`Error deleting documents from '${collectionName}':`, error);
   }
 }
+
+// var cat ={
+//     "cat_id": 0,
+//     "cat_name": "TV"
+// }
+// addDocument("category", cat)
+
+
+
 
 
 ///////////////////////////////
@@ -184,12 +175,13 @@ export async function deleteDocById(docName, Id) {
      
   }
     catch (error) {
-      console.error(`Error deleting document ${Id} from ${Name}:`, error);
+      console.error(`Error deleting document ${Id} from ${docName}:`, error);
       
   }
 }
 
 
+/////////////////////////////
 // handle image upload to Imgur
 /////////////////////////////
 
