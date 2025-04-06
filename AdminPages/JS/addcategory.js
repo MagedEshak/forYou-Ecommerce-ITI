@@ -1,30 +1,5 @@
-import { addDocument,deleteAllDocuments,getDocumentByField } from "../../js/main.js"
+import { addDocument,deleteAllDocuments,getDocumentByField,getAllDocuments } from "../../js/main.js"
 
-async function uploadToImgur(imageFile, clientId) {
-    const formData = new FormData();
-    formData.append("image", imageFile);
-  
-    try {
-      const response = await fetch("https://api.imgur.com/3/image", {
-        method: "POST",
-        headers: {
-          "Authorization": `Client-ID ${clientId}`
-        },
-        body: formData
-      });
-  
-      const data = await response.json();
-      
-      if (data.success) {
-        return data.data.link; // Returns the image URL
-      } else {
-        throw new Error("Upload failed!");
-      }
-    } catch (error) {
-      console.error("Error uploading image:", error);
-      return null; // Returns null in case of failure
-    }
-  }
 
 // deleteAllDocuments("category")
 // var cat ={
@@ -32,52 +7,64 @@ async function uploadToImgur(imageFile, clientId) {
 //     "cat_name": "TV"
 // }
 // addDocument("category", cat)
-document.getElementById("form_id").addEventListener("submit", function(event){
+document.getElementById("form_id").addEventListener("submit", async function(event){
   event.preventDefault()
   var catName = document.getElementById("categoryNameInput_id").value
   var cat = {
     "name": catName,
-    "img" : ""
   }
-  addDocument("category" , cat)
+  await addDocument("category" , cat)
   document.getElementById("categoryNameInput_id").value=""
 
 })
 
+var categorys = await getAllDocuments("category")
+categorys.forEach(cat =>{
+  // Create the <tr> element
+const tr = document.createElement("tr");
 
-const setUrl = document.getElementById("preview-img")
-setUrl.src = "https://imgur.com/AhyEeor.png"
-document.getElementById("img_icon").style.display = "none"; // Hide the icon
-setUrl.style.display = "inline"; // Show the uploaded image
+// Create the <td> element for category info
+const tdCategory = document.createElement("td");
+const divContainer = document.createElement("div");
+divContainer.className = "align-content-center text-center d-flex justify-content-start gap-5";
 
-document.getElementById("file-input").addEventListener("change",async() =>{
+const rowDiv = document.createElement("div");
+rowDiv.className = "row";
 
-const currentImageUrl = document.getElementById("preview-img").src;
+const catName = document.createElement("span");
+catName.className = "text-start";
+catName.id = "cat_name";
+catName.textContent = cat.name;
 
-if (currentImageUrl && currentImageUrl !== "") {
-    console.log("Image already exists:", currentImageUrl);
-}
-else{
-    
-}
-const imageFile = document.getElementById("file-input").files[0]
-const clientId = "5c51da6457cf182"
+const catId = document.createElement("span");
+catId.className = "text-start";
+catId.id = "cat_id";
+catId.textContent = cat.id;
 
-if (imageFile) {
-  const imageUrl = await uploadToImgur(imageFile, clientId);
-        
- /*  if (imageUrl) {
-    console.log("Image URL:", imageUrl);
-    const reader = new FileReader();
-    reader.onload = () => {
-      const previewImg = document.getElementById("preview-img");
-      previewImg.src = reader.result; // Set image source
-      previewImg.style.display = "inline"; // Show the uploaded image
-      };
-      reader.readAsDataURL(imageFile)
-      } else {
-        console.log("Upload failed!");
-      } */
-  } 
-} );
-    
+// Append category elements
+rowDiv.appendChild(catName);
+rowDiv.appendChild(catId);
+divContainer.appendChild(rowDiv);
+tdCategory.appendChild(divContainer);
+
+// Create the <td> element for quantity
+const tdQuantity = document.createElement("td");
+tdQuantity.className = "text-center align-middle";
+
+
+const spanQuantity = document.createElement("span");
+spanQuantity.id = "catQuantity_id";
+spanQuantity.className = "align-content-center text-center";
+spanQuantity.textContent = "4";
+
+// Append quantity elements
+tdQuantity.appendChild(spanQuantity);
+
+// Append everything to the row
+tr.appendChild(tdCategory);
+tr.appendChild(tdQuantity);
+
+// Append the row to a table in the document (assuming you have a table with id "myTable")
+document.getElementById("tbody_id").appendChild(tr);
+
+})
