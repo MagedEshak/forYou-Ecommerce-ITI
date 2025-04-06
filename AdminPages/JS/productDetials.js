@@ -105,12 +105,3 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Initialization error:", error);
     }
 });
-
-
-
-
-
-
-
-
-

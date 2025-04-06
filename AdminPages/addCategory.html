@@ -288,7 +288,7 @@
         <div class="row p-md-3 p-lg-3 pt-3">
           <h2>Add New Category</h2>
           <!-- Start Edit Profile Form -->
-          <form action="" class="g-3 border border-3 rounded-3 p-4">
+          <form action="" class="g-3 border border-3 rounded-3 p-4" id="form_id">
             <div class="row">
               <div class="col-md-12 mb-3">
                 <label for="categoryNameInput_id" class="form-label">Category Name</label>
@@ -296,7 +296,7 @@
               </div>
 
               <div class="col-12 text-end mt-3">
-                <button type="submit" class="btn btn-color fw-bold text-light">Add New</button>
+                <button type="submit" class="btn btn-color fw-bold text-light" id="submitBtn_id">Add New</button>
                 <button type="button" id="CancelBtn_id" class="btn btn-color-fa fw-bold">Cancel</button>
               </div>
             </div>
@@ -333,8 +333,7 @@
                   <td>
                     <div class="align-content-center text-center d-flex justify-content-start gap-5">
                       <label for="file-input">
-                        <i class="bi bi-card-image" id="img_icon" style="font-size:40px;color:black"></i>
-                        <img id="preview-img" referrerpolicy="no-referrer" style="display: none; width: 40px; height: 40px;">
+                        <i class="bi bi-card-image" style="font-size:40px;color:black"></i>
                       </label>
                       <input type="file" id="file-input" style="display: none;" accept="image/*">
                       <div class="row">

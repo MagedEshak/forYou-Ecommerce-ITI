@@ -5,5 +5,9 @@ service cloud.firestore {
     match /{document=**} {
       allow read, write: if false;
     }
+    match /users/{userId} {
+      allow read, write: if request.auth.uid == userId;
+    }
+    
   }
 }
