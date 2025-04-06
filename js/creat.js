@@ -53,9 +53,9 @@ CreatAcount.addEventListener("click", (e) => {
     };
 
     registerUser(email, password)
-      .then((res) => {
-        console.log(res);
-        createUserProfile(res, dataUser);
+      .then((uid) => {
+        console.log(uid);
+        return createUserProfile(uid, dataUser);
       })
       .then(() => {
         window.location.href = "../index.html";
