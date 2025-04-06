@@ -53,6 +53,7 @@ async function getCategoryname(id) {
 
 
 async function getProductsByCatId(catId){
+    debugger;
     productsTemp = await getDocumentByField("aliProducts" , "cat_id" , catId);
     console.log(productsTemp);
     //productsTemp = await getAllDocuments("aliProducts");
@@ -326,31 +327,82 @@ function display(element){
 }
 
 /************************************************************* */
+/* filteration process */
 
-let myFilterRange =  document.getElementById('priceRangeInput_id');
-myFilterRange.addEventListener('input' , () => {
-    let myFilterValue = myFilterRange.value;
-    let rangeValue = document.getElementById('rangeValue');
-    rangeValue.innerHTML = myFilterValue;
-    displayProductsDependsOnPriceValue(myFilterValue);
-})
 
-function displayProductsDependsOnPriceValue(myFilterValue){
-    
+function FilterByPrice(){
+    debugger;
+    let minRange = document.getElementById('minRange');
+    let maxRange = document.getElementById('maxRange');
+    let rangeText = document.getElementById('rangeValuestxt');
+    let sliderRange = document.getElementById('sliderRange');
+
+    minRange.addEventListener('input' , () =>
+         {updateMySliderAndFilterProducts(minRange, maxRange , rangeText ,sliderRange);}
+                            )
+    maxRange.addEventListener('input' , () => 
+        {updateMySliderAndFilterProducts(minRange, maxRange , rangeText ,sliderRange);}
+                            )
+
+    updateMySliderAndFilterProducts(minRange, maxRange , rangeText ,sliderRange);
+}
+
+
+
+function updateMySliderAndFilterProducts(minValue , maxValue ,rangeText ,sliderRange){
+
+    minValue = parseInt(minRange.value);
+    maxValue = parseInt(maxRange.value);
+
+    if(minValue > maxValue){
+        [minValue , maxValue] = [maxValue , minValue]
+    }
+
+    const percent1 = (minValue / 50000) * 100;
+    const percent2 = (maxValue / 50000) * 100;
+
+    sliderRange.style.left = percent1 + "%";
+    sliderRange.style.width = (percent2 - percent1) + "%";
+
+    rangeText.innerHTML = `Filter range from ${minValue}   To   ${maxValue}`;
+
+    displayProductsDependsOnPriceValue(minValue , maxValue);
+}
+
+function displayProductsDependsOnPriceValue(minimumValue , maximumValue){
+
+    let parentContainer = document.getElementById('parentContainer_id');
+    let myFooter = document.getElementById('footer_id');
+    let flag = 0 ;
+
     productsTemp.forEach( product => {
         let currentPrice = product.price - (product.discount / 100) * product.price;
-        if(currentPrice > myFilterValue)
+        if(currentPrice >= minimumValue && currentPrice <= maximumValue)
         {
-            //${catName}Product_id_${product.id}
             let myProdContainer = document.getElementById(`${catName}Product_id_${product.id}`);
-            displayNone(myProdContainer);
+            display(myProdContainer);
+            flag = 1;
         }
         else
         {
             let myProdContainer = document.getElementById(`${catName}Product_id_${product.id}`);
-            display(myProdContainer);
+            displayNone(myProdContainer);
         }
     })
+    if(flag == 0){
+        let message = document.getElementById('filterationMessage_id');
+        display(message);
+        displayNone(parentContainer);
+        myFooter.classList.add("position-absolute");
+        myFooter.classList.add("bottom-0"); 
+        }
+    else
+    {
+        let message = document.getElementById('filterationMessage_id');
+        displayNone(message);
+        display(parentContainer);
+        myFooter.classList.remove("position-absolute");
+    }
 }
 
 
@@ -405,7 +457,8 @@ async function initializePage(){
         displayCategoriesinNavBar();
     }
     await createProductsInHtml();
-    addEventsToAllCartBtns ()
+    addEventsToAllCartBtns ();
+    FilterByPrice();
 }
 
 
