@@ -51,6 +51,33 @@ userEmail.addEventListener("blur", () => {
     emptyEmail.classList.add("d-none");
   }
 });
+//** input phone Number */
+let phoneNumber = document.getElementById("phoneNumber_id");
+let invalidNumber = document.getElementById("invalidNumber_id");
+let emptyNumber = document.getElementById("emptyNumber_id");
+let regNmber = /^01[0125][0-9]{8}$/;
+phoneNumber.addEventListener("blur", () => {
+  if (regNumber.test(phoneNumberNumber.value)) {
+    isNumberValid = true;
+    invalidNumber.classList.remove("d-block");
+    invalidNumber.classList.add("d-none");
+    emptyNumber.classList.remove("d-block");
+    emptyNumber.classList.add("d-none");
+  } else if (userEmail.value == "") {
+    isNumberValid = false;
+    invalidNumber.classList.remove("d-block");
+    invalidNumber.classList.add("d-none");
+    emptyNumber.classList.remove("d-none");
+    emptyNumber.classList.add("d-block");
+  } else {
+    isNumberValid = false;
+    invalidNumber.classList.remove("d-none");
+    invalidNumber.classList.add("d-block");
+    emptyNumber.classList.remove("d-block");
+    emptyNumber.classList.add("d-none");
+  }
+});
+
 //** input password */
 let userPass = document.getElementById("password_id");
 let invalidPass = document.getElementById("invalidPass_id");
@@ -132,4 +159,7 @@ export function validatePassword(password) {
 }
 export function validateRePassword(password, repass) {
   return password === repass && repass !== "";
+}
+export function validatePhoneNumber(phone) {
+  return regNmber.test(phone);
 }

@@ -1,9 +1,11 @@
 import { addDocument } from "./main.js";
+import { registerUser, createUserProfile } from "./auth.js";
 import {
   validateName,
   validateEmail,
   validatePassword,
   validateRePassword,
+  validatePhoneNumber,
 } from "./CreatUser.js";
 
 let CreatAcount = document.getElementById("Creataccount_id");
@@ -13,19 +15,23 @@ CreatAcount.addEventListener("click", (e) => {
   let email = document.getElementById("email_id").value;
   let password = document.getElementById("password_id").value;
   let rePassword = document.getElementById("repassword_id").value;
+  let phoneNumber = document.getElementById("phoneNumber_id").value;
 
   if (
     validateName(name) &&
     validateEmail(email) &&
     validatePassword(password) &&
-    validateRePassword(password, rePassword)
+    validateRePassword(password, rePassword) &&
+    validatePhoneNumber(phoneNumber)
   ) {
     let dataUser = {
       isAdmin: false,
       name,
       password,
       email,
-      phone: "",
+
+      phoneNumber,
+
       address: {
         country: "",
         city: "",
@@ -45,7 +51,12 @@ CreatAcount.addEventListener("click", (e) => {
         },
       ],
     };
-    addDocument("User", dataUser)
+
+    registerUser(email, password)
+      .then((uid) => {
+        console.log(uid);
+        return createUserProfile(uid, dataUser);
+      })
       .then(() => {
         window.location.href = "../index.html";
       })
