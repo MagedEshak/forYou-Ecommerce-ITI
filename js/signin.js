@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Get the sign-in form
     const signInForm = document.getElementById('signInForm');
+    if (!signInForm) {
+        console.error('Sign-in form not found.');
+        return;
+    }
 
     // Add submit event listener to the form
     signInForm.addEventListener('submit', handleSignIn);
@@ -53,6 +57,9 @@ async function handleSignIn(event) {
     const emailInput = document.getElementById('email_id');
     const passwordInput = document.getElementById('password_id');
     const errorMessage = document.getElementById('errorMessage');
+
+    console.log('Email:', emailInput.value);
+    console.log('Password:', passwordInput.value);
 
     // Clear previous error messages
     if (errorMessage) {

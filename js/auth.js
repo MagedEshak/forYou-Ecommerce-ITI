@@ -56,7 +56,7 @@ export async function loginUser(email, password) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        console.log('User logged in:',
+        console.log('User logged in 1: ',
             user.uid);
         return user.uid;
     }
@@ -77,29 +77,28 @@ export async function logoutUser() {
     }
 }
 
-// Check if a user is logged in
+// Check if user is logged in
 export function isUserLoggedIn() {
-    return auth.currentUser !== null;
+    return new Promise((resolve) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            unsubscribe(); // Stop listening immediately
+            resolve(!!user);
+        });
+    });
 }
 
 
 // Get the current user's UID
 export async function getCurrentUserId() {
-    try {
-        const user = auth.currentUser;
-        if (user) {
-            console.log('Current user ID:', user.uid);
-            return user.uid;
-        }
-        else {
-            console.log('No user is currently logged in');
-            return null;
-        }
-    }
-    catch (error) {
-        console.error('Error getting current user ID:', error);
-        throw error;
-    }
+    return new Promise((resolve) => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                resolve(user.uid);
+            } else {
+                resolve(null);
+            }
+        });
+    });
 }
 
 
@@ -117,6 +116,12 @@ export async function createUserProfile(uid, userData) {
 // Get user profile by UID
 export async function getUserProfile(uid) {
     try {
+        console.log("UID:", uid);
+        if (!uid || typeof uid !== 'string') {
+            console.error("Invalid UID:", uid);
+            return null;
+        }
+
         const userDoc = await getDoc(doc(db, "User", uid));
         if (userDoc.exists()) {
             return userDoc.data();
@@ -129,6 +134,7 @@ export async function getUserProfile(uid) {
         throw error;
     }
 }
+
 // Update user profile by UID
 export async function updateUserProfile(uid, updatedData) {
     try {
@@ -154,7 +160,7 @@ export async function deleteUserProfile(uid) {
 // Listen for authentication state changes
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        console.log("User is logged in:", user.uid);
+        console.log("User is logged in: auth", user.uid);
     } else {
         console.log("User is not logged in.");
     }

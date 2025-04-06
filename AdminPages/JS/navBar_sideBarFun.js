@@ -1,3 +1,8 @@
+// import auth functions from auth.js
+import { logoutUser, isUserLoggedIn, getCurrentUserId, getUserProfile } from '../../js/auth.js';
+
+
+
 /**
  * Adding addEventListener click for {profile Logo Div,bars Div, bars Left Side Div => (default d-none) }
  * 
@@ -29,6 +34,8 @@ let addNewCategoryBtn = document.getElementById("addNewCategoryBtn_id"); // This
 let CancelBtn = document.getElementById("CancelBtn_id"); // This Variable is search Section that search input for search any thing in admin pages
 
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 /**
  * - Adding addEventListener click for {profile Logo Div}
@@ -103,7 +110,7 @@ searchDiv.addEventListener("click", function () {
  * =========================================================
  * -- To Show Add new Category Section
  */
-
+if(addNewCategoryBtn){
 addNewCategoryBtn.addEventListener("click", function () {
     if (addCategory.classList.contains("d-none")) {
         
@@ -117,7 +124,8 @@ addNewCategoryBtn.addEventListener("click", function () {
         
     } 
 });
-
+}
+if(CancelBtn){
 CancelBtn.addEventListener("click", function () {
     if (addCategory.classList.contains("d-block")) {
         
@@ -131,10 +139,45 @@ CancelBtn.addEventListener("click", function () {
         
     } 
 });
-
+}
   function redirectToAddProduct() {
             window.location.href = "admin-add-product.html";
 }
      function redirectToDashboard() {
             window.location.href = "admin-home.html";
 }     
+
+
+///////////////////////
+//
+//       Authentication 
+//
+/////////////////////
+
+
+
+document.addEventListener('DOMContentLoaded', async function () {
+    const isLoggedIn = await isUserLoggedIn();
+
+    if (!isLoggedIn) {
+        console.log("Not Logged In");
+        window.location.href = "../../CustomersPages/signin.html";
+    } else {
+        const userId = await getCurrentUserId();
+        console.log("User ID:", userId);
+
+        if (userId) {
+            const userProfile = await getUserProfile(userId);
+
+            if (userProfile && userProfile.Username) {
+                const userNameElement = document.getElementById('user-name');
+                userNameElement.textContent = userProfile.Username;
+                console.log("Username:", userProfile.Username);
+            } else {
+                console.log("No user profile found or missing Username.");
+            }
+        } else {
+            console.log("Failed to get user ID.");
+        }
+    }
+});
