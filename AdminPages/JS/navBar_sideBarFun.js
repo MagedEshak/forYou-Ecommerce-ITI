@@ -1,5 +1,5 @@
 // import auth functions from auth.js
-import { logoutUser, isUserLoggedIn, getCurrentUserId, getUserProfile } from '../../js/auth.js';
+import { isUserLoggedIn, getCurrentUserId, getUserProfile,logoutUser } from '../../js/auth.js';
 
 
 
@@ -159,6 +159,7 @@ CancelBtn.addEventListener("click", function () {
 document.addEventListener('DOMContentLoaded', async function () {
     const isLoggedIn = await isUserLoggedIn();
 
+
     if (!isLoggedIn) {
         console.log("Not Logged In");
         window.location.href = "../../CustomersPages/signin.html";
@@ -181,3 +182,12 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 });
+
+
+
+/////////////// log out
+document.getElementById("logoutBtn_id").addEventListener("click", async function () {
+    await logoutUser();
+    window.location.href = "../../CustomersPages/signin.html";
+});
+
