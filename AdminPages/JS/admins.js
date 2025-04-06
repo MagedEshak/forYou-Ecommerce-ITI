@@ -347,3 +347,29 @@ createAdminRow();
 // const usId2 = "bxqEejnR49NEKZVmYkfmDV5zEKD3";
 
 // console.log(createUserProfile(usId2, userData2));
+
+// //-----------------------------------------------------------------------------
+// const userData3 =
+// {
+//     Username: "user",
+//     email: "user@gmail.com",
+//     password: "123456",
+//     phone: "01252345789",
+//     isAdmin: false,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 2,
+//         cat_id: 2,
+//         quantaty: 2,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(userData3.email, userData3.password));
+
+// const usId3 = "jIfIO7DQd6UaEXNUuCtEIfoEZEZ2";
+
+// console.log(createUserProfile(usId3, userData3));
