@@ -28,6 +28,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+
 // 🚀 Add a new document to any collection
 export async function addDocument(collectionName, data) {
   try {
@@ -185,7 +186,9 @@ export async function deleteDocById(docName, Id) {
   } catch (error) {
     console.error(`Error deleting document ${Id} from ${docName}:`, error);
   }
+
 }
+
 
 /////////////////////////////
 // handle image upload to Imgur
@@ -193,29 +196,30 @@ export async function deleteDocById(docName, Id) {
 
 // Imgur upload function
 export async function uploadToImgur(file) {
-  const clientId = "5c51da6457cf182";
+  const clientId = '5c51da6457cf182';  
 
   const formData = new FormData();
-  formData.append("image", file);
-
+  formData.append('image', file);
+  
   try {
-    const response = await fetch("https://api.imgur.com/3/image", {
-      method: "POST",
-      headers: {
-        Authorization: `Client-ID ${clientId}`,
-      },
-      body: formData,
-    });
+      const response = await fetch('https://api.imgur.com/3/image', {
+          method: 'POST',
+          headers: {
+              'Authorization': `Client-ID ${clientId}`,
+          },
+          body: formData,
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (data.success) {
-      console.log("Image uploaded successfully!", data.data.link);
-      return data.data.link; // Return the image URL
-    } else {
-      console.error("Imgur upload failed:", data.data.error);
-    }
+      if (data.success) {
+          console.log('Image uploaded successfully!', data.data.link);
+          return data.data.link; // Return the image URL
+      } else {
+          console.error('Imgur upload failed:', data.data.error);
+      }
   } catch (error) {
-    console.error("Error uploading image:", error);
+      console.error('Error uploading image:', error);
   }
 }
+

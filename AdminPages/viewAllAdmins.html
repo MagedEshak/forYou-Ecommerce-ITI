@@ -4,35 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../ui-ux/icons/checklist.png" type="image/x-icon">
-
-    <!-- Custom CSS -->
+    <link rel="shortcut icon" href="../ui-ux/icons/layout.png" type="image/x-icon">
+    <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./CSS/allAdminPages.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-    <!-- bootstrap CSS -->
-    <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.css">
-
-    <!-- bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <title>Orders Page</title>
+    <title>View All Admins</title>
 </head>
 
 <body class="d-flex justify-content-around p-4">
-
     <!-- Start Left Side Dashboard Tabs -->
-    <aside id="" class="col-2 d-none d-lg-block rounded-4 position-sticky top">
+
+    <aside class="col-2 d-none d-lg-block rounded-4">
         <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
+            <!-- Start Bars showing when Dashboard be full width -->
+            <div id="barsLeftSideDiv_id" class="pe-2 d-block d-lg-none fs-1 cursor-pointer text-light">
+                <i class="bi bi-filter-left"></i>
+            </div>
+            <!-- End Bars showing when Dashboard be full width -->
+
             <li>
                 <div id="logoDiv_id" class="text-center">
                     <a href="../index.html" target="_blank">
                         <img src="../Images/logo/LLLOGOWhite.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
                     </a>
-                    <!-- Bars Icon -->
-
                 </div>
             </li>
             <li>
-                <span class="fw-bolder"><i class="bi bi-menu-button"></i> Menu</span>
+                <span class="fw-bolder"><i class="bi bi-menu-button"></i>
+                    Menu</span>
             </li>
             <hr class="mt-0">
             <li>
@@ -40,9 +40,7 @@
                     <i class="bi bi-house"></i> Dashboard</a>
             </li>
             <li>
-                <!-- Adding class list-links-active to color page name tab  -->
-                <a href="./Oreders.html" class="list-links list-links-active text-light"><i class="bi bi-bag"></i>
-                    Orders</a>
+                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i> Orders</a>
             </li>
             <li>
                 <a href="./addCategory.html" class="list-links text-light">
@@ -50,20 +48,23 @@
                 </a>
             </li>
             <li>
-                <a href="./viewAllAdmins.html" class="list-links text-light">
+                <a href="./viewAllAdmins.html" class="list-links text-light list-links-active">
                     <i class="bi bi-people"></i> View Admins</a>
-
             </li>
         </ul>
 
         <ul class="d-flex flex-column justify-content-between p-4 gap-2">
             <hr>
-            <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
+
+            <li>
+                <!-- Adding class list-links-active to color page name tab  -->
+                <a href="../AdminPages/AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i>
+                    Setting</a>
+            </li>
             <li>
                 <a href="../CustomersPages/signin.html" class="list-links text-light"><i
                         class="bi bi-box-arrow-left"></i>
-                    LogOut
-                </a>
+                    LogOut</a>
             </li>
         </ul>
     </aside>
@@ -82,7 +83,8 @@
                 </div>
             </li>
             <li>
-                <span class="fw-bolder"><i class="bi bi-menu-button"></i> Menu</span>
+                <span class="fw-bolder"><i class="bi bi-menu-button"></i>
+                    Menu</span>
             </li>
             <hr class="mt-0">
             <li>
@@ -91,7 +93,7 @@
             </li>
             <li>
                 <!-- Adding class list-links-active to color page name tab  -->
-                <a href="./Oreders.html" class="list-links list-links-active text-light"><i class="bi bi-bag"></i>
+                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i>
                     Orders</a>
             </li>
             <li>
@@ -100,14 +102,15 @@
                 </a>
             </li>
             <li>
-                <a href="./viewAllAdmins.html" class="list-links text-light">
+                <a href="./viewAllAdmins.html" class="list-links text-light list-links-active">
                     <i class="bi bi-people"></i> View Admins</a>
             </li>
         </ul>
 
         <ul class="d-flex flex-column justify-content-between p-4 gap-2">
             <hr>
-            <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
+            <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i>
+                    Setting</a></li>
             <li>
                 <a href="../CustomersPages/signin.html" class="list-links text-light"><i
                         class="bi bi-box-arrow-left"></i>
@@ -118,8 +121,7 @@
     </aside>
     <!-- End Left Side Dashboard Tabs in Tablet and Mobile Only-->
 
-
-    <!-- Start Main -->
+    <!-- Navbar -->
     <main id="main_id" class="w-100">
         <!-- Start Nav Bar -->
         <header class="p-lg-4">
@@ -128,11 +130,12 @@
                 <div class="d-flex">
 
                     <!-- Bars Icon -->
-                    <div id="barsDiv_id" class="pe-2 d-lg-none fs-cf-4 cursor-pointer">
+                    <div id="barsDiv_id" class="pe-2 d-lg-none fs-cf-4">
                         <i class="bi bi-filter-left"></i>
                     </div>
 
-                    <span class="fw-bolder fs-cf-2 fs-cf-4">Orders</span>
+                    <span class="fw-bolder fs-cf-2 fs-cf-4">View All
+                        Admins</span>
                 </div>
 
                 <div id="logoDiv_id">
@@ -140,6 +143,7 @@
                         <img src="../Images/logo/LLLOGO.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
                     </a>
                 </div>
+
                 <!-- Nav Right Side -->
                 <div>
                     <!-- Start profile img, search, notifications icons-->
@@ -159,7 +163,8 @@
                                         placeholder="Search any Thing in Admin Dashboard ...">
                                     <label for="floatingInput">
                                         <i class="bi bi-search searchInput-color me-2"></i>
-                                        Search any Thing in Admin Dashboard ...</label>
+                                        Search any Thing in Admin Dashboard
+                                        ...</label>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +174,8 @@
                             <i id="notificationsIcon_id" class="bi bi-bell fs-cf-3 fs-cf-4">
                                 <span id="notificationsDot_id"
                                     class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
-                                    <span class="visually-hidden">New notification</span>
+                                    <span class="visually-hidden">New
+                                        notification</span>
                                 </span>
                             </i>
                         </div>
@@ -277,127 +283,159 @@
         </header>
         <!-- End Nav Bar -->
 
-        <!-- Start Order Table -->
-        <section id="mainContentSec_id" class="p-3 ms-lg-3 mt-3 rounded-3 shadow bg-white">
+        <!-- Main Content -->
+        <section id="mainContentSec_id" class="container-fluid d-md-flex ps-4">
+            <section class="bg-white p-4  mt-5 shadow-lg rounded align-content-lg-around col-12">
+                <!-- Display Products -->
+                <h1 class="text-center">All Admins</h1>
 
-            <!-- Search and Filters -->
-            <div>
-                <div class="form-floating mb-3">
-                    <input type="search" class="form-control" id="floatingInput">
-                    <label for="floatingInput">
-                        <i class="bi bi-search searchInput-color me-2"></i>
-                        Search Orders ...</label>
+                <!-- Add New admin Form -->
+                <button id="addNewAdmin_id" class="btn-color-fa mb-3 p-2 ps-3 pe-3 cursor-pointer badge">
+                    <i class="bi bi-plus-circle"></i>
+                    <span class="d-none d-lg-inline d-md-inline">Add New
+                        Admin</span>
+                </button>
+
+                <!-- Table for displaying Admins -->
+                <div class="table-responsive">
+                    <table class="table table-bordered mt-3 table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>City</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminsTable">
+                            <!-- Admins will be inserted here dynamically -->
+                        </tbody>
+                    </table>
                 </div>
+            </section>
+        </section>
 
-                <!-- Filter Section -->
-                <div class="d-sm-flex flex-md-column flex-sm-wrap position-relative">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <button id="allProducts_id" class="nav-link searchInput-color active" aria-current="page"
-                                href="#">All</button>
-                        </li>
-                        <li class="nav-item">
-                            <button id="newProductsId" class="nav-link searchInput-color" href="#">New</button>
-                        </li>
-                        <li class="nav-item">
-                            <button id="approvedPoducts_id" class="nav-link searchInput-color"
-                                href="#">Approved</button>
-                        </li>
-                        <li class="nav-item">
-                            <button id="canceledProducts_id" class="nav-link searchInput-color"
-                                href="#">Canceled</button>
-                        </li>
-                        <li>
-                            <button id="saveToFireBase_id" class="btn btn-danger ">save</button>
-                        </li>
-
-                    </ul>
-
-
-                </div>
-                <hr>
-            </div>
-
-            <!-- Table d-lg-block in Large Screens and None in MD and SM Screens -->
-            <div class="d-none d-lg-block">
-                <table id="table_productsInfo_id" class="table table-hover text-center">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Customer</th>
-                            <th scope="col">Total Price</th>
-                            <th scope="col">Payment Method</th>
-                            <th scope="col">Order Quantity</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">
-                                Confirming
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="tbody_productsInfo_id">
-                        <!-- this table is full dynamically using js -->
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Cards display block in MD and SM Screens and None in Large Screens  -->
-            <div class="d-lg-none ps-md-5 pe-md-5">
-                <div class="row ">
-                    <div id="cardsContainer_id"
-                        class="mb-sm-0 d-md-flex flex-md-wrap justify-content-md-between card-md-w">
-
-                        <!-- <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">Maged Eshak
-                                    <span class="card-subtitle mb-2 ms-4 text-body-secondary fs-cf-5">#251Owd5</span>
-                                </h5>
-                                <div class="card-text">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><span class="fw-bold">Total Price: </span>300 EGP
-                                        </li>
-                                        <li class="list-group-item"><span class="fw-bold">Payment Method: </span>Card
-                                        </li>
-                                        <li class="list-group-item"><span class="fw-bold">Order Date: </span>Mar 27,
-                                            2025</li>
-                                        <li class="list-group-item"><span class="fw-bold me-3">Status: </span>
-                                            
-                                            <div
-                                                class="text-primary p-2 rounded-3 text-center badge text-decoration-none">
-                                                New
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <hr>
-                                    <h6 class="fw-bold text-center">Confirming</h6>
+        <!-- Start Right side Section {Edit Profile, Change Password} -->
+        <article id="createNewAdmin_id" class="col-lg-7 shadow p-3 ms-lg-3 mt-3 rounded-3 bg-white d-none">
+            <!-- Start Right side Section -->
+            <div class="p-3">
+                <!-- Start Edit Profile Section -->
+                <div class="row p-md-3 p-lg-3 pt-3">
+                    <h2>Add New Admin</h2>
+                    <!-- Start Edit Profile Form -->
+                    <form class="g-3 border border-3 rounded-3 p-4 needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="fullNewAdminNameInput_id" class="form-label">Full Name</label>
+                                <input type="text" id="fullNewAdminNameInput_id" class="form-control"
+                                    placeholder="Please, Enter a Valid Name" required>
+                                <div class="valid-feedback">
+                                    Looks good!
                                 </div>
-                                <div class="d-flex justify-content-between mt-3">
-                                    <button type="button" class="btn btn-success d-flex gap-1 btn-color">
-                                        <i class="bi bi-check-lg"></i>
-                                        Approve
-                                    </button>
-
-                                    <button type="button" class="btn btn-danger d-flex gap-1 ">
-                                        <i class="bi bi-x-lg "></i>
-                                        Decline
-                                    </button>
+                                <div class="invalid-feedback">
+                                    Please Enter A Valid Name.
                                 </div>
                             </div>
-                        </div> -->
 
-                    </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="emailNewAdminInput_id" class="form-label">Email</label>
+                                <input type="email" id="emailNewAdminInput_id" class="form-control"
+                                    placeholder="Please, Enter a Valid Email" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please, Enter a Valid Email.
+                                </div>
+                            </div>
 
+                            <div class="col-md-6 mb-3">
+                                <label for="phoneNewAdminInput_id" class="form-label">Phone</label>
+                                <input type="tel" id="phoneNewAdminInput_id" class="form-control"
+                                    placeholder="Please, Enter a Valid Phone Number" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please, Enter a Valid Phone Number.
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="cityNewAdminInput_id" class="form-label">City</label>
+                                <input type="text" id="cityNewAdminInput_id" class="form-control"
+                                    placeholder="Please, Enter a Valid City" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please, Enter a Valid City.
+                                </div>
+                            </div>
+                            <!-- Start New Password Input and Show Password CheckBox -->
+                            <div class="col-md-12 col-lg-6">
+                                <label for="newAdPassInput_id" class="form-label">Password</label>
+                                <input type="password" id="newAdPassInput_id" class="form-control" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    inValid Password.
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="showadPasswordCheck_id">
+                                        <label class="form-check-label" for="showadPasswordCheck_id">
+                                            Show Password
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End New Password Input and Show Password CheckBox -->
+
+                            <!-- Start Repeat New Password Input and Show Password CheckBox -->
+                            <div class="col-md-12 col-lg-6">
+                                <label for="reNewPassInput_id" class="form-label">Repeat New Password</label>
+                                <input type="password" id="reNewPassInput_id" class="form-control" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Password not match.
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="showReNewPasswordCheck_id">
+                                        <label class="form-check-label" for="showReNewPasswordCheck_id">
+                                            Show Password
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Repeat New Password Input and Show Password CheckBox -->
+
+                            <div class=" d-flex flex-column gap-4 mt-4">
+                                <button type="submit" class="btn btn-color fw-bold text-light">Create New Admin</button>
+                                <button id="CancelBtn_id" type="button"
+                                    class="btn border-3 border-secondary text-secondary">Cancel</button>
+                            </div>
+                            <!-- End Change Password button -->
+                        </div>
+                    </form>
+                    <!-- End Edit Profile Form -->
                 </div>
+                <!-- End Edit Profile Section -->
             </div>
-
-        </section>
-        <!-- End Order Table -->
+            <!-- End Right side Container -->
+        </article>
+        <!-- End Right side Article {Edit Profile, Change Password} -->
     </main>
 
-    <!-- Bootstrap JS -->
-    <script src="./JS/navBar_sideBarFun.js"></script>
-    <script type="module" src="JS/orderes.js"></script>
-    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="./JS/navBar_sideBarFun.js"></script>
+    <script type="module" src="./JS/admins.js"></script>
 
 </body>
 

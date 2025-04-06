@@ -103,8 +103,8 @@ searchDiv.addEventListener("click", function () {
  * =========================================================
  * -- To Show Add new Category Section
  */
-
-addNewCategoryBtn.addEventListener("click", function () {
+window.onload = () => {
+    addNewCategoryBtn.addEventListener("click", function () {
     if (addCategory.classList.contains("d-none")) {
         
         addCategory.classList.remove("d-none");
@@ -131,3 +131,12 @@ CancelBtn.addEventListener("click", function () {
         
     } 
 });
+
+  function redirectToAddProduct() {
+            window.location.href = "admin-add-product.html";
+}
+     function redirectToDashboard() {
+            window.location.href = "admin-home.html";
+}     
+
+}
