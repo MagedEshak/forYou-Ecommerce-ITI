@@ -3,11 +3,6 @@ import {getAllDocuments, getDocumentByField} from "../../js/main.js";
 let categoriesTemp = [];
 let productsTemp = [];
 
-
-
- 
-
-
 /* this code handels the side nav bar  */
 
 function controlSideNavBer(){
@@ -143,12 +138,6 @@ function display(element){
     element.classList.remove("d-none");
 }
 
-
-
-
-
-/******************************************************************************************************** */
-
 /***************************************************************************************************** */
 
 async function initialzePage(){
@@ -167,8 +156,6 @@ async function initialzePage(){
 }
 
 initialzePage();
-
-
 
 /******************************************************/
 /* this function displays cat links in the nav bar */
@@ -221,7 +208,6 @@ async function displayCategoriesinSideNavBar() {
 
     
 }
-
 
 /* display categories */
 /* it displays my category as an image in the home */
@@ -369,6 +355,9 @@ async function createProductsInHtml(productsContainer , products , catName) {
         let oldPriceSpan = document.createElement('span');// this is old price span
         oldPriceSpan.className = "oldPrice_class";
         oldPriceSpan.innerText = `${product.price}`;
+
+        if(product.discount == 0)
+            oldPriceSpan.classList.add('d-none');
     
         // appending current price span and then the old price
         prodductPriceContainer.appendChild(currentPriceSpan);
