@@ -1,40 +1,37 @@
 import { getAllDocuments, addDocument } from "../../js/main.js";
 
 let createNewAdmin = document.getElementById("createNewAdmin_id");
+let mainContentSec = document.getElementById("mainContentSec_id");
 
 window.onload = () => {
     let addAdmin = document.getElementById("addNewAdmin_id");
-    let CancelBtn = document.getElementById("CancelBtn_id");
-    if (addAdmin && CancelBtn) {
-
-        addAdmin.addEventListener("click", () => {
-
-            if (createNewAdmin.classList.contains("d-none")) {
-
-                createNewAdmin.classList.remove("d-none");
-
-document.getElementById("mainContentSec_id").classList.remove("d-md-flex"); // To Hide category content
-                document.getElementById("mainContentSec_id").classList.add("d-none"); // To Hide category content
-                
-                createNewAdmin.classList.add("d-block");
-            }
-        });
-
-        CancelBtn.addEventListener("click", () => {
-
-            if (createNewAdmin.classList.contains("d-block")) {
-
-                createNewAdmin.classList.add("d-none");
-
-               document.getElementById("mainContentSec_id").classList.add("d-md-flex"); // To Hide category content
-                document.getElementById("mainContentSec_id").classList.remove("d-none"); // To Hide category content
-
-                createNewAdmin.classList.remove("d-block");
-            }
-        });
+    let cancelBtn = document.getElementById("CancelBtn_id");
+    
+    if (addAdmin && cancelBtn) {
+        addAdmin.addEventListener("click", ()=>createNewAdminForm(mainContentSec));
+        cancelBtn.addEventListener("click", ()=>cancelCreateNewAdminForm(mainContentSec));
     }
 };
 
+
+
+function createNewAdminForm(mainDivInHTMlDoc) {
+            if (createNewAdmin.classList.contains("d-none")) {
+                createNewAdmin.classList.remove("d-none");
+                mainDivInHTMlDoc.classList.remove("d-md-flex"); // To Hide category content
+                mainDivInHTMlDoc.classList.add("d-none"); // To Hide category content  
+                createNewAdmin.classList.add("d-block");
+            }
+}
+
+function cancelCreateNewAdminForm(mainDivInHTMlDoc) {
+            if (createNewAdmin.classList.contains("d-block")) {
+                createNewAdmin.classList.add("d-none");
+                mainDivInHTMlDoc.classList.add("d-md-flex"); // To Hide category content
+                mainDivInHTMlDoc.classList.remove("d-none"); // To Hide category content
+                createNewAdmin.classList.remove("d-block");
+            }
+}
 
 // const adminsData =
 // {
@@ -113,7 +110,6 @@ async function getAllAdmins() {
             viewAddminsCon.appendChild(hr);
 
         }
-        console.log(viewAddminsCon);
     });
 }
 getAllAdmins();
@@ -148,20 +144,20 @@ createAdminRow();
 //check form
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
-  'use strict'
+    'use strict'
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll('.needs-validation')
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
 
-  // Loop over them and prevent submission
-  Array.from(forms).forEach(form => {
-    form.addEventListener('submit', event => {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
 
-      form.classList.add('was-validated')
-    }, false)
-  })
-})()
+            form.classList.add('was-validated')
+        }, false)
+    })
+})();
