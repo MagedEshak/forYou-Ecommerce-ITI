@@ -1,7 +1,8 @@
-import {getAllDocuments, getDocumentByField} from "../../js/main.js";
+import {getDocById ,getDocumentByField,getAllDocuments} from "../../js/main.js";
 
-let categoriesTemp = [];
 let productsTemp = [];
+let categoriesTemp = [];
+let catName = undefined;
 
 /* this code handels the side nav bar  */
 
@@ -30,246 +31,54 @@ function displaySideNavBar(navBar){
 function disappearSideNavBar(navBar) {
     navBar.style.left = "-75%"; // Hide sidebar off-screen
 }
-/*************************************************************************************************************** */
 
-/* this code handels our crusoal and its background images */
-function controlCrusoal (){
-    /* my background images */
-    let backgroundImagesUrls = [
-    '../Images/CustomerImages/carusoal_images/1.jpg' , 
-    '../Images/CustomerImages/carusoal_images/2.jpg',
-    '../Images/CustomerImages/carusoal_images/3.jpeg'
-    ]
+/******************************************************************************************************** */
 
-    let MyCarousel = document.getElementById('MyCarousel_id'); // crausoal div 
-    let controlPrevBtn = document.getElementById('controlPrevBtn_id'); // previous btn
-    let controlNextBtn = document.getElementById('controlNextBtn_id'); // next btn
+/* function to add products dynamically : */
+// we supposed to loop on specific category to display its products : 
+// get all sent parameters
+const urlParams = new URLSearchParams(window.location.search);
+// Get cat_id parameter by name
+let catId = urlParams.get("cat_id") ;
 
-    let counter = 0; // counter to track my background images
-    controlPrevBtn.addEventListener('click' , ()=>{getPrevImage();})
-    controlNextBtn.addEventListener('click' , ()=>{getNextImage();})
-
-    function getPrevImage(){
-        debugger;
-        if(counter <= 0)
-            counter = backgroundImagesUrls.length - 1;
-        else
-            counter--;
-        
-        MyCarousel.style.backgroundImage = `url(${backgroundImagesUrls[counter]})` ;
-    }
-    function getNextImage(){
-        debugger;
-        if(counter >= backgroundImagesUrls.length - 1)
-            counter = 0;
-        else
-            counter++;
-        
-        MyCarousel.style.backgroundImage = `url(${backgroundImagesUrls[counter]})` ;
-    }
-
-}
-
-/**************************************************************************************************** */
-
-/* this code handels our add to cart btn */
-/* when the button clicked , it must display none ,
-and the productCountAndBin must appear */
-
-function addEventsToAllCartBtns (){
-    /* handel all add to cart btn */
-    let addToCartBtns = document.getElementsByClassName('addToCartBtn_class');/* hold all add to cart btns in this variable */
-    let productCountAndBin = document.getElementsByClassName('productCountAndBin');/* hold all product count and bin divs */
-    let productCountSpans = document.querySelectorAll('.productCountAndBin span'); /* hold all spans that holds product count */
-    let incrProdCountBtns = document.querySelectorAll('.productCountAndBin .plus');/* hold all increment product count btn */
-    let removeProductCartBtns = document.querySelectorAll('.productCountAndBin .bin');/* hold all bin btn to remove product from cart */
-    let decrProdCountBtns = document.querySelectorAll('.productCountAndBin .minus');/* hold all increment product count btn */
-
-    /* handeling when add to cart btn pressed */
-    for(let index = 0 ; index < addToCartBtns.length ; index++){
-        addToCartBtns[index].addEventListener('click' , ()=>{
-            displayNone(addToCartBtns[index]); // remove add to cart button from the page
-            display(productCountAndBin[index]); // add the div of count and bin instead
-            ++productCountSpans[index].innerHTML;// when the button clicked , count of product = 1
-        })
-    }
-
-
-    /* handeling when + sign pressed */
-    for(let index = 0 ; index < incrProdCountBtns.length ; index++){
-        incrProdCountBtns[index].addEventListener('click', (e)=>{
-            ++productCountSpans[index].innerHTML;// increment product count by 1
-            displayNone(removeProductCartBtns[index]);//remove my bin from the div
-            display(decrProdCountBtns[index]);//display - sign in the div
-        })
-    }
-
-    /* handeling when bin btn pressed */
-    /* the  productCountAndBin div will disappear , and instead the addTOCart btn will be displayed*/
-    for(let index = 0 ; index < removeProductCartBtns.length ; index++){
-        removeProductCartBtns[index].addEventListener('click', (e)=>{
-            --productCountSpans[index].innerHTML;// when the button clicked , count of product = 0
-            display(addToCartBtns[index]); // remove add to cart button from the page
-            displayNone(productCountAndBin[index]); // add the div of count and bin instead
-        })
-    }
-
-    /* handeling when - sign pressed */
-    for(let index = 0 ; index < decrProdCountBtns.length; index++){
-        decrProdCountBtns[index].addEventListener('click', ()=>{
-            if(productCountSpans[index].innerHTML == 2){
-                productCountSpans[index].innerHTML--;//decrement number of products by 1
-                displayNone(decrProdCountBtns[index]);//remove my - sign from the div
-                display(removeProductCartBtns[index]);//dispaly bin btn  instead
-            }
-            else
-                productCountSpans[index].innerHTML--;
-        })
-    }
-}
-
-/* function to remove element with display none , param : your element */
-function displayNone(element){
-    element.classList.add("d-none");
-}
-
-/* function to dispaly element with removing display none , param : your element */
-function display(element){
-    element.classList.remove("d-none");
-}
-
-/***************************************************************************************************** */
-
-async function initialzePage(){
-    
-    controlSideNavBer();
-    controlCrusoal();
-    addEventsToAllCartBtns();
-    if(window.innerWidth <= 992){
-        await displayCategoriesinSideNavBar();
-    }
-    else{
-        await displayCategoriesinNavBar();
-    }
-
-    fillProductsInHtml();
-}
-
-initialzePage();
-
-/******************************************************/
-/* this function displays cat links in the nav bar */
-/* just called when the width of screen is large */
-async function displayCategoriesinNavBar() {
-    categoriesTemp = await getAllDocuments("aliCategories");
-
-    let cateLinksContainer = document.getElementById('navCategoriesLinks_id');
-    let categoriesContainer = document.getElementById('categoriesContainer_id');
-
-    categoriesTemp.forEach( (category , index) => {
-        let catLink = document.createElement('a');
-        catLink.className = "col-auto px-5";
-        // put the link to go to category you need
-        catLink.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
-        catLink.innerText = category.cat_name;
-
-        cateLinksContainer.appendChild(catLink);
-
-        createCategoryInHtml(categoriesContainer , category , index);
-    })
-}
-
-/* just called when the width of screen is small */
-/* it displays just links of my cats in the nav bar */
-async function displayCategoriesinSideNavBar() {
-    categoriesTemp = await getAllDocuments("aliCategories");
-    
-    let cateLinksContainer = document.getElementById('sideNavCategoriesLinks_id');
-    let whatsappLink = document.getElementById('whatsappLink_id');
-    let categoriesContainer = document.getElementById('categoriesContainer_id');
-
-    categoriesTemp.forEach( (category , index) => {
-        
-        let catLinkDiv = document.createElement('div');
-        catLinkDiv.className = "w-100";
-
-        let catLink = document.createElement('a');
-        catLink.className = "w-100";
-        // put the link to go to category you need
-        catLink.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
-        catLink.innerText = category.cat_name;
-        
-        catLinkDiv.appendChild(catLink)
-        cateLinksContainer.insertBefore(catLinkDiv , whatsappLink);
-
-        createCategoryInHtml(categoriesContainer , category , index);
-        
-    })
-
-    
-}
-
-/* display categories */
-/* it displays my category as an image in the home */
-function createCategoryInHtml(categoriesContainer , category , index){
-   
-    // this is the category container
-    let categoryContainer = document.createElement('div');
-    categoryContainer.className = "category col-6 col-md-4 col-lg-3 d-flex p-1";
-
-    // this is a link that contains category contents
-    let categoryAncorContainer = document.createElement('a');
-    categoryAncorContainer.className = "bg-warning-subtle w-100 d-flex flex-column align-items-center justify-content-between";
-    categoryAncorContainer.id = `cat_id_${category.id}`;
-    categoryAncorContainer.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
-    if(index % 2 == 0){
-        categoryAncorContainer.classList.add("bg-success-subtle") ;
-        categoryAncorContainer.classList.remove("bg-warning-subtle") ;
-    } 
-
-    let categoryHeader = document.createElement('p');
-    categoryHeader.innerText = category.cat_name ;
-
-    let categoryImage = document.createElement('img');
-    categoryImage.className = "w-75 catImg";
-    categoryImage.src = category.img ;
-
-    categoryAncorContainer.appendChild(categoryHeader);
-    categoryAncorContainer.appendChild(categoryImage);
-
-    categoryContainer.appendChild(categoryAncorContainer);
-    categoriesContainer.appendChild(categoryContainer);
+// Get cateogry name by its id from fireBase
+async function getCategoryname(id) {
+    debugger;
+    let myCategory = await getDocById("aliCategories" ,id);
+    console.log(myCategory.cat_name);
+    return myCategory.cat_name;
 }
 
 
-// this function fill products section randomly from all cats
-async function fillProductsInHtml(){
-
-    // this is the container of products
-    let productsContainer = document.createElement('div');
-    productsContainer.className = "products row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4";
-    //productsContainer.id = `${catName}Products_id`;
-
-    for(let category of categoriesTemp){
-        debugger;
-        productsTemp = []; // removing all elements from temp
-        let products = await getDocumentByField("aliProducts" , "cat_id" , category.id);
-        // we want to generate random indexes to fitch random products
-        let index = 0;
-        for(let i = 0 ; i < products?.length ; i++){ // this 1 must be changed
-            index = Math.round(Math.random() * (products.length) ) ;
-            productsTemp.push(products[i]);
-        }
-        createProductsInHtml(productsContainer, productsTemp , category.cat_name);
-    }
+async function getProductsByCatId(catId){
+    debugger;
+    productsTemp = await getDocumentByField("aliProducts" , "cat_id" , catId);
+    console.log(productsTemp);
+    //productsTemp = await getAllDocuments("aliProducts");
 }
 
-async function createProductsInHtml(productsContainer , products , catName) {
+
+async function createProductsInHtml() {
+    await getProductsByCatId(catId);
+
+    // this is category name
+    catName = await getCategoryname(catId);
 
     // this is the div that contains the category header and products container
     let parentContainer = document.getElementById('parentContainer_id');
 
-    products.forEach( product => {
+    // this is the header of our category
+    let categoryheader = document.createElement('h2');
+    categoryheader.className = "p-4 text-center";
+    categoryheader.id = `${catName}Section_id`;
+    categoryheader.innerText = `Shop ${catName}`;
+
+    // this is the container of products
+    let productsContainer = document.createElement('div');
+    productsContainer.className = "products row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4";
+    productsContainer.id = `${catName}Products_id`;
+
+    productsTemp.forEach( product => {
         // this is the div that contains my product elements
         let productContainer = document.createElement('div');
         productContainer.id = `${catName}Product_id_${product.id}`; /* categoryName_id_prodID  : cookerProd_id_1 */
@@ -443,5 +252,214 @@ async function createProductsInHtml(productsContainer , products , catName) {
         productsContainer.appendChild(productContainer);
     })
 
+    parentContainer.appendChild(categoryheader);
     parentContainer.appendChild(productsContainer);
 }
+
+
+/************************************************************************************** */
+
+
+/* this code handels our add to cart btn */
+/* when the button clicked , it must display none ,
+and the productCountAndBin must appear */
+
+function addEventsToAllCartBtns (){
+    /* handel all add to cart btn */
+    let addToCartBtns = document.getElementsByClassName('addToCartBtn_class');/* hold all add to cart btns in this variable */
+    let productCountAndBin = document.getElementsByClassName('productCountAndBin');/* hold all product count and bin divs */
+    let productCountSpans = document.querySelectorAll('.productCountAndBin span'); /* hold all spans that holds product count */
+    let incrProdCountBtns = document.querySelectorAll('.productCountAndBin .plus');/* hold all increment product count btn */
+    let removeProductCartBtns = document.querySelectorAll('.productCountAndBin .bin');/* hold all bin btn to remove product from cart */
+    let decrProdCountBtns = document.querySelectorAll('.productCountAndBin .minus');/* hold all increment product count btn */
+
+    /* handeling when add to cart btn pressed */
+    for(let index = 0 ; index < addToCartBtns.length ; index++){
+        addToCartBtns[index].addEventListener('click' , ()=>{
+            displayNone(addToCartBtns[index]); // remove add to cart button from the page
+            display(productCountAndBin[index]); // add the div of count and bin instead
+            ++productCountSpans[index].innerHTML;// when the button clicked , count of product = 1
+        })
+    }
+
+
+    /* handeling when + sign pressed */
+    for(let index = 0 ; index < incrProdCountBtns.length ; index++){
+        incrProdCountBtns[index].addEventListener('click', (e)=>{
+            ++productCountSpans[index].innerHTML;// increment product count by 1
+            displayNone(removeProductCartBtns[index]);//remove my bin from the div
+            display(decrProdCountBtns[index]);//display - sign in the div
+        })
+    }
+
+    /* handeling when bin btn pressed */
+    /* the  productCountAndBin div will disappear , and instead the addTOCart btn will be displayed*/
+    for(let index = 0 ; index < removeProductCartBtns.length ; index++){
+        removeProductCartBtns[index].addEventListener('click', (e)=>{
+            --productCountSpans[index].innerHTML;// when the button clicked , count of product = 0
+            display(addToCartBtns[index]); // remove add to cart button from the page
+            displayNone(productCountAndBin[index]); // add the div of count and bin instead
+        })
+    }
+
+    /* handeling when - sign pressed */
+    for(let index = 0 ; index < decrProdCountBtns.length; index++){
+        decrProdCountBtns[index].addEventListener('click', ()=>{
+            if(productCountSpans[index].innerHTML == 2){
+                productCountSpans[index].innerHTML--;//decrement number of products by 1
+                displayNone(decrProdCountBtns[index]);//remove my - sign from the div
+                display(removeProductCartBtns[index]);//dispaly bin btn  instead
+            }
+            else
+                productCountSpans[index].innerHTML--;
+        })
+    }
+}
+
+/* function to remove element with display none , param : your element */
+function displayNone(element){
+    element.classList.add("d-none");
+}
+
+/* function to dispaly element with removing display none , param : your element */
+function display(element){
+    element.classList.remove("d-none");
+}
+
+/************************************************************* */
+/* filteration process */
+
+
+function FilterByPrice(){
+    debugger;
+    let minRange = document.getElementById('minRange');
+    let maxRange = document.getElementById('maxRange');
+    let rangeText = document.getElementById('rangeValuestxt');
+    let sliderRange = document.getElementById('sliderRange');
+
+    minRange.addEventListener('input' , () =>
+         {updateMySliderAndFilterProducts(minRange, maxRange , rangeText ,sliderRange);}
+                            )
+    maxRange.addEventListener('input' , () => 
+        {updateMySliderAndFilterProducts(minRange, maxRange , rangeText ,sliderRange);}
+                            )
+
+    updateMySliderAndFilterProducts(minRange, maxRange , rangeText ,sliderRange);
+}
+
+
+
+function updateMySliderAndFilterProducts(minValue , maxValue ,rangeText ,sliderRange){
+
+    minValue = parseInt(minRange.value);
+    maxValue = parseInt(maxRange.value);
+
+    if(minValue > maxValue){
+        [minValue , maxValue] = [maxValue , minValue]
+    }
+
+    const percent1 = (minValue / 50000) * 100;
+    const percent2 = (maxValue / 50000) * 100;
+
+    sliderRange.style.left = percent1 + "%";
+    sliderRange.style.width = (percent2 - percent1) + "%";
+
+    rangeText.innerHTML = `Filter range from ${minValue}   To   ${maxValue}`;
+
+    displayProductsDependsOnPriceValue(minValue , maxValue);
+}
+
+function displayProductsDependsOnPriceValue(minimumValue , maximumValue){
+
+    let parentContainer = document.getElementById('parentContainer_id');
+    let myFooter = document.getElementById('footer_id');
+    let flag = 0 ;
+
+    productsTemp.forEach( product => {
+        let currentPrice = product.price - (product.discount / 100) * product.price;
+        if(currentPrice >= minimumValue && currentPrice <= maximumValue)
+        {
+            let myProdContainer = document.getElementById(`${catName}Product_id_${product.id}`);
+            display(myProdContainer);
+            flag = 1;
+        }
+        else
+        {
+            let myProdContainer = document.getElementById(`${catName}Product_id_${product.id}`);
+            displayNone(myProdContainer);
+        }
+    })
+    if(flag == 0){
+        let message = document.getElementById('filterationMessage_id');
+        display(message);
+        displayNone(parentContainer);
+        myFooter.classList.add("position-absolute");
+        myFooter.classList.add("bottom-0"); 
+        }
+    else
+    {
+        let message = document.getElementById('filterationMessage_id');
+        displayNone(message);
+        display(parentContainer);
+        myFooter.classList.remove("position-absolute");
+    }
+}
+
+
+/*************************************************************** */
+/* this function displays cat links in the nav bar */
+async function displayCategoriesinNavBar() {
+    categoriesTemp = await getAllDocuments("aliCategories");
+
+    let cateLinksContainer = document.getElementById('navCategoriesLinks_id');
+    categoriesTemp.forEach( category => {
+        let catLink = document.createElement('a');
+        catLink.className = "col-auto px-5";
+        catLink.href = `shopByCategory.html?cat_id=${category.id}`;
+        catLink.innerText = category.cat_name;
+
+        cateLinksContainer.appendChild(catLink);
+    })
+}
+
+/* just called when the width of screen is small */
+async function displayCategoriesinSideNavBar() {
+    categoriesTemp = await getAllDocuments("aliCategories");
+    
+    let cateLinksContainer = document.getElementById('sideNavCategoriesLinks_id');
+    let whatsappLink = document.getElementById('whatsappLink_id');
+    categoriesTemp.forEach( category => {
+        
+        let catLinkDiv = document.createElement('div');
+        catLinkDiv.className = "w-100";
+
+        let catLink = document.createElement('a');
+        catLink.className = "w-100";
+        // put the link to go to category you need
+        catLink.href = `shopByCategory.html?cat_id=${category.id}`;
+        catLink.innerText = category.cat_name;
+        
+        catLinkDiv.appendChild(catLink)
+        cateLinksContainer.insertBefore(catLinkDiv , whatsappLink);
+        
+    })
+
+    
+}
+
+
+async function initializePage(){
+    controlSideNavBer();
+    if(window.innerWidth <= 992){
+        displayCategoriesinSideNavBar();
+    }
+    else{
+        displayCategoriesinNavBar();
+    }
+    await createProductsInHtml();
+    addEventsToAllCartBtns ();
+    FilterByPrice();
+}
+
+
+initializePage();

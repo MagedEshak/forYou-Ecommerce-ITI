@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - ForYou</title>
+    <link rel="shortcut icon" href="../ui-ux/icons/shopByCat.png" type="image/x-icon">
+    <title>Category</title>
 
     <link rel="shortcut icon" href="./Images/logo/LLLOGO.png" type="image/x-icon">
-    <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="./CSS/home.css">
+    <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../CSS/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+    <link rel="stylesheet" href="../CSS/shopByCategory.css">
 
+</head>
 <body>
-    <!-- in case of small devices -->
+
+     <!-- in case of small devices -->
 
     <!-- my nav bar in small devices : it appears on the top of the page-->
     <nav class="d-lg-none siteColorClass">
@@ -26,8 +28,8 @@
 
                 <!-- this is My Site Logo -->
                 <div class="siteLogo col-2">
-                    <a href="#">
-                        <img class="imgLogo_class" src="Images/logo/LLLOGOWhite.png" alt="">
+                    <a href="../index.html">
+                        <img class="imgLogo_class" src="../Images/logo/LLLOGOWhite.png" alt="">
                     </a>
                 </div>
 
@@ -43,14 +45,13 @@
     <nav id="sideNavBar_id" class="w-75">
         <div class="sideNavLinksContainer d-flex flex-column align-items-start justify-content-center w-100 bg-danger">
             <div class="manageProfile w-100 py-5 px-3">
-                <span><a href="./CustomersPages/signin.html">Login</a> / <a
-                        href="./CustomersPages/Rejester.html">Register</a></span>
+                <span><a href="signin.html">Login</a> / <a
+                        href="Rejester.html">Register</a></span>
             </div>
             <div id="sideNavCategoriesLinks_id"
             class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
                 <div id="whatsappLink_id" class="w-100 whatsapp col-auto"><a href="#">whatsapp</a></div>
                 <div class="w-100 support col-auto"><a href="#">call support</a></div>
-                <div class="w-100 branches col-auto"><a href="#">Branches</a></div>
             </div>
         </div>
     </nav>
@@ -65,8 +66,8 @@
 
                 <!-- this is my site logo -->
                 <div class="d-none d-lg-block siteLogo col-1">
-                    <a href="#">
-                        <img class="imgLogo_class" src="Images/logo/LLLOGO.png" alt="">
+                    <a href="../index.html">
+                        <img class="imgLogo_class" src="../Images/logo/LLLOGO.png" alt="">
                     </a>
                 </div>
 
@@ -104,6 +105,7 @@
     </header> <!-- updated -->
 
     <!-- my nav in large devices , it only appears on large devices -->
+    <!-- my nav in large devices , it only appears on large devices -->
     <nav class="d-none d-lg-block siteColorClass">
         <div class="container-fluid p-3">
             <div class="links d-flex justify-content-between align-items-center">
@@ -111,8 +113,8 @@
                     <!-- this is filled dynamically using js -->
                 </div>
                 <div class="row justify-content-end align-items-center links col-3">
-                    <a href="./CustomersPages/signin.html" class="col-auto px-5"> Sign In</a>
-                    <a href="#" class="col-auto px-5 d-none"> Profile</a>
+                    <a href="signin.html" class="col-auto px-5"> Sign In</a>
+                    <a href="progile.html" class="col-auto px-5 d-none"> Profile</a>
                     <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
                         <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
                     </a>
@@ -121,72 +123,54 @@
         </div>
     </nav><!-- updated -->
 
-    <!-- ****************************************************************** -->
-    <!-- this is my crusoal -->
-    <section id="crusoalSection_id">
-        <div class="container-fluid px-2 px-sm-3 px-md-4 p-lg-5">
-            <div id="carouselExample" class="carousel slide position-relative">
-
-                <!-- this is the div that contains the back ground image -->
-                <div id="MyCarousel_id" class="MyCarousel">
-                </div>
-
-                <!-- my crusoal next and prev buttons -->
-                <div class="carusoalBtns">
-                    <button class="carousel-control-prev" type="button" id="controlPrevBtn_id">
-                        <i class="fa fa-angle-left"></i>
-                    </button>
-                    <button class="carousel-control-next" type="button" id="controlNextBtn_id">
-                        <i class="fa fa-angle-right"></i>
-                    </button>
-                </div>
+    <!-- <section class="pt-lg-5">
+        <div class="container py-3 m-auto">
+            <div class="d-flex flex-column  p-2 justify-content-center align-items-center text-dark">
+                <label for="priceRangeInput_id" class="range-txt pb-3">Filter By Price</label>
+                <input type="range" name="priceRange" min="0" max="10000" value="10000"
+                    id="priceRangeInput_id" class="w-50 slider">
+                <div  class="pt-2 range-txt">from <span class="px-3">0</span> to <span id="rangeValue" class="px-3">10000</span></div>
             </div>
+        </div>
+    </section> -->
+    
+
+    <section id="filterationSection_id" class="d-flex flex-column align-items-center pt-lg-5">
+        <div id="inputRangeSection_id" class="d-flex flex-column align-items-center w-50  m-auto">
+            <div id="sliderContainer">
+                <div id="sliderTrack"></div>
+                <div id="sliderRange"></div>
+                <input type="range" id="minRange" min="0" max="50000" value="0">
+                <input type="range" id="maxRange" min="0" max="50000" value="50000">
+            </div>
+    
+            <div  class="py-5">
+                <p id="rangeValuestxt">Filter from 0 to 50000</p>
+            </div>
+        </div>
+
+        <div id="checkBoxSection_id">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkIndeterminate">
+                <label class="form-check-label px-2" for="checkIndeterminate">
+                  Filter Offers
+                </label>
+              </div>
+        </div>
+    </section>
+    
+   
+
+    <h2 id="filterationMessage_id" class="text-center pb-5 d-none">No Products Found With This Filteration</h2>
+
+    <section>
+        <div id="parentContainer_id" class="container-fluid  pb-5 px-3">
+            
+            <!-- this is filled dynamically using js -->
         </div>
     </section>
 
-    <!-- ****************************************************************** -->
-    <!-- my categories section -->
-    <section id="categoriesSection_id">
-        <div class="container-fluid">
-            <div class="shopByCategory row justify-content-evenly align-items-center text-center pt-3 px-md-4 px-lg-5">
-                <!-- my header -->
-                <h2 class="col-10  py-2">Shop By Category</h2>
-
-                <!-- this is my categories container  -->
-                <!-- in case of small width   : screen divided by 2
-                      in case of medium width  : screen divided by 3
-                      in case of large width   : screen divided by 4-->
-                <div id="categoriesContainer_id" class="categories  d-flex flex-wrap justify-content-center p-2 py-3 ">
-
-                   
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ****************************************************************** -->
-
-    <!-- in this section we will display all products by category name -->
-    <!-- first category : cookers for example -->
-    <section id="productsSection_id ">
-        <div class="container-fluid  pb-5 px-3">
-            <h2 class="p-4 text-center" id="cookersSection_id">Shop By Product</h2>
-
-            <!-- this is products container , contains all products of cookers category -->
-            <div id="parentContainer_id"
-                class="products row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4">
-        
-                <!-- this section filled dynamically using js -->
-            </div>
-        </div>
-    </section>
-
-    <!-- ****************************************************************** -->
-    <!-- Footer -->
-    <footer>
+    <footer id="footer_id">
         <div class="container-fluid">
             <div class="row justify-content-evenly align-items-center p-3 bg-black">
                 <!-- some information linkes like  about us , customer service , more   -->
@@ -216,11 +200,11 @@
                 <!-- Payment methods , paypal , visa and premium card -->
                 <div class="paymentMethods row justify-content-center align-items-center col-8 col-lg-6 p-2 ">
                     <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
-                            src="Images/CustomerImages/pay_images/premium_card.png" alt=""></a>
+                            src="../Images/CustomerImages/pay_images/premium_card.png" alt=""></a>
                     <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
-                            src="Images/CustomerImages/pay_images/visa.png" alt=""></a>
+                            src="../Images/CustomerImages/pay_images/visa.png" alt=""></a>
                     <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
-                            src="Images/CustomerImages/pay_images/payPal.png" alt=""></a>
+                            src="../Images/CustomerImages/pay_images/payPal.png" alt=""></a>
                 </div>
 
                 <!-- text about our rights reserved -->
@@ -232,16 +216,9 @@
         </div>
     </footer>
 
-    <script type="module" src="js/script.js"></script>
-    <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="../js/shopByCategory.js"></script>
+    <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 
-    
 </body>
-
 </html>
-
-
-<!-- products section updated -->
-<!-- footer section updated  -->
