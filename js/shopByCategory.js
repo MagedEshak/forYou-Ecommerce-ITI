@@ -167,6 +167,9 @@ async function createProductsInHtml() {
         let oldPriceSpan = document.createElement('span');// this is old price span
         oldPriceSpan.className = "oldPrice_class";
         oldPriceSpan.innerText = `${product.price}`;
+
+        if(product.discount == 0)
+            oldPriceSpan.classList.add('d-none');
     
         // appending current price span and then the old price
         prodductPriceContainer.appendChild(currentPriceSpan);
