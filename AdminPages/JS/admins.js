@@ -1,4 +1,5 @@
 import { getAllDocuments, addDocument } from "../../js/main.js";
+import { registerUser,createUserProfile} from "../../js/auth.js";
 
 let createNewAdmin = document.getElementById("createNewAdmin_id");
 let mainContentSec = document.getElementById("mainContentSec_id");
@@ -161,3 +162,214 @@ createAdminRow();
         }, false)
     })
 })();
+
+// Create New Admins and Users
+
+// const adminsData =
+// {
+//     Username: "Maged Eshak",
+//     email: "magede@gmail.com",
+//     password: "123456",
+//     phone: "01266686544",
+//     isAdmin: true,
+//     address: ["EG", "Assiut"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 0,
+//         cat_id: 0,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(adminsData.email, adminsData.password));
+
+// const id = " MYJQYEX0gYOhRTh5GuAaWXGIx6L2";
+
+// console.log(createUserProfile(id, adminsData));
+
+// //-----------------------------------------------------------------------------
+// const adminsData2 =
+// {
+//     Username: "Wesam Naser",
+//     email: "wesamN@gmail.com",
+//     password: "123456",
+//     phone: "01566686544",
+//     isAdmin: true,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 0,
+//         cat_id: 0,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(adminsData2.email, adminsData2.password));
+
+// const id2 = "VMPgngpfenWCUTwU30Wg0XQXZvu2";
+
+// console.log(createUserProfile(id2, adminsData2));
+
+// //-----------------------------------------------------------------------------
+// const adminsData3 =
+// {
+//     Username: "Sayed Ali",
+//     email: "sayedali@gmail.com",
+//     password: "123456",
+//     phone: "01066686544",
+//     isAdmin: true,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 0,
+//         cat_id: 0,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(adminsData3.email, adminsData3.password));
+
+// const id3 = "tkGfVdLV3qYWwKlzJgL1NReVLie2";
+
+// console.log(createUserProfile(id3, adminsData3));
+
+// //-----------------------------------------------------------------------------
+// const adminsData4 =
+// {
+//     Username: "Samuel",
+//     email: "sam@gmail.com",
+//     password: "123456",
+//     phone: "01566686544",
+//     isAdmin: true,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 0,
+//         cat_id: 0,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(adminsData4.email, adminsData4.password));
+
+// const id4 = "nuGFENkbLbh74O3Mt3JbCNokOzu1";
+
+// console.log(createUserProfile(id4, adminsData4));
+
+// //-----------------------------------------------------------------------------
+// const adminsData5 =
+// {
+//     Username: "Ali Gamal",
+//     email: "aliga@gmail.com",
+//     password: "123456",
+//     phone: "01166686544",
+//     isAdmin: true,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 0,
+//         cat_id: 0,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(adminsData5.email, adminsData5.password));
+
+// const id5 = "QBJIxvvm2sZriVTmBqCTf8SE9Eg1";
+
+// console.log(createUserProfile(id5, adminsData5));
+
+
+// //-----------------------------------------------------------------------------
+// const userData1 =
+// {
+//     Username: "Mohamed Ashraf",
+//     email: "mohammedA@gmail.com",
+//     password: "123456",
+//     phone: "01166686544",
+//     isAdmin: false,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 2,
+//         cat_id: 1,
+//         quantaty: 1,
+//         isPending: 1
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(userData1.email, userData1.password));
+
+// const usId1 = "rvo1JgwzEJc06oM31b6hZcDPSZ72";
+
+// console.log(createUserProfile(usId1, userData1));
+
+
+// //-----------------------------------------------------------------------------
+// const userData2 =
+// {
+//     Username: "Mina Maged",
+//     email: "minamaged@gmail.com",
+//     password: "123456",
+//     phone: "01252345789",
+//     isAdmin: false,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 2,
+//         cat_id: 2,
+//         quantaty: 2,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(userData2.email, userData2.password));
+
+// const usId2 = "bxqEejnR49NEKZVmYkfmDV5zEKD3";
+
+// console.log(createUserProfile(usId2, userData2));
+
+// //-----------------------------------------------------------------------------
+// const userData3 =
+// {
+//     Username: "user",
+//     email: "user@gmail.com",
+//     password: "123456",
+//     phone: "01252345789",
+//     isAdmin: false,
+//     address: ["EG", "Minya"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 2,
+//         cat_id: 2,
+//         quantaty: 2,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+// console.log(registerUser(userData3.email, userData3.password));
+
+// const usId3 = "jIfIO7DQd6UaEXNUuCtEIfoEZEZ2";
+
+// console.log(createUserProfile(usId3, userData3));
