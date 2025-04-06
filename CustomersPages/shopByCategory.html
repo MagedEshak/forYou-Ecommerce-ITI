@@ -135,18 +135,30 @@
     </section> -->
     
 
-    <section id="inputRangeSection_id" class="d-flex flex-column align-items-center w-50 pt-lg-5 m-auto">
-        <div id="sliderContainer">
-            <div id="sliderTrack"></div>
-            <div id="sliderRange"></div>
-            <input type="range" id="minRange" min="0" max="50000" value="0">
-            <input type="range" id="maxRange" min="0" max="50000" value="50000">
+    <section id="filterationSection_id" class="d-flex flex-column align-items-center pt-lg-5">
+        <div id="inputRangeSection_id" class="d-flex flex-column align-items-center w-50  m-auto">
+            <div id="sliderContainer">
+                <div id="sliderTrack"></div>
+                <div id="sliderRange"></div>
+                <input type="range" id="minRange" min="0" max="50000" value="0">
+                <input type="range" id="maxRange" min="0" max="50000" value="50000">
+            </div>
+    
+            <div  class="py-5">
+                <p id="rangeValuestxt">Filter from 0 to 50000</p>
+            </div>
         </div>
 
-        <div  class="py-5">
-            <p id="rangeValuestxt">Filter from 0 to 50000</p>
+        <div id="checkBoxSection_id">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="checkIndeterminate">
+                <label class="form-check-label px-2" for="checkIndeterminate">
+                  Filter Offers
+                </label>
+              </div>
         </div>
     </section>
+    
    
 
     <h2 id="filterationMessage_id" class="text-center pb-5 d-none">No Products Found With This Filteration</h2>
