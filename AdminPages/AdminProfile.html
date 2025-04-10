@@ -59,12 +59,10 @@
             <hr>
             <li><a href="./AdminProfile.html" class="list-links text-light list-links-active"><i class="bi bi-gear"></i>
                     Setting</a></li>
-            <li>
-                <a href="../CustomersPages/signin.html" class="list-links text-light"><i
-                        class="bi bi-box-arrow-left"></i>
-                    LogOut
-                </a>
-            </li>
+                    <li>
+                        <a href="#" class="list-links text-light" id="logoutBtn_id"><i
+                            class="bi bi-box-arrow-left"> </i>LogOut</a>
+                    </li>
         </ul>
     </aside>
     <!-- End Left Side Dashboard Tabs -->
@@ -109,12 +107,10 @@
             <hr>
             <li><a href="./AdminProfile.html" class="list-links list-links-active text-light"><i class="bi bi-gear"></i>
                     Setting</a></li>
-            <li>
-                <a href="../CustomersPages/signin.html" class="list-links text-light"><i
-                        class="bi bi-box-arrow-left"></i>
-                    LogOut
-                </a>
-            </li>
+                    <li>
+                        <a href="#" class="list-links text-light" id="logoutBtn_id"><i
+                            class="bi bi-box-arrow-left"> </i>LogOut</a>
+                    </li>
         </ul>
     </aside>
     <!-- End Left Side Dashboard Tabs in Tablet and Mobile Only-->
@@ -265,10 +261,9 @@
                                 <i class="bi bi-person-circle fs-cf-3 fs-cf-4"></i>
                             </div>
 
-                            <!-- Admin Name -->
                             <div class="d-none d-lg-flex flex-column">
-                                <span class="fw-bolder ">Maged Eshak</span>
-                                <span class="text-secondary ">Admin</span>
+                                <span id="user-name" class="fw-bolder fs-6 user-name">admin </span>
+                                
                             </div>
                         </div>
 
@@ -618,9 +613,9 @@
     <!-- Bootstrap JS -->
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 
+    <script type="module" src="./JS/navBar_sideBarFun.js"></script>
     <script type="module" src="./JS/admins.js"></script>
 
-    <script src="./JS/navBar_sideBarFun.js"></script>
 </body>
 
 </html>
