@@ -6,12 +6,18 @@ let mainContentSec = document.getElementById("mainContentSec_id");
 
 //--------------------------------------------------------------------------------------
 
-let fullName = document.getElementById("");
-let email = document.getElementById("");
-let phone = document.getElementById("");
-let password = document.getElementById("");
-let repeatPassword = document.getElementById("");
-let city = document.getElementById("");
+let fullName = document.getElementById("fullNewAdminNameInput_id");
+let email = document.getElementById("emailNewAdminInput_id");
+let phone = document.getElementById("phoneNewAdminInput_id");
+let password = document.getElementById("newAdPassInput_id");
+let repeatPassword = document.getElementById("reNewPassInput_id");
+let city = document.getElementById("cityNewAdminInput_id");
+let cekBoxPass = document.getElementById("showadPasswordCheck_id");
+let cekBoxRePass = document.getElementById("showReNewPasswordCheck_id");
+let adForm = document.getElementById("adminRegitForm");
+
+//-----------------------------------------------------------------------------
+
 window.onload = () => {
     let addAdmin = document.getElementById("addNewAdmin_id");
     let cancelBtn = document.getElementById("CancelBtn_id");
@@ -22,8 +28,6 @@ window.onload = () => {
     }
 };
 
-
-
 function createNewAdminForm() {
     location.assign("../../AdminPages/addNewAdmin.html");
 }
@@ -31,6 +35,7 @@ function createNewAdminForm() {
 function cancelCreateNewAdminForm() {
     history.back();
 }
+//---------------------------------------------------------
 
 let adminCache = new Map();
 
@@ -119,26 +124,7 @@ async function createAdminRow() {
 createAdminRow();
 
 
-//check form
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-    'use strict'
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
-
-            form.classList.add('was-validated')
-        }, false)
-    })
-})();
 
 // Create New Admins and Users
 
@@ -375,3 +361,113 @@ createAdminRow();
 // console.log(createUserProfile(usId3, userData3));
 
 // --------------------------------------------------------
+
+//check form
+// // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+    'use strict'
+
+//     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    //Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            form.classList.add('was-validated')
+        }, false);
+    });
+})();
+
+
+adForm.addEventListener("submit", (e) => {
+
+    if (!isNaN(fullName.value)) {
+        showAlert("Please Enter Valid Name");
+        e.preventDefault();
+        return;
+    }
+
+    let emailRegEx = /^[a-zA-Z][a-zA-Z0-9._-]*@admin\.com$/i;
+    if (email.value.trim() === "") {
+        showAlert("Please Enter Valid Email like (abcd@admin.com)");
+        e.preventDefault();
+        return;
+    }
+
+    if (!emailRegEx.test(email.value)) {
+        showAlert("Please Enter Valid Email like (abcd@admin.com)");
+        e.preventDefault();
+        return;
+    }
+
+    if (password.value.length < 6) {
+        showAlert("Please Enter Valid Password at least 6 characters");
+        e.preventDefault();
+        return;
+    }
+
+    if (password.value !== repeatPassword.value) {
+        showAlert("Please Enter Valid Password");
+        e.preventDefault();
+        return;
+    }
+
+    if (cekBoxPass.checked) {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+
+    if (cekBoxRePass.checked) {
+        repeatPassword.type = "text";
+    } else {
+        repeatPassword.type = "password";
+    }
+
+    let phoneRegEx = /^[01]+[0||1||2||5]+[0-9]{9}$/i;
+    if (phone.value.trim() === "") {
+        showAlert("Please Enter Valid Phone Number");
+        e.preventDefault();
+        return;
+    }
+
+    if (!phoneRegEx.test(phone.value)) {
+        showAlert("Please Enter Valid Phone Number");
+        e.preventDefault();
+        return;
+    }
+
+const adminDataValue =
+{
+    Username: fullName.value,
+    email: email.value,
+    password: password.value,
+    phone: phone.value,
+    isAdmin: true,
+    address: ["EG", city.value]
+};
+
+
+    let id = registerUser(adminDataValue.email, adminDataValue.password);
+    
+createUserProfile(id, adminDataValue);
+
+});
+
+
+function showAlert(message, containerId = "createNewAdmin_id", duration = 2000) {
+    let alert = document.createElement("div");
+    alert.classList.add("alert", "alert-warning");
+    alert.setAttribute("role", "alert");
+    alert.innerText = message;
+    document.getElementById(containerId).prepend(alert);
+    setTimeout(() => {
+        alert.remove();
+    }, duration);
+}
+
