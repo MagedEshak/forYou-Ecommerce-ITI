@@ -70,13 +70,16 @@ async function displayCategoriesinNavBar() {
     let categoriesTemp = await getAllDocuments("Categories");
 
     let cateLinksContainer = document.getElementById('navCategoriesLinks_id');
-    let categoriesContainer = document.getElementById('categoriesContainer_id');
 
     categoriesTemp.forEach( (category , index) => {
         let catLink = document.createElement('a');
         catLink.className = "col-auto px-4";
         // put the link to go to category you need
-        catLink.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
+        if(window.location.href.split('/')[3] == 'index.html')
+            catLink.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
+        else 
+            catLink.href = `shopByCategory.html?cat_id=${category.id}`;
+        
         catLink.innerText = category.cat_name;
 
         cateLinksContainer.appendChild(catLink);
@@ -89,7 +92,6 @@ async function displayCategoriesinSideNavBar() {
     
     let cateLinksContainer = document.getElementById('sideNavCategoriesLinks_id');
     let whatsappLink = document.getElementById('whatsappLink_id');
-    let categoriesContainer = document.getElementById('categoriesContainer_id');
 
     categoriesTemp.forEach( (category , index) => {
         
@@ -99,7 +101,12 @@ async function displayCategoriesinSideNavBar() {
         let catLink = document.createElement('a');
         catLink.className = "w-100";
         // put the link to go to category you need
-        catLink.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
+
+        if(window.location.href.split('/')[3] == 'index.html')
+            catLink.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
+        else 
+            catLink.href = `shopByCategory.html?cat_id=${category.id}`;
+
         catLink.innerText = category.cat_name;
         
         catLinkDiv.appendChild(catLink)
