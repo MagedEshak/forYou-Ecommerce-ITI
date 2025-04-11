@@ -105,16 +105,16 @@
     </header> <!-- updated -->
 
     <!-- my nav in large devices , it only appears on large devices -->
-    <!-- my nav in large devices , it only appears on large devices -->
     <nav class="d-none d-lg-block siteColorClass">
         <div class="container-fluid p-3">
             <div class="links d-flex justify-content-between align-items-center">
-                <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links col-9">
+                <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links">
                     <!-- this is filled dynamically using js -->
                 </div>
-                <div class="row justify-content-end align-items-center links col-3">
-                    <a href="signin.html" class="col-auto px-5"> Sign In</a>
-                    <a href="progile.html" class="col-auto px-5 d-none"> Profile</a>
+                <div class="row justify-content-end align-items-center links">
+                    <a href="../CustomersPages/signin.html" class="col-auto text-center p-2" id="sign_id"> Sign In</a>
+                    <a href="../CustomersPages/profile.html" class="col-auto text-center p-2" id ="userName_id"> User Name</a>
+                   
                     <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
                         <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
                     </a>
@@ -227,9 +227,12 @@
         </div>
     </footer>
 
+    <script type="module" src="../js/navBar.js"></script>
     <script type="module" src="../js/shopByCategory.js"></script>
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+    <script type="module" src="../js/cart.js"></script>
+
 
 </body>
 </html>
