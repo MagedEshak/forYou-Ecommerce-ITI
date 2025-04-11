@@ -1,9 +1,8 @@
    // Import authentication functions from auth.js
-import { loginUser, isUserLoggedIn, getUserProfile, getCurrentUserId } from "./auth.js";
+import { loginUser, isUserLoggedIn, getUserProfile, getCurrentUserId,setCookie,getCookie } from "./auth.js";
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if user is already logged in
      checkAuthState();
 
     // Get the sign-in form
@@ -21,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Function to check if user is already logged in
 async function checkAuthState() {
     try {
+        // Check if user is already logged in
+        console.log('Checking authentication state...');
+        
         const isLoggedIn = await isUserLoggedIn();
         if (isLoggedIn) {
             // Get the current user ID first
@@ -90,6 +92,13 @@ async function handleSignIn(event) {
 
                 // Check if user is admin (could be in different properties)
                 const isAdmin = userProfile && (userProfile.isAdmin || userProfile.role === 'admin');
+
+                // crate cookie
+                setCookie("userId", userId, 30);
+                setCookie("userName", userProfile.Username, 30);
+                setCookie("userEmail", emailInput.value, 30);
+                setCookie("isAdmin", isAdmin?"true":"false", 30);
+
 
                 // if user is admin redirect to admin page
                 if (isAdmin) {
@@ -189,3 +198,6 @@ function getErrorMessage(error) {
             return 'An error occurred during sign in. Please try again.';
     }
 }
+
+
+
