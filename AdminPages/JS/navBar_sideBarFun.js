@@ -51,14 +51,19 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 
 /////////////// log out
-document.getElementById("logoutBtn_id").addEventListener("click", async function () {
-    await logoutUser();
-    deleteCookie("userId");
-    deleteCookie("userName");
-    deleteCookie("isAdmin");
-    deleteCookie("userEmail");
-    window.location.href = "../../CustomersPages/signin.html";
+let logoutBtns; // logoutBtns is a variable that contains all logout buttons in the page.
+logoutBtns=document.querySelectorAll(".logoutBtn");
+logoutBtns.forEach((logoutBtn) => {
+    logoutBtn.addEventListener("click", async function () {
+        await logoutUser();
+        deleteCookie("userId");
+        deleteCookie("userName");
+        deleteCookie("isAdmin");
+        deleteCookie("userEmail");
+        window.location.href = "../../CustomersPages/signin.html";
+    });
 });
+
 
 
 
