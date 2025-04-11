@@ -201,9 +201,8 @@
               
               <h4 class="mb-3 col-12">Last Orders</h4>
               <div class="mb-3 row ">
-                <div id="lastOrder_id" class="row col-12">
-                  
-          <table class="row table  ">
+              <div  class="row col-12">  
+               <table class="row table  ">
                  <thead  class="col-12">
                      <tr class="row">   
                       <th class="col-3">Image</th>           
@@ -216,8 +215,7 @@
                   <tbody id="lastOrder_id" >
                                 <!-- Products will be inserted here dynamically -->
                    </tbody>
-               </table>
-                    
+               </table>   
                 </div>
               </div>
 
@@ -232,40 +230,24 @@
     <h3 class="mb-3 col-12" id="welcomeHead_id">Orders Deatils</h3>
  <!--**orders table secation  --> 
     <div class="card border-0 col-lg-12 col-md-12 mt-2 p-3">
-      <table id="orderTable_id">
-        <thead class="border-bottom-2 ">
-          <tr class="opacity-75 border-bottom-1">
-            <td>Order No</td>
-            <td>Order Date</td>
-            <td>Total</td>
-            <td>Status</td>
-          </tr>
-        </thead>
-        
-      </table>
+       <div class="row col-12">  
+               <table class="row table  ">
+                 <thead  class="col-12">
+                     <tr class="row">   
+                      <th class="col-2">Image</th>           
+                      <th class="col-2">Name</th>
+                      <th class="col-2">Price</th>
+                      <th class="col-2">Quantity</th>
+                      <th class="col-2">total</th>
+                      <th class="col-2">stutas</th>
+                     </tr>
+                </thead>
+                  <tbody id="lastOrders_id" >
+                                <!-- Products will be inserted here dynamically -->
+                   </tbody>
+               </table>   
+                </div>
     </div>
-    <!--**orders Progres Bar  --> 
-       <div class="col-lg-12 col-md-12 mt-2 p-3">
-        <div class="row justify-content-around">
-          <svg class="col opacity-25">
-          <circle class="circle" cx="20" cy="20" r="10" stroke="black" fill=" #006766"></circle>
-          <line class="line" x1="30" y1="20" x2="350" y2="20" stroke="black"></line>
-          <text x="40" y="40" text-anchor="middle" dy=".3em" font-size="19">Preparing</text>
-        </svg>
-        <svg class="col opacity-25">
-          <circle class="circle" cx="20" cy="20" r="10" stroke="black" fill="  #006766"></circle>
-          <line class="line" x1="0" y1="20" x2="10" y2="20" stroke="black"></line>
-          <line class="line" x1="30" y1="20" x2="350" y2="20" stroke="black"></line>
-          <text x="40" y="40" text-anchor="middle" dy=".3em" font-size="19">Shipped</text>
-        </svg>
-         <svg class="col opacity-25">
-          <circle class="circle" cx="20" cy="20" r="10" stroke="black" fill="  #006766"></circle>
-          <line class="line" x1="0" y1="20" x2="10" y2="20" stroke=" #006766"></line>
-          <text x="40" y="40" text-anchor="middle" dy=".3em" font-size="19">Delivered</text>
-        </svg>
-       
-        </div>
-       </div>
     <!--**orders Shipping deatils and methods payment and total price    --> 
 
  <div class=" row justify-content-between gap-3 mb-3 " id="porfielOverview_id">
