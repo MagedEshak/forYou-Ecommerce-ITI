@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
             deleteCookie("userName");
             deleteCookie("isAdmin");
             deleteCookie("userEmail");
+            deleteCookie("userPhone");
+            deleteCookie("userAddress");
             window.location.href = "./CustomersPages/signin.html";
         });
 
