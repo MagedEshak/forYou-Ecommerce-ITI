@@ -85,6 +85,7 @@ function addEventsToAllCartBtns (){
     let removeProductCartBtns = document.querySelectorAll('.productCountAndBin .bin');/* hold all bin btn to remove product from cart */
     let decrProdCountBtns = document.querySelectorAll('.productCountAndBin .minus');/* hold all increment product count btn */
 
+    debugger;
     /* handeling when add to cart btn pressed */
     for(let index = 0 ; index < addToCartBtns.length ; index++){
         addToCartBtns[index].addEventListener('click' , ()=>{
@@ -144,7 +145,6 @@ async function initialzePage(){
     
     controlSideNavBer();
     controlCrusoal();
-    addEventsToAllCartBtns();
     if(window.innerWidth <= 992){
         await displayCategoriesinSideNavBar();
     }
@@ -152,7 +152,8 @@ async function initialzePage(){
         await displayCategoriesinNavBar();
     }
 
-    fillProductsInHtml();
+    await fillProductsInHtml();
+    addEventsToAllCartBtns();
 }
 
 initialzePage();
@@ -251,7 +252,6 @@ async function fillProductsInHtml(){
     //productsContainer.id = `${catName}Products_id`;
 
     for(let category of categoriesTemp){
-        debugger;
         productsTemp = []; // removing all elements from temp
         let products = await getDocumentByField("aliProducts" , "cat_id" , category.id);
         // we want to generate random indexes to fitch random products
@@ -263,6 +263,8 @@ async function fillProductsInHtml(){
         createProductsInHtml(productsContainer, productsTemp , category.cat_name);
     }
 }
+
+
 
 async function createProductsInHtml(productsContainer , products , catName) {
 

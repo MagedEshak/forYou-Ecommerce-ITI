@@ -328,7 +328,6 @@ function display(element){
 /* filteration process */
 
 
-let filterPriceCheckBox = document.getElementById('checkIndeterminate1'); // price checkbox
 let filterOfferCheckBox = document.getElementById('checkIndeterminate2'); // offer checkbox
 let pricesFlag = 1;
 let offersFlag = 0;
@@ -353,6 +352,11 @@ filterOfferCheckBox.addEventListener('change' , ()=>{
     // in case two filters works
     if(filterOfferCheckBox.checked){
         offersFlag = displayProductsDependsOnOffers();
+    }
+    else
+    {
+        displayAllProducts();
+        updateMySliderAndFilterProducts(minRange , maxRange ,rangeText ,sliderRange);
     }
     actionAfterFiltering();
 })
@@ -427,6 +431,8 @@ function displayProductsDependsOnPriceValue(minimumValue , maximumValue){
     return flag;
 }
 
+
+
 function displayProductsDependsOnOffers(){
 
     let flag = 0 ;
@@ -451,12 +457,20 @@ function displayProductsDependsOnOffers(){
     return flag;
 }
 
+
+
+
+
 function displayAllProducts(){
     productsTemp.forEach( product => {
         let myProdContainer = document.getElementById(`${catName}Product_id_${product.id}`);
         display(myProdContainer);
     })
 }
+
+
+
+
 
 /*************************************************************** */
 /* this function displays cat links in the nav bar */
