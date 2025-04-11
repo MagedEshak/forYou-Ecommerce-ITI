@@ -74,12 +74,12 @@
       <div class="containert-fluid">
           <div class="row align-items-center justify-content-evenly p-2">
 
-              <!-- this is my site logo -->
-              <div class="d-none d-lg-block siteLogo col-1">
-                  <a href="../index.html">
-                      <img class="imgLogo_class" src="../Images/logo/LLLOGO.png" alt="">
-                  </a>
-              </div>
+        <!-- this is my site logo -->
+        <div class="d-none d-lg-block siteLogo col-1">
+          <a href="../index.html">
+            <img class="imgLogo_class" src="../Images/logo/LLLOGO.png" alt="">
+          </a>
+        </div>
 
               <!-- this is search input  -->
               <div class="col-lg-5 p-3 position-relative">
@@ -117,19 +117,21 @@
   <!-- my nav in large devices , it only appears on large devices -->
   <nav class="d-none d-lg-block siteColorClass">
     <div class="container-fluid p-3">
-        <div class="links d-flex justify-content-between align-items-center">
-            <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links">
-                <!-- this is filled dynamically using js -->
-            </div>
-            <div class="row justify-content-end align-items-center links">
-                <a href="../CustomersPages/signin.html" class="col-auto text-center p-2" id="sign_id"> Sign In</a>
-                <a href="../CustomersPages/profile.html" class="col-auto text-center p-2" id ="userName_id"> User Name</a>
-               
-                <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
-                    <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
-                </a>
-            </div>
-        </div>
+
+      <div class="row justify-content-evenly align-items-center links">
+        <a href="#cookersSection_id" class="col-auto"> Cookers</a>
+        <a href="#" class="col-auto"> Small Home Appliances</a>
+        <a href="#televesionsSection_id" class="col-auto"> Televesions</a>
+        <a href="#" class="col-auto"> Cooling Appliances</a>
+        <a href="#" class="col-auto"> Air Conditioners</a>
+        <a href="#" class="col-auto"> Washing Machines</a>
+        <a href="../CustomersPages/signin.html" class="col-auto"> Sign In</a>
+        <a href="#" class="col-auto d-none"> Profile</a>
+        <a href="../CustomersPages/cart.html" class="col-auto">
+          <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
+        </a>
+      </div>
+
     </div>
 </nav><!-- updated -->
 
@@ -167,21 +169,21 @@
             <div class="col-md-12 col-lg-6 p-4 pt-4 mt-2 card shadow">
               <section class="row justify-content-between">
                 <h4 class="col-8">Personal Information</h4>
-                <a class="text-info col-2" href="">Edit</a>
+                <a class="text-info col-2" href="#">Edit</a>
                 <div class="col-5 mt-4">
                   <h6 class="opacity-75">Name</h6>
                   <p id="userName_id">Samuel</p>
                 </div>
                 <div class="col-5  mt-4">
                   <h6 class="opacity-75">Email</h6>
-                  <p id="userName_id">samuel@gmail.com</p>
+                  <p id="userEmail_id">samuel@gmail.com</p>
                 </div>
               </section>
             </div>
 
             <div class="col-md-12 col-lg-5 mt-2 card shadow p-4">
               <div class="w-100">
-                <h4 class="">Address</h4>
+                <h4 class="" >Address</h4>
                 <div class="mt-3 mb-3">
                   <p id="userAddres_id">
                     you don't have any rejestration addresses. you can add address
@@ -194,17 +196,33 @@
 
           </div>
 
-          <div class="col-12 mt-2 card shadow p-4 mb-3">
-            <section class="row gap-2">
-              <h4 class="mb-3">Last Orders</h4>
-              <div class="mb-3">
-                <p id="lastOrder_id">
-                  you don't have any pruevious orders, shop now and track order
-                </p>
+          <div class="col-12 mt-2  card shadow p-4 mb-3">
+            <section class="row  gap-2">
+              
+              <h4 class="mb-3 col-12">Last Orders</h4>
+              <div class="mb-3 row ">
+                <div id="lastOrder_id" class="row col-12">
+                  
+          <table class="row table  ">
+                 <thead  class="col-12">
+                     <tr class="row">   
+                      <th class="col-3">Image</th>           
+                      <th class="col-2">Name</th>
+                      <th class="col-2">Price</th>
+                      <th class="col-2">Quantity</th>
+                      <th class="col-3">total</th>
+                     </tr>
+                </thead>
+                  <tbody id="lastOrder_id" >
+                                <!-- Products will be inserted here dynamically -->
+                   </tbody>
+               </table>
+                    
+                </div>
               </div>
 
               <button class="btn btn-color p-2 col-2">Shop Now</button>
-
+             
             </section>
           </div>
         </div>
@@ -441,6 +459,7 @@
   <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
   <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
   <script src="../js/profile.js"></script>
+  <script src="..//js/userProfiel.js" type="module"></script>
 </body>
 
 </html>
