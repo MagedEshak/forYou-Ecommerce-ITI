@@ -13,9 +13,10 @@ let categoryCache = new Map();
 
 async function fetchCategories() {
     try {
-        const categories = await getAllDocuments("category");
+        const categories = await getAllDocuments("Categories");
         categories.forEach(cat => {
             categoryCache.set(cat.id, cat.cat_name);
+            console.log("category name",cat.cat_name)
         });
     } catch (error) {
         console.error("Category fetch error:", error);
@@ -49,6 +50,7 @@ async function fetchProducts() {
 // Create table row with proper error handling
 function createProductRow(id, product) {
     const row = document.createElement("tr");
+    console.log("category id",product.category_id)
     row.innerHTML = `
         <td>${id}</td>
         <td>${product.name}</td>
@@ -106,7 +108,7 @@ function showNotification(message, type = "info") {
 // Initialize
 document.addEventListener("DOMContentLoaded", async () => {
     await fetchCategories();
-    fetchProducts();
+    await fetchProducts();
 
     if (dom.addNewProductBtn) {
         dom.addNewProductBtn.addEventListener("click", redirectToAddProduct);
