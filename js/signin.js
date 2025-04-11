@@ -93,12 +93,15 @@ async function handleSignIn(event) {
                 // Check if user is admin (could be in different properties)
                 const isAdmin = userProfile && (userProfile.isAdmin || userProfile.role === 'admin');
 
-                // crate cookie
+                // create cookie
+
                 setCookie("userId", userId, 30);
                 setCookie("userName", userProfile.Username, 30);
                 setCookie("userEmail", emailInput.value, 30);
                 setCookie("isAdmin", isAdmin?"true":"false", 30);
 
+                setCookie("userPhone", userProfile.phone, 30);
+                setCookie("userAddress", userProfile.address, 30);
 
                 // if user is admin redirect to admin page
                 if (isAdmin) {
