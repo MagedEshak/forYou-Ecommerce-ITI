@@ -20,7 +20,7 @@
 <body class="d-flex justify-content-around p-4">
 
     <!-- Start Left Side Dashboard Tabs -->
-    <aside id="" class="col-2 d-none d-lg-block rounded-4 position-sticky top">
+    <aside id="" class="col-2 d-none d-lg-block rounded-4 position-sticky top-0">
         <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
             <li>
                 <div id="logoDiv_id" class="text-center">
@@ -60,10 +60,8 @@
             <hr>
             <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
             <li>
-                <a href="../CustomersPages/signin.html" class="list-links text-light"><i
-                        class="bi bi-box-arrow-left"></i>
-                    LogOut
-                </a>
+                <a href="#" class="list-links text-light" id="logoutBtn_id"><i
+                    class="bi bi-box-arrow-left"> </i>LogOut</a>
             </li>
         </ul>
     </aside>
@@ -109,10 +107,8 @@
             <hr>
             <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
             <li>
-                <a href="../CustomersPages/signin.html" class="list-links text-light"><i
-                        class="bi bi-box-arrow-left"></i>
-                    LogOut
-                </a>
+                <a href="#" class="list-links text-light" id="logoutBtn_id"><i
+                    class="bi bi-box-arrow-left"> </i>LogOut</a>
             </li>
         </ul>
     </aside>
@@ -264,11 +260,11 @@
                                 <i class="bi bi-person-circle fs-cf-3 fs-cf-4"></i>
                             </div>
 
-                            <!-- Admin Name -->
-                            <div class="d-none d-lg-flex flex-column">
-                                <span class="fw-bolder ">Maged Eshak</span>
-                                <span class="text-secondary ">Admin</span>
-                            </div>
+                          <!-- Admin Name -->
+                          <div class="d-none d-lg-flex flex-column">
+                            <span id="user-name" class="fw-bolder fs-6 user-name">Loading... </span>
+                            
+                        </div>
                         </div>
 
                     </div>
@@ -395,7 +391,7 @@
     </main>
 
     <!-- Bootstrap JS -->
-    <script src="./JS/navBar_sideBarFun.js"></script>
+    <script type="module" src="./JS/navBar_sideBarFun.js"></script>
     <script type="module" src="JS/orderes.js"></script>
     <script type="module" src="../js/main.js"></script>
 

@@ -22,7 +22,7 @@
 </head>
 
 <body class="cal-12 p-4 d-flex justify-content-around ">
- 
+
   <!-- Start Left Side Dashboard Tabs -->
   <aside id="" class="col-2 d-none d-lg-block rounded-4 position-sticky top-0">
     <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
@@ -63,9 +63,7 @@
       <hr>
       <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
       <li>
-        <a href="../CustomersPages/signin.html" class="list-links text-light"><i class="bi bi-box-arrow-left"></i>
-          LogOut
-        </a>
+        <a href="#" class="list-links text-light" id="logoutBtn_id"><i class="bi bi-box-arrow-left"> </i>LogOut</a>
       </li>
     </ul>
   </aside>
@@ -112,9 +110,7 @@
       <hr>
       <li><a href="./AdminProfile.html" class="list-links text-light"><i class="bi bi-gear"></i> Setting</a></li>
       <li>
-        <a href="../CustomersPages/signin.html" class="list-links text-light"><i class="bi bi-box-arrow-left"></i>
-          LogOut
-        </a>
+        <a href="#" class="list-links text-light" id="logoutBtn_id"><i class="bi bi-box-arrow-left"> </i>LogOut</a>
       </li>
     </ul>
   </aside>
@@ -258,13 +254,12 @@
 
               <!-- Admin Name -->
               <div class="d-none d-lg-flex flex-column">
-                <span class="fw-bolder ">Maged Eshak</span>
-                <span class="text-secondary ">Admin</span>
-              </div>
-            </div>
+                <span id="user-name" class="fw-bolder fs-6 user-name">Loading... </span>
 
+              </div>
+
+            </div>
           </div>
-        </div>
       </nav>
     </header>
     <!-- End Nav Bar -->
@@ -317,7 +312,7 @@
                 </tr>
               </thead>
               <tbody id="tbody_id">
-                
+
               </tbody>
             </table>
           </div>
@@ -350,9 +345,9 @@
     </section>
   </main>
 
+  <script type="module" src="./JS/navBar_sideBarFun.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.7/umd/popper.min.js"></script>
   <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
-  <script src="./JS/navBar_sideBarFun.js"></script>
   <script type="module" src="../js/main.js"></script>
   <script type="module" src="./JS/addcategory.js"></script>
 </body>

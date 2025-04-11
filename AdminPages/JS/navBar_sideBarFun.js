@@ -1,3 +1,75 @@
+// import auth functions from auth.js
+import { isUserLoggedIn, getCurrentUserId, getUserProfile,logoutUser, getCookie ,deleteCookie } from '../../js/auth.js';
+
+
+
+///////////////////////
+//
+//       Authentication 
+//
+/////////////////////
+
+
+
+document.addEventListener('DOMContentLoaded', async function () {
+   
+    const userId = getCookie("userId");
+    const userName = getCookie("userName");
+    const isAdmin = getCookie("isAdmin");
+    if(isAdmin === "false"){
+        window.location.href = "../../index.html";
+    }
+    if (userId) { // if user is logged in, set isLoggedIn to true
+       var  isLoggedIn = true;
+    } else { // if user is not logged in, set isLoggedIn to false
+        isLoggedIn = false;
+    }
+
+
+    if (!isLoggedIn) {
+        console.log("Not Logged In");
+        window.location.href = "../../CustomersPages/signin.html";
+    } else {
+        console.log("User ID:", userId);
+
+        if (userId) {
+          
+
+            if (userName) {
+                const userNameElement = document.getElementById('user-name');
+                userNameElement.textContent = userName;
+                console.log("Username:", userName);
+            } else {
+                console.log("No user profile found or missing Username.");
+            }
+        } else {
+            console.log("Failed to get user ID.");
+        }
+    }
+});
+
+
+
+/////////////// log out
+document.getElementById("logoutBtn_id").addEventListener("click", async function () {
+    await logoutUser();
+    deleteCookie("userId");
+    deleteCookie("userName");
+    deleteCookie("isAdmin");
+    deleteCookie("userEmail");
+    window.location.href = "../../CustomersPages/signin.html";
+});
+
+
+
+
+
+
+
+
+
+
+
 /**
  * Adding addEventListener click for {profile Logo Div,bars Div, bars Left Side Div => (default d-none) }
  * 
@@ -29,6 +101,8 @@ let addNewCategoryBtn = document.getElementById("addNewCategoryBtn_id"); // This
 let CancelBtn = document.getElementById("CancelBtn_id"); // This Variable is search Section that search input for search any thing in admin pages
 
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 /**
  * - Adding addEventListener click for {profile Logo Div}
@@ -103,8 +177,8 @@ searchDiv.addEventListener("click", function () {
  * =========================================================
  * -- To Show Add new Category Section
  */
-window.onload = () => {
-    addNewCategoryBtn.addEventListener("click", function () {
+if(addNewCategoryBtn){
+addNewCategoryBtn.addEventListener("click", function () {
     if (addCategory.classList.contains("d-none")) {
         
         addCategory.classList.remove("d-none");
@@ -117,7 +191,8 @@ window.onload = () => {
         
     } 
 });
-
+}
+if(CancelBtn){
 CancelBtn.addEventListener("click", function () {
     if (addCategory.classList.contains("d-block")) {
         
@@ -131,7 +206,7 @@ CancelBtn.addEventListener("click", function () {
         
     } 
 });
-
+}
   function redirectToAddProduct() {
             window.location.href = "admin-add-product.html";
 }
@@ -139,4 +214,3 @@ CancelBtn.addEventListener("click", function () {
             window.location.href = "admin-home.html";
 }     
 
-}

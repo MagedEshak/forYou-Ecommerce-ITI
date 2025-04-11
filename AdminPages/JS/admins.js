@@ -4,56 +4,38 @@ import { registerUser,createUserProfile} from "../../js/auth.js";
 let createNewAdmin = document.getElementById("createNewAdmin_id");
 let mainContentSec = document.getElementById("mainContentSec_id");
 
+//--------------------------------------------------------------------------------------
+
+let fullName = document.getElementById("fullNewAdminNameInput_id");
+let email = document.getElementById("emailNewAdminInput_id");
+let phone = document.getElementById("phoneNewAdminInput_id");
+let password = document.getElementById("newAdPassInput_id");
+let repeatPassword = document.getElementById("reNewPassInput_id");
+let city = document.getElementById("cityNewAdminInput_id");
+let cekBoxPass = document.getElementById("showadPasswordCheck_id");
+let cekBoxRePass = document.getElementById("showReNewPasswordCheck_id");
+let adForm = document.getElementById("adminRegitForm");
+
+//-----------------------------------------------------------------------------
+
 window.onload = () => {
     let addAdmin = document.getElementById("addNewAdmin_id");
     let cancelBtn = document.getElementById("CancelBtn_id");
     
     if (addAdmin && cancelBtn) {
-        addAdmin.addEventListener("click", ()=>createNewAdminForm(mainContentSec));
-        cancelBtn.addEventListener("click", ()=>cancelCreateNewAdminForm(mainContentSec));
+        addAdmin.addEventListener("click", () => createNewAdminForm());
+        cancelBtn.addEventListener("click", () => cancelCreateNewAdminForm());
     }
 };
 
-
-
-function createNewAdminForm(mainDivInHTMlDoc) {
-            if (createNewAdmin.classList.contains("d-none")) {
-                createNewAdmin.classList.remove("d-none");
-                mainDivInHTMlDoc.classList.remove("d-md-flex"); // To Hide category content
-                mainDivInHTMlDoc.classList.add("d-none"); // To Hide category content  
-                createNewAdmin.classList.add("d-block");
-            }
+function createNewAdminForm() {
+    location.assign("../../AdminPages/addNewAdmin.html");
 }
 
-function cancelCreateNewAdminForm(mainDivInHTMlDoc) {
-            if (createNewAdmin.classList.contains("d-block")) {
-                createNewAdmin.classList.add("d-none");
-                mainDivInHTMlDoc.classList.add("d-md-flex"); // To Hide category content
-                mainDivInHTMlDoc.classList.remove("d-none"); // To Hide category content
-                createNewAdmin.classList.remove("d-block");
-            }
+function cancelCreateNewAdminForm() {
+    history.back();
 }
-
-// const adminsData =
-// {
-//     Username: "Mina Maged",
-//     email: "mina@gmail.com",
-//     password: "123456",
-//     phone: "01266686544",
-//     isAdmin: false,
-//     address: ["EG", "Cairo"],
-//     wishlist: [],
-//     shoppingCart: [{
-//         product_id: 1,
-//         cat_id: 1,
-//         quantaty: 0,
-//         isPending: 0
-//     }],
-//     lastOrders: [],
-//     retunOdrs: false
-// };
-
-//addDocument("User",adminsData);
+//---------------------------------------------------------
 
 let adminCache = new Map();
 
@@ -142,28 +124,32 @@ async function createAdminRow() {
 createAdminRow();
 
 
-//check form
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-    'use strict'
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
-
-            form.classList.add('was-validated')
-        }, false)
-    })
-})();
 
 // Create New Admins and Users
+
+// const adminsData =
+// {
+//     Username: "Mina Maged",
+//     email: "mina@gmail.com",
+//     password: "123456",
+//     phone: "01266686544",
+//     isAdmin: false,
+//     address: ["EG", "Cairo"],
+//     wishlist: [],
+//     shoppingCart: [{
+//         product_id: 1,
+//         cat_id: 1,
+//         quantaty: 0,
+//         isPending: 0
+//     }],
+//     lastOrders: [],
+//     retunOdrs: false
+// };
+
+//addDocument("User",adminsData);
+//-----------------------------------------------------------------------
+
 
 // const adminsData =
 // {
@@ -373,3 +359,115 @@ createAdminRow();
 // const usId3 = "jIfIO7DQd6UaEXNUuCtEIfoEZEZ2";
 
 // console.log(createUserProfile(usId3, userData3));
+
+// --------------------------------------------------------
+
+//check form
+// // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+    'use strict'
+
+//     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    //Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+
+            form.classList.add('was-validated')
+        }, false);
+    });
+})();
+
+
+adForm.addEventListener("submit", (e) => {
+
+    if (!isNaN(fullName.value)) {
+        showAlert("Please Enter Valid Name");
+        e.preventDefault();
+        return;
+    }
+
+    let emailRegEx = /^[a-zA-Z][a-zA-Z0-9._-]*@admin\.com$/i;
+    if (email.value.trim() === "") {
+        showAlert("Please Enter Valid Email like (abcd@admin.com)");
+        e.preventDefault();
+        return;
+    }
+
+    if (!emailRegEx.test(email.value)) {
+        showAlert("Please Enter Valid Email like (abcd@admin.com)");
+        e.preventDefault();
+        return;
+    }
+
+    if (password.value.length < 6) {
+        showAlert("Please Enter Valid Password at least 6 characters");
+        e.preventDefault();
+        return;
+    }
+
+    if (password.value !== repeatPassword.value) {
+        showAlert("Please Enter Valid Password");
+        e.preventDefault();
+        return;
+    }
+
+    if (cekBoxPass.checked) {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+
+    if (cekBoxRePass.checked) {
+        repeatPassword.type = "text";
+    } else {
+        repeatPassword.type = "password";
+    }
+
+    let phoneRegEx = /^[01]+[0||1||2||5]+[0-9]{9}$/i;
+    if (phone.value.trim() === "") {
+        showAlert("Please Enter Valid Phone Number");
+        e.preventDefault();
+        return;
+    }
+
+    if (!phoneRegEx.test(phone.value)) {
+        showAlert("Please Enter Valid Phone Number");
+        e.preventDefault();
+        return;
+    }
+
+const adminDataValue =
+{
+    Username: fullName.value,
+    email: email.value,
+    password: password.value,
+    phone: phone.value,
+    isAdmin: true,
+    address: ["EG", city.value]
+};
+
+
+    let id = registerUser(adminDataValue.email, adminDataValue.password);
+    
+createUserProfile(id, adminDataValue);
+
+});
+
+
+function showAlert(message, containerId = "createNewAdmin_id", duration = 2000) {
+    let alert = document.createElement("div");
+    alert.classList.add("alert", "alert-warning");
+    alert.setAttribute("role", "alert");
+    alert.innerText = message;
+    document.getElementById(containerId).prepend(alert);
+    setTimeout(() => {
+        alert.remove();
+    }, duration);
+}
+

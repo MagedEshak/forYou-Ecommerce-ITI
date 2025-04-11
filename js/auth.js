@@ -56,7 +56,7 @@ export async function loginUser(email, password) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        console.log('User logged in:',
+        console.log('User logged in 1: ',
             user.uid);
         return user.uid;
     }
@@ -78,40 +78,27 @@ export async function logoutUser() {
 }
 
 // Check if user is logged in
-export async function isUserLoggedIn() {
-    try {
-        const user = auth.currentUser;
-        if (user) {
-            console.log('User is logged in:', user.uid);
-            return true;
-        } else {
-            console.log('User is not logged in');
-            return false;
-        }
-    }
-    catch (error) {
-        console.error('Error checking user login status:', error);
-        throw error;
-    }
+export function isUserLoggedIn() {
+    return new Promise((resolve) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            unsubscribe(); // Stop listening immediately
+            resolve(!!user);
+        });
+    });
 }
+
 
 // Get the current user's UID
 export async function getCurrentUserId() {
-    try {
-        const user = auth.currentUser;
-        if (user) {
-            console.log('Current user ID:', user.uid);
-            return user.uid;
-        }
-        else {
-            console.log('No user is currently logged in');
-            return null;
-        }
-    }
-    catch (error) {
-        console.error('Error getting current user ID:', error);
-        throw error;
-    }
+    return new Promise((resolve) => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                resolve(user.uid);
+            } else {
+                resolve(null);
+            }
+        });
+    });
 }
 
 
@@ -129,6 +116,12 @@ export async function createUserProfile(uid, userData) {
 // Get user profile by UID
 export async function getUserProfile(uid) {
     try {
+        console.log("UID:", uid);
+        if (!uid || typeof uid !== 'string') {
+            console.error("Invalid UID:", uid);
+            return null;
+        }
+
         const userDoc = await getDoc(doc(db, "User", uid));
         if (userDoc.exists()) {
             return userDoc.data();
@@ -141,6 +134,7 @@ export async function getUserProfile(uid) {
         throw error;
     }
 }
+
 // Update user profile by UID
 export async function updateUserProfile(uid, updatedData) {
     try {
@@ -166,8 +160,40 @@ export async function deleteUserProfile(uid) {
 // Listen for authentication state changes
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        console.log("User is logged in:", user.uid);
+        console.log("User is logged in: auth", user.uid);
     } else {
         console.log("User is not logged in.");
     }
 });
+
+
+/////////////////// cookies
+
+// set cookie
+export function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+
+// get cookie
+export function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+// delee cookie
+export function deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}

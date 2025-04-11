@@ -1,0 +1,11 @@
+{
+    "liveServer.settings.port": 0,
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+    "liveServer.settings.CustomBrowser": null,
+    "liveServer.settings.fullReload": true,
+    "liveServer.settings.donotVerifyTags": false,
+    "liveServer.settings.https": {
+        "enable": true
+    },
+    "liveServer.settings.useLocalIp": true
+}

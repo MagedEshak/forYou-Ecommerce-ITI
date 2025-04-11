@@ -4,23 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../ui-ux/icons/user.png" type="image/x-icon">
-
-    <!-- Custom CSS -->
+    <link rel="shortcut icon" href="../ui-ux/icons/layout.png" type="image/x-icon">
+    <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./CSS/allAdminPages.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-    <!-- bootstrap CSS -->
-    <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.css">
-
-    <!-- bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <title>Admin Profile Settings</title>
+    <title>View All Admins</title>
 </head>
 
-<body class="d-flex justify-content-around pt-4 pb-4 ps-lg-4 pe-lg-4 ps-3 pe-3 ">
-
+<body class="d-flex justify-content-around p-4">
     <!-- Start Left Side Dashboard Tabs -->
-    <aside id="" class="col-2 d-none d-lg-block rounded-4 position-sticky top-0">
+
+    <aside class="col-2 d-none d-lg-block rounded-4 position-sticky top-0">
+        <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
+            <!-- Start Bars showing when Dashboard be full width -->
+            <div id="barsLeftSideDiv_id" class="pe-2 d-block d-lg-none fs-1 cursor-pointer text-light">
+                <i class="bi bi-filter-left"></i>
+            </div>
+            <!-- End Bars showing when Dashboard be full width -->
+
+            <li>
+                <div id="logoDiv_id" class="text-center">
+                    <a href="../index.html" target="_blank">
+                        <img src="../Images/logo/LLLOGOWhite.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <span class="fw-bolder"><i class="bi bi-menu-button"></i>
+                    Menu</span>
+            </li>
+            <hr class="mt-0">
+            <li>
+                <a href="./admin-home.html" class="list-links text-light">
+                    <i class="bi bi-house"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i> Orders</a>
+            </li>
+            <li>
+                <a href="./addCategory.html" class="list-links text-light">
+                    <i class="bi bi-tag"></i> Categories
+                </a>
+            </li>
+            <li>
+                <a href="./viewAllAdmins.html" class="list-links text-light">
+                    <i class="bi bi-people"></i> View Admins</a>
+            </li>
+        </ul>
+
+        <ul class="d-flex flex-column justify-content-between p-4 gap-2">
+            <hr>
+
+            <li>
+                <!-- Adding class list-links-active to color page name tab  -->
+                <a href="../AdminPages/AdminProfile.html" class="list-links text-light  list-links-active"><i
+                        class="bi bi-gear"></i>
+                    Setting</a>
+            </li>
+            <li>
+                <a href="#" class="list-links text-light" id="logoutBtn_id"><i
+                    class="bi bi-box-arrow-left"> </i>LogOut</a>
+            </li>
+        </ul>
+    </aside>
+    <!-- End Left Side Dashboard Tabs -->
+
+    <!-- Start Left Side Dashboard Tabs in Tablet and Mobile Only-->
+    <aside id="sideDashboard_id" class="col-7 col-md-4 sideBarMobile rounded-4">
         <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
             <li>
                 <div id="logoDiv_id" class="text-center">
@@ -32,7 +83,8 @@
                 </div>
             </li>
             <li>
-                <span class="fw-bolder"><i class="bi bi-menu-button"></i> Menu</span>
+                <span class="fw-bolder"><i class="bi bi-menu-button"></i>
+                    Menu</span>
             </li>
             <hr class="mt-0">
             <li>
@@ -65,58 +117,9 @@
                     </li>
         </ul>
     </aside>
-    <!-- End Left Side Dashboard Tabs -->
-
-    <!-- Start Left Side Dashboard Tabs in Tablet and Mobile Only-->
-    <aside id="sideDashboard_id" class="col-7 col-md-4 sideBarMobile rounded-4">
-        <ul class="d-flex flex-column justify-content-between p-4 gap-3 pe-0">
-            <li>
-                <div id="logoDiv_id" class="text-center">
-                    <a href="../index.html" target="_blank">
-                        <img src="../Images/logo/LLLOGOWhite.png" class="img-lg-w img-md-w img-sm-w" alt="WebSite Logo">
-                    </a>
-                    <!-- Bars Icon -->
-
-                </div>
-            </li>
-            <li>
-                <span class="fw-bolder"><i class="bi bi-menu-button"></i> Menu</span>
-            </li>
-            <hr class="mt-0">
-            <li>
-                <a href="./admin-home.html" class="list-links text-light">
-                    <i class="bi bi-house"></i> Dashboard</a>
-            </li>
-            <li>
-                <!-- Adding class list-links-active to color page name tab  -->
-                <a href="./Oreders.html" class="list-links text-light"><i class="bi bi-bag"></i>
-                    Orders</a>
-            </li>
-            <li>
-                <a href="./addCategory.html" class="list-links text-light">
-                    <i class="bi bi-tag"></i> Categories
-                </a>
-            </li>
-            <li>
-                <a href="./viewAllAdmins.html" class="list-links text-light">
-                    <i class="bi bi-people"></i> View Admins</a>
-            </li>
-        </ul>
-
-        <ul class="d-flex flex-column justify-content-between p-4 gap-2">
-            <hr>
-            <li><a href="./AdminProfile.html" class="list-links list-links-active text-light"><i class="bi bi-gear"></i>
-                    Setting</a></li>
-                    <li>
-                        <a href="#" class="list-links text-light" id="logoutBtn_id"><i
-                            class="bi bi-box-arrow-left"> </i>LogOut</a>
-                    </li>
-        </ul>
-    </aside>
     <!-- End Left Side Dashboard Tabs in Tablet and Mobile Only-->
 
-
-    <!-- Start Main -->
+    <!-- Navbar -->
     <main id="main_id" class="w-100">
         <!-- Start Nav Bar -->
         <header class="p-lg-4">
@@ -125,11 +128,11 @@
                 <div class="d-flex">
 
                     <!-- Bars Icon -->
-                    <div id="barsDiv_id" class="pe-2 d-lg-none fs-cf-4 cursor-pointer">
+                    <div id="barsDiv_id" class="pe-2 d-lg-none fs-cf-4">
                         <i class="bi bi-filter-left"></i>
                     </div>
 
-                    <span class="fw-bolder fs-cf-2 fs-cf-4">Settings</span>
+                    <span class="fw-bolder fs-cf-2 fs-cf-4">Admin Registration Page</span>
                 </div>
 
                 <div id="logoDiv_id">
@@ -157,7 +160,8 @@
                                         placeholder="Search any Thing in Admin Dashboard ...">
                                     <label for="floatingInput">
                                         <i class="bi bi-search searchInput-color me-2"></i>
-                                        Search any Thing in Admin Dashboard ...</label>
+                                        Search any Thing in Admin Dashboard
+                                        ...</label>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +171,8 @@
                             <i id="notificationsIcon_id" class="bi bi-bell fs-cf-3 fs-cf-4">
                                 <span id="notificationsDot_id"
                                     class="position-absolute top-10 end-3 translate-middle p-1 bg-danger border border-light rounded-circle">
-                                    <span class="visually-hidden">New notification</span>
+                                    <span class="visually-hidden">New
+                                        notification</span>
                                 </span>
                             </i>
                         </div>
@@ -254,6 +259,7 @@
                             </div>
 
                         </div>
+
                         <!-- Profile -->
                         <div id="profileDiv_id" class="fs-5 d-flex gap-3 position-relative">
                             <!-- Profile Icon -->
@@ -261,10 +267,11 @@
                                 <i class="bi bi-person-circle fs-cf-3 fs-cf-4"></i>
                             </div>
 
-                            <div class="d-none d-lg-flex flex-column">
-                                <span id="user-name" class="fw-bolder fs-6 user-name">Loading... </span>
-                                
-                            </div>
+                         <!-- Admin Name -->
+                         <div class="d-none d-lg-flex flex-column">
+                            <span id="user-name" class="fw-bolder fs-6 user-name">Loading... </span>
+                            
+                        </div>
                         </div>
 
                     </div>
@@ -273,233 +280,15 @@
         </header>
         <!-- End Nav Bar -->
 
-        <!-- Start Content Section {My Profile, Admins, Edit Profile, Change Password} -->
-        <section id="mainContentSec_id" class="container-fluid col-md-12 d-md-flex justify-content-between gap-3">
-            <!-- Start Left side Section {My Profile, Admins} -->
-            <article>
-                <!-- Start Profile Section -->
-                <div class="col-lg-4 shadow p-3 ms-lg-3 mt-3 rounded-3 w-100 bg-white">
-                    <div class="row p-md-3 p-lg-3 pt-3">
-                        <h2>My Profile</h2>
-                        <!-- Start Admin Photo and Name Div-->
-                        <div class="d-flex gap-3 mt-3">
-
-                            <!-- Admin Photo -->
-                            <div class="position-relative">
-                                <div class="">
-                                    <img id="profile_img_id" src="../ui-ux/icons/user.png" class="profile-img"
-                                        alt="Profile Image">
-                                </div>
-                                <!-- Camera Icon -->
-                                <div id="profile_camera_icon_id"
-                                    class="bg-danger badge position-absolute bottom-0 start-50">
-                                    <i class="bi bi-camera-fill w-100 h-100"></i>
-                                </div>
-                            </div>
-
-                            <!-- Admin Name -->
-                            <div class="d-flex flex-column mt-3">
-                                <span class="fw-bolder">Maged Eshak</span>
-                                <span class="text-secondary">Admin</span>
-                            </div>
-                        </div>
-                        <!-- End Admin Photo and Name Div-->
-
-                        <!-- Start Admin Details-->
-                        <div class="mt-4">
-                            <p class="d-flex justify-content-between text-secondary">Full Name:<span
-                                    class="fw-bold text-black">Maged Eshak</span>
-                                <hr>
-                            </p>
-
-                            <p class="d-flex justify-content-between text-secondary">Mobile:<span
-                                    class="fw-bold text-black">+201275465883</span>
-                                <hr>
-                            </p>
-
-                            <p class="d-flex justify-content-between text-secondary">Email:<span
-                                    class="fw-bold text-black">magedeshak@admin.com</span>
-                                <hr>
-                            </p>
-
-                            <p class="d-flex justify-content-between text-secondary">Location:<span
-                                    class="fw-bold text-black">Assiut, EG</span>
-
-                            </p>
-                        </div>
-                        <!-- End Admin Details-->
-                    </div>
-                </div>
-                <!-- End Profile Section -->
-
-                <!-- Start Add New Admin And View Admin Section -->
-                <div class="col-lg-4 shadow p-3 ms-lg-3 mt-5 rounded-3 w-100 bg-white">
-                    <div class="row p-md-3 p-lg-3">
-                        <!-- Start Admin Photo and Name Div-->
-                        <div class="d-flex justify-content-between p-3">
-                            <h2>Admins</h2>
-                            <div>
-                                <button id="addNewAdmin_id" type="button" class="btn btn-color-fa fw-bold"
-                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .25rem;">
-                                    Add Admin
-                                </button>
-                            </div>
-                        </div>
-                        <!-- End Admin Photo and Name Div-->
-
-                        <!-- Start Admin Details-->
-                        <div id="viewAddminsCon_id" class="mt-4">
-                            <!-- Start Admin Photo and Name Div-->
-
-
-                            <!-- Start Admin Photo and Name Div-->
-
-                            <!-- Arrow -->
-
-
-                        </div>
-                    </div>
-                </div>
-                <!-- End Add New Admin And View Admin Section -->
-            </article>
-            <!-- End Left side Section {My Profile, Admins} -->
-
-            <!-- Start Right side Section {Edit Profile, Change Password} -->
-            <article class="col-lg-7 shadow p-3 ms-lg-3 mt-3 rounded-3 bg-white">
-                <!-- Start Right side Section -->
-                <div class="p-3">
-                    <!-- Start Edit Profile Section -->
-                    <div class="row p-md-3 p-lg-3 pt-3">
-                        <h2>Edit Profile</h2>
-                        <!-- Start Edit Profile Form -->
-                        <form action="" class="g-3 border border-3 rounded-3 p-4">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="fullNameInput_id" class="form-label">Full Name</label>
-                                    <input type="text" id="fullNameInput_id" class="form-control"
-                                        placeholder="Maged Eshak">
-                                </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label for="emailInput_id" class="form-label">Email</label>
-                                    <input type="email" id="emailInput_id" class="form-control"
-                                        placeholder="magedeshak@admin.com">
-                                </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label for="phoneInput_id" class="form-label">Phone</label>
-                                    <input type="tel" id="phoneInput_id" class="form-control" placeholder="01275465883">
-                                </div>
-
-                                <div class="col-md-6 mb-3">
-                                    <label for="cityInput_id" class="form-label">City</label>
-                                    <input type="text" id="city_id" class="form-control" placeholder="Assiut">
-                                </div>
-
-                                <div class="col-12 mb-3">
-                                    <label for="aboutMeInput_id" class="form-label">About Me</label>
-                                    <textarea name="txtArea" id="aboutMeInput_id" class="form-control"
-                                        placeholder="Text"></textarea>
-                                </div>
-
-                                <div class="col-12 text-end mt-3">
-                                    <button type="submit" class="btn btn-color fw-bold text-light">Update
-                                        Profile</button>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- End Edit Profile Form -->
-                    </div>
-                    <!-- End Edit Profile Section -->
-
-                    <!-- Start End Change Password Container -->
-                    <div class="row p-md-3 p-lg-3">
-                        <!-- Start Admin Photo and Name Div-->
-                        <div class="d-flex justify-content-between p-3 mt-3">
-
-                            <h2>Change Password</h2>
-                        </div>
-                        <!-- Start Change Password Form -->
-                        <form action="" class="g-3 border border-3 rounded-3 p-4">
-                            <!-- Start Current Password Input and Show Password CheckBox -->
-                            <div class="row">
-                                <div class="col-12">
-                                    <label for="currentPassInput_id" class="form-label">Current Password</label>
-                                    <input type="password" id="currentPassInput_id" class="form-control">
-                                </div>
-
-                                <div class="col-12 mb-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox"
-                                            id="showCurrentPasswordCheck_id">
-                                        <label class="form-check-label" for="showCurrentPasswordCheck_id">
-                                            Show Password
-                                        </label>
-                                    </div>
-                                </div>
-                                <!-- End Current Password Input and Show Password CheckBox -->
-
-
-                                <!-- Start New Password Input and Show Password CheckBox -->
-                                <div class="col-md-12 col-lg-6">
-                                    <label for="newPassInput_id" class="form-label">New Password</label>
-                                    <input type="password" id="newPassInput_id" class="form-control">
-                                    <div class="col-12 mb-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                id="showNewPasswordCheck_id">
-                                            <label class="form-check-label" for="showNewPasswordCheck_id">
-                                                Show Password
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End New Password Input and Show Password CheckBox -->
-
-                                <!-- Start Repeat New Password Input and Show Password CheckBox -->
-                                <div class="col-md-12 col-lg-6">
-                                    <label for="repeatPassInput_id" class="form-label">Repeat New Password</label>
-                                    <input type="password" id="repeatPassInput_id" class="form-control">
-
-                                    <div class="col-12 mb-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                id="showRepeatPasswordCheck_id">
-                                            <label class="form-check-label" for="showRepeatPasswordCheck_id">
-                                                Show Password
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Repeat New Password Input and Show Password CheckBox -->
-
-                                <!-- Start Change Password button -->
-                                <div class="col-12 text-end mt-3">
-                                    <button type="submit" class="btn btn-color fw-bold text-light">
-                                        Change Password</button>
-                                </div>
-                                <!-- End Change Password button -->
-                            </div>
-                        </form>
-                        <!-- End Change Password Form -->
-                    </div>
-                    <!-- End Change Password Container -->
-                </div>
-                <!-- End Right side Container -->
-            </article>
-            <!-- End Right side Article {Edit Profile, Change Password} -->
-        </section>
-        <!-- End Content Section {My Profile, Admins, Edit Profile, Change Password} -->
-
         <!-- Start Right side Section {Edit Profile, Change Password} -->
-        <article id="createNewAdmin_id" class="col-lg-7 shadow p-3 ms-lg-3 mt-3 rounded-3 bg-white d-none">
+        <article id="createNewAdmin_id" class="col-lg-7 shadow p-3 ms-lg-3 mt-3 rounded-3 bg-white">
             <!-- Start Right side Section -->
             <div class="p-3">
                 <!-- Start Edit Profile Section -->
                 <div class="row p-md-3 p-lg-3 pt-3">
                     <h2>Add New Admin</h2>
                     <!-- Start Edit Profile Form -->
-                    <form class="g-3 border border-3 rounded-3 p-4 needs-validation" novalidate>
+                    <form id="adminRegitForm" class="g-3 border border-3 rounded-3 p-4 needs-validation" novalidate>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="fullNewAdminNameInput_id" class="form-label">Full Name</label>
@@ -516,7 +305,7 @@
                             <div class="col-md-6 mb-3">
                                 <label for="emailNewAdminInput_id" class="form-label">Email</label>
                                 <input type="email" id="emailNewAdminInput_id" class="form-control"
-                                    placeholder="Please, Enter a Valid Email" required>
+                                    placeholder="Please, Enter a Valid Email (ex; email@a)" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
@@ -591,6 +380,7 @@
                                 </div>
                             </div>
                             <!-- End Repeat New Password Input and Show Password CheckBox -->
+
                             <div class=" d-flex flex-column gap-4 mt-4">
                                 <button type="submit" class="btn btn-color fw-bold text-light">Create New Admin</button>
                                 <button id="CancelBtn_id" type="button"
@@ -606,12 +396,7 @@
             <!-- End Right side Container -->
         </article>
         <!-- End Right side Article {Edit Profile, Change Password} -->
-
     </main>
-
-
-    <!-- Bootstrap JS -->
-    <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 
     <script type="module" src="./JS/navBar_sideBarFun.js"></script>
     <script type="module" src="./JS/admins.js"></script>
