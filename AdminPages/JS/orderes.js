@@ -434,7 +434,7 @@ function approveAndCancelBtnAction(state , btn){
 
 // function to update the product status (approve / cancel)
 function updateOrderStatus(userId , catId , prodID , status){
-    debugger;
+    // debugger;
     // finding the user with his id
     let myUser =  usersTemp.find( user => user.id == userId );
     // then finding the product in his shopping cart

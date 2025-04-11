@@ -50,7 +50,7 @@ function controlCrusoal (){
     controlNextBtn.addEventListener('click' , ()=>{getNextImage();})
 
     function getPrevImage(){
-        debugger;
+        // debugger;
         if(counter <= 0)
             counter = backgroundImagesUrls.length - 1;
         else
@@ -59,7 +59,7 @@ function controlCrusoal (){
         MyCarousel.style.backgroundImage = `url(${backgroundImagesUrls[counter]})` ;
     }
     function getNextImage(){
-        debugger;
+        // debugger;
         if(counter >= backgroundImagesUrls.length - 1)
             counter = 0;
         else
@@ -251,7 +251,7 @@ async function fillProductsInHtml(){
     //productsContainer.id = `${catName}Products_id`;
 
     for(let category of categoriesTemp){
-        debugger;
+        // debugger;
         productsTemp = []; // removing all elements from temp
         let products = await getDocumentByField("aliProducts" , "cat_id" , category.id);
         // we want to generate random indexes to fitch random products

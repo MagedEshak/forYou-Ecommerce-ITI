@@ -1,5 +1,72 @@
 // import auth functions from auth.js
-import { isUserLoggedIn, getCurrentUserId, getUserProfile,logoutUser } from '../../js/auth.js';
+import { isUserLoggedIn, getCurrentUserId, getUserProfile,logoutUser, getCookie ,deleteCookie } from '../../js/auth.js';
+
+
+
+///////////////////////
+//
+//       Authentication 
+//
+/////////////////////
+
+
+
+document.addEventListener('DOMContentLoaded', async function () {
+   
+    const userId = getCookie("userId");
+    const userName = getCookie("userName");
+    const isAdmin = getCookie("isAdmin");
+    if(isAdmin === "false"){
+        window.location.href = "../../index.html";
+    }
+    if (userId) { // if user is logged in, set isLoggedIn to true
+       var  isLoggedIn = true;
+    } else { // if user is not logged in, set isLoggedIn to false
+        isLoggedIn = false;
+    }
+
+
+    if (!isLoggedIn) {
+        console.log("Not Logged In");
+        window.location.href = "../../CustomersPages/signin.html";
+    } else {
+        console.log("User ID:", userId);
+
+        if (userId) {
+          
+
+            if (userName) {
+                const userNameElement = document.getElementById('user-name');
+                userNameElement.textContent = userName;
+                console.log("Username:", userName);
+            } else {
+                console.log("No user profile found or missing Username.");
+            }
+        } else {
+            console.log("Failed to get user ID.");
+        }
+    }
+});
+
+
+
+/////////////// log out
+document.getElementById("logoutBtn_id").addEventListener("click", async function () {
+    await logoutUser();
+    deleteCookie("userId");
+    deleteCookie("userName");
+    deleteCookie("isAdmin");
+    deleteCookie("userEmail");
+    window.location.href = "../../CustomersPages/signin.html";
+});
+
+
+
+
+
+
+
+
 
 
 
@@ -146,48 +213,4 @@ CancelBtn.addEventListener("click", function () {
      function redirectToDashboard() {
             window.location.href = "admin-home.html";
 }     
-
-
-///////////////////////
-//
-//       Authentication 
-//
-/////////////////////
-
-
-
-document.addEventListener('DOMContentLoaded', async function () {
-    const isLoggedIn = await isUserLoggedIn();
-
-
-    if (!isLoggedIn) {
-        console.log("Not Logged In");
-        window.location.href = "../../CustomersPages/signin.html";
-    } else {
-        const userId = await getCurrentUserId();
-        console.log("User ID:", userId);
-
-        if (userId) {
-            const userProfile = await getUserProfile(userId);
-
-            if (userProfile && userProfile.Username) {
-                const userNameElement = document.getElementById('user-name');
-                userNameElement.textContent = userProfile.Username;
-                console.log("Username:", userProfile.Username);
-            } else {
-                console.log("No user profile found or missing Username.");
-            }
-        } else {
-            console.log("Failed to get user ID.");
-        }
-    }
-});
-
-
-
-/////////////// log out
-document.getElementById("logoutBtn_id").addEventListener("click", async function () {
-    await logoutUser();
-    window.location.href = "../../CustomersPages/signin.html";
-});
 

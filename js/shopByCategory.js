@@ -476,7 +476,7 @@ async function displayCategoriesinNavBar() {
 
 /* just called when the width of screen is small */
 async function displayCategoriesinSideNavBar() {
-    debugger;
+    // debugger;
     categoriesTemp = await getAllDocuments("aliCategories");
     
     let cateLinksContainer = document.getElementById('sideNavCategoriesLinks_id');
