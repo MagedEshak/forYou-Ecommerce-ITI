@@ -250,7 +250,7 @@ async function createProductsInHtml(productsContainer , products , catName) {
         // Counter & Bin div (Initially Hidden) , contains + sign , trash icon , and - sign all as buttons (initially hidden)
         let countAndBinDiv = document.createElement("div");
         countAndBinDiv.id = `${catName}ProdCountAndBinDiv_id_${product.id}`;
-        countAndBinDiv.className = "productCountAndBin w-75 d-flex justify-content-between align-items-center px-3 py-2 d-none";
+        countAndBinDiv.className = "productCountAndBin w-75 d-flex justify-content-center align-items-center px-3 py-2 d-none";
     
         // remove Button that contains trash icon
         let removeBtn = document.createElement("button");
@@ -262,37 +262,37 @@ async function createProductsInHtml(productsContainer , products , catName) {
         // appending the trah icon to remove btn
         removeBtn.appendChild(trashIcon);
     
-        // Decrease Button
-        let decrBtn = document.createElement("button");
-        decrBtn.id = `${catName}ProdDecrCountBtn_id_${product.id}`;
-        decrBtn.className = "minus d-none";
-        // creating minus icon
-        let minusIcon = document.createElement('i');
-        minusIcon.className = "fa fa-minus";
-        // appending the minus icon to decrement btn
-        decrBtn.appendChild(minusIcon);
+        // // Decrease Button
+        // let decrBtn = document.createElement("button");
+        // decrBtn.id = `${catName}ProdDecrCountBtn_id_${product.id}`;
+        // decrBtn.className = "minus d-none";
+        // // creating minus icon
+        // let minusIcon = document.createElement('i');
+        // minusIcon.className = "fa fa-minus";
+        // // appending the minus icon to decrement btn
+        // decrBtn.appendChild(minusIcon);
     
-        // Count Span
-        let countSpan = document.createElement("span");
-        countSpan.id = `${catName}ProdCountSpan_id_${product.id}`;
-        countSpan.className = "col-auto";
-        countSpan.innerText = "0";
+        // // Count Span
+        // let countSpan = document.createElement("span");
+        // countSpan.id = `${catName}ProdCountSpan_id_${product.id}`;
+        // countSpan.className = "col-auto";
+        // countSpan.innerText = "0";
     
-        // Increase Button
-        let incrBtn = document.createElement("button");
-        incrBtn.id = `${catName}ProdIncrCountBtn_id_${product.id}`;
-        incrBtn.className = "plus";
-        // creating plus icon
-        let plusIcon = document.createElement('i');
-        plusIcon.className = "fa fa-plus";
-        // appending the plus icon to decrement btn
-        incrBtn.appendChild(plusIcon);
+        // // Increase Button
+        // let incrBtn = document.createElement("button");
+        // incrBtn.id = `${catName}ProdIncrCountBtn_id_${product.id}`;
+        // incrBtn.className = "plus";
+        // // creating plus icon
+        // let plusIcon = document.createElement('i');
+        // plusIcon.className = "fa fa-plus";
+        // // appending the plus icon to decrement btn
+        // incrBtn.appendChild(plusIcon);
     
         // Append elements to counter div
         countAndBinDiv.appendChild(removeBtn);
-        countAndBinDiv.appendChild(decrBtn);
-        countAndBinDiv.appendChild(countSpan);
-        countAndBinDiv.appendChild(incrBtn);
+        // countAndBinDiv.appendChild(decrBtn);
+        // countAndBinDiv.appendChild(countSpan);
+        // countAndBinDiv.appendChild(incrBtn);
     
         // Append addToCart button & counter div
         cartBtnDiv.appendChild(addToCartBtn);
