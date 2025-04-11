@@ -137,38 +137,35 @@
   </nav>
 
   <!-- ****************************************************************** -->
-
+  
   <!--** Profile Bar for linkes    --->
   <!--** Profile Bar for linkes for mobiel    --->
   <section class="contentProfile_bg p-4">
     <div class="row">
       <div class="col-12 d-sm-block d-md-none  text-center sideAndmain_nav ">
-        <a class="" href="" id="overView_id">Overview</aؤ>
-          <a class="" href="" id="orders_id">My Orders</a>
-          <a class="" href="" id="wishList_id">My WishList</a>
-          <a class="" href="" id="accountSetting_id"> Setting</a>
+        <a class="" href="" id="overView_id">Overview</a>
+         <a class="" href="" id="orders_id">My Orders</a>
+         <a class="" href="" id="wishList_id">My WishList</a>
       </div>
     </div>
     <!--** Profile Content    --->
     <section class="d-flex">
 
-      <!--** Profile left side Bar for linkes    --->
+      <!--** Profile left side Bar for linkes--->
       <aside class="col-md-4 col-lg-2 card shadow d-none d-md-block p-4 position-sticky top-0 saideLft me-1">
         <div class="row fw-bold">
-          <a href="" class="col-12  ps-3 mt-4"> <i class="fa-solid fa-wand-sparkles pe-3"> </i>Overview</a>
-          <a href="" class="col-12  ps-3 mt-4"><i class="fa-solid fa-gift pe-3"></i>My Orders </a>
-          <a href="" class="col-12  ps-3 mt-4"> <i class="fa-solid fa-heart pe-3"></i> My WishList</a>
-          <a href="" class="col-12  ps-3 mt-4"> <i class="fa-solid fa-gears pe-3"></i>Setting</a>
+          <a href="" class="col-12  ps-3 mt-4" id="overSideBar_id"> <i class="fa-solid fa-wand-sparkles pe-3"> </i>Overview</a>
+          <a href="" class="col-12  ps-3 mt-4" id="orderSideBar_id"><i class="fa-solid fa-gift pe-3"></i>My Orders </a>
+          <a href="" class="col-12  ps-3 mt-4" id="WishListSideBar_id"> <i class="fa-solid fa-heart pe-3"></i> My WishList</a>
         </div>
-
       </aside>
 
       <!--** Profile Content Toggel with bars     --->
       <section class="col-md-8 col-lg-10 ps-4 pt-4">
-        <div id="porfielOverview_id" class="row align-items-center justify-content-around">
+        <div id="porfielOverview_id" class="row align-items-center justify-content-around d-block">
           <h3 class="mb-3 col-12" id="welcomeHead_id">Hello, Samuel</h3>
 
-          <div class="d-flex justify-content-between gap-3 mb-3">
+          <div class="row justify-content-between gap-3 mb-3">
 
             <div class="col-md-12 col-lg-6 p-4 pt-4 mt-2 card shadow">
               <section class="row justify-content-between">
@@ -185,7 +182,7 @@
               </section>
             </div>
 
-            <div class="col-6 mt-2 card shadow p-4">
+            <div class="col-md-12 col-lg-5 mt-2 card shadow p-4">
               <div class="w-100">
                 <h4 class="">Address</h4>
                 <div class="mt-3 mb-3">
@@ -213,9 +210,9 @@
 
             </section>
           </div>
-          
-        <!--**My orders   -->
-   <section id="orders_id" class="mb-3">
+        </div>
+ <!--**My orders   -->
+   <section id="ordered_id" class="mb-3 d-none">
      <!--**orders Heading secation  --> 
     <h3 class="mb-3 col-12" id="welcomeHead_id">Orders Deatils</h3>
  <!--**orders table secation  --> 
@@ -254,9 +251,9 @@
        
         </div>
        </div>
-    <!--**orders Shipping deatilsand methods payment and total price    --> 
+    <!--**orders Shipping deatils and methods payment and total price    --> 
 
- <div class=" d-flex justify-content-between gap-3 mb-3 " id="porfielOverview_id">
+ <div class=" row justify-content-between gap-3 mb-3 " id="porfielOverview_id">
      <div class=" col-md-12 col-lg-6 p-3  mt-2  card shadow">
          <section class="row justify-content-between">
           <div class="col-12 border-bottom mb-2">
@@ -275,7 +272,7 @@
           </div>
         </section>
     </div>
-   <div class="col-md-12 col-lg-6 mt-2 card shadow  p-3">
+   <div class="col-md-12 col-lg-5 mt-2 card shadow  p-3">
     <section class="row justify-content-between">
         <div class="col-12 border-bottom mb-2">
             <h4 class="">Payment Method</h4>
@@ -310,108 +307,8 @@
    </div>
 
     </section>
-  
-
-<!--**My orders   -->
-  <section id="orders_id" class="mb-3">
-     <!--**orders Heading secation  --> 
-    <h3 class="mb-3 col-12" id="welcomeHead_id">Orders Deatils</h3>
- <!--**orders table secation  --> 
-    <div class="card border-0 col-lg-12 col-md-12 mt-2 p-3">
-      <table id="orderTable_id">
-        <thead class="border-bottom-2 ">
-          <tr class="opacity-75 border-bottom-1">
-            <td>Order No</td>
-            <td>Order Date</td>
-            <td>Total</td>
-            <td>Status</td>
-          </tr>
-        </thead>
-        
-      </table>
-    </div>
-    <!--**orders Progres Bar  --> 
-       <div class="col-lg-12 col-md-12 mt-2 p-3">
-        <div class="row justify-content-around">
-          <svg class="col opacity-25">
-          <circle class="circle" cx="20" cy="20" r="10" stroke="black" fill=" #006766"></circle>
-          <line class="line" x1="30" y1="20" x2="350" y2="20" stroke="black"></line>
-          <text x="40" y="40" text-anchor="middle" dy=".3em" font-size="19">Preparing</text>
-        </svg>
-        <svg class="col opacity-25">
-          <circle class="circle" cx="20" cy="20" r="10" stroke="black" fill="  #006766"></circle>
-          <line class="line" x1="0" y1="20" x2="10" y2="20" stroke="black"></line>
-          <line class="line" x1="30" y1="20" x2="350" y2="20" stroke="black"></line>
-          <text x="40" y="40" text-anchor="middle" dy=".3em" font-size="19">Shipped</text>
-        </svg>
-         <svg class="col opacity-25">
-          <circle class="circle" cx="20" cy="20" r="10" stroke="black" fill="  #006766"></circle>
-          <line class="line" x1="0" y1="20" x2="10" y2="20" stroke=" #006766"></line>
-          <text x="40" y="40" text-anchor="middle" dy=".3em" font-size="19">Delivered</text>
-        </svg>
-       
-        </div>
-       </div>
-    <!--**orders Shipping deatilsand methods payment and total price    --> 
-
- <div class="d-flex justify-content-between gap-3" id="porfielOverview_id">
-     <div class=" col-md-12 col-lg-6 p-3  mt-2  card shadow">
-         <section class="row justify-content-between">
-          <div class="col-12 border-bottom mb-2">
-            <h4 class="">Shipping deatils</h4>
-             <p>address</p>
-             <p>User Name</p>
-             <p>User Phone Number</p>
-          </div>
-          <div class="col-12 mb-2">
-            <h4 class="">Shipping Methods</h4>
-             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-               Impedit optio in deleniti
-               maxime amet, quia ipsum cupiditate praesentium quidem 
-              magni dicta alias! Repellendus, vel. Pariatur corrupti hic quasi. Mollitia, nostrum.</p>
-            
-          </div>
-        </section>
-    </div>
-   <div class="col-md-12 col-lg-6 mt-2 card shadow  p-3">
-    <section class="row justify-content-between">
-        <div class="col-12 border-bottom mb-2">
-            <h4 class="">Payment Method</h4>
-             <p>Payment Method</p>
-             <p>Suptotal</p>
-             <p>Shipping fise</p>
-          </div>
-          <div class="col-12 mb-2">
-            <h4 class="">Total</h4>
-             <p>tax fees included </p>
-            
-          </div>    
-    </section>
-   </div>
- </div>
- <!--**You ordered   -->
- <div class="col-lg-12 col-md-12  card shadow  mt-2 p-3">
-    
-      <h4 class="col-8">You Ordered</h4> 
-      <section class="row ">
-         <div class="col-lg-3 col-md-12 mb-3">
-          <img src="./Home_Page/images/Category_images/TV.png " alt="" id="imageOrder_id " class="w-100">
-         </div >
-         <div class="col-lg-5 col-md-12 align-self-center">
-             <h4>product</h4>
-             <p>details</p>
-             <p>Quantity:1</p>
-         </div>
-        
-         
-        </section>
-   </div>
-
-    </section>
-
-
-          <!--**wish list orders   -->
-          <div class="mt-2 card shadow p-4 mb-3">
+<!--**wish list orders   -->
+          <div id="WishListContant_id" class="mt-2 card shadow p-4 mb-3 d-none">
             <h4 class="mb-5 fs-3">My WishList</h4>
 
             <section id="wishlist" class="">
@@ -495,10 +392,6 @@
             </section>
 
           </div>
-
-        </div>
-
-
       </section>
 
     </section>
@@ -549,6 +442,7 @@
 
   <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
   <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+  <script src="../js/profile.js"></script>
 </body>
 
 </html>
