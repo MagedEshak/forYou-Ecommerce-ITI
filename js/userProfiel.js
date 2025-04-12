@@ -4,7 +4,11 @@ let userName = document.getElementById("userName_id");
 let userEmail = document.getElementById("userEmail_id");
 let userAddres = document.getElementById("userAddres_id");
 let lastOrder = document.getElementById("lastOrder_id");
+let allOrdersContainer = document.getElementById("allOrders_id");
 let welcomeHead = document.getElementById("welcomeHead_id");
+let orderaddres = document.getElementById("orderaddres_id");
+let orderUserName = document.getElementById("orderUserName_id");
+let orderPhone = document.getElementById("orderPhone_id");
 window.onload = () => {
   getCurrentUserId().then((uId) => {
     getUserProfile(uId).then((userData) => {
@@ -13,22 +17,29 @@ window.onload = () => {
       userEmail.innerHTML = userData.email;
       userAddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
       for (let index in userData.shoppingCart) {
-        if (!userData.shoppingCart[index].isPending) {
-          let lastOrderProduct = getDocById(
-            "products",
-            userData.shoppingCart[index].product_id
-          );
-          lastOrderProduct.then((product) => {
-            let Quantity = userData.shoppingCart[index].quantaty;
-            creatLastOrder(product, Quantity);
-          });
-        }
+        let order = userData.shoppingCart[index];
+        let productPromise = getDocById("products", order.product_id);
+
+        productPromise.then((product) => {
+          let Quantity = order.quantaty;
+          let Status = order.isPending;
+
+          creatLastOrder(product, Quantity, Status, allOrdersContainer);
+
+          if (Status === 0) {
+            creatLastOrder(product, Quantity, Status, lastOrder);
+          }
+        });
       }
+      orderaddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
+      orderUserName.innerHTML = userData.Username;
+      orderPhone.innerHTML = userData.phone;
+      updateDeliveredTotalDisplay(userData.shoppingCart);
     });
   });
 };
 
-function creatLastOrder(product, quantaty) {
+function creatLastOrder(product, quantaty, status = "", containerElement) {
   let trProduct = document.createElement("tr");
 
   let productImageTd = document.createElement("td");
@@ -42,23 +53,63 @@ function creatLastOrder(product, quantaty) {
   let productPrice = document.createElement("td");
   let productQuantity = document.createElement("td");
   let producttotal = document.createElement("td");
+  let productStutas = document.createElement("td");
 
   productName.innerHTML = product.name;
   productPrice.innerHTML = product.price;
   productQuantity.innerHTML = quantaty;
   producttotal.innerHTML = quantaty * product.price;
   trProduct.classList.add("row");
-  productImageTd.classList.add("col-3");
+  productImageTd.classList.add("col-2");
   productName.classList.add("col-2");
   productPrice.classList.add("col-2");
   productQuantity.classList.add("col-2");
-  producttotal.classList.add("col-3");
+  producttotal.classList.add("col-2");
 
   trProduct.appendChild(productImageTd);
   trProduct.appendChild(productName);
   trProduct.appendChild(productPrice);
   trProduct.appendChild(productQuantity);
   trProduct.appendChild(producttotal);
+  if (status !== "") {
+    if (status == 1) {
+      productStutas.innerHTML = `Delivered`;
+      productStutas.classList.add("text-success");
+    } else if (status == 2) {
+      productStutas.innerHTML = `Declined`;
+      productStutas.classList.add("text-danger");
+    } else {
+      productStutas.innerHTML = `Pending`;
+      productStutas.classList.add("text-info");
+    }
+    productStutas.classList.add("col-2");
+    trProduct.appendChild(productStutas);
+  }
 
-  lastOrder.appendChild(trProduct);
+  containerElement.appendChild(trProduct);
+}
+
+function calculateDeliveredTotal(shoppingCart) {
+  let total = 0;
+  let promises = shoppingCart.map((order) => {
+    if (order.isPending == 1) {
+      return getDocById("products", order.product_id).then((product) => {
+        total += Number(product.price) * Number(order.quantaty);
+      });
+    }
+  });
+
+  return Promise.all(promises).then(() => total);
+}
+
+function updateDeliveredTotalDisplay(shoppingCart) {
+  calculateDeliveredTotal(shoppingCart).then((total) => {
+    let totalElement = document.getElementById("deliveredTotal_id");
+    console.log("Total delivered:", total);
+    if (total === 0) {
+      totalElement.innerText = "No delivered products yet.";
+    } else {
+      totalElement.innerText = `Total Delivered Price: ${total} EGP`;
+    }
+  });
 }

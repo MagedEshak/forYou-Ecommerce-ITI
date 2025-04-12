@@ -205,11 +205,12 @@
                <table class="row table  ">
                  <thead  class="col-12">
                      <tr class="row">   
-                      <th class="col-3">Image</th>           
+                      <th class="col-2">Image</th>           
                       <th class="col-2">Name</th>
                       <th class="col-2">Price</th>
                       <th class="col-2">Quantity</th>
-                      <th class="col-3">total</th>
+                      <th class="col-2">total</th>
+                      <th class="col-2">stutas</th>
                      </tr>
                 </thead>
                   <tbody id="lastOrder_id" >
@@ -242,7 +243,7 @@
                       <th class="col-2">stutas</th>
                      </tr>
                 </thead>
-                  <tbody id="lastOrders_id" >
+                  <tbody id="allOrders_id" >
                                 <!-- Products will be inserted here dynamically -->
                    </tbody>
                </table>   
@@ -255,32 +256,17 @@
          <section class="row justify-content-between">
           <div class="col-12 border-bottom mb-2">
             <h4 class="">Shipping deatils</h4>
-             <p>address</p>
-             <p>User Name</p>
-             <p>User Phone Number</p>
+             <h6 id="orderaddres_id">address</h6>
+             <h6 id="orderUserName_id">User Name</h6>
+             <h6 id="orderPhone_id">User Phone Number</h6>
           </div>
-          <div class="col-12 mb-2">
-            <h4 class="">Shipping Methods</h4>
-             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-               Impedit optio in deleniti
-               maxime amet, quia ipsum cupiditate praesentium quidem 
-              magni dicta alias! Repellendus, vel. Pariatur corrupti hic quasi. Mollitia, nostrum.</p>
-            
-          </div>
+          
         </section>
     </div>
    <div class="col-md-12 col-lg-5 mt-2 card shadow  p-3">
     <section class="row justify-content-between">
-        <div class="col-12 border-bottom mb-2">
-            <h4 class="">Payment Method</h4>
-             <p>Payment Method</p>
-             <p>Suptotal</p>
-             <p>Shipping fise</p>
-          </div>
           <div class="col-12 mb-2">
-            <h4 class="">Total</h4>
-             <p>tax fees included </p>
-            
+            <h4 class="" id="deliveredTotal_id">Total</h4>
           </div>    
     </section>
    </div>
