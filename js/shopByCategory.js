@@ -15,7 +15,7 @@ let myUser = await getDocById("User" , userId);
 let myCookie = getCookie(`cart`);
 let myCart = [];
 
-// in case there is no cookie with ket = 'cart'
+// in case there is no cookie with key = 'cart'
 if(!myCookie){
     if(myUser){
         let userShoppingCart = myUser.shoppingCart;
@@ -34,10 +34,29 @@ if(!myCookie){
         setCookie(`cart`,JSON.stringify(myCart),100);
     }
 }
-
-
 /******************************************************************************************************** */
+// code to handel wishlist
+let wishListLocalStorage = localStorage.getItem('wishlist');
+let myWishList = []
+if(!wishListLocalStorage){
+    if(myUser){
+        let userWishList = myUser.wishlist;
 
+        for(let item of userWishList){
+            let prod = await getDocById("Products" , item.product_id);
+    
+            let myProdJson = {
+                prod_id : prod.id,
+                prod_details : prod
+            }
+            
+            myWishList.push(myProdJson); 
+        }
+    
+        localStorage.setItem(`wishlist`,JSON.stringify(myWishList));
+    }
+}
+/******************************************************************************************************** */
 /* function to add products dynamically : */
 // we supposed to loop on specific category to display its products : 
 // get all sent parameters
@@ -109,6 +128,34 @@ async function createProductsInHtml() {
         let addToWishListBtn = document.createElement('button');// add to wish list button , this contains heart icon
         addToWishListBtn.className = " addToWishListBtn_class col-2";
         addToWishListBtn.id = `${catName}ProdAddToWishListBtn_id_${product.id}`;
+
+        addToWishListBtn.onclick = ()=>{
+            if(myUser){
+                // put prod id and details in JSON
+                let myProdJson = {
+                    prod_id : product.id,
+                    prod_details : product
+                }
+
+                myWishList = JSON.parse(localStorage.getItem('wishlist'));
+                myWishList.push(myProdJson);
+                localStorage.setItem(`wishlist`,JSON.stringify(myWishList));
+
+                let userWishListJson = {
+                    cat_id : product.cat_id,
+                    product_id : product.id,
+                }
+                myUser.wishlist.push(userWishListJson);
+                updateDocById("User" , myUser.id, myUser);
+
+                alert('added to wishlist');
+                heartIcon.style.webkitTextStroke = '1px red'
+                heartIcon.style.color = 'red';
+            }
+            else{
+                window.location.href = "../CustomersPages/signin.html";
+            }
+        }
     
         let heartIcon = document.createElement("i");
         heartIcon.className = "fa fa-heart";
