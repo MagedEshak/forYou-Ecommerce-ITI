@@ -1,5 +1,5 @@
    // Import authentication functions from auth.js
-import { loginUser, isUserLoggedIn, getUserProfile, getCurrentUserId,setCookie,getCookie } from "./auth.js";
+import { loginUser, isUserLoggedIn, getUserProfile, getCurrentUserId,setCookie,getCookie,deleteCookie } from "./auth.js";
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -17,39 +17,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-// Function to check if user is already logged in
+// Function to check if user is already logged in using cookies
 async function checkAuthState() {
-    try {
-        // Check if user is already logged in
-        console.log('Checking authentication state...');
-        
-        const isLoggedIn = await isUserLoggedIn();
-        if (isLoggedIn) {
-            // Get the current user ID first
-            const userId = await getCurrentUserId();
-            if (userId) {
-                // Now get the user profile with the user ID
-                const userProfile = await getUserProfile(userId);
-                // Check if user is admin (could be in different properties)
-                const isAdmin = userProfile && (userProfile.isAdmin || userProfile.role === 'admin');
-
-                // if user is admin redirect to admin page
-                if (isAdmin) {
-                    window.location.href = '../AdminPages/admin-home.html';
-                }
-                // if user is customer redirect to home page
-                else {
-                    window.location.href = '../index.html';
-                }
-            } else {
-                // If no user ID, just redirect to home page
-                window.location.href = '../index.html';
-            }
-        }
-    } catch (error) {
-        console.error('Error checking authentication state:', error);
+    const userId = getCookie("userId");
+    if (userId) {
+       userRole=getCookie("isAdmin");
+       if(userRole === "true"){
+        window.location.href = '../AdminPages/admin-home.html';
+       }
+       else{
+        window.location.href = '../index.html';
+       }
     }
+    
 }
+
 
 // Function to handle sign in form submission
 async function handleSignIn(event) {
@@ -86,19 +68,19 @@ async function handleSignIn(event) {
         const userId = await loginUser(emailInput.value, passwordInput.value);
 
         // If successful, redirect to home page or profile page
-        if (userId) {
+        const userProfile = await getUserProfile(userId);
+        if (userId&&userProfile) {
             try {
-                const userProfile = await getUserProfile(userId);
 
                 // Check if user is admin (could be in different properties)
-                const isAdmin = userProfile && (userProfile.isAdmin || userProfile.role === 'admin');
+                const isAdmin = userProfile.isAdmin;
 
                 // create cookie
 
                 setCookie("userId", userId, 30);
                 setCookie("userName", userProfile.Username, 30);
                 setCookie("userEmail", emailInput.value, 30);
-                setCookie("isAdmin", isAdmin?"true":"false", 30);
+                setCookie("isAdmin", userProfile.isAdmin, 30);
 
                 setCookie("userPhone", userProfile.phone, 30);
                 setCookie("userAddress", userProfile.address, 30);
@@ -133,6 +115,7 @@ async function handleSignIn(event) {
             submitButton.disabled = false;
         }
     }
+    
 }
 
 
