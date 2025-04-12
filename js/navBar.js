@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
             deleteCookie("userEmail");
             deleteCookie("userPhone");
             deleteCookie("userAddress");
-            window.location.href = "./CustomersPages/signin.html";
+            //window.location.href = "./CustomersPages/signin.html";
         });
 
         if (userNameElement) {
