@@ -26,11 +26,15 @@ window.onload = () => {
 
           creatLastOrder(product, Quantity, Status, allOrdersContainer);
 
+          if (Status === 1) {
+            ShowOrderdDelivered(product, Quantity);
+          }
           if (Status === 0) {
             creatLastOrder(product, Quantity, Status, lastOrder);
           }
         });
       }
+
       orderaddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
       orderUserName.innerHTML = userData.Username;
       orderPhone.innerHTML = userData.phone;
@@ -94,7 +98,11 @@ function calculateDeliveredTotal(shoppingCart) {
   let promises = shoppingCart.map((order) => {
     if (order.isPending == 1) {
       return getDocById("products", order.product_id).then((product) => {
-        total += Number(product.price) * Number(order.quantaty);
+        if (product && product.price != null) {
+          total += Number(product.price) * Number(order.quantaty);
+        } else {
+          console.warn("Product not found or missing price:", order.product_id);
+        }
       });
     }
   });
@@ -112,4 +120,38 @@ function updateDeliveredTotalDisplay(shoppingCart) {
       totalElement.innerText = `Total Delivered Price: ${total} EGP`;
     }
   });
+}
+
+function ShowOrderdDelivered(product, quantaty) {
+  let section = document.getElementById("yourOrdered_id");
+
+  let colImg = document.createElement("div");
+  colImg.classList.add("col-lg-3", "col-md-12", "mb-3");
+
+  let image = document.createElement("img");
+  image.src = product.imageUrl;
+  image.alt = product.name;
+  image.classList.add("w-50");
+  image.id = "imageOrder_id";
+
+  colImg.appendChild(image);
+
+  let colDetails = document.createElement("div");
+  colDetails.classList.add("col-lg-3", "col-md-12", "align-self-center");
+
+  let title = document.createElement("h4");
+  title.textContent = product.name;
+
+  let description = document.createElement("p");
+  description.textContent = product.description;
+
+  let quantityText = document.createElement("p");
+  quantityText.textContent = `Quantity: ${quantaty}`;
+
+  colDetails.appendChild(title);
+  colDetails.appendChild(description);
+  colDetails.appendChild(quantityText);
+
+  section.appendChild(colImg);
+  section.appendChild(colDetails);
 }
