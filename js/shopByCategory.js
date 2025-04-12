@@ -1,6 +1,6 @@
 import {getDocById ,getDocumentByField,updateDocById} from "../../js/main.js";
 import { getCookie, setCookie } from "./auth.js";
-import {isProductExistInCart} from "./cart.js";
+import {initializeCart, initWishlist} from "./cart.js";
 
 
 
@@ -10,53 +10,17 @@ let catName = undefined;
 /*************************************** */
 // code to handel cart buttons and cookies
 const userId = getCookie("userId");
-let myUser = await getDocById("User" , userId);
+let {myUser , myCart} = await initializeCart();
 
-let myCookie = getCookie(`cart`);
-let myCart = [];
-
-// in case there is no cookie with key = 'cart'
-if(!myCookie){
-    if(myUser){
-        let userShoppingCart = myUser.shoppingCart;
-
-        for(let item of userShoppingCart){
-            let prod = await getDocById("Products" , item.product_id);
-    
-            let myProdJson = {
-                prod_id : prod.id,
-                prod_details : prod
-            }
-            
-            myCart.push(myProdJson); 
-        }
-    
-        setCookie(`cart`,JSON.stringify(myCart),100);
-    }
-}
+/******************************************************************************************************** */
 /******************************************************************************************************** */
 // code to handel wishlist
-let wishListLocalStorage = localStorage.getItem('wishlist');
-let myWishList = []
-if(!wishListLocalStorage){
-    if(myUser){
-        let userWishList = myUser.wishlist;
-
-        for(let item of userWishList){
-            let prod = await getDocById("Products" , item.product_id);
-    
-            let myProdJson = {
-                prod_id : prod.id,
-                prod_details : prod
-            }
-            
-            myWishList.push(myProdJson); 
-        }
-    
-        localStorage.setItem(`wishlist`,JSON.stringify(myWishList));
-    }
-}
+let myWishList = await initWishlist();
 /******************************************************************************************************** */
+
+
+
+
 /* function to add products dynamically : */
 // we supposed to loop on specific category to display its products : 
 // get all sent parameters
@@ -129,28 +93,63 @@ async function createProductsInHtml() {
         addToWishListBtn.className = " addToWishListBtn_class col-2";
         addToWishListBtn.id = `${catName}ProdAddToWishListBtn_id_${product.id}`;
 
+        // check if the product in wishList or not
+        if(myUser){
+            for(let item of myUser.wishlist){
+                if(item.product_id == product.id)
+                {
+                    heartIcon.style.webkitTextStroke = '1px red'
+                    heartIcon.style.color = 'red';
+                    break;
+                }
+            }
+        }
+
         addToWishListBtn.onclick = ()=>{
             if(myUser){
-                // put prod id and details in JSON
-                let myProdJson = {
-                    prod_id : product.id,
-                    prod_details : product
-                }
-
+                debugger;
                 myWishList = JSON.parse(localStorage.getItem('wishlist'));
-                myWishList.push(myProdJson);
-                localStorage.setItem(`wishlist`,JSON.stringify(myWishList));
 
-                let userWishListJson = {
-                    cat_id : product.cat_id,
-                    product_id : product.id,
+                if(heartIcon.style.color != 'red'){
+                    // put prod id and details in JSON
+                    let myProdJson = {
+                        prod_id : product.id,
+                        prod_details : product
+                    }
+
+                    myWishList.push(myProdJson);
+                    localStorage.setItem(`wishlist`,JSON.stringify(myWishList));
+
+                    let userWishListJson = {
+                        cat_id : product.cat_id,
+                        product_id : product.id,
+                    }
+                    myUser.wishlist.push(userWishListJson);
+                    updateDocById("User" , myUser.id, myUser);
+
+                    alert('added to wishlist');
+                    // heartIcon.style.webkitTextStroke = '1px black'
+                    heartIcon.style.color = 'red';
                 }
-                myUser.wishlist.push(userWishListJson);
-                updateDocById("User" , myUser.id, myUser);
+                else{
 
-                alert('added to wishlist');
-                heartIcon.style.webkitTextStroke = '1px red'
-                heartIcon.style.color = 'red';
+                    for(let index = 0 ;  index < myWishList.length ; index++){
+                        if(myWishList[index].prod_id == product.id)
+                        {
+                            myWishList.splice(index,1);
+                            break;
+                        }
+                    }
+                    myUser.wishlist = myWishList;
+                    localStorage.setItem(`wishlist`,JSON.stringify(myWishList));
+
+                    // heartIcon.style.webkitTextStroke = '1px black'
+                    heartIcon.style.color = 'white';
+
+                    updateDocById('User', userId , myUser);
+
+                }
+                
             }
             else{
                 window.location.href = "../CustomersPages/signin.html";
