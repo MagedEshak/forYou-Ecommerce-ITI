@@ -1,5 +1,6 @@
 import {getAllDocuments, getDocumentByField, getDocById , updateDocById} from "../../js/main.js";
-import { getCookie, deleteCookie, setCookie } from "./auth.js";
+import { getCookie, setCookie } from "./auth.js";
+import {isProductExistInCart} from "./cart.js";
 
 
 let categoriesTemp = await getAllDocuments("Categories");
