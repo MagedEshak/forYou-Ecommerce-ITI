@@ -1,6 +1,6 @@
 import {getAllDocuments, getDocumentByField, getDocById , updateDocById} from "../../js/main.js";
 import { getCookie, setCookie } from "./auth.js";
-import {initializeCart} from "./cart.js";
+import {initializeCart} from "./cartAndWishList.js";
 
 
 let categoriesTemp = await getAllDocuments("Categories");

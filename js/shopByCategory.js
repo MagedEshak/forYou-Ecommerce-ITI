@@ -1,6 +1,6 @@
 import {getDocById ,getDocumentByField,updateDocById} from "../../js/main.js";
 import { getCookie, setCookie } from "./auth.js";
-import {initializeCart, initWishlist} from "./cart.js";
+import {initializeCart, initWishlist} from "./cartAndWishList.js";
 
 
 
