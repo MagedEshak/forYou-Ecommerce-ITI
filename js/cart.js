@@ -9,30 +9,30 @@ let myUser ;
 
 
 
-let myCart = [];
+// let myCart = [];
 
 
-// check if cookie exist ?
-let myCookie = getCookie(`cart`);
+// // check if cookie exist ?
+// let myCookie = getCookie(`cart`);
 
-// in case there is no cookie with ket = 'cart'
-if(!myCookie){
-    myUser = await getDocById("User" , userId);
-    let userShoppingCart = myUser.shoppingCart;
+// // in case there is no cookie with ket = 'cart'
+// if(!myCookie){
+//     myUser = await getDocById("User" , userId);
+//     let userShoppingCart = myUser.shoppingCart;
 
-    for(let item of userShoppingCart){
-        let prod = await getDocById("Products" , item.product_id);
+//     for(let item of userShoppingCart){
+//         let prod = await getDocById("Products" , item.product_id);
 
-        let myProdJson = {
-            prod_id : prod.id,
-            prod_details : prod
-        }
+//         let myProdJson = {
+//             prod_id : prod.id,
+//             prod_details : prod
+//         }
         
-        myCart.push(myProdJson); 
-    }
+//         myCart.push(myProdJson); 
+//     }
 
-    setCookie(`cart`,JSON.stringify(myCart),100);
-}
+//     setCookie(`cart`,JSON.stringify(myCart),100);
+// }
 
 
 

@@ -17,20 +17,22 @@ let myCart = [];
 
 // in case there is no cookie with ket = 'cart'
 if(!myCookie){
-    let userShoppingCart = myUser.shoppingCart;
+    if(myUser){
+        let userShoppingCart = myUser.shoppingCart;
 
-    for(let item of userShoppingCart){
-        let prod = await getDocById("Products" , item.product_id);
-
-        let myProdJson = {
-            prod_id : prod.id,
-            prod_details : prod
+        for(let item of userShoppingCart){
+            let prod = await getDocById("Products" , item.product_id);
+    
+            let myProdJson = {
+                prod_id : prod.id,
+                prod_details : prod
+            }
+            
+            myCart.push(myProdJson); 
         }
-        
-        myCart.push(myProdJson); 
+    
+        setCookie(`cart`,JSON.stringify(myCart),100);
     }
-
-    setCookie(`cart`,JSON.stringify(myCart),100);
 }
 
 
