@@ -15,9 +15,10 @@ let myCart = [];
 let usrCart = JSON.parse(getCookie(`cart`));
 
 if(usrCart){
+    var price = 0
     for(var product of usrCart){
         var pDetail = product.prod_details
-        
+        price += pDetail.price
         // Create the main container div
         const productContainer = document.createElement("div");
         productContainer.className = "col-md-9 align-content-center text-center";
@@ -97,6 +98,7 @@ if(usrCart){
         document.getElementById("products").appendChild(productContainer);
         document.getElementById("products").appendChild(iconsContainer);
     }
+    document.getElementById("price_text").innerText = price
 }
 console.log(usrCart)
 
