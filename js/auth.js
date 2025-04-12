@@ -101,8 +101,6 @@ export async function getCurrentUserId() {
     });
 }
 
-
-
 // create a user profile in Firestore
 export async function createUserProfile(uid, userData) {
     try {
