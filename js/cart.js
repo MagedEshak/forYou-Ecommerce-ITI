@@ -12,89 +12,94 @@ let myCart = [];
 
 
 // check if cookie exist ?
-let myCookie = getCookie(`cart`);
+let usrCart = JSON.parse(getCookie(`cart`));
 
-// in case there is no cookie with ket = 'cart'
-if(!myCookie){
-    let myUser = await getDocById("User" , userId);
-    let userShoppingCart = myUser.shoppingCart;
-
-//     for(let item of userShoppingCart){
-//         let prod = await getDocById("Products" , item.product_id);
-
-//         let myProdJson = {
-//             prod_id : prod.id,
-//             prod_details : prod
-//         }
+if(usrCart){
+    for(var product of usrCart){
+        var pDetail = product.prod_details
         
-//         myCart.push(myProdJson); 
-//     }
+        // Create the main container div
+        const productContainer = document.createElement("div");
+        productContainer.className = "col-md-9 align-content-center text-center";
 
-//     setCookie(`cart`,JSON.stringify(myCart),100);
-}
+        // Create the flex container
+        const flexDiv = document.createElement("div");
+        flexDiv.className = "d-flex";
 
+        // Create the image element
+        const productImage = document.createElement("img");
+        productImage.className = "figure-img";
+        productImage.style.width = "124px";
+        productImage.src = pDetail.img;
 
+        // Create the text container
+        const textContainer = document.createElement("div");
+        textContainer.className = "container d-flex flex-column";
+        textContainer.style.wordBreak = "break-all";
 
+        // Create the product name span
+        const productName = document.createElement("span");
+        productName.className = "text-start mt-3";
+        productName.innerHTML = `${pDetail.name} <br> ${pDetail.disc}`
+        
 
-/* this code handels our add to cart btn */
-/* when the button clicked , it must display none ,
-and the productCountAndBin must appear */
+        // Create the input field
+        const quantityInput = document.createElement("input");
+        quantityInput.type = "number";
+        quantityInput.name = "nOfItem";
+        quantityInput.value = "1";
+        quantityInput.className = "text-center ms-3 mt-2";
+        quantityInput.style.height = "30px";
+        quantityInput.style.width = "10%";
 
-async function addEventsToAllCartBtns(){
-    /* handel all add to cart btn */
-    let addToCartBtns = document.getElementsByClassName('addToCartBtn_class');/* hold all add to cart btns in this variable */
-    debugger;
-    /* handeling when add to cart btn pressed */
-    for(let index = 0 ; index < addToCartBtns.length ; index++){
-        debugger;
-        // get product id
-        let prodId = addToCartBtns[index].id.split("_")[2];
-        // get product details
-        let prod = await getDocById("Products" , prodId);
-        let prodDetails = JSON.stringify(prod);
+        // Append elements to their respective parents
+        textContainer.appendChild(productName);
+        textContainer.appendChild(quantityInput);
+        flexDiv.appendChild(productImage);
+        flexDiv.appendChild(textContainer);
+        productContainer.appendChild(flexDiv);
 
-        addToCartBtns[index].addEventListener('click' , ()=>{
-            debugger;
-            let flag = 1;
+        // Create the icons container
+        const iconsContainer = document.createElement("div");
+        iconsContainer.className = "col-md-3";
+        iconsContainer.style.boxSizing = "border-box";
 
-            // put prod id and details in JSON
-            let myProdJson = {
-                prod_id : prodId,
-                prod_details : prodDetails
-            }
+        // Create action buttons container
+        const actionsDiv = document.createElement("div");
+        actionsDiv.className = "d-inline-block mt-4 container text-md-end";
 
-            myCart = JSON.parse(getCookie('cart'));
-            myCart.push(myProdJson);
-            setCookie(`cart`,JSON.stringify(myCart),100);
+        // Create the favorite and trash icons
+        const heartIcon = document.createElement("a");
+        heartIcon.href = "#";
+        heartIcon.className ="me-3"
+        heartIcon.innerHTML = '<i class="fa fa-heart" style="color: green; font-size: 20px;"></i>';
 
-            for(let item of myUser.shoppingCart){
-                if(item.product_id == prodId){
-                    flag = 0;
-                    break;
-                }
-            }
-            debugger;
-            if(flag){
-                let userCartJson = {
-                    cat_id : prod.cat_id,
-                    isPending : 0,
-                    product_id : prodId,
-                    quantaty : 1,
-                }
-                myUser.shoppingCart.push(userCartJson);
-            }
+        const trashIcon = document.createElement("a");
+        trashIcon.className ="me-2"
+        trashIcon.href = "#";
 
-            addToCartBtns[index].innerHTML = "Added";
-        })
+        trashIcon.innerHTML = '<i class="fa fa-trash" style="color: red; font-size: 20px;"></i>';
+
+        // Append icons
+        actionsDiv.appendChild(heartIcon);
+        actionsDiv.appendChild(trashIcon);
+
+        // Create the price container
+        const priceDiv = document.createElement("div");
+        priceDiv.className = "container text-end fs-2";
+        priceDiv.innerHTML = pDetail.price;
+
+        // Append all elements
+        iconsContainer.appendChild(actionsDiv);
+        iconsContainer.appendChild(priceDiv);
+
+        // Append to the body or your specific container
+        document.getElementById("products").appendChild(productContainer);
+        document.getElementById("products").appendChild(iconsContainer);
     }
-
 }
+console.log(usrCart)
 
 
-export function isProductExistInCart(productId , shoppingCart){
-    for(let product of shoppingCart){
-        if(product.product_id == productId)
-            return true;
-    }
-    return false;
-}
+
+
