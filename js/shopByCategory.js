@@ -1,13 +1,61 @@
-import {getDocById ,getDocumentByField,getAllDocuments} from "../../js/main.js";
-import {addEventsToAllCartBtns} from "../js/cart.js"
+import {getDocById ,getDocumentByField,updateDocById} from "../../js/main.js";
+import { getCookie, setCookie } from "./auth.js";
+
+
 
 let productsTemp = [];
 let catName = undefined;
-/* this code handels the side nav bar  */
 
+/*************************************** */
+// code to handel cart buttons and cookies
+const userId = getCookie("userId");
+let myUser = await getDocById("User" , userId);
 
+let myCookie = getCookie(`cart`);
+let myCart = [];
+
+// in case there is no cookie with key = 'cart'
+if(!myCookie){
+    if(myUser){
+        let userShoppingCart = myUser.shoppingCart;
+
+        for(let item of userShoppingCart){
+            let prod = await getDocById("Products" , item.product_id);
+    
+            let myProdJson = {
+                prod_id : prod.id,
+                prod_details : prod
+            }
+            
+            myCart.push(myProdJson); 
+        }
+    
+        setCookie(`cart`,JSON.stringify(myCart),100);
+    }
+}
 /******************************************************************************************************** */
+// code to handel wishlist
+let wishListLocalStorage = localStorage.getItem('wishlist');
+let myWishList = []
+if(!wishListLocalStorage){
+    if(myUser){
+        let userWishList = myUser.wishlist;
 
+        for(let item of userWishList){
+            let prod = await getDocById("Products" , item.product_id);
+    
+            let myProdJson = {
+                prod_id : prod.id,
+                prod_details : prod
+            }
+            
+            myWishList.push(myProdJson); 
+        }
+    
+        localStorage.setItem(`wishlist`,JSON.stringify(myWishList));
+    }
+}
+/******************************************************************************************************** */
 /* function to add products dynamically : */
 // we supposed to loop on specific category to display its products : 
 // get all sent parameters
@@ -79,6 +127,34 @@ async function createProductsInHtml() {
         let addToWishListBtn = document.createElement('button');// add to wish list button , this contains heart icon
         addToWishListBtn.className = " addToWishListBtn_class col-2";
         addToWishListBtn.id = `${catName}ProdAddToWishListBtn_id_${product.id}`;
+
+        addToWishListBtn.onclick = ()=>{
+            if(myUser){
+                // put prod id and details in JSON
+                let myProdJson = {
+                    prod_id : product.id,
+                    prod_details : product
+                }
+
+                myWishList = JSON.parse(localStorage.getItem('wishlist'));
+                myWishList.push(myProdJson);
+                localStorage.setItem(`wishlist`,JSON.stringify(myWishList));
+
+                let userWishListJson = {
+                    cat_id : product.cat_id,
+                    product_id : product.id,
+                }
+                myUser.wishlist.push(userWishListJson);
+                updateDocById("User" , myUser.id, myUser);
+
+                alert('added to wishlist');
+                heartIcon.style.webkitTextStroke = '1px red'
+                heartIcon.style.color = 'red';
+            }
+            else{
+                window.location.href = "../CustomersPages/signin.html";
+            }
+        }
     
         let heartIcon = document.createElement("i");
         heartIcon.className = "fa fa-heart";
@@ -160,21 +236,49 @@ async function createProductsInHtml() {
         addToCartBtn.id = `${catName}ProdAddToCartBtn_id_${product.id}`;
         addToCartBtn.className = "w-75 addToCartBtn_class";
         addToCartBtn.innerText = "Add to cart";
+
+        addToCartBtn.onclick = ()=>{
+            if(myUser){
+                // put prod id and details in JSON
+                let myProdJson = {
+                    prod_id : product.id,
+                    prod_details : product
+                }
+
+                myCart = JSON.parse(getCookie('cart'));
+                myCart.push(myProdJson);
+                setCookie(`cart`,JSON.stringify(myCart),100);
+
+                let userCartJson = {
+                    cat_id : product.cat_id,
+                    isPending : 0,
+                    product_id : product.id,
+                    quantaty : 1,
+                }
+                myUser.shoppingCart.push(userCartJson);
+                updateDocById("User" , myUser.id, myUser);
+
+                addToCartBtn.innerHTML = "Added";
+            }
+            else{
+                window.location.href = "../CustomersPages/signin.html";
+            }
+        }
     
         // Counter & Bin div (Initially Hidden) , contains + sign , trash icon , and - sign all as buttons (initially hidden)
         let countAndBinDiv = document.createElement("div");
         countAndBinDiv.id = `${catName}ProdCountAndBinDiv_id_${product.id}`;
         countAndBinDiv.className = "productCountAndBin w-75 d-flex justify-content-center align-items-center px-3 py-2 d-none";
     
-        // remove Button that contains trash icon
-        let removeBtn = document.createElement("button");
-        removeBtn.id = `${catName}ProdRemoveFromCartBtn_id_${product.id}`;
-        removeBtn.className = "bin";
-        // creating trash icon
-        let trashIcon = document.createElement('i');
-        trashIcon.className = "fa fa-trash-o";
-        // appending the trah icon to remove btn
-        removeBtn.appendChild(trashIcon);
+        // // remove Button that contains trash icon
+        // let removeBtn = document.createElement("button");
+        // removeBtn.id = `${catName}ProdRemoveFromCartBtn_id_${product.id}`;
+        // removeBtn.className = "bin";
+        // // creating trash icon
+        // let trashIcon = document.createElement('i');
+        // trashIcon.className = "fa fa-trash-o";
+        // // appending the trah icon to remove btn
+        // removeBtn.appendChild(trashIcon);
     
         // // Decrease Button
         // let decrBtn = document.createElement("button");
@@ -204,7 +308,7 @@ async function createProductsInHtml() {
     
         // Append elements to counter div
 
-        countAndBinDiv.appendChild(removeBtn);
+        // countAndBinDiv.appendChild(removeBtn);
         // countAndBinDiv.appendChild(decrBtn);
         //// countAndBinDiv.appendChild(countSpan);
         //// countAndBinDiv.appendChild(incrBtn);
@@ -379,6 +483,13 @@ function displayAllProducts(){
 }
 
 
+function display(element){
+    element.classList.remove('d-none');
+}
+function displayNone(element){
+    element.classList.add('d-none');
+}
+
 
 
 
@@ -391,7 +502,6 @@ async function initializePage(){
     }
     
     await createProductsInHtml();
-    addEventsToAllCartBtns();
 
     minRange.addEventListener('input' , mySliderEventFunc);
     maxRange.addEventListener('input' , mySliderEventFunc);

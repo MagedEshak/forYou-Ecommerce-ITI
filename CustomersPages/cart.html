@@ -61,7 +61,7 @@
     but in large devices it appears with logo and some links on the top of the page-->
     <!-- my header in large devices -->
     <header class="">
-        <div class="containert-fluid">
+        <div class="container-fluid">
             <div class="row align-items-center justify-content-evenly p-2">
 
                 <!-- this is my site logo -->
@@ -108,12 +108,12 @@
     <nav class="d-none d-lg-block siteColorClass">
         <div class="container-fluid p-3">
             <div class="links d-flex justify-content-between align-items-center">
-                <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links col-7">
+                <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links">
                     <!-- this is filled dynamically using js -->
                 </div>
-                <div class="row justify-content-end align-items-center links col-5">
-                    <a href="../CustomersPages/signin.html" class="col-auto text-center p-2" id="sign_id"> Sign In</a>
-                    <a href="../CustomersPages/profile.html" class="col-auto text-center p-2" id ="userName_id"> User Name</a>
+                <div class="row justify-content-end align-items-center links">
+                    <a href="signin.html" class="col-auto text-center p-2" id="sign_id"> Sign In</a>
+                    <a href="profile.html" class="col-auto text-center p-2" id ="userName_id"> User Name</a>
                    
                     <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
                         <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
@@ -125,78 +125,23 @@
 
     <!-- ****************************************************************** -->
 
-    <main class="mt-md-5" style="height: 80vh">
-        <section>
-            <div class="row">
-                <h2 class="ms-5">MY CART</h2>
+    <main class="container-fluid " style=" height: 80vh">
+        <section class="mt-5">
+            <div class="col-12 row">
+               
                 <!-- products list -->
                 <div class="col-md-8 ms-md-5 border-bottom">
-                    <!-- product img and name -->
-                    <div class="row">
-                        <div class="col-md-9 align-content-center text-center">
-                            <div class="d-flex">
-                                <img class="figure-img" style="width: 124px;"
-                                    src="../Images/CustomerImages/Product_imges/cookers/oven.jpg">
-                                <div class="container d-flex flex-column " style="word-break: break-all;">
-
-                                    <span class="text-start mt-3 ">product name
-                                        <br>
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero eum animi, error,
-                                        architecto laborum ad quod eligendi doloribus, excepturi iste quasi officiis
-                                        aperiam? Enim mollitia magnam nisi illo maxime veritatis.
-                                    </span>
-                                    <input type="number" name="nOfItem" value="1" class="text-center ms-3 mt-2"
-                                        style="height: 30px; width: 10%;">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3  " style="box-sizing: border-box;">
-                            <!-- icons and salary  -->
-                            <div class="d-inline-block mt-4 container  text-md-end">
-                                <a href="#" class="me-3 "><i class="fa fa-heart"
-                                        style="color: green; font-size: 20px;"></i></a>
-                                <a href="#" class="me-2"><i class="fa fa-trash"
-                                        style="color: red; font-size: 20px;"></i></a>
-                            </div>
-                            <div class="container text-end"><span class="fs-2">10000</span></div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-9 align-content-center text-center">
-                            <div class="d-flex">
-                                <img class="figure-img" style="width: 124px;"
-                                    src="../Images/CustomerImages/Product_imges/cookers/oven.jpg">
-                                <div class="container d-flex flex-column " style="word-break: break-all;">
-
-                                    <span class="text-start mt-3 ">product name
-                                        <br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda placeat
-                                        impedit maxime beatae, velit vitae atque sapiente optio omnis dolor ipsum iste
-                                        deserunt hic sunt totam mollitia ipsam iure dolorem?</span>
-                                    <input type="number" name="nOfItem" value="1" class="text-center ms-3 mt-2"
-                                        style="height: 30px; width: 10%;">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3  " style="box-sizing: border-box;">
-                            <!-- icons and salary  -->
-                            <div class="d-inline-block mt-4 container  text-md-end">
-                                <a href="#" class="me-3 "><i class="fa fa-heart"
-                                        style="color: green; font-size: 20px;"></i></a>
-                                <a href="#" class="me-2"><i class="fa fa-trash"
-                                        style="color: red; font-size: 20px;"></i></a>
-                            </div>
-                            <div class="container text-end"><span class="fs-2">10000</span></div>
-                        </div>
+                    <h2 class="">MY CART</h2>
+                    
+                    <div id="products" class=" row">
+                        <!-- products will be added here -->
                     </div>
 
                 </div>
                 <div class="col-md-3   ms-md-5 border card_form" style="height: 18vh;">
                     
                     <span class="fs-3  fw-bold ms-4">TOTAL</span>
-                    <span class="fs-4 fw-bold me-5" style="float: right;">100</span>
+                    <span id="price_text" class="fs-4 fw-bold me-5" style="float: right;">100</span>
                     <div class="mt-5" style="width: 100%;"><button class="mt-5 btn btn-color p-2 position-relative w-100">Add to Cart
                     </button></div>
 
@@ -258,6 +203,7 @@
     <script type="module" src="../js/navBar.js"></script>
     <!-- <script type="module" src="../JS/script.js"></script> -->
     <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+    <script type="module" src="../js/cart.js"></script>
 </body>
 
 </html>

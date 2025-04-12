@@ -117,21 +117,19 @@
   <!-- my nav in large devices , it only appears on large devices -->
   <nav class="d-none d-lg-block siteColorClass">
     <div class="container-fluid p-3">
-
-      <div class="row justify-content-evenly align-items-center links">
-        <a href="#cookersSection_id" class="col-auto"> Cookers</a>
-        <a href="#" class="col-auto"> Small Home Appliances</a>
-        <a href="#televesionsSection_id" class="col-auto"> Televesions</a>
-        <a href="#" class="col-auto"> Cooling Appliances</a>
-        <a href="#" class="col-auto"> Air Conditioners</a>
-        <a href="#" class="col-auto"> Washing Machines</a>
-        <a href="../CustomersPages/signin.html" class="col-auto"> Sign In</a>
-        <a href="#" class="col-auto d-none"> Profile</a>
-        <a href="../CustomersPages/cart.html" class="col-auto">
-          <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
-        </a>
-      </div>
-
+        <div class="links d-flex justify-content-between align-items-center">
+            <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links">
+                <!-- this is filled dynamically using js -->
+            </div>
+            <div class="row justify-content-end align-items-center links">
+                <a href="signin.html" class="col-auto text-center p-2" id="sign_id"> Sign In</a>
+                <a href="profile.html" class="col-auto text-center p-2" id ="userName_id"> User Name</a>
+               
+                <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
+                    <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
+                </a>
+            </div>
+        </div>
     </div>
 </nav><!-- updated -->
 
