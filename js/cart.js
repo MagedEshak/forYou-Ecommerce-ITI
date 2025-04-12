@@ -12,10 +12,11 @@ let myCart = [];
 
 
 // check if cookie exist ?
-let myCookie = getCookie(`cart`);
+let usrCart = getCookie(`cart`);
+console.log(JSON.parse(usrCart))
 
 // in case there is no cookie with ket = 'cart'
-if(!myCookie){
+if(myCookie){
     let myUser = await getDocById("User" , userId);
     let userShoppingCart = myUser.shoppingCart;
 
