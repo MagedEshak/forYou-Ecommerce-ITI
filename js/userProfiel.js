@@ -34,6 +34,7 @@ window.onload = () => {
           }
         });
       }
+
       orderaddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
       orderUserName.innerHTML = userData.Username;
       orderPhone.innerHTML = userData.phone;
@@ -97,7 +98,11 @@ function calculateDeliveredTotal(shoppingCart) {
   let promises = shoppingCart.map((order) => {
     if (order.isPending == 1) {
       return getDocById("products", order.product_id).then((product) => {
-        total += Number(product.price) * Number(order.quantaty);
+        if (product && product.price != null) {
+          total += Number(product.price) * Number(order.quantaty);
+        } else {
+          console.warn("Product not found or missing price:", order.product_id);
+        }
       });
     }
   });
