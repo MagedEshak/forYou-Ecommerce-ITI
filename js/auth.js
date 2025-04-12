@@ -9,7 +9,10 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
-    onAuthStateChanged
+    onAuthStateChanged,
+    updatePassword,
+    reauthenticateWithCredential,
+    EmailAuthProvider
 } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
 
 
@@ -77,6 +80,28 @@ export async function logoutUser() {
     }
 }
 
+/// change passwor;
+export async function changePassword(currentPassword, newPassword) {
+    try {
+        const user = auth.currentUser;
+        if (!user) {
+            throw new Error('No user is currently signed in.');
+        }
+
+        // Re-authenticate the user
+        const credential = EmailAuthProvider.credential(user.email, currentPassword);
+        await reauthenticateWithCredential(user, credential);
+
+        // Update password
+        await user.updatePassword(newPassword);
+        console.log('Password changed successfully');
+        return { success: true };
+    } catch (error) {
+        console.error('Error changing password:', error.message);
+        return { success: false, error: error.message };
+    }
+}
+
 // Check if user is logged in
 export function isUserLoggedIn() {
     return new Promise((resolve) => {
@@ -100,8 +125,6 @@ export async function getCurrentUserId() {
         });
     });
 }
-
-
 
 // create a user profile in Firestore
 export async function createUserProfile(uid, userData) {

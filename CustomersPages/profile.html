@@ -167,7 +167,11 @@
             <div class="col-md-12 col-lg-6 p-4 pt-4 mt-2 card shadow">
               <section class="row justify-content-between">
                 <h4 class="col-8">Personal Information</h4>
-                <a class="text-info col-2" href="#">Edit</a>
+                <!-- Button trigger modal -->
+              <button type="button" class="btn col-2 btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                  Edit
+              </button>
+                <!-- <a class="text-info col-2" href="#">Edit</a> -->
                 <div class="col-5 mt-4">
                   <h6 class="opacity-75">Name</h6>
                   <p id="userName_id">Samuel</p>
@@ -273,15 +277,8 @@
  <div class="col-lg-12 col-md-12  card shadow  mt-2 p-3">
     
       <h4 class="col-8">You Ordered</h4> 
-      <section class="row ">
-         <div class="col-lg-3 col-md-12 mb-3">
-          <img src="../Images/CustomerImages/Product_imges/TVs/TV2.jpg " alt="" id="imageOrder_id " class="w-100">
-         </div >
-         <div class="col-lg-5 col-md-12 align-self-center ">
-             <h4>product</h4>
-             <p>details</p>
-             <p>Quantity:1</p>
-         </div>
+      <section id="yourOrdered_id" class="row ">
+         
         
          
         </section>
@@ -377,7 +374,30 @@
 
     </section>
   </section>
+    
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
   <!-- Footer -->
   <footer>
     <div class="container-fluid">

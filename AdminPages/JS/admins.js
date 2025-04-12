@@ -3,13 +3,8 @@ import {
   registerUser,
   createUserProfile,
   getCookie,
-  isUserLoggedIn,
-  getCurrentUserId,
-  getUserProfile,
+  logoutUser,
 } from "../../js/auth.js";
-
-let createNewAdmin = document.getElementById("createNewAdmin_id");
-let mainContentSec = document.getElementById("mainContentSec_id");
 
 //--------------------------------------------------------------------------------------
 
@@ -25,26 +20,143 @@ let adForm = document.getElementById("adminRegitForm");
 
 //-----------------------------------------------------------------------------
 
+let name = document.getElementById("name");
+let nameee = document.getElementById("nameee");
+let emaiil = document.getElementById("email");
+let mobile = document.getElementById("mobile");
+let location = document.getElementById("location");
+
+document.addEventListener("DOMContentLoaded", async function () {
+  const userId = getCookie("userId");
+  const userName = getCookie("userName");
+  const userPhone = getCookie("userPhone");
+  const userEmail = getCookie("userEmail");
+  const userAddress = getCookie("userAddress");
+
+  if (userId && userName && userEmail && userPhone && userAddress) {
+    name.textContent = userName;
+    nameee.textContent = userName;
+    emaiil.textContent = userEmail;
+    mobile.textContent = userPhone;
+    location.textContent = userAddress;
+  } else {
+    console.log("No user profile found or missing Username.");
+  }
+});
+
 window.onload = () => {
   let addAdmin = document.getElementById("addNewAdmin_id");
-  let cancelBtn = document.getElementById("CancelBtn_id");
-
-  if (addAdmin && cancelBtn) {
+  if (addAdmin) {
     addAdmin.addEventListener("click", () => createNewAdminForm());
-    cancelBtn.addEventListener("click", () => cancelCreateNewAdminForm());
   }
 };
 
 function createNewAdminForm() {
-  location.assign("../../AdminPages/addNewAdmin.html");
+  window.location.assign("../../AdminPages/addNewAdmin.html");
+}
+
+let cancelBtn = document.getElementById("cancelBtn_id");
+
+if (cancelBtn) {
+  cancelBtn.addEventListener("click", () => cancelCreateNewAdminForm());
 }
 
 function cancelCreateNewAdminForm() {
-  history.back();
+  window.history.back();
 }
+
+// Form Validation
+adForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  if (!isNaN(fullName.value)) {
+    showAlert("Please Enter Valid Name");
+    e.preventDefault();
+    return;
+  }
+
+  let emailRegEx = /^[a-zA-Z][a-zA-Z0-9._-]*@admin\.com$/i;
+  if (email.value.trim() === "") {
+    showAlert("Please Enter Valid Email like (abcd@admin.com)");
+    e.preventDefault();
+    return;
+  }
+
+  if (!emailRegEx.test(email.value)) {
+    showAlert("Please Enter Valid Email like (abcd@admin.com)");
+    e.preventDefault();
+    return;
+  }
+
+  if (password.value.length < 6) {
+    showAlert("Please Enter Valid Password at least 6 characters");
+    e.preventDefault();
+    return;
+  }
+
+  if (password.value !== repeatPassword.value) {
+    showAlert("Please Enter Valid Password");
+    e.preventDefault();
+    return;
+  }
+
+  password.type = cekBoxPass.checked ? "text" : "password";
+  repeatPassword.type = cekBoxRePass.checked ? "text" : "password";
+
+  let phoneRegEx = /^[01]+[0||1||2||5]+[0-9]{9}$/i;
+  if (phone.value.trim() === "") {
+    showAlert("Please Enter Valid Phone Number");
+    e.preventDefault();
+    return;
+  }
+
+  if (!phoneRegEx.test(phone.value)) {
+    showAlert("Please Enter Valid Phone Number");
+    e.preventDefault();
+    return;
+  }
+
+  const adminDataValue = {
+    Username: fullName.value,
+    email: email.value,
+    phone: phone.value,
+    isAdmin: true,
+    address: ["EG", city.value],
+  };
+
+  try {
+    debugger;
+    const adminID = await registerUser(adminDataValue.email, password.value);
+    if (adminID) {
+      await createUserProfile(adminID, adminDataValue);
+      alert("Admin Created Successfully");
+    } else {
+      alert("Registration Failed");
+    }
+  } catch (error) {
+    alert("Something Went Wrong");
+  }
+});
+
+function showAlert(
+  message,
+  containerId = "createNewAdmin_id",
+  duration = 2000
+) {
+  let alert = document.createElement("div");
+  alert.classList.add("alert", "alert-warning");
+  alert.setAttribute("role", "alert");
+  alert.innerText = message;
+  document.getElementById(containerId).prepend(alert);
+  setTimeout(() => {
+    alert.remove();
+  }, duration);
+}
+
 //---------------------------------------------------------
 
 let adminCache = new Map();
+// View All Admins in Setting Page
 
 async function getAllAdmins() {
   const admins = await getAllDocuments("User");
@@ -112,6 +224,7 @@ async function getAllAdmins() {
 }
 getAllAdmins();
 
+// View All Admins in Table
 const viewAdmins = new Map();
 // Create table row with proper error handling
 async function createAdminRow() {
@@ -127,7 +240,7 @@ async function createAdminRow() {
         <td>${element.Username}</td>
         <td>${element.email}</td>
         <td>${element.phone}</td>
-       <td>${element.address?.[1] || "N/A"}</td>
+        <td>${element.address[1]}</td>
         `;
       body.appendChild(row);
       return row;
@@ -162,130 +275,3 @@ createAdminRow();
     );
   });
 })();
-
-adForm.addEventListener("submit", async (e) => {
-  if (!isNaN(fullName.value)) {
-    showAlert("Please Enter Valid Name");
-    e.preventDefault();
-    return;
-  }
-
-  let emailRegEx = /^[a-zA-Z][a-zA-Z0-9._-]*@admin\.com$/i;
-  if (email.value.trim() === "") {
-    showAlert("Please Enter Valid Email like (abcd@admin.com)");
-    e.preventDefault();
-    return;
-  }
-
-  if (!emailRegEx.test(email.value)) {
-    showAlert("Please Enter Valid Email like (abcd@admin.com)");
-    e.preventDefault();
-    return;
-  }
-
-  if (password.value.length < 6) {
-    showAlert("Please Enter Valid Password at least 6 characters");
-    e.preventDefault();
-    return;
-  }
-
-  if (password.value !== repeatPassword.value) {
-    showAlert("Please Enter Valid Password");
-    e.preventDefault();
-    return;
-  }
-
-  password.type = cekBoxPass.checked ? "text" : "password";
-  repeatPassword.type = cekBoxRePass.checked ? "text" : "password";
-
-  let phoneRegEx = /^[01]+[0||1||2||5]+[0-9]{9}$/i;
-  if (phone.value.trim() === "") {
-    showAlert("Please Enter Valid Phone Number");
-    e.preventDefault();
-    return;
-  }
-
-  if (!phoneRegEx.test(phone.value)) {
-    showAlert("Please Enter Valid Phone Number");
-    e.preventDefault();
-    return;
-  }
-
-  const adminDataValue = {
-    Username: fullName.value,
-    email: email.value,
-    phone: phone.value,
-    isAdmin: true,
-    address: ["EG", city.value],
-  };
-
-  try {
-    const adminID = await registerUser(adminDataValue.email, password.value);
-    if (adminID) {
-      await createUserProfile(adminID, adminDataValue);
-      alert("Admin Created Successfully");
-    } else {
-      alert("Registration Failed");
-    }
-  } catch (error) {
-    alert("Something Went Wrong");
-  }
-});
-
-function showAlert(
-  message,
-  containerId = "createNewAdmin_id",
-  duration = 2000
-) {
-  let alert = document.createElement("div");
-  alert.classList.add("alert", "alert-warning");
-  alert.setAttribute("role", "alert");
-  alert.innerText = message;
-  document.getElementById(containerId).prepend(alert);
-  setTimeout(() => {
-    alert.remove();
-  }, duration);
-}
-
-document.addEventListener("DOMContentLoaded", async function () {
-  const userId = getCookie("userId");
-  const userName = getCookie("userName");
-  const userPhone = getCookie("userPhone");
-  const userEmail = getCookie("userEmail");
-  const userAddress = getCookie("userAddress");
-  const isAdmin = getCookie("isAdmin");
-
-  if (isAdmin === "false") {
-    window.location.href = "../../index.html";
-  }
-  if (userId) {
-    // if user is logged in, set isLoggedIn to true
-    var isLoggedIn = true;
-  } else {
-    // if user is not logged in, set isLoggedIn to false
-    isLoggedIn = false;
-  }
-
-  if (!isLoggedIn) {
-    console.log("Not Logged In");
-    window.location.href = "../../CustomersPages/signin.html";
-  } else {
-      console.log("User ID:", userId);
-
-    if (userId && userName) {
-      let name = document.getElementById("name");
-      let nameee = document.getElementById("nameee");
-      let email = document.getElementById("email");
-      let mobile = document.getElementById("mobile");
-      let location = document.getElementById("location");
-
-      name.textContent = userName;
-      nameee.textContent = userName;
-      email.textContent = userEmail;
-      mobile.textContent = userPhone;
-      location.textContent = userAddress;
-    } else {
-      console.log("No user profile found or missing Username.");
-    }
-  }
-});
