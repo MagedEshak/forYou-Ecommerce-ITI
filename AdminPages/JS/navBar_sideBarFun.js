@@ -1,83 +1,71 @@
 // import auth functions from auth.js
-import { isUserLoggedIn, getCurrentUserId, getUserProfile,logoutUser, getCookie ,deleteCookie } from '../../js/auth.js';
-
-
+import {
+  isUserLoggedIn,
+  getCurrentUserId,
+  getUserProfile,
+  logoutUser,
+  getCookie,
+  deleteCookie,
+} from "../../js/auth.js";
 
 ///////////////////////
 //
-//       Authentication 
+//       Authentication
 //
 /////////////////////
 
+document.addEventListener("DOMContentLoaded", async function () {
+  const userId = getCookie("userId");
+  const userName = getCookie("userName");
+  const isAdmin = getCookie("isAdmin");
+  if (isAdmin === "false") {
+    window.location.href = "../../index.html";
+  }
+  if (userId) {
+    // if user is logged in, set isLoggedIn to true
+    var isLoggedIn = true;
+  } else {
+    // if user is not logged in, set isLoggedIn to false
+    isLoggedIn = false;
+  }
 
+  if (!isLoggedIn) {
+    console.log("Not Logged In");
+    window.location.href = "../../CustomersPages/signin.html";
+  } else {
+    //  console.log("User ID:", userId);
 
-document.addEventListener('DOMContentLoaded', async function () {
-   
-    const userId = getCookie("userId");
-    const userName = getCookie("userName");
-    const isAdmin = getCookie("isAdmin");
-    if(isAdmin === "false"){
-        window.location.href = "../../index.html";
-    }
-    if (userId) { // if user is logged in, set isLoggedIn to true
-       var  isLoggedIn = true;
-    } else { // if user is not logged in, set isLoggedIn to false
-        isLoggedIn = false;
-    }
-
-
-    if (!isLoggedIn) {
-        console.log("Not Logged In");
-        window.location.href = "../../CustomersPages/signin.html";
+    if (userId) {
+      if (userName) {
+        const userNameElement = document.getElementById("user-name");
+        userNameElement.textContent = userName;
+        //console.log("Username:", userName);
+      } else {
+        console.log("No user profile found or missing Username.");
+      }
     } else {
-        console.log("User ID:", userId);
-
-        if (userId) {
-          
-
-            if (userName) {
-                const userNameElement = document.getElementById('user-name');
-                userNameElement.textContent = userName;
-                console.log("Username:", userName);
-            } else {
-                console.log("No user profile found or missing Username.");
-            }
-        } else {
-            console.log("Failed to get user ID.");
-        }
+      console.log("Failed to get user ID.");
     }
+  }
 });
-
-
 
 /////////////// log out
 let logoutBtns; // logoutBtns is a variable that contains all logout buttons in the page.
-logoutBtns=document.querySelectorAll(".logoutBtn");
+logoutBtns = document.querySelectorAll(".logoutBtn");
 logoutBtns.forEach((logoutBtn) => {
-    logoutBtn.addEventListener("click", async function () {
-        await logoutUser();
-        deleteCookie("userId");
-        deleteCookie("userName");
-        deleteCookie("isAdmin");
-        deleteCookie("userEmail");
-        window.location.href = "../../CustomersPages/signin.html";
-    });
+  logoutBtn.addEventListener("click", async function () {
+    await logoutUser();
+    deleteCookie("userId");
+    deleteCookie("userName");
+    deleteCookie("isAdmin");
+    deleteCookie("userEmail");
+    window.location.href = "../../CustomersPages/signin.html";
+  });
 });
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * Adding addEventListener click for {profile Logo Div,bars Div, bars Left Side Div => (default d-none) }
- * 
+ *
  */
 let profileLogoDiv = document.getElementById("profileDiv_id"); // This Variable is profileDiv_id that go to Profile Page
 
@@ -85,13 +73,9 @@ let barsDiv = document.getElementById("barsDiv_id"); // This Variable is barsDiv
 
 let sideDashboard = document.getElementById("sideDashboard_id"); // This Variable is sideDashboard_id that shows in Tablet and Mobile
 
-let barsLeftSideDiv = document.getElementById("barsLeftSideDiv_id"); // This Variable is barsLeftSideDiv_id that shows in side Dashboard in Mobile mode
-
-let mainContentSec = document.getElementById("mainContentSec_id"); // This Variable is mainContentSec_id Section that contains all sections
-
 let notifiDropDownDiv = document.getElementById("notifiDropDownDiv_id"); // This Variable is notifiDropDownDiv Section that DropDown List for new notify
 
-let notificationsDiv = document.getElementById("notificationsDiv_id"); // This Variable is notificationsDiv Icon 
+let notificationsDiv = document.getElementById("notificationsDiv_id"); // This Variable is notificationsDiv Icon
 
 let searchDiv = document.getElementById("searchDiv_id"); // This Variable is searchDiv Icon
 
@@ -107,15 +91,13 @@ let CancelBtn = document.getElementById("CancelBtn_id"); // This Variable is sea
 
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
 /**
  * - Adding addEventListener click for {profile Logo Div}
  * =========================================================
  * -- To assign new location and go to Setting Page
  */
 profileLogoDiv.addEventListener("click", function () {
-    window.location.assign("http://127.0.0.1:5500/AdminPages/AdminProfile.html"); // To go to Setting Page
+  window.location.assign("http://127.0.0.1:5500/AdminPages/AdminProfile.html"); // To go to Setting Page
 });
 
 /**
@@ -125,21 +107,21 @@ profileLogoDiv.addEventListener("click", function () {
  */
 
 document.addEventListener("click", (e) => {
-    if (barsDiv.contains(e.target)) {
-        appear(sideDashboard);
-    } else {
-        disappear(sideDashboard);
-    }
+  if (barsDiv.contains(e.target)) {
+    appear(sideDashboard);
+  } else {
+    disappear(sideDashboard);
+  }
 });
 
 function appear(sideBar) {
-    sideBar.style.left = "0px";
-    document.getElementById("main_id").classList.add("opacity-50");
+  sideBar.style.left = "0px";
+  document.getElementById("main_id").classList.add("opacity-50");
 }
 
 function disappear(sideBar) {
-    sideBar.style.left = "-75%";
-    document.getElementById("main_id").classList.remove("opacity-50");
+  sideBar.style.left = "-75%";
+  document.getElementById("main_id").classList.remove("opacity-50");
 }
 /**
  * - Adding addEventListener click for {notification Icon}
@@ -148,15 +130,14 @@ function disappear(sideBar) {
  */
 
 document.addEventListener("click", function (e) {
-    if (notificationsDiv.contains(e.target)) {
-        
-        notifiDropDownDiv.classList.remove("d-none");
+  if (notificationsDiv.contains(e.target)) {
+    notifiDropDownDiv.classList.remove("d-none");
 
-        notifiDropDownDiv.classList.add("d-block");        
-    } else {
-        notifiDropDownDiv.classList.remove("d-block"); 
-        notifiDropDownDiv.classList.add("d-none");
-    }
+    notifiDropDownDiv.classList.add("d-block");
+  } else {
+    notifiDropDownDiv.classList.remove("d-block");
+    notifiDropDownDiv.classList.add("d-none");
+  }
 });
 
 /**
@@ -166,15 +147,14 @@ document.addEventListener("click", function (e) {
  */
 
 searchDiv.addEventListener("click", function () {
-    if (search.classList.contains("d-none")) {
-        
-        search.classList.remove("d-none");
+  if (search.classList.contains("d-none")) {
+    search.classList.remove("d-none");
 
-        search.classList.add("d-block");        
-    } else {
-        search.classList.remove("d-block"); 
-        search.classList.add("d-none");
-    }
+    search.classList.add("d-block");
+  } else {
+    search.classList.remove("d-block");
+    search.classList.add("d-none");
+  }
 });
 
 /**
@@ -182,40 +162,35 @@ searchDiv.addEventListener("click", function () {
  * =========================================================
  * -- To Show Add new Category Section
  */
-if(addNewCategoryBtn){
-addNewCategoryBtn.addEventListener("click", function () {
+if (addNewCategoryBtn) {
+  addNewCategoryBtn.addEventListener("click", function () {
     if (addCategory.classList.contains("d-none")) {
-        
-        addCategory.classList.remove("d-none");
+      addCategory.classList.remove("d-none");
 
-        document.getElementById("viewCategory_id").classList.remove("d-sm-flex");
-        
-        document.getElementById("viewCategory_id").classList.add("d-none"); // To Hide category content
+      document.getElementById("viewCategory_id").classList.remove("d-sm-flex");
 
-        addCategory.classList.add("d-block");
-        
-    } 
-});
+      document.getElementById("viewCategory_id").classList.add("d-none"); // To Hide category content
+
+      addCategory.classList.add("d-block");
+    }
+  });
 }
-if(CancelBtn){
-CancelBtn.addEventListener("click", function () {
+if (CancelBtn) {
+  CancelBtn.addEventListener("click", function () {
     if (addCategory.classList.contains("d-block")) {
-        
-        addCategory.classList.remove("d-block");
+      addCategory.classList.remove("d-block");
 
       document.getElementById("viewCategory_id").classList.add("d-sm-flex");
-        
-        document.getElementById("viewCategory_id").classList.remove("d-none"); // To show category content
 
-        addCategory.classList.add("d-none");
-        
-    } 
-});
-}
-  function redirectToAddProduct() {
-            window.location.href = "admin-add-product.html";
-}
-     function redirectToDashboard() {
-            window.location.href = "admin-home.html";
-}     
+      document.getElementById("viewCategory_id").classList.remove("d-none"); // To show category content
 
+      addCategory.classList.add("d-none");
+    }
+  });
+}
+function redirectToAddProduct() {
+  window.location.href = "admin-add-product.html";
+}
+function redirectToDashboard() {
+  window.location.href = "admin-home.html";
+}

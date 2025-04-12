@@ -59,10 +59,9 @@
             <hr>
             <li><a href="./AdminProfile.html" class="list-links text-light list-links-active"><i class="bi bi-gear"></i>
                     Setting</a></li>
-                    <li>
-                        <a href="#" class="list-links text-light logoutBtn"><i
-                            class="bi bi-box-arrow-left"> </i>LogOut</a>
-                    </li>
+            <li>
+                <a href="#" class="list-links text-light logoutBtn"><i class="bi bi-box-arrow-left"> </i>LogOut</a>
+            </li>
         </ul>
     </aside>
     <!-- End Left Side Dashboard Tabs -->
@@ -107,10 +106,9 @@
             <hr>
             <li><a href="./AdminProfile.html" class="list-links list-links-active text-light"><i class="bi bi-gear"></i>
                     Setting</a></li>
-                    <li>
-                        <a href="#" class="list-links text-light logoutBtn"><i
-                            class="bi bi-box-arrow-left"> </i>LogOut</a>
-                    </li>
+            <li>
+                <a href="#" class="list-links text-light logoutBtn"><i class="bi bi-box-arrow-left"> </i>LogOut</a>
+            </li>
         </ul>
     </aside>
     <!-- End Left Side Dashboard Tabs in Tablet and Mobile Only-->
@@ -263,7 +261,7 @@
 
                             <div class="d-none d-lg-flex flex-column">
                                 <span id="user-name" class="fw-bolder fs-6 user-name">Loading... </span>
-                                
+
                             </div>
                         </div>
 
@@ -278,7 +276,7 @@
             <!-- Start Left side Section {My Profile, Admins} -->
             <article>
                 <!-- Start Profile Section -->
-                <div class="col-lg-4 shadow p-3 ms-lg-3 mt-3 rounded-3 w-100 bg-white">
+                <div id="adminDetails" class="col-lg-4 shadow p-3 ms-lg-3 mt-3 rounded-3 w-100 bg-white">
                     <div class="row p-md-3 p-lg-3 pt-3">
                         <h2>My Profile</h2>
                         <!-- Start Admin Photo and Name Div-->
@@ -291,40 +289,39 @@
                                         alt="Profile Image">
                                 </div>
                                 <!-- Camera Icon -->
-                                <div id="profile_camera_icon_id"
+                                <!-- <div id="profile_camera_icon_id"
                                     class="bg-danger badge position-absolute bottom-0 start-50">
                                     <i class="bi bi-camera-fill w-100 h-100"></i>
-                                </div>
+                                </div> -->
                             </div>
 
                             <!-- Admin Name -->
                             <div class="d-flex flex-column mt-3">
-                                <span class="fw-bolder">Maged Eshak</span>
+                                <span id="nameee" class="fw-bolder"></span>
                                 <span class="text-secondary">Admin</span>
                             </div>
                         </div>
                         <!-- End Admin Photo and Name Div-->
 
                         <!-- Start Admin Details-->
-                        <div class="mt-4">
-                            <p class="d-flex justify-content-between text-secondary">Full Name:<span
-                                    class="fw-bold text-black">Maged Eshak</span>
+                        <div id="con" class="mt-4">
+                            <p class="d-flex justify-content-between text-secondary">Full Name:
+                                <span id="name" class="fw-bold text-black"></span>
                                 <hr>
                             </p>
 
-                            <p class="d-flex justify-content-between text-secondary">Mobile:<span
-                                    class="fw-bold text-black">+201275465883</span>
+                            <p class="d-flex justify-content-between text-secondary">Mobile:
+                                <span id="mobile" class="fw-bold text-black"></span>
                                 <hr>
                             </p>
 
-                            <p class="d-flex justify-content-between text-secondary">Email:<span
-                                    class="fw-bold text-black">magedeshak@admin.com</span>
+                            <p class="d-flex justify-content-between text-secondary">Email:
+                                <span id="email" class="fw-bold text-black"></span>
                                 <hr>
                             </p>
 
-                            <p class="d-flex justify-content-between text-secondary">Location:<span
-                                    class="fw-bold text-black">Assiut, EG</span>
-
+                            <p class="d-flex justify-content-between text-secondary">Location:
+                                <span id="location" class="fw-bold text-black"></span>
                             </p>
                         </div>
                         <!-- End Admin Details-->
