@@ -1,6 +1,6 @@
 import { getCurrentUserId, getUserProfile } from "./auth.js";
 import { getDocById } from "./main.js";
-let userName = document.getElementById("userName_id");
+let userName = document.getElementById("username_id");
 let userEmail = document.getElementById("userEmail_id");
 let userAddres = document.getElementById("userAddres_id");
 let lastOrder = document.getElementById("lastOrder_id");
@@ -12,8 +12,8 @@ let orderPhone = document.getElementById("orderPhone_id");
 window.onload = () => {
   getCurrentUserId().then((uId) => {
     getUserProfile(uId).then((userData) => {
-      welcomeHead.innerHTML = `Hello, ${userData.Username}`;
       userName.innerHTML = userData.Username;
+      welcomeHead.innerHTML = `Hello, ${userData.Username}`;
       userEmail.innerHTML = userData.email;
       userAddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
       for (let index in userData.shoppingCart) {
