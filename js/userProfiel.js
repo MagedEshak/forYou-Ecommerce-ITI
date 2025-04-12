@@ -18,12 +18,12 @@ window.onload = () => {
       userAddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
       for (let index in userData.shoppingCart) {
         let order = userData.shoppingCart[index];
-        let productPromise = getDocById("products", order.product_id);
+        let productPromise = getDocById("Products", order.product_id);
 
         productPromise.then((product) => {
           let Quantity = order.quantaty;
           let Status = order.isPending;
-
+          console.log(product);
           creatLastOrder(product, Quantity, Status, allOrdersContainer);
 
           if (Status === 1) {
@@ -34,11 +34,10 @@ window.onload = () => {
           }
         });
       }
-
+      updateDeliveredTotalDisplay(userData.shoppingCart);
       orderaddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
       orderUserName.innerHTML = userData.Username;
       orderPhone.innerHTML = userData.phone;
-      updateDeliveredTotalDisplay(userData.shoppingCart);
     });
   });
 };
@@ -97,7 +96,7 @@ function calculateDeliveredTotal(shoppingCart) {
   let total = 0;
   let promises = shoppingCart.map((order) => {
     if (order.isPending == 1) {
-      return getDocById("products", order.product_id).then((product) => {
+      return getDocById("Products", order.product_id).then((product) => {
         if (product && product.price != null) {
           total += Number(product.price) * Number(order.quantaty);
         } else {
