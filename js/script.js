@@ -1,5 +1,4 @@
 import {getAllDocuments, getDocumentByField} from "../../js/main.js";
-import {addEventsToAllCartBtns} from "../js/cart.js"
 
 let categoriesTemp = [];
 let productsTemp = [];
@@ -61,7 +60,6 @@ async function initialzePage(){
     displayCategoryInHtml();
 
     await fillProductsInHtml();
-    addEventsToAllCartBtns();
 }
 
 initialzePage();
@@ -111,6 +109,7 @@ function createCategoryInHtml(categoriesContainer , category , index){
 
 // this function fill products section randomly from all cats
 async function fillProductsInHtml(){
+    debugger;
     // this is the container of products
     let productsContainer = document.createElement('div');
     productsContainer.className = "products row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4";
@@ -127,6 +126,7 @@ async function fillProductsInHtml(){
         }
         createProductsInHtml(productsContainer, productsTemp , category.cat_name);
     }
+    
 }
 
 
