@@ -1,5 +1,7 @@
-import { getCookie, deleteCookie, setCookie } from "./auth.js";
-import {getDocById} from "../../js/main.js";
+import {getDocById ,getDocumentByField,updateDocById} from "../../js/main.js";
+import { getCookie, setCookie } from "./auth.js";
+
+
 
 const userId = getCookie("userId");
 console.log("from cart userId = " + userId);

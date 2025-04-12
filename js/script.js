@@ -1,6 +1,6 @@
 import {getAllDocuments, getDocumentByField, getDocById , updateDocById} from "../../js/main.js";
 import { getCookie, setCookie } from "./auth.js";
-
+import {initializeCart} from "./cartAndWishList.js";
 
 
 let categoriesTemp = await getAllDocuments("Categories");
@@ -9,17 +9,18 @@ let productsTemp = [];
 /*************************************** */
 // code to handel cart buttons and cookies
 const userId = getCookie("userId");
-let myUser = await getDocById("User" , userId);
+let {myUser , myCart} = await initializeCart();
 
-let myCookie = getCookie(`cart`);
-let myCart = [];
-
-// in case there is no cookie with ket = 'cart'
-if(!myCookie){
+/*************************************************************************************************************** */
+/******************************************************************************************************** */
+// code to handel wishlist
+let wishListLocalStorage = localStorage.getItem('wishlist');
+let myWishList = []
+if(!wishListLocalStorage){
     if(myUser){
-        let userShoppingCart = myUser.shoppingCart;
+        let userWishList = myUser.wishlist;
 
-        for(let item of userShoppingCart){
+        for(let item of userWishList){
             let prod = await getDocById("Products" , item.product_id);
     
             let myProdJson = {
@@ -27,15 +28,13 @@ if(!myCookie){
                 prod_details : prod
             }
             
-            myCart.push(myProdJson); 
+            myWishList.push(myProdJson); 
         }
     
-        setCookie(`cart`,JSON.stringify(myCart),100);
+        localStorage.setItem(`wishlist`,JSON.stringify(myWishList));
     }
-    
 }
-
-/*************************************************************************************************************** */
+/******************************************************************************************************** */
 
 /* this code handels our crusoal and its background images */
 function controlCrusoal (){
@@ -195,9 +194,74 @@ async function createProductsInHtml(productsContainer , products , catName) {
         let addToWishListBtn = document.createElement('button');// add to wish list button , this contains heart icon
         addToWishListBtn.className = " addToWishListBtn_class col-2";
         addToWishListBtn.id = `${catName}ProdAddToWishListBtn_id_${product.id}`;
-    
+
         let heartIcon = document.createElement("i");
         heartIcon.className = "fa fa-heart";
+
+        // check if the product in wishList or not
+        if(myUser){
+            for(let item of myUser.wishlist){
+                if(item.product_id == product.id)
+                {
+                    heartIcon.style.webkitTextStroke = '1px red'
+                    heartIcon.style.color = 'red';
+                    break;
+                }
+            }
+        }
+
+        addToWishListBtn.onclick = ()=>{
+            if(myUser){
+                debugger;
+                myWishList = JSON.parse(localStorage.getItem('wishlist'));
+
+                if(heartIcon.style.color != 'red'){
+                    // put prod id and details in JSON
+                    let myProdJson = {
+                        prod_id : product.id,
+                        prod_details : product
+                    }
+
+                    myWishList.push(myProdJson);
+                    localStorage.setItem(`wishlist`,JSON.stringify(myWishList));
+
+                    let userWishListJson = {
+                        cat_id : product.cat_id,
+                        product_id : product.id,
+                    }
+                    myUser.wishlist.push(userWishListJson);
+                    updateDocById("User" , myUser.id, myUser);
+
+                    alert('added to wishlist');
+                    // heartIcon.style.webkitTextStroke = '1px black'
+                    heartIcon.style.color = 'red';
+                }
+                else{
+
+                    for(let index = 0 ;  index < myWishList.length ; index++){
+                        if(myWishList[index].prod_id == product.id)
+                        {
+                            myWishList.splice(index,1);
+                            break;
+                        }
+                    }
+                    myUser.wishlist = myWishList;
+                    localStorage.setItem(`wishlist`,JSON.stringify(myWishList));
+
+                    // heartIcon.style.webkitTextStroke = '1px black'
+                    heartIcon.style.color = 'white';
+
+                    updateDocById('User', userId , myUser);
+
+                }
+                
+            }
+            else{
+                window.location.href = "../CustomersPages/signin.html";
+            }
+        }
+
+        
     
         addToWishListBtn.appendChild(heartIcon); // putting heart icon inside add to wish list btn
     
