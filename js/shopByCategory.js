@@ -5,16 +5,16 @@ import { getCookie, deleteCookie, setCookie } from "./auth.js";
 let productsTemp = [];
 let catName = undefined;
 
+/*************************************** */
+// code to handel cart buttons and cookies
 const userId = getCookie("userId");
-// let myUser = await getDocById("User" , userId);
-let myUser;
+let myUser = await getDocById("User" , userId);
 
 let myCookie = getCookie(`cart`);
 let myCart = [];
 
 // in case there is no cookie with ket = 'cart'
 if(!myCookie){
-    myUser = await getDocById("User" , userId);
     let userShoppingCart = myUser.shoppingCart;
 
     for(let item of userShoppingCart){
@@ -30,9 +30,6 @@ if(!myCookie){
 
     setCookie(`cart`,JSON.stringify(myCart),100);
 }
-
-
-/* this code handels the side nav bar  */
 
 
 /******************************************************************************************************** */

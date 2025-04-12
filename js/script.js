@@ -1,8 +1,35 @@
-import {getAllDocuments, getDocumentByField} from "../../js/main.js";
+import {getAllDocuments, getDocumentByField, getDocById , updateDocById} from "../../js/main.js";
+import { getCookie, deleteCookie, setCookie } from "./auth.js";
 
-let categoriesTemp = [];
+
+let categoriesTemp = await getAllDocuments("Categories");
 let productsTemp = [];
-/* this code handels the side nav bar  */
+
+/*************************************** */
+// code to handel cart buttons and cookies
+const userId = getCookie("userId");
+let myUser = await getDocById("User" , userId);
+
+let myCookie = getCookie(`cart`);
+let myCart = [];
+
+// in case there is no cookie with ket = 'cart'
+if(!myCookie){
+    let userShoppingCart = myUser.shoppingCart;
+
+    for(let item of userShoppingCart){
+        let prod = await getDocById("Products" , item.product_id);
+
+        let myProdJson = {
+            prod_id : prod.id,
+            prod_details : prod
+        }
+        
+        myCart.push(myProdJson); 
+    }
+
+    setCookie(`cart`,JSON.stringify(myCart),100);
+}
 
 /*************************************************************************************************************** */
 
@@ -24,7 +51,6 @@ function controlCrusoal (){
     controlNextBtn.addEventListener('click' , ()=>{getNextImage();})
 
     function getPrevImage(){
-        // debugger;
         if(counter <= 0)
             counter = backgroundImagesUrls.length - 1;
         else
@@ -33,7 +59,6 @@ function controlCrusoal (){
         MyCarousel.style.backgroundImage = `url(${backgroundImagesUrls[counter]})` ;
     }
     function getNextImage(){
-        // debugger;
         if(counter >= backgroundImagesUrls.length - 1)
             counter = 0;
         else
@@ -59,7 +84,7 @@ async function initialzePage(){
     controlCrusoal();
     displayCategoryInHtml();
 
-    await fillProductsInHtml();
+    await fillProductsInHtml(categoriesTemp);
 }
 
 initialzePage();
@@ -67,7 +92,7 @@ initialzePage();
 /******************************************************/
 /* creating categories in html */
 async function displayCategoryInHtml() {
-    categoriesTemp = await getAllDocuments("Categories");
+    // categoriesTemp = await getAllDocuments("Categories");
     let categoriesContainer = document.getElementById('categoriesContainer_id');
     categoriesTemp.forEach( (category , index) => {
     createCategoryInHtml(categoriesContainer , category , index);
@@ -116,6 +141,7 @@ async function fillProductsInHtml(){
     //productsContainer.id = `${catName}Products_id`;
 
     for(let category of categoriesTemp){
+        debugger;
         productsTemp = []; // removing all elements from temp
         let products = await getDocumentByField("Products" , "cat_id" , category.id);
         // we want to generate random indexes to fitch random products
@@ -246,21 +272,49 @@ async function createProductsInHtml(productsContainer , products , catName) {
         addToCartBtn.id = `${catName}ProdAddToCartBtn_id_${product.id}`;
         addToCartBtn.className = "w-75 addToCartBtn_class";
         addToCartBtn.innerText = "Add to cart";
+
+        addToCartBtn.onclick = ()=>{
+            if(myUser){
+                // put prod id and details in JSON
+                let myProdJson = {
+                    prod_id : product.id,
+                    prod_details : product
+                }
+
+                myCart = JSON.parse(getCookie('cart'));
+                myCart.push(myProdJson);
+                setCookie(`cart`,JSON.stringify(myCart),100);
+
+                let userCartJson = {
+                    cat_id : product.cat_id,
+                    isPending : 0,
+                    product_id : product.id,
+                    quantaty : 1,
+                }
+                myUser.shoppingCart.push(userCartJson);
+                updateDocById("User" , myUser.id, myUser);
+
+                addToCartBtn.innerHTML = "Added";
+            }
+            else{
+                window.location.href = "../CustomersPages/signin.html";
+            }
+        }
     
-        // Counter & Bin div (Initially Hidden) , contains + sign , trash icon , and - sign all as buttons (initially hidden)
-        let countAndBinDiv = document.createElement("div");
-        countAndBinDiv.id = `${catName}ProdCountAndBinDiv_id_${product.id}`;
-        countAndBinDiv.className = "productCountAndBin w-75 d-flex justify-content-center align-items-center px-3 py-2 d-none";
+        // // Counter & Bin div (Initially Hidden) , contains + sign , trash icon , and - sign all as buttons (initially hidden)
+        // let countAndBinDiv = document.createElement("div");
+        // countAndBinDiv.id = `${catName}ProdCountAndBinDiv_id_${product.id}`;
+        // countAndBinDiv.className = "productCountAndBin w-75 d-flex justify-content-center align-items-center px-3 py-2 d-none";
     
-        // remove Button that contains trash icon
-        let removeBtn = document.createElement("button");
-        removeBtn.id = `${catName}ProdRemoveFromCartBtn_id_${product.id}`;
-        removeBtn.className = "bin";
-        // creating trash icon
-        let trashIcon = document.createElement('i');
-        trashIcon.className = "fa fa-trash-o";
-        // appending the trah icon to remove btn
-        removeBtn.appendChild(trashIcon);
+        // // remove Button that contains trash icon
+        // let removeBtn = document.createElement("button");
+        // removeBtn.id = `${catName}ProdRemoveFromCartBtn_id_${product.id}`;
+        // removeBtn.className = "bin";
+        // // creating trash icon
+        // let trashIcon = document.createElement('i');
+        // trashIcon.className = "fa fa-trash-o";
+        // // appending the trah icon to remove btn
+        // removeBtn.appendChild(trashIcon);
     
         // // Decrease Button
         // let decrBtn = document.createElement("button");
@@ -289,14 +343,14 @@ async function createProductsInHtml(productsContainer , products , catName) {
         // incrBtn.appendChild(plusIcon);
     
         // Append elements to counter div
-        countAndBinDiv.appendChild(removeBtn);
+        // countAndBinDiv.appendChild(removeBtn);
         // countAndBinDiv.appendChild(decrBtn);
         // countAndBinDiv.appendChild(countSpan);
         // countAndBinDiv.appendChild(incrBtn);
     
         // Append addToCart button & counter div
         cartBtnDiv.appendChild(addToCartBtn);
-        cartBtnDiv.appendChild(countAndBinDiv);
+        // cartBtnDiv.appendChild(countAndBinDiv);
     
         // we finished all content of the product inner container , append them to this contianer
         productInnerContainer.appendChild(productHeader);

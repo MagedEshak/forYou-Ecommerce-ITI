@@ -92,5 +92,12 @@ async function addEventsToAllCartBtns(){
 }
 
 
+export function isProductExistInCart(productId , shoppingCart){
+    for(let product of shoppingCart){
+        if(product.product_id == productId)
+            return true;
+    }
+    return false;
+}
 
 
