@@ -436,6 +436,13 @@ function displayAllProducts(){
 }
 
 
+function display(element){
+    element.classList.remove('d-none');
+}
+function displayNone(element){
+    element.classList.add('d-none');
+}
+
 
 
 
