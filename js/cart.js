@@ -3,21 +3,19 @@ import {getDocById} from "../../js/main.js";
 
 const userId = getCookie("userId");
 console.log("from cart userId = " + userId);
-let myUser ;
 
 
 
 
 
-// let myCart = [];
+let myCart = [];
 
 
 // check if cookie exist ?
-let usrCart = getCookie(`cart`);
-console.log(JSON.parse(usrCart))
+let myCookie = getCookie(`cart`);
 
 // in case there is no cookie with ket = 'cart'
-if(myCookie){
+if(!myCookie){
     let myUser = await getDocById("User" , userId);
     let userShoppingCart = myUser.shoppingCart;
 
@@ -33,7 +31,7 @@ if(myCookie){
 //     }
 
 //     setCookie(`cart`,JSON.stringify(myCart),100);
-// }
+}
 
 
 
