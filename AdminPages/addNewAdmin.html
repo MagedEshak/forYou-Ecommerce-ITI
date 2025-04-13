@@ -63,8 +63,7 @@
                     Setting</a>
             </li>
             <li>
-                <a href="#" class="list-links text-light logoutBtn"><i
-                    class="bi bi-box-arrow-left"> </i>LogOut</a>
+                <a href="#" class="list-links text-light logoutBtn"><i class="bi bi-box-arrow-left"> </i>LogOut</a>
             </li>
         </ul>
     </aside>
@@ -111,10 +110,9 @@
             <hr>
             <li><a href="./AdminProfile.html" class="list-links text-light list-links-active"><i class="bi bi-gear"></i>
                     Setting</a></li>
-                    <li>
-                        <a href="#" class="list-links text-light logoutBtn"><i
-                            class="bi bi-box-arrow-left"> </i>LogOut</a>
-                    </li>
+            <li>
+                <a href="#" class="list-links text-light logoutBtn"><i class="bi bi-box-arrow-left"> </i>LogOut</a>
+            </li>
         </ul>
     </aside>
     <!-- End Left Side Dashboard Tabs in Tablet and Mobile Only-->
@@ -267,11 +265,11 @@
                                 <i class="bi bi-person-circle fs-cf-3 fs-cf-4"></i>
                             </div>
 
-                         <!-- Admin Name -->
-                         <div class="d-none d-lg-flex flex-column">
-                            <span id="user-name" class="fw-bolder fs-6 user-name">Loading... </span>
-                            
-                        </div>
+                            <!-- Admin Name -->
+                            <div class="d-none d-lg-flex flex-column">
+                                <span id="user-name" class="fw-bolder fs-6 user-name">Loading... </span>
+
+                            </div>
                         </div>
 
                     </div>
@@ -294,59 +292,34 @@
                                 <label for="fullNewAdminNameInput_id" class="form-label">Full Name</label>
                                 <input type="text" id="fullNewAdminNameInput_id" class="form-control"
                                     placeholder="Please, Enter a Valid Name" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please Enter A Valid Name.
-                                </div>
+                                <div class="invalid-feedback" id="error-fullname"></div>
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="emailNewAdminInput_id" class="form-label">Email</label>
                                 <input type="email" id="emailNewAdminInput_id" class="form-control"
                                     placeholder="Please, Enter a Valid Email (ex; email@a)" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please, Enter a Valid Email.
-                                </div>
+                                <div class="invalid-feedback" id="error-email"></div>
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="phoneNewAdminInput_id" class="form-label">Phone</label>
                                 <input type="tel" id="phoneNewAdminInput_id" class="form-control"
                                     placeholder="Please, Enter a Valid Phone Number" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please, Enter a Valid Phone Number.
-                                </div>
+                                <div class="invalid-feedback" id="error-phone"></div>
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="cityNewAdminInput_id" class="form-label">City</label>
                                 <input type="text" id="cityNewAdminInput_id" class="form-control"
                                     placeholder="Please, Enter a Valid City" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please, Enter a Valid City.
-                                </div>
+                                <div class="invalid-feedback" id="error-city"></div>
                             </div>
                             <!-- Start New Password Input and Show Password CheckBox -->
                             <div class="col-md-12 col-lg-6">
                                 <label for="newAdPassInput_id" class="form-label">Password</label>
                                 <input type="password" id="newAdPassInput_id" class="form-control" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    inValid Password.
-                                </div>
+                                <div class="invalid-feedback" id="error-newPassInpu"></div>
 
                                 <div class="col-12 mb-3">
                                     <div class="form-check">
@@ -363,12 +336,8 @@
                             <div class="col-md-12 col-lg-6">
                                 <label for="reNewPassInput_id" class="form-label">Repeat New Password</label>
                                 <input type="password" id="reNewPassInput_id" class="form-control" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Password not match.
-                                </div>
+                                <div class="invalid-feedback" id="error-repeatPassInput"></div>
+
 
                                 <div class="col-12 mb-3">
                                     <div class="form-check">
@@ -399,6 +368,7 @@
     </main>
 
     <script type="module" src="./JS/navBar_sideBarFun.js"></script>
+    <script type="module" src="./JS/adminForms.js"></script>
     <script type="module" src="./JS/admins.js"></script>
 
 </body>

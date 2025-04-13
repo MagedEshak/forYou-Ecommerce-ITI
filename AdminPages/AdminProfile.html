@@ -364,42 +364,39 @@
                 <!-- Start Right side Section -->
                 <div class="p-3">
                     <!-- Start Edit Profile Section -->
-                    <div class="row p-md-3 p-lg-3 pt-3">
+                    <div id="editProfileDiv_id" class="row p-md-3 p-lg-3 pt-3">
                         <h2>Edit Profile</h2>
                         <!-- Start Edit Profile Form -->
-                        <form action="" class="g-3 border border-3 rounded-3 p-4">
+                        <form id="editProfileForm_id" class="g-3 border border-3 rounded-3 p-4 needs-validation"
+                            novalidate>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="fullNameInput_id" class="form-label">Full Name</label>
-                                    <input type="text" id="fullNameInput_id" class="form-control"
-                                        placeholder="Maged Eshak">
+                                    <label for="eFullNameInput_id" class="form-label">Full Name</label>
+                                    <input type="text" id="eFullNameInput_id" class="form-control">
+                                    <div class="invalid-feedback" id="error-fullname"></div>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <label for="emailInput_id" class="form-label">Email</label>
-                                    <input type="email" id="emailInput_id" class="form-control"
-                                        placeholder="magedeshak@admin.com">
+                                    <label for="eEmailInput_id" class="form-label">Email</label>
+                                    <input type="email" id="eEmailInput_id" class="form-control">
+                                    <div class="invalid-feedback" id="error-email"></div>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <label for="phoneInput_id" class="form-label">Phone</label>
-                                    <input type="tel" id="phoneInput_id" class="form-control" placeholder="01275465883">
+                                    <label for="ePhoneInput_id" class="form-label">Phone</label>
+                                    <input type="tel" id="ePhoneInput_id" class="form-control">
+                                    <div class="invalid-feedback" id="error-phone"></div>
                                 </div>
 
                                 <div class="col-md-6 mb-3">
-                                    <label for="cityInput_id" class="form-label">City</label>
-                                    <input type="text" id="city_id" class="form-control" placeholder="Assiut">
+                                    <label for="ePhoneInput_id" class="form-label">City</label>
+                                    <input type="text" id="eCityInput_id" class="form-control">
+                                    <div class="invalid-feedback" id="error-city"></div>
                                 </div>
-
-                                <div class="col-12 mb-3">
-                                    <label for="aboutMeInput_id" class="form-label">About Me</label>
-                                    <textarea name="txtArea" id="aboutMeInput_id" class="form-control"
-                                        placeholder="Text"></textarea>
-                                </div>
-
                                 <div class="col-12 text-end mt-3">
-                                    <button type="submit" class="btn btn-color fw-bold text-light">Update
-                                        Profile</button>
+                                    <button type="submit" class="btn btn-color fw-bold text-light">
+                                        Update Profile
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -408,19 +405,20 @@
                     <!-- End Edit Profile Section -->
 
                     <!-- Start End Change Password Container -->
-                    <div class="row p-md-3 p-lg-3">
+                    <div id="changePasswordDiv_id" class="row p-md-3 p-lg-3">
                         <!-- Start Admin Photo and Name Div-->
                         <div class="d-flex justify-content-between p-3 mt-3">
 
                             <h2>Change Password</h2>
                         </div>
                         <!-- Start Change Password Form -->
-                        <form action="" class="g-3 border border-3 rounded-3 p-4">
+                        <form id="changePasswordForm_id" class="g-3 border border-3 rounded-3 p-4">
                             <!-- Start Current Password Input and Show Password CheckBox -->
                             <div class="row">
                                 <div class="col-12">
                                     <label for="currentPassInput_id" class="form-label">Current Password</label>
                                     <input type="password" id="currentPassInput_id" class="form-control">
+                                    <div class="invalid-feedback" id="error-currentPassInput"></div>
                                 </div>
 
                                 <div class="col-12 mb-3">
@@ -439,6 +437,8 @@
                                 <div class="col-md-12 col-lg-6">
                                     <label for="newPassInput_id" class="form-label">New Password</label>
                                     <input type="password" id="newPassInput_id" class="form-control">
+                                    <div class="invalid-feedback" id="error-newPassInpu"></div>
+
                                     <div class="col-12 mb-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox"
@@ -455,6 +455,7 @@
                                 <div class="col-md-12 col-lg-6">
                                     <label for="repeatPassInput_id" class="form-label">Repeat New Password</label>
                                     <input type="password" id="repeatPassInput_id" class="form-control">
+                                    <div class="invalid-feedback" id="error-repeatPassInput"></div>
 
                                     <div class="col-12 mb-3">
                                         <div class="form-check">
@@ -494,7 +495,7 @@
 
     <script type="module" src="./JS/navBar_sideBarFun.js"></script>
     <script type="module" src="./JS/admins.js"></script>
-
+    <script type="module" src="./JS/adminForms.js"></script>
 </body>
 
 </html>

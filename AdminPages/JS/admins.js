@@ -6,20 +6,6 @@ import {
   logoutUser,
 } from "../../js/auth.js";
 
-//--------------------------------------------------------------------------------------
-
-let fullName = document.getElementById("fullNewAdminNameInput_id");
-let email = document.getElementById("emailNewAdminInput_id");
-let phone = document.getElementById("phoneNewAdminInput_id");
-let password = document.getElementById("newAdPassInput_id");
-let repeatPassword = document.getElementById("reNewPassInput_id");
-let city = document.getElementById("cityNewAdminInput_id");
-let cekBoxPass = document.getElementById("showadPasswordCheck_id");
-let cekBoxRePass = document.getElementById("showReNewPasswordCheck_id");
-let adForm = document.getElementById("adminRegitForm");
-
-//-----------------------------------------------------------------------------
-
 let name = document.getElementById("name");
 let nameee = document.getElementById("nameee");
 let emaiil = document.getElementById("email");
@@ -63,94 +49,6 @@ if (cancelBtn) {
 
 function cancelCreateNewAdminForm() {
   window.history.back();
-}
-
-// Form Validation
-adForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  if (!isNaN(fullName.value)) {
-    showAlert("Please Enter Valid Name");
-    e.preventDefault();
-    return;
-  }
-
-  let emailRegEx = /^[a-zA-Z][a-zA-Z0-9._-]*@admin\.com$/i;
-  if (email.value.trim() === "") {
-    showAlert("Please Enter Valid Email like (abcd@admin.com)");
-    e.preventDefault();
-    return;
-  }
-
-  if (!emailRegEx.test(email.value)) {
-    showAlert("Please Enter Valid Email like (abcd@admin.com)");
-    e.preventDefault();
-    return;
-  }
-
-  if (password.value.length < 6) {
-    showAlert("Please Enter Valid Password at least 6 characters");
-    e.preventDefault();
-    return;
-  }
-
-  if (password.value !== repeatPassword.value) {
-    showAlert("Please Enter Valid Password");
-    e.preventDefault();
-    return;
-  }
-
-  password.type = cekBoxPass.checked ? "text" : "password";
-  repeatPassword.type = cekBoxRePass.checked ? "text" : "password";
-
-  let phoneRegEx = /^[01]+[0||1||2||5]+[0-9]{9}$/i;
-  if (phone.value.trim() === "") {
-    showAlert("Please Enter Valid Phone Number");
-    e.preventDefault();
-    return;
-  }
-
-  if (!phoneRegEx.test(phone.value)) {
-    showAlert("Please Enter Valid Phone Number");
-    e.preventDefault();
-    return;
-  }
-
-  const adminDataValue = {
-    Username: fullName.value,
-    email: email.value,
-    phone: phone.value,
-    isAdmin: true,
-    address: ["EG", city.value],
-  };
-
-  try {
-    debugger;
-    const adminID = await registerUser(adminDataValue.email, password.value);
-    if (adminID) {
-      await createUserProfile(adminID, adminDataValue);
-      alert("Admin Created Successfully");
-    } else {
-      alert("Registration Failed");
-    }
-  } catch (error) {
-    alert("Something Went Wrong");
-  }
-});
-
-function showAlert(
-  message,
-  containerId = "createNewAdmin_id",
-  duration = 2000
-) {
-  let alert = document.createElement("div");
-  alert.classList.add("alert", "alert-warning");
-  alert.setAttribute("role", "alert");
-  alert.innerText = message;
-  document.getElementById(containerId).prepend(alert);
-  setTimeout(() => {
-    alert.remove();
-  }, duration);
 }
 
 //---------------------------------------------------------
