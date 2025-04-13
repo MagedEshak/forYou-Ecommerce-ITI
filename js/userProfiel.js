@@ -25,30 +25,29 @@ window.onload = () => {
       userEmail.innerHTML = userData.email;
       usernameEdit.innerHTML = userData.Username;
       userAddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
-
-      for (let index in userData.shoppingCart) {
-        let order = userData.shoppingCart[index];
-        let productPromise = getDocById("Products", order.product_id);
-
-        productPromise.then((product) => {
-          let Quantity = order.quantaty;
-          let Status = order.isPending;
-          console.log(product);
-          creatLastOrder(product, Quantity, Status, allOrdersContainer);
-
-          if (Status === 1) {
-            ShowOrderdDelivered(product, Quantity);
-          }
-          if (Status === 0) {
-            creatLastOrder(product, Quantity, Status, lastOrder);
-          }
-        });
-      }
-      updateDeliveredTotalDisplay(userData.shoppingCart);
       orderaddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
       orderUserName.innerHTML = userData.Username;
       orderPhone.innerHTML = userData.phone;
     });
+    for (let index in userData.shoppingCart) {
+      let order = userData.shoppingCart[index];
+      let productPromise = getDocById("Products", order.product_id);
+
+      productPromise.then((product) => {
+        let Quantity = order.quantaty;
+        let Status = order.isPending;
+        console.log(product);
+        creatLastOrder(product, Quantity, Status, allOrdersContainer);
+
+        if (Status === 1) {
+          ShowOrderdDelivered(product, Quantity);
+        }
+        if (Status === 0) {
+          creatLastOrder(product, Quantity, Status, lastOrder);
+        }
+      });
+    }
+    updateDeliveredTotalDisplay(userData.shoppingCart);
   });
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   wishlist.forEach((product) => createWishlistItem(product));
