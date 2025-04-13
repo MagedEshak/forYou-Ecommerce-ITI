@@ -17,12 +17,12 @@ let myCart = [];
 let usrCart = JSON.parse(getCookie(`cart`));
 
 if(usrCart){
-    var price = 0
+    window.totalPrice = 0
     for(var product of usrCart){
         window.pDetail = product.prod_details
         window.pId = product.prod_id
         console.log(pId)
-        price += pDetail.price
+        totalPrice += pDetail.price
         // Create the main container div
         const productContainer = document.createElement("div");
         productContainer.className = "col-md-9 align-content-center text-center";
@@ -100,6 +100,7 @@ if(usrCart){
                 
                 if(usr.shoppingCart[i].product_id == event.target.id.split('_')[1]){
                    usr.shoppingCart.splice(i,1)
+                    totalPrice -= usr.shoppingCart[i].price
                    break;
                 }
             
@@ -140,7 +141,7 @@ if(usrCart){
         document.getElementById("products").appendChild(productContainer);
         document.getElementById("products").appendChild(iconsContainer);
     }
-    document.getElementById("price_text").innerText = price
+    document.getElementById("price_text").innerText = totalPrice
 }
 console.log(usrCart)
 
