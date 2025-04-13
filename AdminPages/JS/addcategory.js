@@ -1,5 +1,9 @@
-import { addDocument,deleteAllDocuments,getDocumentByField,getAllDocuments } from "../../js/main.js"
-
+import {
+  addDocument,
+  deleteAllDocuments,
+  getDocumentByField,
+  getAllDocuments,
+} from "../../js/main.js";
 
 // deleteAllDocuments("category")
 // var cat ={
@@ -8,27 +12,29 @@ import { addDocument,deleteAllDocuments,getDocumentByField,getAllDocuments } fro
 // }
 // addDocument("category", cat)
 
-document.getElementById("form_id").addEventListener("submit", async function (event) {
-  event.preventDefault();
-  var catName = document.getElementById("categoryNameInput_id").value;
-  var cat = {
-    "name": catName,
-  }
-  await addDocument("category", cat)
-  document.getElementById("categoryNameInput_id").value = "";
-  location.reload();
-});
+document
+  .getElementById("form_id")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
+    var catName = document.getElementById("categoryNameInput_id").value;
+    var cat = {
+      cat_name: catName,
+    };
+    await addDocument("Categories", cat);
+    document.getElementById("categoryNameInput_id").value = "";
+    location.reload();
+  });
 
 var categorys = await getAllDocuments("category");
-categorys.forEach(cat => {
-  
+categorys.forEach((cat) => {
   // Create the <tr> element
   const tr = document.createElement("tr");
 
   // Create the <td> element for category info
   const tdCategory = document.createElement("td");
   const divContainer = document.createElement("div");
-  divContainer.className = "align-content-center text-center d-flex justify-content-start gap-5";
+  divContainer.className =
+    "align-content-center text-center d-flex justify-content-start gap-5";
 
   const rowDiv = document.createElement("div");
   rowDiv.className = "row";
@@ -36,7 +42,7 @@ categorys.forEach(cat => {
   const catName = document.createElement("span");
   catName.className = "text-start";
   catName.id = "cat_name";
-  catName.textContent = cat.name;
+  catName.textContent = cat.cat_name;
 
   const catId = document.createElement("span");
   catId.className = "text-start";
@@ -53,7 +59,6 @@ categorys.forEach(cat => {
   const tdQuantity = document.createElement("td");
   tdQuantity.className = "text-center align-middle";
 
-
   const spanQuantity = document.createElement("span");
   spanQuantity.id = "catQuantity_id";
   spanQuantity.className = "align-content-center text-center";
@@ -68,5 +73,4 @@ categorys.forEach(cat => {
 
   // Append the row to a table in the document (assuming you have a table with id "myTable")
   document.getElementById("tbody_id").appendChild(tr);
-
 });

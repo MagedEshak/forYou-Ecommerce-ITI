@@ -96,6 +96,7 @@ export async function logoutUser() {
 /// change password
 export async function changePassword(currentPassword, newPassword) {
 
+
     try {
         const user = auth.currentUser;
         if (!user) {
@@ -115,6 +116,7 @@ export async function changePassword(currentPassword, newPassword) {
         console.error('Error changing password:', error.message);
         return false;
 
+
     }
 
     // Re-authenticate the user
@@ -126,6 +128,7 @@ export async function changePassword(currentPassword, newPassword) {
 
     // Update password
     await updatePassword(user, newPassword);
+
     console.log("Password changed successfully");
     return true;
   } catch (error) {
@@ -160,7 +163,11 @@ export async function getCurrentUserId() {
 // create a user profile in Firestore
 export async function createUserProfile(uid, userData) {
   try {
-    await setDoc(doc(db, "User", uid), userData);
+
+
+    await setDoc(doc(db, "Users", uid), userData);
+
+
     console.log("User profile created!");
   } catch (error) {
     console.error("Error creating user profile:", error);
@@ -174,15 +181,18 @@ export async function getUserProfile(uid) {
     if (!uid || typeof uid !== "string") {
       console.error("Invalid UID:", uid);
       return null;
+
     }
 
-    const userDoc = await getDoc(doc(db, "User", uid));
+    const userDoc = await getDoc(doc(db, "Users", uid));
     if (userDoc.exists()) {
       return userDoc.data();
     } else {
       console.log("No such user!");
       return null;
     }
+
+
   } catch (error) {
     console.error("Error fetching user profile:", error);
     throw error;
@@ -192,7 +202,11 @@ export async function getUserProfile(uid) {
 // Update user profile by UID
 export async function updateUserProfile(uid, updatedData) {
   try {
-    const userDoc = doc(db, "User", uid);
+
+
+    const userDoc = doc(db, "Users", uid);
+
+
     await updateDoc(userDoc, updatedData);
     console.log("User profile updated!");
   } catch (error) {
@@ -201,11 +215,21 @@ export async function updateUserProfile(uid, updatedData) {
 }
 // edit user profile
 
-
 // Delete user profile by UID
 export async function deleteUserProfile(uid) {
   try {
+
     await deleteDoc(doc(db, "User", uid));
+    console.log("User profile deleted!");
+  } catch (error) {
+    console.error("Error deleting user profile:", error);
+  }
+}
+
+
+    await deleteDoc(doc(db, "Users", uid));
+
+
     console.log("User profile deleted!");
   } catch (error) {
     console.error("Error deleting user profile:", error);
@@ -250,18 +274,19 @@ export function getCookie(name) {
 // delee cookie
 export function deleteCookie(name) {
 
-    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
 }
 
 
 // delete all cookies
 export function deleteAllCookies() {
-    var cookies = document.cookie.split(";");
+  var cookies = document.cookie.split(";");
 
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i];
-        var eqPos = cookie.indexOf("=");
-        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i];
+    var eqPos = cookie.indexOf("=");
+    var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+  }
 }
