@@ -145,7 +145,9 @@ export async function getCurrentUserId() {
 // create a user profile in Firestore
 export async function createUserProfile(uid, userData) {
   try {
+
     await setDoc(doc(db, "Users", uid), userData);
+
     console.log("User profile created!");
   } catch (error) {
     console.error("Error creating user profile:", error);
@@ -159,6 +161,7 @@ export async function getUserProfile(uid) {
     if (!uid || typeof uid !== "string") {
       console.error("Invalid UID:", uid);
       return null;
+
     }
 
     const userDoc = await getDoc(doc(db, "Users", uid));
@@ -168,6 +171,7 @@ export async function getUserProfile(uid) {
       console.log("No such user!");
       return null;
     }
+
   } catch (error) {
     console.error("Error fetching user profile:", error);
     throw error;
@@ -177,7 +181,9 @@ export async function getUserProfile(uid) {
 // Update user profile by UID
 export async function updateUserProfile(uid, updatedData) {
   try {
+
     const userDoc = doc(db, "Users", uid);
+
     await updateDoc(userDoc, updatedData);
     console.log("User profile updated!");
   } catch (error) {
@@ -189,7 +195,9 @@ export async function updateUserProfile(uid, updatedData) {
 // Delete user profile by UID
 export async function deleteUserProfile(uid) {
   try {
+
     await deleteDoc(doc(db, "Users", uid));
+
     console.log("User profile deleted!");
   } catch (error) {
     console.error("Error deleting user profile:", error);
@@ -234,6 +242,7 @@ export function getCookie(name) {
 export function deleteCookie(name) {
   document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
+
 
 // delete all cookies
 export function deleteAllCookies() {
