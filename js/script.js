@@ -13,7 +13,7 @@ let {myUser , myCart} = await initializeCart();
 /******************************************************************************************************** */
 /******************************************************************************************************** */
 // code to handel wishlist
-debugger;
+
 let myWishList = await initWishlist();
 /******************************************************************************************************** */
 /* this code handels our crusoal and its background images */
@@ -117,14 +117,14 @@ function createCategoryInHtml(categoriesContainer , category , index){
 
 // this function fill products section randomly from all cats
 async function fillProductsInHtml(){
-    debugger;
+   
     // this is the container of products
     let productsContainer = document.createElement('div');
     productsContainer.className = "products row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4";
     //productsContainer.id = `${catName}Products_id`;
 
     for(let category of categoriesTemp){
-        debugger;
+       
         productsTemp = []; // removing all elements from temp
         let products = await getDocumentByField("Products" , "cat_id" , category.id);
         // we want to generate random indexes to fitch random products
@@ -192,7 +192,7 @@ async function createProductsInHtml(productsContainer , products , catName) {
 
         addToWishListBtn.onclick = ()=>{
             if(myUser){
-                debugger;
+                
                 myWishList = JSON.parse(localStorage.getItem('wishlist'));
 
                 if(heartIcon.style.color != 'red'){

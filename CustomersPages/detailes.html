@@ -51,8 +51,10 @@
   <nav id="sideNavBar_id" class="w-75">
       <div class="sideNavLinksContainer d-flex flex-column align-items-start justify-content-center w-100 bg-danger">
           <div class="manageProfile w-100 py-5 px-3">
-              <span><a href="signin.html">Login</a> / <a
-                      href="Rejester.html">Register</a></span>
+            <a class="col-auto text-center fw-bolder p-2 userName_id" > User Name</a>
+            <a class="col-auto text-center p-2 logBtn">Login</a>  
+            <a class="col-auto text-center p-2 regBtn">Register</a></span>
+
           </div>
           <div id="sideNavCategoriesLinks_id"
           class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
@@ -118,9 +120,10 @@
                 <!-- this is filled dynamically using js -->
             </div>
             <div class="row justify-content-end align-items-center links">
-                <a href="signin.html" class="col-auto text-center p-2" id="sign_id"> Sign In</a>
-                <a href="profile.html" class="col-auto text-center p-2" id ="userName_id"> User Name</a>
-               
+              <a class="col-auto text-center p-2 logBtn"> Sign In</a>
+              <a class= "col-auto text-center p-2 regBtn">Register</a></span>
+              <a class="col-auto text-center p-2 fw-bolder userName_id" > User Name</a>
+             
                 <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
                     <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
                 </a>
@@ -205,7 +208,7 @@
 </footer>
 
   <script type="module" src="../js/navBar.js"></script>
-  <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+  <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
   <script src="../js/details.js" type="module"></script>
 </body>
 

@@ -14,14 +14,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../CSS/home.css" />
   <link rel="stylesheet" href="../CSS/profile.css">
 
@@ -58,8 +55,10 @@
   <nav id="sideNavBar_id" class="w-75">
       <div class="sideNavLinksContainer d-flex flex-column align-items-start justify-content-center w-100 bg-danger">
           <div class="manageProfile w-100 py-5 px-3">
-              <span><a href="signin.html">Login</a> / <a
-                      href="Rejester.html">Register</a></span>
+        <a  class="col-auto text-center fw-bolder p-2 userName_id" > User Name</a>
+        <a  class="col-auto text-center p-2 logBtn">Login</a>  
+        <a  class="col-auto text-center p-2 regBtn">Register</a></span>
+
           </div>
           <div id="sideNavCategoriesLinks_id"
           class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
@@ -120,19 +119,24 @@
   <!-- my nav in large devices , it only appears on large devices -->
   <nav class="d-none d-lg-block siteColorClass">
     <div class="container-fluid p-3">
-        <div class="links d-flex justify-content-between align-items-center">
-            <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links">
-                <!-- this is filled dynamically using js -->
-            </div>
-            <div class="row justify-content-end align-items-center links">
-                <a href="signin.html" class="col-auto text-center p-2" id="sign_id"> Sign In</a>
-                <a href="profile.html" class="col-auto text-center p-2" id ="userName_id"> User Name</a>
-               
-                <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
-                    <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
-                </a>
-            </div>
-        </div>
+
+      <div class="links d-flex justify-content-end align-items-center">
+           <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links col-7">
+               <!-- this is filled dynamically using js -->
+           </div>
+
+          
+          <a  class="col-auto text-center p-1 logBtn"> Sign In</a>
+          <a class= "col-auto text-center p-1 regBtn">Register</a></span>
+          <a class="col-auto text-center p-2 fw-bolder userName_id" > User Name</a>
+          
+          
+          <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
+              <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
+          </a>
+           
+      </div>
+
     </div>
 </nav><!-- updated -->
 
@@ -163,7 +167,7 @@
       <!--** Profile Content Toggel with bars     --->
       <section class="col-md-8 col-lg-10 ps-4 pt-4">
         <div id="porfielOverview_id" class="row align-items-center justify-content-around d-block">
-          <h3 class="mb-3 col-12" id="welcomeHead_id">Hello, Samuel</h3>
+          <h3 class="mb-3 col-12" id="welcomeHead_id">Hello, .....</h3>
 
           <div class="row justify-content-between gap-3 mb-3">
 
@@ -171,17 +175,25 @@
               <section class="row justify-content-between">
                 <h4 class="col-8">Personal Information</h4>
                 <!-- Button trigger modal -->
-              <button type="button" class="btn col-2 btn-primary" id="editUserBtn_id">
-                  Edit
-              </button>
+              <a href="./edit-profile.html" class="btn btn-primary">
+                  <i class="bi bi-pencil-square"></i> Edit Profile
+              </a>
                 <!-- <a class="text-info col-2" href="#">Edit</a> -->
                 <div class="col-5 mt-4">
-                  <h6 class="opacity-75">Name</h6>
-                  <p id="username_id">Samuel</p>
+                  <h6 class="">Name</h6>
+                  <p id="username_id">.....</p>
                 </div>
-                <div class="col-5  mt-4">
+                <div class="col-5 mt-3">
                   <h6 class="opacity-75">Email</h6>
-                  <p id="userEmail_id">samuel@gmail.com</p>
+                  <p id="userEmail_id">........</p>
+                </div>
+                <div>
+                  <h6 class="col-5">phone</h6>
+                  <p id="userPhone_id">........</p>
+                </div>
+                <div class="col-5 mt-3">
+                  <h6 >Address</h6>
+                  <p id="userAddress_id">........</p>
                 </div>
               </section>
             </div>
@@ -195,7 +207,7 @@
                     for faster and easier checkout
                   </p>
                 </div>
-                <button class="btn btn-color col-lg-4 p-2 col-sm-2" id="editAddress_id"> Add Address</button>
+               
               </div>
             </div>
 
@@ -297,115 +309,7 @@
             </section>
 
           </div>
-        <!--*** Edit profiel data  -->
-               <!-- Start Edit Profile Section -->
-                <div id="editUser_id" class="row p-md-3 p-lg-3 pt-3 justify-content-around d-none">
-                    <h2 class="col-7" id="usernameEdit_id">User</h2>
-                    <!-- Start Edit Profile Form -->
-                    <form id="adminRegitForm" class="g-3 col-7 card rounded-3 p-4 needs-validation" novalidate>
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <label for="fullNewAdminNameInput_id" class="form-label">Full Name</label>
-                                <input type="text" id="fullNewAdminNameInput_id" class="form-control"
-                                    placeholder="Please, Enter a Valid Name" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please Enter A Valid Name.
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 mb-3">
-                                <label for="emailNewAdminInput_id" class="form-label">Email</label>
-                                <input type="email" id="emailNewAdminInput_id" class="form-control"
-                                    placeholder="Please, Enter a Valid Email (ex; email@a)" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please, Enter a Valid Email.
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 mb-3">
-                                <label for="phoneNewAdminInput_id" class="form-label">Phone</label>
-                                <input type="tel" id="phoneNewAdminInput_id" class="form-control"
-                                    placeholder="Please, Enter a Valid Phone Number" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please, Enter a Valid Phone Number.
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 mb-3">
-                                <label for="cityNewAdminInput_id" class="form-label">City</label>
-                                <input type="text" id="cityNewAdminInput_id" class="form-control"
-                                    placeholder="Please, Enter a Valid City" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please, Enter a Valid City.
-                                </div>
-                            </div>
-                            <!-- Start New Password Input and Show Password CheckBox -->
-                            <div class="col-md-12">
-                                <label for="newAdPassInput_id" class="form-label">Password</label>
-                                <input type="password" id="newAdPassInput_id" class="form-control" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    inValid Password.
-                                </div>
-
-                                <div class="col-12 mb-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="showadPasswordCheck_id">
-                                        <label class="form-check-label" for="showadPasswordCheck_id">
-                                            Show Password
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End New Password Input and Show Password CheckBox -->
-
-                            <!-- Start Repeat New Password Input and Show Password CheckBox -->
-                            <div class="col-md-12 ">
-                                <label for="reNewPassInput_id" class="form-label">Repeat New Password</label>
-                                <input type="password" id="reNewPassInput_id" class="form-control" required>
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Password not match.
-                                </div>
-
-                                <div class="col-12 mb-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="showReNewPasswordCheck_id">
-                                        <label class="form-check-label" for="showReNewPasswordCheck_id">
-                                            Show Password
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Repeat New Password Input and Show Password CheckBox -->
-
-                            <div class="row  justify-content-center gap-4 mt-4">
-                                <button type="submit" class="btn btn-color col-3 fw-bold text-light">Update User Data </button>
-                                <button id="cancelBtn_id" type="button"
-                                    class="btn border-3 col-3 border-secondary text-secondary">Cancel</button>
-                            </div>
-                            <!-- End Change Password button -->
-                        </div>
-                    </form>
-                    <!-- End Edit Profile Form -->
-                </div>
-                <!-- End Edit Profile Section -->
+        
 
       </section>
 
@@ -464,10 +368,9 @@
 </footer>
 
   <script type="module" src="../js/navBar.js"></script>
-  <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+  <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
   <script type="module" src="../js/profile.js"></script>
-  <script src="..//js/userProfiel.js" type="module"></script>
 </body>
 
 </html>

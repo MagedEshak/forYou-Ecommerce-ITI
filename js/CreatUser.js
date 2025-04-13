@@ -6,6 +6,8 @@ let userName = document.getElementById("userName_id");
 let invalidName = document.getElementById("invalidName_id");
 let emptyName = document.getElementById("emptyName_id");
 let regName = /^[a-zA-Z]{3,}$/;
+let isEmailValid = false;
+let isNumberValid = false;
 
 userName.addEventListener("blur", () => {
   if (regName.test(userName.value)) {
@@ -57,13 +59,13 @@ let invalidNumber = document.getElementById("invalidNumber_id");
 let emptyNumber = document.getElementById("emptyNumber_id");
 let regNmber = /^01[0125][0-9]{8}$/;
 phoneNumber.addEventListener("blur", () => {
-  if (regNumber.test(phoneNumberNumber.value)) {
+  if (regNmber.test(phoneNumber.value)) {
     isNumberValid = true;
     invalidNumber.classList.remove("d-block");
     invalidNumber.classList.add("d-none");
     emptyNumber.classList.remove("d-block");
     emptyNumber.classList.add("d-none");
-  } else if (userEmail.value == "") {
+  } else if (phoneNumber.value == "") {
     isNumberValid = false;
     invalidNumber.classList.remove("d-block");
     invalidNumber.classList.add("d-none");
