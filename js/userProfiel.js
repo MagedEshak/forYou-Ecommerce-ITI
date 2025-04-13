@@ -1,5 +1,9 @@
-import { getCurrentUserId, getUserProfile } from "./auth.js";
-import { getDocById } from "./main.js";
+import { getCurrentUserId, getUserProfile, getCookie, setCookie } from "./auth.js";
+import { getDocById ,updateDocById} from "./main.js";
+import {initializeCart} from "./cartAndWishList.js";
+
+
+
 let userName = document.getElementById("username_id");
 let userEmail = document.getElementById("userEmail_id");
 let userAddres = document.getElementById("userAddres_id");
@@ -168,9 +172,12 @@ function removeFromWishlist(productId, elementToRemove) {
     elementToRemove.remove();
   }
 }
-function createWishlistItem(productData) {
-  const { name, disc, price, img, id } = productData.prod_details;
+async function createWishlistItem(productData) {
+  const userId = getCookie("userId");
+  let {myUser , myCart} = await initializeCart();
 
+
+  const { name, disc, price, img, id } = productData.prod_details;
   const productCol = document.createElement("div");
   productCol.className = "col-sm-12 col-md-6 col-lg-4";
 
@@ -207,6 +214,36 @@ function createWishlistItem(productData) {
   const addToCartBtn = document.createElement("button");
   addToCartBtn.className = "btn badge p-3 btn-color-fa";
   addToCartBtn.textContent = "Add to cart";
+  addToCartBtn.id = `addToCartBtn_id_${id}`;
+
+  addToCartBtn.onclick = ()=>{
+    if(myUser){
+        // put prod id and details in JSON
+        let myProdJson = {
+            prod_id : id,
+            prod_details : productData.prod_details
+        }
+
+        myCart = JSON.parse(getCookie('cart'));
+        myCart.push(myProdJson);
+        setCookie(`cart`,JSON.stringify(myCart),100);
+
+        let userCartJson = {
+            cat_id : id, // this is wrong
+            isPending : 0,
+            product_id : id,
+            quantaty : 1,
+        }
+        myUser.shoppingCart.push(userCartJson);
+        updateDocById("User" , myUser.id, myUser);
+
+        addToCartBtn.innerHTML = "Added";
+    }
+    else{
+        window.location.href = "../CustomersPages/signin.html";
+    }
+  }
+  /************************************************************* */
 
   infoDiv.appendChild(title);
   infoDiv.appendChild(description);
