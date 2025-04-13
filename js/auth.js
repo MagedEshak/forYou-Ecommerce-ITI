@@ -96,10 +96,10 @@ export async function changePassword(currentPassword, newPassword) {
        await updatePassword(user, newPassword);
        
         console.log('Password changed successfully');
-        return { success: true };
+        return  true ;
     } catch (error) {
         console.error('Error changing password:', error.message);
-        return { success: false, error: error.message };
+        return false;
     }
 }
 
