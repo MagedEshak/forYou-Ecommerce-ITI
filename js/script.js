@@ -1,6 +1,6 @@
 import {getAllDocuments, getDocumentByField, getDocById , updateDocById} from "../../js/main.js";
 import { getCookie, setCookie } from "./auth.js";
-import {initializeCart} from "./cartAndWishList.js";
+import {initializeCart , initWishlist} from "./cartAndWishList.js";
 
 
 let categoriesTemp = await getAllDocuments("Categories");
@@ -10,32 +10,12 @@ let productsTemp = [];
 // code to handel cart buttons and cookies
 const userId = getCookie("userId");
 let {myUser , myCart} = await initializeCart();
-
-/*************************************************************************************************************** */
+/******************************************************************************************************** */
 /******************************************************************************************************** */
 // code to handel wishlist
-let wishListLocalStorage = localStorage.getItem('wishlist');
-let myWishList = []
-if(!wishListLocalStorage){
-    if(myUser){
-        let userWishList = myUser.wishlist;
-
-        for(let item of userWishList){
-            let prod = await getDocById("Products" , item.product_id);
-    
-            let myProdJson = {
-                prod_id : prod.id,
-                prod_details : prod
-            }
-            
-            myWishList.push(myProdJson); 
-        }
-    
-        localStorage.setItem(`wishlist`,JSON.stringify(myWishList));
-    }
-}
+debugger;
+let myWishList = await initWishlist();
 /******************************************************************************************************** */
-
 /* this code handels our crusoal and its background images */
 function controlCrusoal (){
     /* my background images */
@@ -200,8 +180,8 @@ async function createProductsInHtml(productsContainer , products , catName) {
 
         // check if the product in wishList or not
         if(myUser){
-            for(let item of myUser.wishlist){
-                if(item.product_id == product.id)
+            for(let item of myWishList){
+                if(item.prod_id == product.id)
                 {
                     heartIcon.style.webkitTextStroke = '1px red'
                     heartIcon.style.color = 'red';
