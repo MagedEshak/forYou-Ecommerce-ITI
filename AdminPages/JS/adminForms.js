@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   editFullName.placeholder = userName;
   editEmail.placeholder = userEmail;
   editPhone.placeholder = userPhone;
-  editCity.placeholder = userAddress.substring(3);
+  editCity.placeholder = userAddress;
 
   // Edit Admin Profile Form Validation
   editProfileForm.addEventListener("submit", async (e) => {
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         city:
           editCity.value.trim() !== ""
             ? editCity.value
-            : userAddress.substring(3),
+            : userAddress,
       },
     };
 
