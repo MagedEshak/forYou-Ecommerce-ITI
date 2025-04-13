@@ -84,9 +84,8 @@ async function handleSignIn(event) {
         setCookie("userName", userProfile.userName, 30);
         setCookie("email", emailInput.value, 30);
         setCookie("isAdmin", userProfile.isAdmin, 30);
-
         setCookie("phone", userProfile.phone, 30);
-        setCookie("address", userProfile.address, 30);
+        setCookie("address", userProfile.address.city, 30);
 
         // if user is admin redirect to admin page
         if (isAdmin) {

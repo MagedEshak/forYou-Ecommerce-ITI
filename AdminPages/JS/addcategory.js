@@ -12,7 +12,6 @@ import {
 // }
 // addDocument("category", cat)
 
-
 document
   .getElementById("form_id")
   .addEventListener("submit", async function (event) {
@@ -26,8 +25,7 @@ document
     location.reload();
   });
 
-
-var categorys = await getAllDocuments("category");
+var categorys = await getAllDocuments("Categories");
 categorys.forEach((cat) => {
   // Create the <tr> element
   const tr = document.createElement("tr");
