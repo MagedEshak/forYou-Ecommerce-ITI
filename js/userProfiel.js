@@ -21,11 +21,11 @@ let orderPhone = document.getElementById("orderPhone_id");
 window.onload = () => {
   getCurrentUserId().then((uId) => {
     getUserProfile(uId).then((userData) => {
-      userName.innerHTML = userData.Username;
-      welcomeHead.innerHTML = `Hello, ${userData.Username}`;
+      userName.innerHTML = userData.userName;
+      welcomeHead.innerHTML = `Hello, ${userData.userName}`;
       userEmail.innerHTML = userData.email;
-    
-      userAddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
+
+      userAddres.innerHTML = `Country:${userData.address.country}<br> Governorate: ${userData.address.city}`;
 
       for (let index in userData.shoppingCart) {
         let order = userData.shoppingCart[index];
@@ -46,9 +46,9 @@ window.onload = () => {
         });
       }
       updateDeliveredTotalDisplay(userData.shoppingCart);
-      orderaddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
-      orderUserName.innerHTML = userData.Username;
-      orderPhone.innerHTML = userData.phone;
+      orderaddres.innerHTML = `Country:${userData.address.country}<br> Governorate: ${userData.address.city}`;
+      orderUserName.innerHTML = userData.userName;
+      orderPhone.innerHTML = userData.phoneNumber;
     });
   });
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
@@ -260,4 +260,3 @@ async function createWishlistItem(productData) {
 
   document.getElementById("wishlist").appendChild(productCol);
 }
-

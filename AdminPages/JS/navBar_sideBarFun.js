@@ -21,14 +21,14 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (isAdmin === "false") {
     window.location.href = "../../index.html";
   }
+
   if (userId) {
     // if user is logged in, set isLoggedIn to true
-    var isLoggedIn = true;
   } else {
     // if user is not logged in, set isLoggedIn to false
     isLoggedIn = false;
   }
-
+  var isLoggedIn = true;
   if (!isLoggedIn) {
     console.log("Not Logged In");
     window.location.href = "../../CustomersPages/signin.html";
@@ -56,10 +56,9 @@ if (logoutBtns) {
   logoutBtns.forEach((logoutBtn) => {
     logoutBtn.addEventListener("click", async function () {
       await logoutUser();
-      await deleteAllCookies();
+      deleteAllCookies();
       window.location.href = "../../CustomersPages/signin.html";
-
-  });
+    });
   });
 }
 
