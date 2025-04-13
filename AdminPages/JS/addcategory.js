@@ -12,9 +12,9 @@ document.getElementById("form_id").addEventListener("submit", async function (ev
   event.preventDefault();
   var catName = document.getElementById("categoryNameInput_id").value;
   var cat = {
-    "name": catName,
+    "cat_name": catName,
   }
-  await addDocument("category", cat)
+  await addDocument("Categories", cat)
   document.getElementById("categoryNameInput_id").value = "";
   location.reload();
 });
