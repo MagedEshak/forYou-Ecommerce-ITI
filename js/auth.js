@@ -95,10 +95,26 @@ export async function logoutUser() {
 
 /// change password
 export async function changePassword(currentPassword, newPassword) {
-  try {
-    const user = auth.currentUser;
-    if (!user) {
-      throw new Error("No user is currently signed in.");
+
+    try {
+        const user = auth.currentUser;
+        if (!user) {
+            throw new Error('No user is currently signed in.');
+        }
+
+        // Re-authenticate the user
+        const credential = EmailAuthProvider.credential(user.email, currentPassword);
+        await reauthenticateWithCredential(user, credential);
+
+        // Update password
+       await updatePassword(user, newPassword);
+       
+        console.log('Password changed successfully');
+        return  true ;
+    } catch (error) {
+        console.error('Error changing password:', error.message);
+        return false;
+
     }
 
     // Re-authenticate the user
@@ -183,6 +199,9 @@ export async function updateUserProfile(uid, updatedData) {
     console.error("Error updating user profile:", error);
   }
 }
+// edit user profile
+
+
 // Delete user profile by UID
 export async function deleteUserProfile(uid) {
   try {
@@ -192,6 +211,7 @@ export async function deleteUserProfile(uid) {
     console.error("Error deleting user profile:", error);
   }
 }
+
 
 // Listen for authentication state changes
 onAuthStateChanged(auth, (user) => {
@@ -229,5 +249,19 @@ export function getCookie(name) {
 
 // delee cookie
 export function deleteCookie(name) {
-  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}
+
+
+// delete all cookies
+export function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 }

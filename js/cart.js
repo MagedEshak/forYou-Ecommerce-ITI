@@ -1,5 +1,5 @@
 import {getDocById ,getDocumentByField,updateDocById} from "../../js/main.js";
-import { getCookie, setCookie } from "./auth.js";
+import { getCookie, setCookie,deleteCookie } from "./auth.js";
 
 
 
@@ -19,7 +19,9 @@ let usrCart = JSON.parse(getCookie(`cart`));
 if(usrCart){
     var price = 0
     for(var product of usrCart){
-        var pDetail = product.prod_details
+        window.pDetail = product.prod_details
+        window.pId = product.prod_id
+        console.log(pId)
         price += pDetail.price
         // Create the main container div
         const productContainer = document.createElement("div");
@@ -79,6 +81,24 @@ if(usrCart){
 
         const trashIcon = document.createElement("a");
         trashIcon.className ="me-2"
+        trashIcon.addEventListener("click", async function(){
+           
+            var usr =  await getDocById("User",userId)
+            for (var i in usr.shoppingCart){
+                console.log(usr.shoppingCart[i])
+                // var newShopingCart = {}
+                if(usr.shoppingCart[i].product_id == pId){
+                   usr.shoppingCart.splice(i,1)
+                   break;
+                }
+            
+            }
+            updateDocById("User",userId,usr)
+            setCookie("cart",JSON.stringify(usr.shoppingCart),30)
+            document.getElementById("products").removeChild(productContainer)
+            document.getElementById("products").removeChild(iconsContainer)
+        })
+
         trashIcon.href = "#";
 
         trashIcon.innerHTML = '<i class="fa fa-trash" style="color: red; font-size: 20px;"></i>';

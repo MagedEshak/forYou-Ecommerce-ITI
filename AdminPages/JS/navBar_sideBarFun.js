@@ -5,7 +5,7 @@ import {
   getUserProfile,
   logoutUser,
   getCookie,
-  deleteCookie,
+  deleteAllCookies,
 } from "../../js/auth.js";
 
 ///////////////////////
@@ -52,18 +52,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 /////////////// log out
 let logoutBtns; // logoutBtns is a variable that contains all logout buttons in the page.
 logoutBtns = document.querySelectorAll(".logoutBtn");
-logoutBtns.forEach((logoutBtn) => {
-  logoutBtn.addEventListener("click", async function () {
-    await logoutUser();
-    deleteCookie("userId");
-    deleteCookie("userName");
-    deleteCookie("isAdmin");
-    deleteCookie("userEmail");
-    deleteCookie("userPhone");
-    deleteCookie("userAddress");
-    window.location.href = "../../CustomersPages/signin.html";
+if (logoutBtns) {
+  logoutBtns.forEach((logoutBtn) => {
+    logoutBtn.addEventListener("click", async function () {
+      await logoutUser();
+      await deleteAllCookies();
+      window.location.href = "../../CustomersPages/signin.html";
+
   });
-});
+  });
+}
 
 /**
  * Adding addEventListener click for {profile Logo Div,bars Div, bars Left Side Div => (default d-none) }
