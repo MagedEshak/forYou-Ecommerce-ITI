@@ -3,6 +3,7 @@ import { getDocById } from "./main.js";
 let userName = document.getElementById("username_id");
 let userEmail = document.getElementById("userEmail_id");
 let userAddres = document.getElementById("userAddres_id");
+let usernameEdit = document.getElementById("usernameEdit_id");
 let lastOrder = document.getElementById("lastOrder_id");
 let allOrdersContainer = document.getElementById("allOrders_id");
 let welcomeHead = document.getElementById("welcomeHead_id");
@@ -15,6 +16,7 @@ window.onload = () => {
       userName.innerHTML = userData.Username;
       welcomeHead.innerHTML = `Hello, ${userData.Username}`;
       userEmail.innerHTML = userData.email;
+      usernameEdit.innerHTML = userData.Username;
       userAddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
 
       for (let index in userData.shoppingCart) {
