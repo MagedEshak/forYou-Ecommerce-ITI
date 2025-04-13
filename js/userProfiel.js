@@ -21,11 +21,11 @@ let orderPhone = document.getElementById("orderPhone_id");
 window.onload = () => {
   getCurrentUserId().then((uId) => {
     getUserProfile(uId).then((userData) => {
-      userName.innerHTML = userData.name;
-      welcomeHead.innerHTML = `Hello, ${userData.name}`;
+      userName.innerHTML = userData.userName;
+      welcomeHead.innerHTML = `Hello, ${userData.userName}`;
       userEmail.innerHTML = userData.email;
 
-      userAddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
+      userAddres.innerHTML = `Country:${userData.address.country}<br> Governorate: ${userData.address.city}`;
 
       for (let index in userData.shoppingCart) {
         let order = userData.shoppingCart[index];
@@ -47,28 +47,9 @@ window.onload = () => {
       }
       updateDeliveredTotalDisplay(userData.shoppingCart);
       orderaddres.innerHTML = `Country:${userData.address.country}<br> Governorate: ${userData.address.city}`;
-      orderUserName.innerHTML = userData.Username;
-      orderPhone.innerHTML = userData.phone;
+      orderUserName.innerHTML = userData.userName;
+      orderPhone.innerHTML = userData.phoneNumber;
     });
-    for (let index in userData.shoppingCart) {
-      let order = userData.shoppingCart[index];
-      let productPromise = getDocById("Products", order.product_id);
-
-      productPromise.then((product) => {
-        let Quantity = order.quantaty;
-        let Status = order.isPending;
-        console.log(product);
-        creatLastOrder(product, Quantity, Status, allOrdersContainer);
-
-        if (Status === 1) {
-          ShowOrderdDelivered(product, Quantity);
-        }
-        if (Status === 0) {
-          creatLastOrder(product, Quantity, Status, lastOrder);
-        }
-      });
-    }
-    updateDeliveredTotalDisplay(userData.shoppingCart);
   });
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   wishlist.forEach((product) => createWishlistItem(product));
