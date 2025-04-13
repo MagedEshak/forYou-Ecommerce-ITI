@@ -37,13 +37,7 @@ CreatAcount.addEventListener("click", (e) => {
         city: "",
       },
       wishlist: [],
-      shoppingCart: [
-        {
-          cat_id: "",
-          quantaty: "",
-          isPending: "",
-        },
-      ],
+      shoppingCart: [],
       lastOrders: [
         {
           product_id: "",
