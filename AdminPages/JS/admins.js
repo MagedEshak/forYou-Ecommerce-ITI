@@ -15,9 +15,9 @@ let location = document.getElementById("location");
 document.addEventListener("DOMContentLoaded", async function () {
   const userId = getCookie("userId");
   const userName = getCookie("userName");
-  const userPhone = getCookie("userPhone");
-  const userEmail = getCookie("userEmail");
-  const userAddress = getCookie("userAddress");
+  const userPhone = getCookie("phone");
+  const userEmail = getCookie("email");
+  const userAddress = getCookie("address");
 
   if (userId && userName && userEmail && userPhone && userAddress) {
     name.textContent = userName;
@@ -57,7 +57,7 @@ let adminCache = new Map();
 // View All Admins in Setting Page
 
 async function getAllAdmins() {
-  const admins = await getAllDocuments("User");
+  const admins = await getAllDocuments("Users");
 
   let viewAddminsCon = document.getElementById("viewAddminsCon_id");
 
@@ -89,7 +89,7 @@ async function getAllAdmins() {
 
       let adminName = document.createElement("span");
       adminName.classList.add("fw-bolder");
-      adminName.textContent = element.Username;
+      adminName.textContent = element.userName;
       viewAdminsDiv.appendChild(adminName);
 
       let adminStat = document.createElement("span");
@@ -126,7 +126,7 @@ getAllAdmins();
 const viewAdmins = new Map();
 // Create table row with proper error handling
 async function createAdminRow() {
-  const admins = await getAllDocuments("User");
+  const admins = await getAllDocuments("Users");
   let body = document.getElementById("adminsTable");
 
   admins.forEach((element) => {
@@ -135,10 +135,10 @@ async function createAdminRow() {
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${element.id}</td>
-        <td>${element.Username}</td>
+        <td>${element.userName}</td>
         <td>${element.email}</td>
         <td>${element.phone}</td>
-        <td>${element.address[1]}</td>
+        <td>${element.address.city}</td>
         `;
       body.appendChild(row);
       return row;

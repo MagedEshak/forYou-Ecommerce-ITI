@@ -1,9 +1,7 @@
-import { getAllDocuments, getDocById } from "../../js/main.js";
 import {
   getCookie,
   updateUserProfile,
   changePassword,
-  deleteCookie,
   setCookie,
   createUserProfile,
   registerUser,
@@ -44,9 +42,9 @@ let createNewAdminForm = document.getElementById("adminRegitForm");
 document.addEventListener("DOMContentLoaded", async function () {
   const userId = getCookie("userId");
   const userName = getCookie("userName");
-  const userPhone = getCookie("userPhone");
-  const userEmail = getCookie("userEmail");
-  const userAddress = getCookie("userAddress");
+  const userPhone = getCookie("phone");
+  const userEmail = getCookie("email");
+  const userAddress = getCookie("address");
 
   editFullName.placeholder = userName;
   editEmail.placeholder = userEmail;
@@ -90,17 +88,18 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     const adminDataValue = {
-      Username:
+      userName:
         editFullName.value.trim() !== "" ? editFullName.value : userName,
       email: editEmail.value.trim() !== "" ? editEmail.value : userEmail,
       phone: editPhone.value.trim() !== "" ? editPhone.value : userPhone,
       isAdmin: true,
-      address: [
-        "EG",
-        editCity.value.trim() !== ""
-          ? editCity.value
-          : userAddress.substring(3),
-      ],
+      address: {
+        country: "EG",
+        city:
+          editCity.value.trim() !== ""
+            ? editCity.value
+            : userAddress.substring(3),
+      },
     };
 
     try {
@@ -108,10 +107,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         await updateUserProfile(userId, adminDataValue);
 
         // Update cookies
-        setCookie("userName", adminDataValue.Username, 30);
-        setCookie("userEmail", adminDataValue.email, 30);
-        setCookie("userPhone", adminDataValue.phone, 30);
-        setCookie("userAddress", "EG-" + adminDataValue.address[1], 30);
+        setCookie("userName", adminDataValue.userName, 30);
+        setCookie("email", adminDataValue.email, 30);
+        setCookie("phone", adminDataValue.phone, 30);
+        setCookie("address", "EG-" + adminDataValue.address.city, 30);
 
         alert("Profile Updated Successfully");
         window.location.reload();
@@ -229,11 +228,14 @@ createNewAdminForm.addEventListener("submit", async (e) => {
   }
 
   const adminDataValue = {
-    Username: fullName.value,
+    userName: fullName.value,
     email: email.value,
     phone: phone.value,
     isAdmin: true,
-    address: ["EG", city.value],
+    address: { country: "EG", city: city.value },
+    wishlist: [],
+    shoppingCart: [],
+    lastOrders: [],
   };
 
   try {
