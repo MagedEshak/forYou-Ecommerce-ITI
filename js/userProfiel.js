@@ -10,24 +10,45 @@ import { initializeCart } from "./cartAndWishList.js";
 let userName = document.getElementById("username_id");
 let userEmail = document.getElementById("userEmail_id");
 let userAddres = document.getElementById("userAddres_id");
-let usernameEdit = document.getElementById("usernameEdit_id");
+
 let lastOrder = document.getElementById("lastOrder_id");
 let allOrdersContainer = document.getElementById("allOrders_id");
 let welcomeHead = document.getElementById("welcomeHead_id");
 let orderaddres = document.getElementById("orderaddres_id");
 let orderUserName = document.getElementById("orderUserName_id");
 let orderPhone = document.getElementById("orderPhone_id");
+
 window.onload = () => {
   getCurrentUserId().then((uId) => {
     getUserProfile(uId).then((userData) => {
       userName.innerHTML = userData.name;
       welcomeHead.innerHTML = `Hello, ${userData.name}`;
       userEmail.innerHTML = userData.email;
-      usernameEdit.innerHTML = userData.name;
-      userAddres.innerHTML = `Country:${userData.address.country}<br> Governorate: ${userData.address.city}`;
+
+      userAddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
+
+      for (let index in userData.shoppingCart) {
+        let order = userData.shoppingCart[index];
+        let productPromise = getDocById("Products", order.product_id);
+
+        productPromise.then((product) => {
+          let Quantity = order.quantaty;
+          let Status = order.isPending;
+          console.log(product);
+          creatLastOrder(product, Quantity, Status, allOrdersContainer);
+
+          if (Status === 1) {
+            ShowOrderdDelivered(product, Quantity);
+          }
+          if (Status === 0) {
+            creatLastOrder(product, Quantity, Status, lastOrder);
+          }
+        });
+      }
+      updateDeliveredTotalDisplay(userData.shoppingCart);
       orderaddres.innerHTML = `Country:${userData.address.country}<br> Governorate: ${userData.address.city}`;
-      orderUserName.innerHTML = userData.name;
-      orderPhone.innerHTML = userData.phoneNumber;
+      orderUserName.innerHTML = userData.Username;
+      orderPhone.innerHTML = userData.phone;
     });
     for (let index in userData.shoppingCart) {
       let order = userData.shoppingCart[index];
