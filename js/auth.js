@@ -93,7 +93,8 @@ export async function changePassword(currentPassword, newPassword) {
         await reauthenticateWithCredential(user, credential);
 
         // Update password
-        await user.updatePassword(newPassword);
+       await updatePassword(user, newPassword);
+       
         console.log('Password changed successfully');
         return { success: true };
     } catch (error) {
@@ -125,8 +126,6 @@ export async function getCurrentUserId() {
         });
     });
 }
-
-
 
 // create a user profile in Firestore
 export async function createUserProfile(uid, userData) {

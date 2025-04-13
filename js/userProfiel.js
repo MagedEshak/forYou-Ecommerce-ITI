@@ -1,8 +1,16 @@
-import { getCurrentUserId, getUserProfile } from "./auth.js";
-import { getDocById } from "./main.js";
-let userName = document.getElementById("userName_id");
+import {
+  getCurrentUserId,
+  getUserProfile,
+  getCookie,
+  setCookie,
+} from "./auth.js";
+import { getDocById, updateDocById } from "./main.js";
+import { initializeCart } from "./cartAndWishList.js";
+
+let userName = document.getElementById("username_id");
 let userEmail = document.getElementById("userEmail_id");
 let userAddres = document.getElementById("userAddres_id");
+let usernameEdit = document.getElementById("usernameEdit_id");
 let lastOrder = document.getElementById("lastOrder_id");
 let allOrdersContainer = document.getElementById("allOrders_id");
 let welcomeHead = document.getElementById("welcomeHead_id");
@@ -12,31 +20,38 @@ let orderPhone = document.getElementById("orderPhone_id");
 window.onload = () => {
   getCurrentUserId().then((uId) => {
     getUserProfile(uId).then((userData) => {
-      welcomeHead.innerHTML = `Hello, ${userData.Username}`;
       userName.innerHTML = userData.Username;
+      welcomeHead.innerHTML = `Hello, ${userData.Username}`;
       userEmail.innerHTML = userData.email;
+      usernameEdit.innerHTML = userData.Username;
       userAddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
+
       for (let index in userData.shoppingCart) {
         let order = userData.shoppingCart[index];
-        let productPromise = getDocById("products", order.product_id);
+        let productPromise = getDocById("Products", order.product_id);
 
         productPromise.then((product) => {
           let Quantity = order.quantaty;
           let Status = order.isPending;
-
+          console.log(product);
           creatLastOrder(product, Quantity, Status, allOrdersContainer);
 
+          if (Status === 1) {
+            ShowOrderdDelivered(product, Quantity);
+          }
           if (Status === 0) {
             creatLastOrder(product, Quantity, Status, lastOrder);
           }
         });
       }
+      updateDeliveredTotalDisplay(userData.shoppingCart);
       orderaddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
       orderUserName.innerHTML = userData.Username;
       orderPhone.innerHTML = userData.phone;
-      updateDeliveredTotalDisplay(userData.shoppingCart);
     });
   });
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  wishlist.forEach((product) => createWishlistItem(product));
 };
 
 function creatLastOrder(product, quantaty, status = "", containerElement) {
@@ -93,8 +108,12 @@ function calculateDeliveredTotal(shoppingCart) {
   let total = 0;
   let promises = shoppingCart.map((order) => {
     if (order.isPending == 1) {
-      return getDocById("products", order.product_id).then((product) => {
-        total += Number(product.price) * Number(order.quantaty);
+      return getDocById("Products", order.product_id).then((product) => {
+        if (product && product.price != null) {
+          total += Number(product.price) * Number(order.quantaty);
+        } else {
+          console.warn("Product not found or missing price:", order.product_id);
+        }
       });
     }
   });
@@ -112,4 +131,131 @@ function updateDeliveredTotalDisplay(shoppingCart) {
       totalElement.innerText = `Total Delivered Price: ${total} EGP`;
     }
   });
+}
+
+function ShowOrderdDelivered(product, quantaty) {
+  let section = document.getElementById("yourOrdered_id");
+
+  let colImg = document.createElement("div");
+  colImg.classList.add("col-lg-3", "col-md-12", "mb-3");
+
+  let image = document.createElement("img");
+  image.src = product.imageUrl;
+  image.alt = product.name;
+  image.classList.add("w-50");
+  image.id = "imageOrder_id";
+
+  colImg.appendChild(image);
+
+  let colDetails = document.createElement("div");
+  colDetails.classList.add("col-lg-3", "col-md-12", "align-self-center");
+
+  let title = document.createElement("h4");
+  title.textContent = product.name;
+
+  let description = document.createElement("p");
+  description.textContent = product.description;
+
+  let quantityText = document.createElement("p");
+  quantityText.textContent = `Quantity: ${quantaty}`;
+
+  colDetails.appendChild(title);
+  colDetails.appendChild(description);
+  colDetails.appendChild(quantityText);
+
+  section.appendChild(colImg);
+  section.appendChild(colDetails);
+}
+function removeFromWishlist(productId, elementToRemove) {
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  wishlist = wishlist.filter((item) => item.prod_id !== productId);
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+  if (elementToRemove) {
+    elementToRemove.remove();
+  }
+}
+async function createWishlistItem(productData) {
+  const userId = getCookie("userId");
+  let { myUser, myCart } = await initializeCart();
+
+  const { name, disc, price, img, id } = productData.prod_details;
+  const productCol = document.createElement("div");
+  productCol.className = "col-sm-12 col-md-6 col-lg-4";
+
+  const cardSection = document.createElement("section");
+  cardSection.className = "text-center card shadow p-4";
+
+  const heartBtn = document.createElement("button");
+  heartBtn.className = "btn float-start w-25 border-0";
+  heartBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+
+  heartBtn.addEventListener("click", () => {
+    removeFromWishlist(id, productCol);
+  });
+
+  const imgElement = document.createElement("img");
+  imgElement.src = img;
+  imgElement.alt = name;
+  imgElement.className = "col-12";
+
+  const infoDiv = document.createElement("div");
+  infoDiv.className = "d-flex flex-column gap-3";
+
+  const title = document.createElement("h3");
+  title.textContent = name;
+
+  const description = document.createElement("p");
+  description.className = "text-start";
+  description.textContent = disc;
+
+  const priceWrapper = document.createElement("p");
+  priceWrapper.className = "d-flex justify-content-start gap-4";
+  priceWrapper.innerHTML = `Price: <span class="fw-bold">${price} EGP</span>`;
+
+  const addToCartBtn = document.createElement("button");
+  addToCartBtn.className = "btn badge p-3 btn-color-fa";
+  addToCartBtn.textContent = "Add to cart";
+  addToCartBtn.id = `addToCartBtn_id_${id}`;
+
+  addToCartBtn.onclick = () => {
+    if (myUser) {
+      // put prod id and details in JSON
+      let myProdJson = {
+        prod_id: id,
+        prod_details: productData.prod_details,
+      };
+
+      myCart = JSON.parse(getCookie("cart"));
+      myCart.push(myProdJson);
+      setCookie(`cart`, JSON.stringify(myCart), 100);
+
+      let userCartJson = {
+        cat_id: id, // this is wrong
+        isPending: 0,
+        product_id: id,
+        quantaty: 1,
+      };
+      myUser.shoppingCart.push(userCartJson);
+      updateDocById("User", myUser.id, myUser);
+
+      addToCartBtn.innerHTML = "Added";
+    } else {
+      window.location.href = "../CustomersPages/signin.html";
+    }
+  };
+  /************************************************************* */
+
+  infoDiv.appendChild(title);
+  infoDiv.appendChild(description);
+  infoDiv.appendChild(priceWrapper);
+  infoDiv.appendChild(addToCartBtn);
+
+  cardSection.appendChild(heartBtn);
+  cardSection.appendChild(imgElement);
+  cardSection.appendChild(infoDiv);
+
+  productCol.appendChild(cardSection);
+
+  document.getElementById("wishlist").appendChild(productCol);
 }
