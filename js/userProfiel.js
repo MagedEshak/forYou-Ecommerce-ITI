@@ -10,20 +10,21 @@ import { initializeCart } from "./cartAndWishList.js";
 let userName = document.getElementById("username_id");
 let userEmail = document.getElementById("userEmail_id");
 let userAddres = document.getElementById("userAddres_id");
-let usernameEdit = document.getElementById("usernameEdit_id");
+
 let lastOrder = document.getElementById("lastOrder_id");
 let allOrdersContainer = document.getElementById("allOrders_id");
 let welcomeHead = document.getElementById("welcomeHead_id");
 let orderaddres = document.getElementById("orderaddres_id");
 let orderUserName = document.getElementById("orderUserName_id");
 let orderPhone = document.getElementById("orderPhone_id");
+
 window.onload = () => {
   getCurrentUserId().then((uId) => {
     getUserProfile(uId).then((userData) => {
       userName.innerHTML = userData.Username;
       welcomeHead.innerHTML = `Hello, ${userData.Username}`;
       userEmail.innerHTML = userData.email;
-      usernameEdit.innerHTML = userData.Username;
+    
       userAddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
 
       for (let index in userData.shoppingCart) {
@@ -259,3 +260,4 @@ async function createWishlistItem(productData) {
 
   document.getElementById("wishlist").appendChild(productCol);
 }
+

@@ -80,7 +80,7 @@ export async function logoutUser() {
     }
 }
 
-/// change passwor;
+/// change password
 export async function changePassword(currentPassword, newPassword) {
     try {
         const user = auth.currentUser;
@@ -93,12 +93,13 @@ export async function changePassword(currentPassword, newPassword) {
         await reauthenticateWithCredential(user, credential);
 
         // Update password
-        await user.updatePassword(newPassword);
+       await updatePassword(user, newPassword);
+       
         console.log('Password changed successfully');
-        return { success: true };
+        return  true ;
     } catch (error) {
         console.error('Error changing password:', error.message);
-        return { success: false, error: error.message };
+        return false;
     }
 }
 
@@ -169,6 +170,9 @@ export async function updateUserProfile(uid, updatedData) {
         console.error("Error updating user profile:", error);
     }
 }
+// edit user profile
+
+
 // Delete user profile by UID
 export async function deleteUserProfile(uid) {
     try {
@@ -178,6 +182,7 @@ export async function deleteUserProfile(uid) {
         console.error("Error deleting user profile:", error);
     }
 }
+
 
 
 // Listen for authentication state changes
@@ -219,4 +224,17 @@ export function getCookie(name) {
 // delee cookie
 export function deleteCookie(name) {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+}
+
+
+// delete all cookies
+export function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 }
