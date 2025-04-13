@@ -238,7 +238,7 @@ async function createWishlistItem(productData) {
         quantaty: 1,
       };
       myUser.shoppingCart.push(userCartJson);
-      updateDocById("User", myUser.id, myUser);
+      updateDocById("Users", myUser.id, myUser);
 
       addToCartBtn.innerHTML = "Added";
     } else {

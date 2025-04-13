@@ -210,7 +210,7 @@ async function createProductsInHtml(productsContainer , products , catName) {
                         product_id : product.id,
                     }
                     myUser.wishlist.push(userWishListJson);
-                    updateDocById("User" , myUser.id, myUser);
+                    updateDocById("Users" , myUser.id, myUser);
 
                     alert('added to wishlist');
                     // heartIcon.style.webkitTextStroke = '1px black'
@@ -231,7 +231,7 @@ async function createProductsInHtml(productsContainer , products , catName) {
                     // heartIcon.style.webkitTextStroke = '1px black'
                     heartIcon.style.color = 'white';
 
-                    updateDocById('User', userId , myUser);
+                    updateDocById('Users', userId , myUser);
 
                 }
                 
@@ -340,7 +340,7 @@ async function createProductsInHtml(productsContainer , products , catName) {
                     quantaty : 1,
                 }
                 myUser.shoppingCart.push(userCartJson);
-                updateDocById("User" , myUser.id, myUser);
+                updateDocById("Users" , myUser.id, myUser);
 
                 addToCartBtn.innerHTML = "Added";
             }

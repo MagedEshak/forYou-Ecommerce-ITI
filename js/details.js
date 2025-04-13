@@ -35,7 +35,7 @@ async function addEventToAddToCartBtn(){
               quantaty : 1,
           }
           myUser.shoppingCart.push(userCartJson);
-          updateDocById("User" , myUser.id, myUser);
+          updateDocById("Users" , myUser.id, myUser);
 
           addToCartBtn.innerHTML = "Added";
       }
@@ -78,7 +78,7 @@ function addEventToAddToWishListBtn(){
                 product_id : product.id,
             }
             myUser.wishlist.push(userWishListJson);
-            updateDocById("User" , myUser.id, myUser);
+            updateDocById("Users" , myUser.id, myUser);
 
             alert('added to wishlist');
             // heartIcon.style.webkitTextStroke = '1px black'
@@ -99,7 +99,7 @@ function addEventToAddToWishListBtn(){
             // heartIcon.style.webkitTextStroke = '1px black'
             addToWishListBtn.innerHTML =  `<i class="fa-solid fa-heart"></i>Add to wishlist`;
 
-            updateDocById('User', userId , myUser);
+            updateDocById('Users', userId , myUser);
 
         }
         

@@ -95,7 +95,6 @@ async function createProductsInHtml() {
         let heartIcon = document.createElement("i");
         heartIcon.className = "fa fa-heart";
 
-        debugger;
         // check if the product in wishList or not
         if(myUser){
             for(let item of myWishList){
@@ -127,7 +126,7 @@ async function createProductsInHtml() {
                         product_id : product.id,
                     }
                     myUser.wishlist.push(userWishListJson);
-                    updateDocById("User" , myUser.id, myUser);
+                    updateDocById("Users" , myUser.id, myUser);
 
                     alert('added to wishlist');
                     heartIcon.style.webkitTextStroke = '1px black'
@@ -148,7 +147,7 @@ async function createProductsInHtml() {
                     // heartIcon.style.webkitTextStroke = '1px black'
                     heartIcon.style.color = 'white';
 
-                    updateDocById('User', userId , myUser);
+                    updateDocById('Users', userId , myUser);
 
                 }
                 
@@ -257,7 +256,7 @@ async function createProductsInHtml() {
                     quantaty : 1,
                 }
                 myUser.shoppingCart.push(userCartJson);
-                updateDocById("User" , myUser.id, myUser);
+                updateDocById("Users" , myUser.id, myUser);
 
                 addToCartBtn.innerHTML = "Added";
             }
