@@ -1,4 +1,3 @@
-import { addDocument } from "./main.js";
 import { registerUser, createUserProfile } from "./auth.js";
 import {
   validateName,
@@ -29,27 +28,14 @@ CreatAcount.addEventListener("click", (e) => {
       name,
       password,
       email,
-
       phoneNumber,
-
       address: {
         country: "",
         city: "",
       },
       wishlist: [],
-      shoppingCart: [
-        {
-          cat_id: "",
-          quantaty: "",
-          isPending: "",
-        },
-      ],
-      lastOrders: [
-        {
-          product_id: "",
-          retunOdrs: false,
-        },
-      ],
+      shoppingCart: [],
+      lastOrders: [],
     };
 
     registerUser(email, password)

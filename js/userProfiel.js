@@ -20,14 +20,14 @@ let orderPhone = document.getElementById("orderPhone_id");
 window.onload = () => {
   getCurrentUserId().then((uId) => {
     getUserProfile(uId).then((userData) => {
-      userName.innerHTML = userData.Username;
-      welcomeHead.innerHTML = `Hello, ${userData.Username}`;
+      userName.innerHTML = userData.name;
+      welcomeHead.innerHTML = `Hello, ${userData.name}`;
       userEmail.innerHTML = userData.email;
-      usernameEdit.innerHTML = userData.Username;
-      userAddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
-      orderaddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
-      orderUserName.innerHTML = userData.Username;
-      orderPhone.innerHTML = userData.phone;
+      usernameEdit.innerHTML = userData.name;
+      userAddres.innerHTML = `Country:${userData.address.country}<br> Governorate: ${userData.address.city}`;
+      orderaddres.innerHTML = `Country:${userData.address.country}<br> Governorate: ${userData.address.city}`;
+      orderUserName.innerHTML = userData.name;
+      orderPhone.innerHTML = userData.phoneNumber;
     });
     for (let index in userData.shoppingCart) {
       let order = userData.shoppingCart[index];
