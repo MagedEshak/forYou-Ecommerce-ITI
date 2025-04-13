@@ -12,6 +12,7 @@ import {
 // }
 // addDocument("category", cat)
 
+
 document
   .getElementById("form_id")
   .addEventListener("submit", async function (event) {
@@ -24,6 +25,7 @@ document
     document.getElementById("categoryNameInput_id").value = "";
     location.reload();
   });
+
 
 var categorys = await getAllDocuments("category");
 categorys.forEach((cat) => {
