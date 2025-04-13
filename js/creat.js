@@ -35,7 +35,13 @@ CreatAcount.addEventListener("click", (e) => {
       },
       wishlist: [],
       shoppingCart: [],
-      lastOrders: [],
+
+      lastOrders: [
+        {
+          product_id: "",
+          retunOdrs: false,
+        },
+      ],
     };
 
     registerUser(email, password)
