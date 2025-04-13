@@ -95,10 +95,28 @@ export async function logoutUser() {
 
 /// change password
 export async function changePassword(currentPassword, newPassword) {
-  try {
-    const user = auth.currentUser;
-    if (!user) {
-      throw new Error("No user is currently signed in.");
+
+
+    try {
+        const user = auth.currentUser;
+        if (!user) {
+            throw new Error('No user is currently signed in.');
+        }
+
+        // Re-authenticate the user
+        const credential = EmailAuthProvider.credential(user.email, currentPassword);
+        await reauthenticateWithCredential(user, credential);
+
+        // Update password
+       await updatePassword(user, newPassword);
+       
+        console.log('Password changed successfully');
+        return  true ;
+    } catch (error) {
+        console.error('Error changing password:', error.message);
+        return false;
+
+
     }
 
     // Re-authenticate the user
@@ -146,7 +164,9 @@ export async function getCurrentUserId() {
 export async function createUserProfile(uid, userData) {
   try {
 
+
     await setDoc(doc(db, "Users", uid), userData);
+
 
     console.log("User profile created!");
   } catch (error) {
@@ -172,6 +192,7 @@ export async function getUserProfile(uid) {
       return null;
     }
 
+
   } catch (error) {
     console.error("Error fetching user profile:", error);
     throw error;
@@ -182,7 +203,9 @@ export async function getUserProfile(uid) {
 export async function updateUserProfile(uid, updatedData) {
   try {
 
+
     const userDoc = doc(db, "Users", uid);
+
 
     await updateDoc(userDoc, updatedData);
     console.log("User profile updated!");
@@ -196,13 +219,23 @@ export async function updateUserProfile(uid, updatedData) {
 export async function deleteUserProfile(uid) {
   try {
 
+    await deleteDoc(doc(db, "User", uid));
+    console.log("User profile deleted!");
+  } catch (error) {
+    console.error("Error deleting user profile:", error);
+  }
+}
+
+
     await deleteDoc(doc(db, "Users", uid));
+
 
     console.log("User profile deleted!");
   } catch (error) {
     console.error("Error deleting user profile:", error);
   }
 }
+
 
 // Listen for authentication state changes
 onAuthStateChanged(auth, (user) => {
@@ -240,7 +273,9 @@ export function getCookie(name) {
 
 // delee cookie
 export function deleteCookie(name) {
+
   document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
 }
 
 
