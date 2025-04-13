@@ -5,8 +5,8 @@
 //    Auth 
 //
 /////////////
-import {getDocById ,getDocumentByField,getAllDocuments} from "../../js/main.js";
-import { getCookie, deleteCookie, logoutUser } from "./auth.js";
+import { getDocById, getDocumentByField, getAllDocuments } from "../../js/main.js";
+import { getCookie, deleteAllCookies, logoutUser } from "./auth.js";
 
 document.addEventListener('DOMContentLoaded', function () {
     const userId = getCookie("userId");
@@ -21,27 +21,41 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Username:", userName);
 
         // Update UI
-        const userNameElement = document.getElementById("userName_id");
-        const signBtn = document.getElementById("sign_id");
+        const userNameElements = document.getElementsByClassName("userName_id");
+        const logBtns = document.getElementsByClassName("logBtn");
+        const regBtns = document.getElementsByClassName("regBtn");
 
-        signBtn.addEventListener("click", async function () {
-            await logoutUser();
-            deleteCookie("userId");
-            deleteCookie("userName");
-            deleteCookie("isAdmin");
-            deleteCookie("userEmail");
-            deleteCookie("userPhone");
-            deleteCookie("userAddress");
-            window.location.href = "./CustomersPages/signin.html";
-        });
+        for (const userNameElement of userNameElements) {
+            userNameElement.innerText = userName;
+            userNameElement.style.display = "block";
+            userNameElement.style.visibility = "visible";
+            userNameElement.addEventListener('click', function () {
+                // Always use absolute path from root
+                const targetPath = '/CustomersPages/profile.html';
 
-        if (userNameElement) {
-            userNameElement.textContent = userName;
+                // Check if we're already on the profile page
+                if (window.location.pathname.endsWith('profile.html')) {
+                    window.location.reload();
+                } else {
+                    window.location.href = targetPath;
+                }
+            });
+        }
+        for (const logBtn of logBtns) {
+            logBtn.innerText = "Log Out";    // reload the page after log out to remove cookies
+            logBtn.addEventListener('click', async function () {
+                await logoutUser();
+                await deleteAllCookies();
+                window.location.href = "./signin.html";
+            });
+            logBtn.style.display = "block";
+            logBtn.style.visibility = "visible";
+        }
+        for (const regBtn of regBtns) {
+            regBtn.style.display = "none";
+            regBtn.style.visibility = "hidden";
         }
 
-        if (signBtn) {
-            signBtn.textContent = "Logout"; // change sign in to logout
-        }
     }
 });
 
@@ -50,13 +64,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-async function initialzeNavBar(){
-    
+async function initialzeNavBar() {
+
     controlSideNavBer();
-    if(window.innerWidth <= 992){
+    if (window.innerWidth <= 992) {
         await displayCategoriesinSideNavBar();
     }
-    else{
+    else {
         await displayCategoriesinNavBar();
     }
 }
@@ -73,15 +87,15 @@ async function displayCategoriesinNavBar() {
 
     let cateLinksContainer = document.getElementById('navCategoriesLinks_id');
 
-    categoriesTemp.forEach( (category , index) => {
+    categoriesTemp.forEach((category, index) => {
         let catLink = document.createElement('a');
         catLink.className = "col-auto px-4";
         // put the link to go to category you need
-        if(window.location.href.split('/')[3] == 'index.html')
+        if (window.location.href.split('/')[3] == 'index.html')
             catLink.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
-        else 
+        else
             catLink.href = `shopByCategory.html?cat_id=${category.id}`;
-        
+
         catLink.innerText = category.cat_name;
 
         cateLinksContainer.appendChild(catLink);
@@ -91,12 +105,12 @@ async function displayCategoriesinNavBar() {
 /* it displays just links of my cats in the nav bar */
 async function displayCategoriesinSideNavBar() {
     let categoriesTemp = await getAllDocuments("Categories");
-    
+
     let cateLinksContainer = document.getElementById('sideNavCategoriesLinks_id');
     let whatsappLink = document.getElementById('whatsappLink_id');
 
-    categoriesTemp.forEach( (category , index) => {
-        
+    categoriesTemp.forEach((category, index) => {
+
         let catLinkDiv = document.createElement('div');
         catLinkDiv.className = "w-100";
 
@@ -104,21 +118,21 @@ async function displayCategoriesinSideNavBar() {
         catLink.className = "w-100";
         // put the link to go to category you need
 
-        if(window.location.href.split('/')[3] == 'index.html')
+        if (window.location.href.split('/')[3] == 'index.html')
             catLink.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
-        else 
+        else
             catLink.href = `shopByCategory.html?cat_id=${category.id}`;
 
         catLink.innerText = category.cat_name;
-        
+
         catLinkDiv.appendChild(catLink)
-        cateLinksContainer.insertBefore(catLinkDiv , whatsappLink); 
+        cateLinksContainer.insertBefore(catLinkDiv, whatsappLink);
     })
 
-    
+
 }
 
-function controlSideNavBer(){
+function controlSideNavBer() {
     /* when menu bar btn clicked the side bar must appear from left side */
     let menuBarBtn = document.getElementById('menuBarBtn_id');
     let sideNavBar = document.getElementById('sideNavBar_id');
@@ -126,17 +140,17 @@ function controlSideNavBer(){
     // this event handels appearance of side bar 
     // when you click on the menu bar btn , we display the side nav
     // then when you click on any part of the document , we remove the side nav
-    document.addEventListener('click' , (e)=>{
+    document.addEventListener('click', (e) => {
         // in case menu bar btn clicked , display the side bar , and 
-        if(menuBarBtn.contains(e.target))
+        if (menuBarBtn.contains(e.target))
             displaySideNavBar(sideNavBar);
         else
-            disappearSideNavBar(sideNavBar);  
+            disappearSideNavBar(sideNavBar);
     })
 }
 
 /* this function displays my side bar , by positioning it in my screen */
-function displaySideNavBar(navBar){
+function displaySideNavBar(navBar) {
     navBar.style.left = "0px";
 }
 /* this function removes my side bar , by positioning it out of my screen */
