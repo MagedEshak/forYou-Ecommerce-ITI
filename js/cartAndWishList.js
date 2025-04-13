@@ -1,5 +1,5 @@
 
-import {getDocById ,getDocumentByField,updateDocById} from "../../js/main.js";
+import {getDocById} from "../../js/main.js";
 import { getCookie, setCookie } from "./auth.js";
 
 
@@ -31,8 +31,6 @@ export async function initializeCart() {
   
     return { myUser, myCart };
 }
-
-
 
 export async function initWishlist(myUser) {
     let wishListLocalStorage = localStorage.getItem('wishlist');

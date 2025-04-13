@@ -92,11 +92,14 @@ async function createProductsInHtml() {
         let addToWishListBtn = document.createElement('button');// add to wish list button , this contains heart icon
         addToWishListBtn.className = " addToWishListBtn_class col-2";
         addToWishListBtn.id = `${catName}ProdAddToWishListBtn_id_${product.id}`;
+        let heartIcon = document.createElement("i");
+        heartIcon.className = "fa fa-heart";
 
+        debugger;
         // check if the product in wishList or not
         if(myUser){
-            for(let item of myUser.wishlist){
-                if(item.product_id == product.id)
+            for(let item of myWishList){
+                if(item.prod_id == product.id)
                 {
                     heartIcon.style.webkitTextStroke = '1px red'
                     heartIcon.style.color = 'red';
@@ -107,7 +110,6 @@ async function createProductsInHtml() {
 
         addToWishListBtn.onclick = ()=>{
             if(myUser){
-                debugger;
                 myWishList = JSON.parse(localStorage.getItem('wishlist'));
 
                 if(heartIcon.style.color != 'red'){
@@ -128,7 +130,7 @@ async function createProductsInHtml() {
                     updateDocById("User" , myUser.id, myUser);
 
                     alert('added to wishlist');
-                    // heartIcon.style.webkitTextStroke = '1px black'
+                    heartIcon.style.webkitTextStroke = '1px black'
                     heartIcon.style.color = 'red';
                 }
                 else{
@@ -156,8 +158,7 @@ async function createProductsInHtml() {
             }
         }
     
-        let heartIcon = document.createElement("i");
-        heartIcon.className = "fa fa-heart";
+
     
         addToWishListBtn.appendChild(heartIcon); // putting heart icon inside add to wish list btn
     

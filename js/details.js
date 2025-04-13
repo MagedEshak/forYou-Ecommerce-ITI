@@ -7,7 +7,6 @@ import {initializeCart, initWishlist} from "./cartAndWishList.js";
 const userId = getCookie("userId");
 let {myUser , myCart} = await initializeCart();
 
-
 /******************************************************************************************************** */
 // code to handel wishlist
 let myWishList = await initWishlist();
