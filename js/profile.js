@@ -1,3 +1,5 @@
+import { getCookie } from "./auth.js";
+
 // Add this at the beginning of your file
 function displayUserInfo() {
     const userName = getCookie("userName");
@@ -5,11 +7,15 @@ function displayUserInfo() {
     const userPhone = getCookie("userPhone");
     const userAddress = getCookie("userAddress");
 
+    console.log(userName, userEmail, userPhone, userAddress);
+
     // Update profile overview section
     document.getElementById("username_id").textContent = userName || 'N/A';
     document.getElementById("userEmail_id").textContent = userEmail || 'N/A';
-    document.getElementById("userAddres_id").innerHTML = userAddress ? 
+    document.getElementById("userAddress_id").innerHTML = userAddress ? 
         `Country: ${userAddress[0]}<br> Governorate: ${userAddress[1]}` : 'N/A';
+    document.getElementById("userPhone_id").textContent = userPhone || 'N/A';
+    document.getElementById("userPhone_id").textContent = userPhone || 'N/A';
     
     // Update welcome heading
     document.getElementById("welcomeHead_id").textContent = `Hello, ${userName}`;

@@ -170,6 +170,9 @@ export async function updateUserProfile(uid, updatedData) {
         console.error("Error updating user profile:", error);
     }
 }
+// edit user profile
+
+
 // Delete user profile by UID
 export async function deleteUserProfile(uid) {
     try {
@@ -179,6 +182,7 @@ export async function deleteUserProfile(uid) {
         console.error("Error deleting user profile:", error);
     }
 }
+
 
 
 // Listen for authentication state changes
