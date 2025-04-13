@@ -78,30 +78,50 @@ if(usrCart){
         heartIcon.href = "#";
         heartIcon.className ="me-3"
         heartIcon.innerHTML = '<i class="fa fa-heart" style="color: green; font-size: 20px;"></i>';
+        
 
         const trashIcon = document.createElement("a");
+        const trashlink = document.createElement("i")
+        trashlink.className = "fa fa-trash"
+        trashlink.style = "color: red; font-size: 20px;"
+        trashlink.id = `id_${pId}`
+        trashIcon.appendChild(trashlink)
+        
+        // = '<i class="fa fa-trash" style="color: red; font-size: 20px;"></i>'
+        
+
         trashIcon.className ="me-2"
-        trashIcon.addEventListener("click", async function(){
+        trashIcon.addEventListener("click", async function(event){
            
             var usr =  await getDocById("User",userId)
             for (var i in usr.shoppingCart){
                 console.log(usr.shoppingCart[i])
                 // var newShopingCart = {}
-                if(usr.shoppingCart[i].product_id == pId){
+                
+                if(usr.shoppingCart[i].product_id == event.target.id.split('_')[1]){
                    usr.shoppingCart.splice(i,1)
                    break;
                 }
             
             }
-            updateDocById("User",userId,usr)
-            setCookie("cart",JSON.stringify(usr.shoppingCart),30)
+            var newShopingcart =[]
+            for(let item of usr.shoppingCart){
+                console.log(item)
+                let myProdJson = {
+                    prod_id : item.product_id,
+                    prod_details : await getDocById("Products",item.product_id)
+                }    
+                newShopingcart.push(myProdJson)
+            }
+            setCookie("cart",JSON.stringify(newShopingcart),30)
+            await updateDocById("User",userId,usr)
             document.getElementById("products").removeChild(productContainer)
             document.getElementById("products").removeChild(iconsContainer)
         })
 
         trashIcon.href = "#";
 
-        trashIcon.innerHTML = '<i class="fa fa-trash" style="color: red; font-size: 20px;"></i>';
+       ;
 
         // Append icons
         actionsDiv.appendChild(heartIcon);
