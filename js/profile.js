@@ -12,8 +12,7 @@ function displayUserInfo() {
     // Update profile overview section
     document.getElementById("username_id").textContent = userName || 'N/A';
     document.getElementById("userEmail_id").textContent = userEmail || 'N/A';
-    document.getElementById("userAddress_id").innerHTML = userAddress ? 
-        `Country: ${userAddress}` : 'N/A';
+    
     document.getElementById("userPhone_id").textContent = userPhone || 'N/A';
     document.getElementById("userPhone_id").textContent = userPhone || 'N/A';
     

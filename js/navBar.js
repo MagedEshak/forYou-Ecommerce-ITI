@@ -6,7 +6,7 @@
 //
 /////////////
 import { getDocById, getDocumentByField, getAllDocuments } from "../../js/main.js";
-import { getCookie, deleteAllCookies, logoutUser } from "./auth.js";
+import { getCookie, deleteAllCookies, logoutUser, setCookie, deleteCookie } from "./auth.js";
 
 document.addEventListener('DOMContentLoaded', function () {
     const userId = getCookie("userId");
@@ -46,6 +46,9 @@ document.addEventListener('DOMContentLoaded', function () {
             logBtn.addEventListener('click', async function () {
                 await logoutUser();
                 deleteAllCookies();
+                deleteCookie("cart")
+                localStorage.removeItem("wishlist")
+
                 if (window.location.href.split('/')[3] == 'index.html')
                     catLink.href = `./CustomersPages/signin.html`;
                 else
