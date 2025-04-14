@@ -100,7 +100,7 @@ if(usrCart){
                 
                 if(usr.shoppingCart[i].product_id == event.target.id.split('_')[1]){
                    usr.shoppingCart.splice(i,1)
-                    totalPrice -= usr.shoppingCart[i].price
+                    // totalPrice -= usr.shoppingCart[i].price
                    break;
                 }
             
@@ -115,7 +115,7 @@ if(usrCart){
                 newShopingcart.push(myProdJson)
             }
             setCookie("cart",JSON.stringify(newShopingcart),30)
-            await updateDocById("User",userId,usr)
+            await updateDocById("Users",userId,usr)
             document.getElementById("products").removeChild(productContainer)
             document.getElementById("products").removeChild(iconsContainer)
         })

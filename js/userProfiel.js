@@ -18,7 +18,12 @@ let orderaddres = document.getElementById("orderaddres_id");
 let orderUserName = document.getElementById("orderUserName_id");
 let orderPhone = document.getElementById("orderPhone_id");
 
+
 window.onload = () => {
+  
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  wishlist.forEach((product) => createWishlistItem(product));
+
   getCurrentUserId().then((uId) => {
     getUserProfile(uId).then((userData) => {
       userName.innerHTML = userData.userName;
@@ -46,13 +51,12 @@ window.onload = () => {
         });
       }
       updateDeliveredTotalDisplay(userData.shoppingCart);
-      orderaddres.innerHTML = `Country:${userData.address.country}<br> Governorate: ${userData.address.city}`;
+      orderaddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
       orderUserName.innerHTML = userData.userName;
-      orderPhone.innerHTML = userData.phoneNumber;
+      orderPhone.innerHTML = userData.phone;
     });
   });
-  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-  wishlist.forEach((product) => createWishlistItem(product));
+  
 };
 
 function creatLastOrder(product, quantaty, status = "", containerElement) {
@@ -60,7 +64,7 @@ function creatLastOrder(product, quantaty, status = "", containerElement) {
 
   let productImageTd = document.createElement("td");
   let productImage = document.createElement("img");
-  productImage.src = product.imageUrl;
+  productImage.src = product.img;
   productImage.alt = product.name;
   productImage.style.width = "80px";
   productImageTd.appendChild(productImage);
@@ -105,7 +109,7 @@ function creatLastOrder(product, quantaty, status = "", containerElement) {
   containerElement.appendChild(trProduct);
 }
 
-function calculateDeliveredTotal(shoppingCart) {
+async function calculateDeliveredTotal(shoppingCart) {
   let total = 0;
   let promises = shoppingCart.map((order) => {
     if (order.isPending == 1) {
@@ -141,7 +145,7 @@ function ShowOrderdDelivered(product, quantaty) {
   colImg.classList.add("col-lg-3", "col-md-12", "mb-3");
 
   let image = document.createElement("img");
-  image.src = product.imageUrl;
+  image.src = product.img;
   image.alt = product.name;
   image.classList.add("w-50");
   image.id = "imageOrder_id";
@@ -177,17 +181,19 @@ function removeFromWishlist(productId, elementToRemove) {
   }
 }
 async function createWishlistItem(productData) {
-  const userId = getCookie("userId");
+  // let userId = getCookie("userId");
+  console.log('ahmed')
   let { myUser, myCart } = await initializeCart();
+  console.log('aliali')
 
-  const { name, disc, price, img, id } = productData.prod_details;
-  const productCol = document.createElement("div");
+  let { name, disc, price, img, id } = productData.prod_details;
+  let productCol = document.createElement("div");
   productCol.className = "col-sm-12 col-md-6 col-lg-4";
 
-  const cardSection = document.createElement("section");
+  let cardSection = document.createElement("section");
   cardSection.className = "text-center card shadow p-4";
 
-  const heartBtn = document.createElement("button");
+  let heartBtn = document.createElement("button");
   heartBtn.className = "btn float-start w-25 border-0";
   heartBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
 
@@ -195,26 +201,26 @@ async function createWishlistItem(productData) {
     removeFromWishlist(id, productCol);
   });
 
-  const imgElement = document.createElement("img");
+  let imgElement = document.createElement("img");
   imgElement.src = img;
   imgElement.alt = name;
   imgElement.className = "col-12";
 
-  const infoDiv = document.createElement("div");
+  let infoDiv = document.createElement("div");
   infoDiv.className = "d-flex flex-column gap-3";
 
-  const title = document.createElement("h3");
+  let title = document.createElement("h3");
   title.textContent = name;
 
-  const description = document.createElement("p");
+  let description = document.createElement("p");
   description.className = "text-start";
   description.textContent = disc;
 
-  const priceWrapper = document.createElement("p");
+  let priceWrapper = document.createElement("p");
   priceWrapper.className = "d-flex justify-content-start gap-4";
   priceWrapper.innerHTML = `Price: <span class="fw-bold">${price} EGP</span>`;
 
-  const addToCartBtn = document.createElement("button");
+  let addToCartBtn = document.createElement("button");
   addToCartBtn.className = "btn badge p-3 btn-color-fa";
   addToCartBtn.textContent = "Add to cart";
   addToCartBtn.id = `addToCartBtn_id_${id}`;

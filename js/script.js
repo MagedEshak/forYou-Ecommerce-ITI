@@ -14,7 +14,7 @@ let {myUser , myCart} = await initializeCart();
 /******************************************************************************************************** */
 // code to handel wishlist
 debugger
-let myWishList = await initWishlist();
+let myWishList = await initWishlist(myUser);
 /******************************************************************************************************** */
 /* this code handels our crusoal and its background images */
 function controlCrusoal (){
@@ -102,9 +102,9 @@ function createCategoryInHtml(categoriesContainer , category , index){
 
     let categoryHeader = document.createElement('p');
     categoryHeader.innerText = category.cat_name ;
-
+    
     let categoryImage = document.createElement('img');
-   
+    categoryImage.referrerPolicy = "no-referrer";
     categoryImage.className = "w-75 catImg";
     categoryImage.src = category.img ;
     categoryImage.referrerpolicy = "no-referrer";
@@ -260,11 +260,12 @@ async function createProductsInHtml(productsContainer , products , catName) {
         productDetailsLink.href = `../CustomersPages/detailes.html?cat_id=${product.cat_id}&product_id=${product.id}`
         /*****************************************************************/
         // this contains the product image  : must be appended in a
-        
         let productImage = document.createElement('img');
         productImage.src = product.img;
         productImage.referrerpolicy = "no-referrer";
         productImage.id = `cookerProdImage_id_${product.id}`;
+        
+        productImage.src = product.img;
         productImage.alt = "product image";
         
         /* productImage.innerHTML = `

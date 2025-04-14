@@ -119,24 +119,20 @@
   <!-- my nav in large devices , it only appears on large devices -->
   <nav class="d-none d-lg-block siteColorClass">
     <div class="container-fluid p-3">
-
-      <div class="links d-flex justify-content-end align-items-center">
-           <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links col-7">
-               <!-- this is filled dynamically using js -->
-           </div>
-
-          
-          <a  class="col-auto text-center p-1 logBtn"> Sign In</a>
-          <a class= "col-auto text-center p-1 regBtn">Register</a></span>
-          <a class="col-auto text-center p-2 fw-bolder userName_id" > User Name</a>
-          
-          
-          <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
-              <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
-          </a>
-           
-      </div>
-
+        <div class="links d-flex justify-content-between align-items-center">
+            <div id="navCategoriesLinks_id" class="row justify-content-start align-items-center links">
+                <!-- this is filled dynamically using js -->
+            </div>
+            <div class="row justify-content-end align-items-center links">
+              <a href="signin.html" class="col-auto text-center p-2 logBtn"> Sign In</a>
+              <a href="Rejester.html" class= "col-auto text-center p-2 regBtn">Register</a></span>
+              <a href="profile.html" class="col-auto text-center p-2 fw-bolder userName_id" > Guest</a>
+               
+                <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
+                    <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
+                </a>
+            </div>
+        </div>
     </div>
 </nav><!-- updated -->
 
@@ -371,6 +367,8 @@
   <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
   <script src="../bootstrap-5.3.3-dist/js/bootstrap.js"></script>
   <script type="module" src="../js/profile.js"></script>
+  <script type="module" src="../js/userProfiel.js"></script>
+
 </body>
 
 </html>
