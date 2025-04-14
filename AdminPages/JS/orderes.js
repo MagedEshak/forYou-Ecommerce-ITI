@@ -78,8 +78,7 @@ async function createProductsInHtmlLargeWidthScreen(){
 
     // the shopCart item contains , user id , and shopCart object contains
     //  products(id, catID , quantity , status) added to cart
-     usersTemp.forEach((user) => {
-        
+    usersTemp.forEach((user) => {
         user.shoppingCart.forEach((product) => {
             // this is the row that contains our order info
             let tableRow = document.createElement('tr');
@@ -87,19 +86,19 @@ async function createProductsInHtmlLargeWidthScreen(){
 
             // first cell in the row : user id
             let productId = document.createElement('th');
-            productId.innerText = user.id ;
+            productId.innerText = user.id;
 
             // second cell in the row : user name 
             let userName = document.createElement('td');
-            userName.innerText = user.userName ;
+            userName.innerText = user.userName;
 
             // third cell in the row : product price
-            let prodPrice = getProductPriceByProdId(productsTemp , product.product_id);
+            let prodPrice = getProductPriceByProdId(productsTemp, product.product_id);
             let productPrice = document.createElement('td');
-            productPrice.innerText = product.quantaty * prodPrice; 
+            productPrice.innerText = product.quantaty * prodPrice;
 
             // fourth cell in the row : pay method
-            let payMethodString = getPayMethodByUserId(usersTemp , user.id);
+            let payMethodString = getPayMethodByUserId(usersTemp, user.id);
             let payMethod = document.createElement('td');
             payMethod.innerText = payMethodString;  // this should be handeled dynamically
 
@@ -112,9 +111,8 @@ async function createProductsInHtmlLargeWidthScreen(){
 
             let productStatusDiv = document.createElement('div');
 
-            let cancelApproveBtnsTD =  document.createElement('td'); // table cell contains the div that contains the two btns
-            if(product.isPending == 0)
-            {
+            let cancelApproveBtnsTD = document.createElement('td'); // table cell contains the div that contains the two btns
+            if (product.isPending == 0) {
                 productStatusDiv.className = "text-primary p-2 rounded-3 text-center badge text-decoration-none";
                 productStatusDiv.innerText = "New";
                 productStatusTD.appendChild(productStatusDiv);
@@ -123,14 +121,14 @@ async function createProductsInHtmlLargeWidthScreen(){
                 cancelApproveBtnsDiv.className = "d-flex justify-content-around gap-1";
 
                 // approve btn , contains icon and approve word
-                let approveBtn = document.createElement('button'); 
+                let approveBtn = document.createElement('button');
                 approveBtn.className = "btn btn-success d-flex gap-1 btn-color approve";
                 approveBtn.id = `user_${user.id}_cat_${product.cat_id}_prod_${product.product_id}_1`;
 
                 let approveIcon = document.createElement('i');
                 approveIcon.className = "bi bi-check-lg";
 
-                let approveText =  document.createTextNode("Approve");
+                let approveText = document.createTextNode("Approve");
 
                 approveBtn.appendChild(approveIcon);
                 approveBtn.appendChild(approveText);
@@ -144,7 +142,7 @@ async function createProductsInHtmlLargeWidthScreen(){
                 let cancelIcon = document.createElement('i');
                 cancelIcon.className = "bi bi-x-lg";
 
-                let cancelText =  document.createTextNode("Decline");
+                let cancelText = document.createTextNode("Decline");
 
                 cancelBtn.appendChild(cancelIcon);
                 cancelBtn.appendChild(cancelText);
@@ -154,14 +152,12 @@ async function createProductsInHtmlLargeWidthScreen(){
                 cancelApproveBtnsTD.appendChild(cancelApproveBtnsDiv);// append the div that contains the two btns
 
             }
-            else if(product.isPending == 1)
-            {
+            else if (product.isPending == 1) {
                 productStatusDiv.className = "text-success p-2 rounded-3 text-center badge";
                 productStatusDiv.innerText = "Approved";
                 productStatusTD.appendChild(productStatusDiv);
             }
-            else if(product.isPending == -1)
-            {
+            else if (product.isPending == -1) {
                 productStatusDiv.className = "text-danger   p-2 rounded-3 text-center badge";
                 productStatusDiv.innerText = "Declined";
                 productStatusTD.appendChild(productStatusDiv);
@@ -177,9 +173,9 @@ async function createProductsInHtmlLargeWidthScreen(){
         
             myTbodyContainer.appendChild(tableRow);
 
-        })
+        });
 
-    })
+    });
 
 }
 

@@ -245,9 +245,6 @@ createNewAdminForm.addEventListener("submit", async (e) => {
     clearFieldError("repeatPassInput");
   }
 
-  password.type = cekBoxPass.checked ? "text" : "password";
-  repeatPassword.type = cekBoxRePass.checked ? "text" : "password";
-
   if (phone.value.trim() !== "" && !validatePhone(phone.value)) {
     showFieldError("phone", "Please Enter Valid Phone Number");
     e.preventDefault();
