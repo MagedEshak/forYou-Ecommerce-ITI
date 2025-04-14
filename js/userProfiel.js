@@ -29,6 +29,7 @@ window.onload = () => {
       userEmail.innerHTML = userData.email;
 
       userAddres.innerHTML = `Country:${userData.address.country}<br> Governorate: ${userData.address.city}`;
+      
 
       for (let index in userData.shoppingCart) {
         let order = userData.shoppingCart[index];

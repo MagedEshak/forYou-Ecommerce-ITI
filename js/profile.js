@@ -22,7 +22,7 @@ function displayUserInfo() {
 
     // Update order details section
     document.getElementById("orderaddres_id").innerHTML = userAddress ? 
-        `city: ${userAddress}<br>` : 'N/A';
+        `city: ${userAddress} <br>` : 'N/A';
     document.getElementById("orderUserName_id").textContent = userName || 'N/A';
     document.getElementById("orderPhone_id").textContent = userPhone || 'N/A';
 }

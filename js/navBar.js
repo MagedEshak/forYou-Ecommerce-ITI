@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
             logBtn.innerText = "Log Out";    // reload the page after log out to remove cookies
             logBtn.addEventListener('click', async function () {
                 await logoutUser();
-                await deleteAllCookies();
+                deleteAllCookies();
                 if (window.location.href.split('/')[3] == 'index.html')
                     catLink.href = `./CustomersPages/signin.html`;
                 else
