@@ -13,7 +13,7 @@ let {myUser , myCart} = await initializeCart();
 /******************************************************************************************************** */
 /******************************************************************************************************** */
 // code to handel wishlist
-
+debugger
 let myWishList = await initWishlist();
 /******************************************************************************************************** */
 /* this code handels our crusoal and its background images */
@@ -104,9 +104,12 @@ function createCategoryInHtml(categoriesContainer , category , index){
     categoryHeader.innerText = category.cat_name ;
 
     let categoryImage = document.createElement('img');
+   
     categoryImage.className = "w-75 catImg";
     categoryImage.src = category.img ;
-
+    categoryImage.referrerpolicy = "no-referrer";
+    
+ 
     categoryAncorContainer.appendChild(categoryHeader);
     categoryAncorContainer.appendChild(categoryImage);
 
@@ -257,13 +260,16 @@ async function createProductsInHtml(productsContainer , products , catName) {
         productDetailsLink.href = `../CustomersPages/detailes.html?cat_id=${product.cat_id}&product_id=${product.id}`
         /*****************************************************************/
         // this contains the product image  : must be appended in a
-        debugger;
+        
         let productImage = document.createElement('img');
+        productImage.src = product.img;
         productImage.referrerpolicy = "no-referrer";
         productImage.id = `cookerProdImage_id_${product.id}`;
-        productImage.src = product.img;
         productImage.alt = "product image";
-    
+        
+        /* productImage.innerHTML = `
+            <img src="${product.img}" alt="${product.name}" 
+                 referrerpolicy="no-referrer">` */
         /*****************************************************************/
         // this div contains the product description : must be appended in a
         let productDescriptionContainer = document.createElement('div');

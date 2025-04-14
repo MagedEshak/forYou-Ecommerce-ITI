@@ -71,10 +71,10 @@ editProfileForm.addEventListener('submit', async (e) => {
         deleteAllCookies();
         setCookie("userId", userId, 30);
         setCookie("userName", updatedData.Username, 30);
-        setCookie("userEmail", emailInput.value, 30);
+        setCookie("email", emailInput.value, 30);
         setCookie("isAdmin", false, 30);
-        setCookie("userPhone", updatedData.phone, 30);
-        setCookie("userAddress", updatedData.address, 30);
+        setCookie("phone", updatedData.phone, 30);
+        setCookie("address", updatedData.address, 30);
 
         alert('Profile updated successfully!');
         window.location.href = './profile.html';

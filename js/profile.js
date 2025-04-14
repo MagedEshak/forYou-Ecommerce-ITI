@@ -3,9 +3,9 @@ import { getCookie } from "./auth.js";
 // Add this at the beginning of your file
 function displayUserInfo() {
     const userName = getCookie("userName");
-    const userEmail = getCookie("userEmail");
-    const userPhone = getCookie("userPhone");
-    const userAddress = getCookie("userAddress");
+    const userEmail = getCookie("email");
+    const userPhone = getCookie("phone");
+    const userAddress = getCookie("address");
 
     console.log(userName, userEmail, userPhone, userAddress);
 
@@ -13,7 +13,7 @@ function displayUserInfo() {
     document.getElementById("username_id").textContent = userName || 'N/A';
     document.getElementById("userEmail_id").textContent = userEmail || 'N/A';
     document.getElementById("userAddress_id").innerHTML = userAddress ? 
-        `Country: ${userAddress[0]}<br> Governorate: ${userAddress[1]}` : 'N/A';
+        `Country: ${userAddress}` : 'N/A';
     document.getElementById("userPhone_id").textContent = userPhone || 'N/A';
     document.getElementById("userPhone_id").textContent = userPhone || 'N/A';
     
@@ -22,7 +22,7 @@ function displayUserInfo() {
 
     // Update order details section
     document.getElementById("orderaddres_id").innerHTML = userAddress ? 
-        `Country: ${userAddress[0]}<br> Governorate: ${userAddress[1]}` : 'N/A';
+        `city: ${userAddress}<br>` : 'N/A';
     document.getElementById("orderUserName_id").textContent = userName || 'N/A';
     document.getElementById("orderPhone_id").textContent = userPhone || 'N/A';
 }
