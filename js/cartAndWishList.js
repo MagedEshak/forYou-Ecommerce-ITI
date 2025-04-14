@@ -5,8 +5,7 @@ import { getCookie, setCookie } from "./auth.js";
 
 export async function initializeCart() {
     const userId = getCookie("userId");
-    const myUser = await getDocById("User", userId);
-    console.log(myUser.shoppingCart)
+    const myUser = await getDocById("Users", userId);
     const myCookie = getCookie("cart");
     let myCart = [];
   

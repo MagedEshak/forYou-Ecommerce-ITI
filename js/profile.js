@@ -3,9 +3,9 @@ import { getCookie } from "./auth.js";
 // Add this at the beginning of your file
 function displayUserInfo() {
     const userName = getCookie("userName");
-    const userEmail = getCookie("userEmail");
-    const userPhone = getCookie("userPhone");
-    const userAddress = getCookie("userAddress");
+    const userEmail = getCookie("email");
+    const userPhone = getCookie("phone");
+    const userAddress = getCookie("address");
 
     console.log(userName, userEmail, userPhone, userAddress);
 
@@ -13,7 +13,7 @@ function displayUserInfo() {
     document.getElementById("username_id").textContent = userName || 'N/A';
     document.getElementById("userEmail_id").textContent = userEmail || 'N/A';
     document.getElementById("userAddress_id").innerHTML = userAddress ? 
-        `Country: ${userAddress[0]}<br> Governorate: ${userAddress[1]}` : 'N/A';
+        `Country: ${userAddress}` : 'N/A';
     document.getElementById("userPhone_id").textContent = userPhone || 'N/A';
     document.getElementById("userPhone_id").textContent = userPhone || 'N/A';
     
@@ -22,7 +22,7 @@ function displayUserInfo() {
 
     // Update order details section
     document.getElementById("orderaddres_id").innerHTML = userAddress ? 
-        `Country: ${userAddress[0]}<br> Governorate: ${userAddress[1]}` : 'N/A';
+        `city: ${userAddress}<br>` : 'N/A';
     document.getElementById("orderUserName_id").textContent = userName || 'N/A';
     document.getElementById("orderPhone_id").textContent = userPhone || 'N/A';
 }
@@ -40,7 +40,6 @@ let wishListSideBar = document.getElementById("WishListSideBar_id");
 let porfielOverview = document.getElementById("porfielOverview_id");
 let ordered = document.getElementById("ordered_id");
 let WishListContant = document.getElementById("WishListContant_id");
-let editUser = document.getElementById("editUser_id");
 function showProfielOverViweSection(e) {
   e.preventDefault();
   porfielOverview.classList.add("d-block");
@@ -49,8 +48,6 @@ function showProfielOverViweSection(e) {
   ordered.classList.add("d-none");
   WishListContant.classList.remove("d-block");
   WishListContant.classList.add("d-none");
-  editUser.classList.remove("d-block");
-  editUser.classList.add("d-none");
 }
 function showOrderdSection(e) {
   e.preventDefault();
@@ -60,8 +57,6 @@ function showOrderdSection(e) {
   ordered.classList.add("d-block");
   WishListContant.classList.remove("d-block");
   WishListContant.classList.add("d-none");
-  editUser.classList.remove("d-block");
-  editUser.classList.add("d-none");
 }
 function showWishListSection(e) {
   e.preventDefault();
@@ -71,8 +66,6 @@ function showWishListSection(e) {
   ordered.classList.add("d-none");
   WishListContant.classList.remove("d-none");
   WishListContant.classList.add("d-block");
-  editUser.classList.remove("d-block");
-  editUser.classList.add("d-none");
 }
 function showEditUserSection(e) {
   e.preventDefault();
@@ -82,8 +75,6 @@ function showEditUserSection(e) {
   ordered.classList.add("d-none");
   WishListContant.classList.remove("d-block");
   WishListContant.classList.add("d-none");
-  editUser.classList.remove("d-none");
-  editUser.classList.add("d-block");
 }
 
 overView.addEventListener("click", showProfielOverViweSection);

@@ -93,15 +93,14 @@ if(usrCart){
         trashIcon.className ="me-2"
         trashIcon.addEventListener("click", async function(event){
            
-            var usr =  await getDocById("User",userId)
+            var usr =  await getDocById("Users",userId)
             for (var i in usr.shoppingCart){
                 console.log(usr.shoppingCart[i])
                 // var newShopingCart = {}
                 
                 if(usr.shoppingCart[i].product_id == event.target.id.split('_')[1]){
-                   usr.shoppingCart.splice(i,1)
-                    totalPrice -= usr.shoppingCart[i].price
-                   break;
+                    usr.shoppingCart.splice(i,1)
+                    break;
                 }
             
             }
@@ -115,7 +114,8 @@ if(usrCart){
                 newShopingcart.push(myProdJson)
             }
             setCookie("cart",JSON.stringify(newShopingcart),30)
-            await updateDocById("User",userId,usr)
+            await updateDocById("Users",userId,usr)
+            location.reload()
             document.getElementById("products").removeChild(productContainer)
             document.getElementById("products").removeChild(iconsContainer)
         })

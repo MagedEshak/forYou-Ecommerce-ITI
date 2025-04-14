@@ -1,3 +1,4 @@
+import { addDocument } from "./main.js";
 import { registerUser, createUserProfile } from "./auth.js";
 import {
   validateName,
@@ -10,32 +11,39 @@ import {
 let CreatAcount = document.getElementById("Creataccount_id");
 CreatAcount.addEventListener("click", (e) => {
   e.preventDefault();
-  let userName = document.getElementById("userName_id").value;
+  let name = document.getElementById("userName_id").value;
   let email = document.getElementById("email_id").value;
   let password = document.getElementById("password_id").value;
   let rePassword = document.getElementById("repassword_id").value;
-  let phone = document.getElementById("phoneNumber_id").value;
+  let phoneNumber = document.getElementById("phoneNumber_id").value;
 
   if (
-    validateName(userName) &&
+    validateName(name) &&
     validateEmail(email) &&
     validatePassword(password) &&
     validateRePassword(password, rePassword) &&
-    validatePhoneNumber(phone)
+    validatePhoneNumber(phoneNumber)
   ) {
     let dataUser = {
       isAdmin: false,
-      userName,
+      name,
+      password,
       email,
-      phone,
+
+      phoneNumber,
+
       address: {
         country: "",
         city: "",
       },
       wishlist: [],
       shoppingCart: [],
-
-      lastOrders: [],
+      lastOrders: [
+        {
+          product_id: "",
+          retunOdrs: false,
+        },
+      ],
     };
 
     registerUser(email, password)
