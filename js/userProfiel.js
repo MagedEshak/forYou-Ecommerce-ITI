@@ -52,7 +52,7 @@ window.onload = () => {
         });
       }
       updateDeliveredTotalDisplay(userData.shoppingCart);
-      orderaddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
+      orderaddres.innerHTML = `Country: ${userData.address.country}<br> Governorate: ${userData.address.city}`;
       orderUserName.innerHTML = userData.userName;
       orderPhone.innerHTML = userData.phone;
     });
