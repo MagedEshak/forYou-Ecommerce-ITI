@@ -25,6 +25,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     emaiil.textContent = userEmail;
     mobile.textContent = userPhone;
     location.textContent = userAddress;
+    if(userAddress === "[object Object]"){
+      location.textContent = "No Address";
+    }
   } else {
     console.log("No user profile found or missing Username.");
   }

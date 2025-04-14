@@ -88,11 +88,11 @@ function createCategoryInHtml(categoriesContainer , category , index){
    
     // this is the category container
     let categoryContainer = document.createElement('div');
-    categoryContainer.className = "category col-6 col-md-4 col-lg-3 d-flex p-1";
+    categoryContainer.className = "category col-6 col-md-4 col-lg-3 d-flex p-1 ";
 
     // this is a link that contains category contents
     let categoryAncorContainer = document.createElement('a');
-    categoryAncorContainer.className = "bg-warning-subtle w-100 d-flex flex-column align-items-center justify-content-between";
+    categoryAncorContainer.className = "bg-warning-subtle w-100 d-flex flex-column align-items-center justify-content-center";
     categoryAncorContainer.id = `cat_id_${category.id}`;
     categoryAncorContainer.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
     if(index % 2 == 0){
@@ -103,11 +103,15 @@ function createCategoryInHtml(categoriesContainer , category , index){
     let categoryHeader = document.createElement('p');
     categoryHeader.innerText = category.cat_name ;
     
-    let categoryImage = document.createElement('img');
-    categoryImage.referrerPolicy = "no-referrer";
-    categoryImage.className = "w-75 catImg";
-    categoryImage.src = category.img ;
-    categoryImage.referrerpolicy = "no-referrer";
+    let categoryImage = document.createElement('div');
+    // categoryImage.referrerPolicy = "no-referrer";
+    // categoryImage.className = "w-75 catImg";
+    // categoryImage.src = category.img ;
+    // categoryImage.referrerpolicy = "no-referrer";
+    categoryImage.className = "text-center ";
+    categoryImage.innerHTML = `
+        <img class="w-75 catImg" src="${category.img}" alt="${category.cat_name}" 
+             referrerpolicy="no-referrer">`;
     
  
     categoryAncorContainer.appendChild(categoryHeader);
@@ -260,17 +264,18 @@ async function createProductsInHtml(productsContainer , products , catName) {
         productDetailsLink.href = `../CustomersPages/detailes.html?cat_id=${product.cat_id}&product_id=${product.id}`
         /*****************************************************************/
         // this contains the product image  : must be appended in a
-        let productImage = document.createElement('img');
-        productImage.src = product.img;
-        productImage.referrerpolicy = "no-referrer";
-        productImage.id = `cookerProdImage_id_${product.id}`;
+        let productImage = document.createElement('div');
+        // productImage.src = product.img;
+        // productImage.referrerpolicy = "no-referrer";
         
-        productImage.src = product.img;
-        productImage.alt = "product image";
+        //productImage.id = `cookerProdImage_id_${product.id}`;
         
-        /* productImage.innerHTML = `
-            <img src="${product.img}" alt="${product.name}" 
-                 referrerpolicy="no-referrer">` */
+        // productImage.src = product.img;
+        // productImage.alt = "product image";
+        productImage.className = "text-center";
+        productImage.innerHTML = `
+            <img id="cookerProdImage_id_${product.id}" src="${product.img}" alt="${product.name}" 
+                 referrerpolicy="no-referrer">`;
         /*****************************************************************/
         // this div contains the product description : must be appended in a
         let productDescriptionContainer = document.createElement('div');

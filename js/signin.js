@@ -78,6 +78,7 @@ async function handleSignIn(event) {
         // Check if user is admin (could be in different properties)
         const isAdmin = userProfile.isAdmin;
 
+
         // create cookie
 
         
@@ -86,12 +87,10 @@ async function handleSignIn(event) {
         setCookie("email", emailInput.value, 30);
         setCookie("isAdmin", isAdmin, 30);
         setCookie("phone", userProfile.phone, 30);
-        setCookie("address", userProfile.address[1], 30);
+        setCookie("address", userProfile.address, 30);
 
-        console.log(userName);
-        debugger;
         // if user is admin redirect to admin page
-        if (isAdmin) {
+        if (isAdmin==true) {
           window.location.href = "../AdminPages/admin-home.html";
         }
         // if user is customer redirect to home page
