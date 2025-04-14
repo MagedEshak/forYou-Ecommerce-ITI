@@ -264,7 +264,7 @@
     </header>
     <!-- End Nav Bar -->
 
-    <!-- Start Content Section {My Profile, Admins, Edit Profile, Change Password} -->
+
     <section id="mainContentSec_id" class="container-fluid col-md-12 d-md-flex justify-content-between gap-3 mt-4">
 
       <article id="addCategory_id" class="p-4 col-5 rounded-3 d-none shadow bg-white">
@@ -290,7 +290,7 @@
         <!-- End Edit Profile Section -->
       </article>
 
-      <div id="viewCategory_id" class="d-sm-flex flex-sm-column flex-md-row justify-content-between gap-5">
+      <div id="viewCategory_id" class="col-12 d-sm-flex flex-sm-column flex-md-row justify-content-between gap-5">
         <!-- list of items  and stock-->
         <article class="shadow col-lg-10 bg-white">
           <div class=" ms-md-2 bg-light rounded-3 p-4 bg-white">
@@ -307,8 +307,9 @@
               <!-- labels -->
               <thead>
                 <tr>
-                  <th scope=" col" class="text-start">Category Name</th>
+                  <th scope="col" class="text-start">Category Name</th>
                   <th scope="col" class="text-center">Quantity</th>
+                  <th scope="col">cancel</th>
                 </tr>
               </thead>
               <tbody id="tbody_id">
@@ -318,28 +319,6 @@
           </div>
         </article>
 
-        <article class="shadow col-lg-6 mt-3 bg-white">
-          <div class="rounded-3 p-4 bg-white">
-            <span class="fs-5 fw-bold">Category Summary</span>
-            <hr>
-
-            <div class="border-bottom mt-3 d-flex justify-content-between">
-              <span class="fw-bold">Quantity:</span>
-              <span class="fs-4 fw-bold">500</span>
-            </div>
-
-            <div class="border-bottom mt-3 d-flex justify-content-between">
-              <span class="fw-bold">Available in Stock:</span>
-              <span class="fs-4 fw-bold searchInput-color">400</span>
-            </div>
-
-            <div class="border-bottom mt-3 d-flex justify-content-between">
-              <span class="fw-bold">Not Available in Stock:</span>
-              <span class="fs-4 fw-bold text-danger">100</span>
-            </div>
-
-          </div>
-        </article>
       </div>
 
     </section>

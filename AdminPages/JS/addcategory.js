@@ -3,7 +3,8 @@ import {
   deleteAllDocuments,
   getDocumentByField,
   getAllDocuments,
-  
+  deleteDocumentByField,
+  deleteDocById
 } from "../../js/main.js";
 
 // deleteAllDocuments("category")
@@ -41,7 +42,7 @@ for(var cat of categorys) {
   const tdCategory = document.createElement("td");
   const divContainer = document.createElement("div");
   divContainer.className =
-    "align-content-center text-center d-flex justify-content-start gap-5";
+    "align-content-center text-center d-flex justify-content-start";
 
   const rowDiv = document.createElement("div");
   rowDiv.className = "row";
@@ -55,6 +56,8 @@ for(var cat of categorys) {
   catId.className = "text-start";
   catId.id = "cat_id";
   catId.textContent = cat.id;
+ 
+  
 
   // Append category elements
   rowDiv.appendChild(catName);
@@ -79,6 +82,25 @@ for(var cat of categorys) {
   tr.appendChild(tdCategory);
   tr.appendChild(tdQuantity);
 
+  const cancelBtn = document.createElement("button")
+  cancelBtn.className="btn btn-secondary bg-danger align-content-center text-center mt-3"
+  cancelBtn.innerText= "delete"
+  cancelBtn.id = cat.id
+  cancelBtn.onclick = async function(){
+    var products = await getDocumentByField("Products","cat_id",this.id)
+    console.log(products)
+
+    if(products == null){
+      await deleteDocById("Categories",this.id)
+    }
+    else{
+      for(var item of products){
+        await deleteDocumentByField("Products","cat_id",item.cat_id)
+      }
+    }
+    location.reload()
+  }
+  tr.appendChild(cancelBtn)
   // Append the row to a table in the document (assuming you have a table with id "myTable")
   document.getElementById("tbody_id").appendChild(tr);
 };
