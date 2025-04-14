@@ -5,12 +5,12 @@ let productsTemp = [];
 
 // function to get all users from fire base
 async function getAllUsersFromFireBase() {
-    usersTemp = await getAllDocuments("aliUsers");
+    usersTemp = await getAllDocuments("Users");
 }
 
 // function to get all products from fire base
 async function getAllProductsFromFireBase() {
-    productsTemp = await getAllDocuments("aliProducts");
+    productsTemp = await getAllDocuments("Products");
 }
 
 // this function get product price by product id , take products  and prod id , returns the product
@@ -91,7 +91,7 @@ async function createProductsInHtmlLargeWidthScreen(){
 
             // second cell in the row : user name 
             let userName = document.createElement('td');
-            userName.innerText = user.name ;
+            userName.innerText = user.userName ;
 
             // third cell in the row : product price
             let prodPrice = getProductPriceByProdId(productsTemp , product.product_id);
@@ -113,7 +113,7 @@ async function createProductsInHtmlLargeWidthScreen(){
             let productStatusDiv = document.createElement('div');
 
             let cancelApproveBtnsTD =  document.createElement('td'); // table cell contains the div that contains the two btns
-            if(product.PendingStatus == 0)
+            if(product.isPending == 0)
             {
                 productStatusDiv.className = "text-primary p-2 rounded-3 text-center badge text-decoration-none";
                 productStatusDiv.innerText = "New";
@@ -148,20 +148,19 @@ async function createProductsInHtmlLargeWidthScreen(){
 
                 cancelBtn.appendChild(cancelIcon);
                 cancelBtn.appendChild(cancelText);
-                
 
                 cancelApproveBtnsDiv.appendChild(approveBtn);// append approve btn
                 cancelApproveBtnsDiv.appendChild(cancelBtn);// append decline btn
                 cancelApproveBtnsTD.appendChild(cancelApproveBtnsDiv);// append the div that contains the two btns
 
             }
-            else if(product.PendingStatus == 1)
+            else if(product.isPending == 1)
             {
                 productStatusDiv.className = "text-success p-2 rounded-3 text-center badge";
                 productStatusDiv.innerText = "Approved";
                 productStatusTD.appendChild(productStatusDiv);
             }
-            else if(product.PendingStatus == -1)
+            else if(product.isPending == -1)
             {
                 productStatusDiv.className = "text-danger   p-2 rounded-3 text-center badge";
                 productStatusDiv.innerText = "Declined";
@@ -271,7 +270,7 @@ async function createProductsInHtmlSmallWidthScreen(){
                 statusSpan.innerText = "Status: ";
                 let statusDiv = document.createElement('div');
 
-                if(product.PendingStatus == 0)
+                if(product.isPending == 0)
                 {
                     statusDiv.className = "text-primary p-2 rounded-3 text-center badge text-decoration-none";
                     statusDiv.innerText = "  New";
@@ -327,12 +326,12 @@ async function createProductsInHtmlSmallWidthScreen(){
                 }
                 else 
                 {
-                    if(product.PendingStatus == 1)
+                    if(product.isPending == 1)
                     {
                         statusDiv.className = "text-success p-2 rounded-3 text-center badge";
                         statusDiv.innerText = "  Approved";
                     }
-                    else if(product.PendingStatus == -1)
+                    else if(product.isPending == -1)
                     {
                         statusDiv.className = "text-danger p-2 rounded-3 text-center badge";
                         statusDiv.innerText = "  Canceled";
@@ -374,7 +373,7 @@ function displayProductsByStatus(status){
     usersTemp.forEach( user => {
         user.shoppingCart.forEach( product => {
             let productRow = document.getElementById(`row_${user.id}_${product.cat_id}_${product.product_id}`);
-            if(product.PendingStatus == status || status == undefined)
+            if(product.isPending == status || status == undefined)
                 productRow.classList.remove('d-none');
             else
                 productRow.classList.add('d-none');
@@ -441,7 +440,7 @@ function updateOrderStatus(userId , catId , prodID , status){
     let myProduct = myUser.shoppingCart.find( product =>
                     (product.cat_id == catId) && (product.product_id == prodID) );
     // then we update the product status
-    myProduct.PendingStatus = status;
+    myProduct.isPending = status;
 
     // we update the row that contains this product
     let myRow = document.getElementById(`row_${userId}_${catId}_${prodID}`);
@@ -491,7 +490,7 @@ function updateOrderStatus(userId , catId , prodID , status){
 // function to update users in fireBase
 async function updateUsersProductStatus(users) {
     for(let user of users){
-        await updateDocById("aliUsers" ,user.id , user );
+        await updateDocById("Users" ,user.id , user );
     }
 }
 

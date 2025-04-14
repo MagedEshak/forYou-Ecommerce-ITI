@@ -46,7 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
             logBtn.addEventListener('click', async function () {
                 await logoutUser();
                 await deleteAllCookies();
-                window.location.href = "./signin.html";
+                if (window.location.href.split('/')[3] == 'index.html')
+                    catLink.href = `./CustomersPages/signin.html`;
+                else
+                    catLink.href = "signin.html";
             });
             logBtn.style.display = "block";
             logBtn.style.visibility = "visible";
