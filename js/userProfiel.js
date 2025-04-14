@@ -18,9 +18,7 @@ let orderaddres = document.getElementById("orderaddres_id");
 let orderUserName = document.getElementById("orderUserName_id");
 let orderPhone = document.getElementById("orderPhone_id");
 
-
 window.onload = () => {
-  
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   wishlist.forEach((product) => createWishlistItem(product));
 
@@ -31,7 +29,6 @@ window.onload = () => {
       userEmail.innerHTML = userData.email;
 
       userAddres.innerHTML = `Country:${userData.address.country}<br> Governorate: ${userData.address.city}`;
-      
 
       for (let index in userData.shoppingCart) {
         let order = userData.shoppingCart[index];
@@ -57,7 +54,6 @@ window.onload = () => {
       orderPhone.innerHTML = userData.phone;
     });
   });
-  
 };
 
 function creatLastOrder(product, quantaty, status = "", containerElement) {
@@ -183,9 +179,9 @@ function removeFromWishlist(productId, elementToRemove) {
 }
 async function createWishlistItem(productData) {
   // let userId = getCookie("userId");
-  console.log('ahmed')
+  console.log("ahmed");
   let { myUser, myCart } = await initializeCart();
-  console.log('aliali')
+  console.log("aliali");
 
   let { name, disc, price, img, id } = productData.prod_details;
   let productCol = document.createElement("div");
