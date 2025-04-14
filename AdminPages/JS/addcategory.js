@@ -4,7 +4,8 @@ import {
   getDocumentByField,
   getAllDocuments,
   deleteDocumentByField,
-  deleteDocById
+  deleteDocById,
+  uploadToImgur
 } from "../../js/main.js";
 
 // deleteAllDocuments("category")
