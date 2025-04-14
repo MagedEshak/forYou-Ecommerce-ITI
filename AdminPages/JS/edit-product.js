@@ -140,7 +140,7 @@ async function handleFormSubmit(event) {
     formData.updatedAt = new Date();
 
     // Update document
-    await updateDocById("products", currentProductId, formData);
+    await updateDocById("Products", currentProductId, formData);
 
     alert("Product updated successfully!");
     window.location.href = "admin-home.html";
