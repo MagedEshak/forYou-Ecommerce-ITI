@@ -174,12 +174,18 @@ async function createProductsInHtml() {
         /*****************************************************************/
         // this contains the product image  : must be appended in a
         // this contains the product image  : must be appended in a
-        let productImage = document.createElement('img');
-        productImage.referrerpolicy = "no-referrer";
-        productImage.id = `cookerProdImage_id_${product.id}`;
+        let productImage = document.createElement('div');
+        // productImage.src = product.img;
+        // productImage.referrerpolicy = "no-referrer";
         
-        productImage.src = product.img;
-        productImage.alt = "product image";
+        //productImage.id = `cookerProdImage_id_${product.id}`;
+        
+        // productImage.src = product.img;
+        // productImage.alt = "product image";
+        productImage.className = "text-center";
+        productImage.innerHTML = `
+            <img id="cookerProdImage_id_${product.id}" src="${product.img}" alt="${product.name}" 
+                 referrerpolicy="no-referrer">`;
     
         /*****************************************************************/
         // this div contains the product description : must be appended in a

@@ -21,7 +21,7 @@ let editPassword = document.getElementById("newPassInput_id");
 let repeatEditPassword = document.getElementById("repeatPassInput_id");
 
 let cekBoxCPass = document.getElementById("showCurrentPasswordCheck_id");
-let cekBoxEPass = document.getElementById("showReNewPasswordCheck_id");
+let cekBoxEPass = document.getElementById("showNewPasswordCheck_id");
 let cekBoxReNPass = document.getElementById("showRepeatPasswordCheck_id");
 
 //--------------------------------------------------------------------------------------
@@ -32,9 +32,11 @@ let phone = document.getElementById("phoneNewAdminInput_id");
 let password = document.getElementById("newAdPassInput_id");
 let repeatPassword = document.getElementById("reNewPassInput_id");
 let city = document.getElementById("cityNewAdminInput_id");
-let cekBoxPass = document.getElementById("showadPasswordCheck_id");
-let cekBoxRePass = document.getElementById("showReNewPasswordCheck_id");
+
+
 let createNewAdminForm = document.getElementById("adminRegitForm");
+
+
 
 //-----------------------------------------------------------------------------
 
@@ -121,6 +123,36 @@ document.addEventListener("DOMContentLoaded", async function () {
       alert("Something Went Wrong");
     }
   });
+
+
+  cekBoxCPass.addEventListener("click", () => {
+    if (cekBoxCPass.checked) {
+      currentPassInput.type = "text"; //  Show password
+    } else {
+      currentPassInput.type = "password"; //  Hide password
+    }
+  });
+  
+  cekBoxEPass.addEventListener("click", () => {
+    if (cekBoxEPass.checked) {
+      debugger;
+      editPassword.type = "text"; //  Show password
+    } else {
+      editPassword.type = "password"; //  Hide password
+    }
+  });
+  
+  cekBoxReNPass.addEventListener("click", () => {
+    if (cekBoxReNPass.checked) {
+      repeatEditPassword.type = "text"; //  Show password
+    } else {
+      repeatEditPassword.type = "password"; //  Hide password
+    }
+  });
+
+ 
+
+
 
   //---------------------------------------------------------
 

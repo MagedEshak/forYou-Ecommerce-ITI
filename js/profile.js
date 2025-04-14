@@ -12,16 +12,15 @@ function displayUserInfo() {
     // Update profile overview section
     document.getElementById("username_id").textContent = userName || 'N/A';
     document.getElementById("userEmail_id").textContent = userEmail || 'N/A';
+    document.getElementById("userPhone_id").textContent = userPhone || 'N/A';
     
-    document.getElementById("userPhone_id").textContent = userPhone || 'N/A';
-    document.getElementById("userPhone_id").textContent = userPhone || 'N/A';
     
     // Update welcome heading
     document.getElementById("welcomeHead_id").textContent = `Hello, ${userName}`;
 
     // Update order details section
     document.getElementById("orderaddres_id").innerHTML = userAddress ? 
-        `city: ${userAddress} <br>` : 'N/A';
+        `: ${userAddress}<br>` : 'N/A';
     document.getElementById("orderUserName_id").textContent = userName || 'N/A';
     document.getElementById("orderPhone_id").textContent = userPhone || 'N/A';
 }
