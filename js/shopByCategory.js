@@ -175,7 +175,7 @@ async function createProductsInHtml() {
         // this contains the product image  : must be appended in a
         let productImage = document.createElement('img');
         productImage.id = `cookerProdImage_id_${product.id}`;
-        productImage.src = `${product.img}`;
+        productImage.src = product.img;
         productImage.alt = "product image";
     
         /*****************************************************************/

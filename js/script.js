@@ -257,9 +257,11 @@ async function createProductsInHtml(productsContainer , products , catName) {
         productDetailsLink.href = `../CustomersPages/detailes.html?cat_id=${product.cat_id}&product_id=${product.id}`
         /*****************************************************************/
         // this contains the product image  : must be appended in a
+        debugger;
         let productImage = document.createElement('img');
+        productImage.referrerpolicy = "no-referrer";
         productImage.id = `cookerProdImage_id_${product.id}`;
-        productImage.src = `${product.img}`;
+        productImage.src = product.img;
         productImage.alt = "product image";
     
         /*****************************************************************/
