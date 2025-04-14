@@ -3,6 +3,7 @@ import {
   deleteAllDocuments,
   getDocumentByField,
   getAllDocuments,
+  
 } from "../../js/main.js";
 
 // deleteAllDocuments("category")
@@ -19,6 +20,7 @@ document
     var catName = document.getElementById("categoryNameInput_id").value;
     var cat = {
       cat_name: catName,
+      img:""
     };
     await addDocument("Categories", cat);
     document.getElementById("categoryNameInput_id").value = "";
@@ -26,8 +28,13 @@ document
   });
 
 var categorys = await getAllDocuments("Categories");
-categorys.forEach((cat) => {
+
+
+for(var cat of categorys) {
+  
+  var products_cat = await getDocumentByField("Products","cat_id",cat.id)
   // Create the <tr> element
+  /* console.log(products_cat?.length) */
   const tr = document.createElement("tr");
 
   // Create the <td> element for category info
@@ -62,7 +69,8 @@ categorys.forEach((cat) => {
   const spanQuantity = document.createElement("span");
   spanQuantity.id = "catQuantity_id";
   spanQuantity.className = "align-content-center text-center";
-  spanQuantity.textContent = "4";
+   
+  spanQuantity.textContent = products_cat?.length == null? 0:products_cat.length;
 
   // Append quantity elements
   tdQuantity.appendChild(spanQuantity);
@@ -73,4 +81,4 @@ categorys.forEach((cat) => {
 
   // Append the row to a table in the document (assuming you have a table with id "myTable")
   document.getElementById("tbody_id").appendChild(tr);
-});
+};

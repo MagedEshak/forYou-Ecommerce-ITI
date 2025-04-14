@@ -99,8 +99,11 @@ if(usrCart){
                 // var newShopingCart = {}
                 
                 if(usr.shoppingCart[i].product_id == event.target.id.split('_')[1]){
-                   usr.shoppingCart.splice(i,1)
-                    // totalPrice -= usr.shoppingCart[i].price
+                    
+                    
+                    usr.shoppingCart.splice(i,1)
+                    
+
                    break;
                 }
             
@@ -116,6 +119,7 @@ if(usrCart){
             }
             setCookie("cart",JSON.stringify(newShopingcart),30)
             await updateDocById("Users",userId,usr)
+            location.reload()
             document.getElementById("products").removeChild(productContainer)
             document.getElementById("products").removeChild(iconsContainer)
         })
