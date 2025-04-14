@@ -93,7 +93,7 @@ if(usrCart){
         trashIcon.className ="me-2"
         trashIcon.addEventListener("click", async function(event){
            
-            var usr =  await getDocById("User",userId)
+            var usr =  await getDocById("Users",userId)
             for (var i in usr.shoppingCart){
                 console.log(usr.shoppingCart[i])
                 // var newShopingCart = {}
