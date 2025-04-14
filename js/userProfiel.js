@@ -96,7 +96,7 @@ function creatLastOrder(product, quantaty, status = "", containerElement) {
     if (status == 1) {
       productStutas.innerHTML = `Delivered`;
       productStutas.classList.add("text-success");
-    } else if (status == 2) {
+    } else if (status == -1) {
       productStutas.innerHTML = `Declined`;
       productStutas.classList.add("text-danger");
     } else {
