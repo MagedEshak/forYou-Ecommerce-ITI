@@ -29,9 +29,7 @@ CreatAcount.addEventListener("click", (e) => {
       userName,
       password,
       email,
-
       phone,
-
       address: {
         country: "",
         city: "",
@@ -52,7 +50,7 @@ CreatAcount.addEventListener("click", (e) => {
         return createUserProfile(uid, dataUser);
       })
       .then(() => {
-        window.location.href = "../index.html";
+        window.location.href = "../CustomersPages/signin.html";
       })
       .catch((error) => {
         console.error("Error creating account:", error);

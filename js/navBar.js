@@ -44,14 +44,22 @@ document.addEventListener('DOMContentLoaded', function () {
         for (const logBtn of logBtns) {
             logBtn.innerText = "Log Out";    // reload the page after log out to remove cookies
             logBtn.addEventListener('click', async function (e) {
+                
                 await logoutUser();
                 deleteAllCookies();
                 deleteCookie("cart")
                 localStorage.removeItem("wishlist")
                 if (window.location.href.split('/')[3] == 'index.html')
-                    window.location.href = `./CustomersPages/signin.html`;
+                  { 
+                    e.target.href=`./CustomersPages/signin.html`
+                     window.location.href = `./CustomersPages/signin.html`;
+
+                  }
                 else
+                {
+                    e.target.href=`signin.html`
                     window.location.href = "signin.html";
+                }
             });
             logBtn.style.display = "block";
             logBtn.style.visibility = "visible";
