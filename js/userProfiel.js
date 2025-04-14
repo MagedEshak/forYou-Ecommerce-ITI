@@ -29,8 +29,7 @@ window.onload = () => {
       userName.innerHTML = userData.userName;
       welcomeHead.innerHTML = `Hello, ${userData.userName}`;
       userEmail.innerHTML = userData.email;
-
-      userAddres.innerHTML = `Country:${userData.address.country}<br> Governorate: ${userData.address.city}`;
+      userAddres.innerHTML = `Country:${userData.address[0]}<br> Governorate: ${userData.address[1]}`;
 
       for (let index in userData.shoppingCart) {
         let order = userData.shoppingCart[index];
