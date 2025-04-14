@@ -117,9 +117,8 @@ async function displayCategoriesinSideNavBar() {
         let catLink = document.createElement('a');
         catLink.className = "w-100";
         // put the link to go to category you need
-
         if (window.location.href.split('/')[3] == 'index.html')
-            catLink.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
+            catLink.href = `./CustomersPages/shopByCategory.html?cat_id=${category.id}`;
         else
             catLink.href = `shopByCategory.html?cat_id=${category.id}`;
 
