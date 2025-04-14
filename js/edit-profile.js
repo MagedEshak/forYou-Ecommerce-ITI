@@ -51,16 +51,16 @@ editProfileForm.addEventListener('submit', async (e) => {
 
         // Prepare updated user data
         const updatedData = {
-            Username: fullNameInput.value.trim(),
+            userName: fullNameInput.value.trim(),
             phone: phoneInput.value.trim(),
-            address: [
-                countryInput.value.trim(),
-                cityInput.value.trim()
-            ]
+            address: {
+                country:countryInput.value.trim(),
+                city:cityInput.value.trim()
+            }
         };
 
         // Validate data
-        if (!updatedData.Username || !updatedData.phone || !updatedData.address[0] || !updatedData.address[1]) {
+        if (!updatedData.userName || !updatedData.phone || !updatedData.address.country || !updatedData.address.city) {
             alert('Please fill in all required fields');
             return;
         }
@@ -70,7 +70,7 @@ editProfileForm.addEventListener('submit', async (e) => {
         // deleteCookes
         await deleteAllCookies();
         setCookie("userId", userId, 30);
-        setCookie("userName", updatedData.Username, 30);
+        setCookie("userName", updatedData.userName, 30);
         setCookie("email", emailInput.value, 30);
         setCookie("isAdmin", false, 30);
         setCookie("phone", updatedData.phone, 30);

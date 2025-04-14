@@ -3,7 +3,9 @@ import {
   deleteAllDocuments,
   getDocumentByField,
   getAllDocuments,
-  
+  deleteDocumentByField,
+  deleteDocById,
+  uploadToImgur,
 } from "../../js/main.js";
 
 // deleteAllDocuments("category")
@@ -18,9 +20,22 @@ document
   .addEventListener("submit", async function (event) {
     event.preventDefault();
     var catName = document.getElementById("categoryNameInput_id").value;
+    const fileInput = document.getElementById("product-image");
+    const imageFile = fileInput.files[0];
+
+    if (!catName || !imageFile) {
+      alert("Please fill in all required fields and upload an image!");
+      return;
+    }
+    const imageUrl = await uploadToImgur(imageFile);
+
+    if (!imageUrl) {
+      alert("Image upload failed.");
+      return;
+    }
     var cat = {
       cat_name: catName,
-      img:""
+      img: imageUrl,
     };
     await addDocument("Categories", cat);
     document.getElementById("categoryNameInput_id").value = "";
@@ -29,10 +44,8 @@ document
 
 var categorys = await getAllDocuments("Categories");
 
-
-for(var cat of categorys) {
-  
-  var products_cat = await getDocumentByField("Products","cat_id",cat.id)
+for (var cat of categorys) {
+  var products_cat = await getDocumentByField("Products", "cat_id", cat.id);
   // Create the <tr> element
   /* console.log(products_cat?.length) */
   const tr = document.createElement("tr");
@@ -41,7 +54,7 @@ for(var cat of categorys) {
   const tdCategory = document.createElement("td");
   const divContainer = document.createElement("div");
   divContainer.className =
-    "align-content-center text-center d-flex justify-content-start gap-5";
+    "align-content-center text-center d-flex justify-content-start";
 
   const rowDiv = document.createElement("div");
   rowDiv.className = "row";
@@ -69,8 +82,9 @@ for(var cat of categorys) {
   const spanQuantity = document.createElement("span");
   spanQuantity.id = "catQuantity_id";
   spanQuantity.className = "align-content-center text-center";
-   
-  spanQuantity.textContent = products_cat?.length == null? 0:products_cat.length;
+
+  spanQuantity.textContent =
+    products_cat?.length == null ? 0 : products_cat.length;
 
   // Append quantity elements
   tdQuantity.appendChild(spanQuantity);
@@ -79,6 +93,27 @@ for(var cat of categorys) {
   tr.appendChild(tdCategory);
   tr.appendChild(tdQuantity);
 
+  const cancelBtn = document.createElement("button");
+  cancelBtn.className =
+    "btn bg-danger align-content-center text-center mt-3 text-white";
+  cancelBtn.innerText = "delete";
+  cancelBtn.id = cat.id;
+  cancelBtn.onclick = async function () {
+    var products = await getDocumentByField("Products", "cat_id", this.id);
+    console.log(products);
+
+    if (products == null) {
+      await deleteDocById("Categories", this.id);
+    } else {
+      for (var item of products) {
+        console.log(item);
+        await deleteDocumentByField("Products", "cat_id", item.cat_id);
+      }
+      await deleteDocById("Categories", this.id);
+    }
+    location.reload();
+  };
+  tr.appendChild(cancelBtn);
   // Append the row to a table in the document (assuming you have a table with id "myTable")
   document.getElementById("tbody_id").appendChild(tr);
-};
+}

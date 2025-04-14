@@ -29,7 +29,6 @@ CreatAcount.addEventListener("click", (e) => {
       userName,
       password,
       email,
-      phone,
       address: {
         country: "",
         city: "",
