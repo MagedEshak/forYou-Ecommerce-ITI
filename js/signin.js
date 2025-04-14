@@ -80,6 +80,7 @@ async function handleSignIn(event) {
 
         // create cookie
 
+        
         setCookie("userId", userId, 30);
         setCookie("userName", userProfile.userName, 30);
         setCookie("email", emailInput.value, 30);
@@ -87,6 +88,8 @@ async function handleSignIn(event) {
         setCookie("phone", userProfile.phone, 30);
         setCookie("address", userProfile.address[1], 30);
 
+        console.log(userName);
+        debugger;
         // if user is admin redirect to admin page
         if (isAdmin) {
           window.location.href = "../AdminPages/admin-home.html";

@@ -11,27 +11,25 @@ import {
 let CreatAcount = document.getElementById("Creataccount_id");
 CreatAcount.addEventListener("click", (e) => {
   e.preventDefault();
-  let name = document.getElementById("userName_id").value;
+  let userName = document.getElementById("userName_id").value;
   let email = document.getElementById("email_id").value;
   let password = document.getElementById("password_id").value;
   let rePassword = document.getElementById("repassword_id").value;
-  let phoneNumber = document.getElementById("phoneNumber_id").value;
+  let phone = document.getElementById("phoneNumber_id").value;
 
   if (
-    validateName(name) &&
+    validateName(userName) &&
     validateEmail(email) &&
     validatePassword(password) &&
     validateRePassword(password, rePassword) &&
-    validatePhoneNumber(phoneNumber)
+    validatePhoneNumber(phone)
   ) {
     let dataUser = {
       isAdmin: false,
-      name,
+      userName,
       password,
       email,
-
-      phoneNumber,
-
+      phone,
       address: {
         country: "",
         city: "",
@@ -52,7 +50,7 @@ CreatAcount.addEventListener("click", (e) => {
         return createUserProfile(uid, dataUser);
       })
       .then(() => {
-        window.location.href = "../index.html";
+        window.location.href = "../CustomersPages/signin.html";
       })
       .catch((error) => {
         console.error("Error creating account:", error);

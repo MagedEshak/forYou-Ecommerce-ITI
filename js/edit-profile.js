@@ -68,7 +68,7 @@ editProfileForm.addEventListener('submit', async (e) => {
         // Update profile
         await updateUserProfile(userId, updatedData);
         // deleteCookes
-        deleteAllCookies();
+        await deleteAllCookies();
         setCookie("userId", userId, 30);
         setCookie("userName", updatedData.Username, 30);
         setCookie("email", emailInput.value, 30);
