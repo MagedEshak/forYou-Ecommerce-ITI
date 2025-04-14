@@ -19,9 +19,25 @@ document
   .addEventListener("submit", async function (event) {
     event.preventDefault();
     var catName = document.getElementById("categoryNameInput_id").value;
+    const fileInput = document.getElementById("product-image");
+    const imageFile = fileInput.files[0];
+
+    if (
+      !catName||
+      !imageFile
+    ) {
+      alert("Please fill in all required fields and upload an image!");
+      return;
+    }
+    const imageUrl = await uploadToImgur(imageFile);
+
+    if (!imageUrl) {
+      alert("Image upload failed.");
+      return;
+    }
     var cat = {
       cat_name: catName,
-      img:""
+      img: imageUrl
     };
     await addDocument("Categories", cat);
     document.getElementById("categoryNameInput_id").value = "";
@@ -95,8 +111,10 @@ for(var cat of categorys) {
     }
     else{
       for(var item of products){
+        console.log(item)
         await deleteDocumentByField("Products","cat_id",item.cat_id)
       }
+      await deleteDocById("Categories",this.id)
     }
     location.reload()
   }

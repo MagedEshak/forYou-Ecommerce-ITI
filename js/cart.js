@@ -99,12 +99,8 @@ if(usrCart){
                 // var newShopingCart = {}
                 
                 if(usr.shoppingCart[i].product_id == event.target.id.split('_')[1]){
-                    
-                    
                     usr.shoppingCart.splice(i,1)
-                    
-
-                   break;
+                    break;
                 }
             
             }
