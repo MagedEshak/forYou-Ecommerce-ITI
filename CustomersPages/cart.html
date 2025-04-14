@@ -14,8 +14,8 @@
     <title>Cart</title>
 </head>
 
-<body >
-     <!-- in case of small devices -->
+<body>
+    <!-- in case of small devices -->
 
     <!-- my nav bar in small devices : it appears on the top of the page-->
     <nav class="d-lg-none siteColorClass">
@@ -45,12 +45,13 @@
     <nav id="sideNavBar_id" class="w-75">
         <div class="sideNavLinksContainer d-flex flex-column align-items-start justify-content-center w-100 bg-danger">
             <div class="manageProfile w-100 py-5 px-3">
-                <a class="col-auto text-center fw-bolder p-2 userName_id" > User Name</a>
-                <a class="col-auto text-center p-2 logBtn">Login</a>  
+                <a class="col-auto text-center fw-bolder p-2 userName_id"> User Name</a>
+                <a class="col-auto text-center p-2 logBtn">Login</a>
                 <a class="col-auto text-center p-2 regBtn">Register</a></span>
 
             </div>
-            <div id="sideNavCategoriesLinks_id" class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
+            <div id="sideNavCategoriesLinks_id"
+                class="categoriesLinks w-100 d-flex flex-column align-items-start justify-content-center px-3 py-2">
                 <div id="whatsappLink_id" class="w-100 whatsapp col-auto"><a href="#">whatsapp</a></div>
                 <div class="w-100 support col-auto"><a href="#">call support</a></div>
             </div>
@@ -114,10 +115,10 @@
                 </div>
                 <div class="row justify-content-end align-items-center links col-5">
                     <a href="signin.html" class="col-auto text-center p-2 logBtn"> Sign In</a>
-                    <a href="Rejester.html" class= "col-auto text-center p-2 regBtn">Register</a></span>
-                    <a href="profile.html" class="col-auto text-center p-2 fw-bolder userName_id" > Guest</a>
-                   
-                   
+                    <a href="Rejester.html" class="col-auto text-center p-2 regBtn">Register</a></span>
+                    <a href="profile.html" class="col-auto text-center p-2 fw-bolder userName_id"> Guest</a>
+
+
                     <a href="../CustomersPages/cart.html" class="col-1 text-center px-5">
                         <i id="shoppingCartIcon_id" class="fa fa-shopping-cart"></i>
                     </a>
@@ -131,77 +132,85 @@
     <main class="container-fluid " style=" height: 100%">
         <section class="mt-5">
             <div class="col-12 row">
-               
+
                 <!-- products list -->
-                <div class="col-md-8 ms-md-5 border-bottom">
+                <div class="col-md-8 ms-md-5 border-bottom mb-3">
                     <h2 class="">MY CART</h2>
-                    
+
                     <div id="products" class=" row">
                         <!-- products will be added here -->
                     </div>
 
                 </div>
+
                 <div class="col-md-3   ms-md-5 border card_form" style="height: 16vh;">
-                    
+
                     <span class="fs-3  fw-bold ms-4">TOTAL</span>
                     <span id="price_text" class="fs-4 fw-bold me-5" style="float: right;">100</span>
-                    <div class="mt-5" style="width: 100%;"><button class="mt-5 btn btn-color p-2 position-relative w-100">Order
-                    </button></div>
+                    <div class="mt-5" style="width: 100%;"><button
+                            class="mt-5 btn btn-color p-2 position-relative w-100">Order
+                        </button></div>
 
                 </div>
             </div>
         </section>
+
+
+
+        <!-- Footer -->
+        <footer class="position-absolute bottom-0">
+            <div class="container-fluid">
+                <div class="row justify-content-evenly align-items-center p-3 bg-black">
+                    <!-- some information linkes like  about us , customer service , more   -->
+                    <div class="someInfo row justify-content-evenly align-items-center col-12 col-lg-6 p-2 ">
+                        <div class="aboutus col-auto">
+                            <a href="#">About Us</a>
+                        </div>
+                        <div class="customerService col-auto">
+                            <a href="#">Customer Service</a>
+                        </div>
+                        <div class="more col-auto">
+                            <a href="#">More</a>
+                        </div>
+                    </div>
+
+                    <!-- Our social media links , facebook , insta , youtube and linked in -->
+                    <!-- Our social media links , facebook , insta , youtube and linked in -->
+                    <div class="socialMediaLinks row justify-content-evenly align-items-center col-8 col-lg-4 p-2">
+                        <a class="col-1" href="https://www.facebook.com/" target="_blank"><i
+                                class="fa fa-facebook-f"></i></a>
+                        <a class="col-1" href="https://www.instagram.com/" target="_blank"><i
+                                class="fa fa-instagram"></i></i></a>
+                        <a class="col-1" href="https://www.youtube.com/" target="_blank"><i
+                                class="fa fa-youtube-play"></i></a>
+                        <a class="col-1" href="https://www.linkedin.com/" target="_blank"><i
+                                class="fa fa-linkedin"></i></a>
+                    </div>
+
+                    <!-- Payment methods , paypal , visa and premium card -->
+                    <div class="paymentMethods row justify-content-center align-items-center col-8 col-lg-6 p-2 ">
+                        <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
+                                src="../Images/CustomerImages/pay_images/premium_card.png" alt=""></a>
+                        <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
+                                src="../Images/CustomerImages/pay_images/visa.png" alt=""></a>
+                        <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
+                                src="../Images/CustomerImages/pay_images/payPal.png" alt=""></a>
+                    </div>
+
+                    <!-- text about our rights reserved -->
+                    <div class="rights row justify-content-evenly align-items-center col-10 col-lg-4 p-2">
+                        All rights reserved - forYou
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
     </main>
 
 
     <!-- ****************************************************************** -->
-    <!-- Footer -->
-    <footer>
-        <div class="container-fluid">
-            <div class="row justify-content-evenly align-items-center p-3 bg-black">
-                <!-- some information linkes like  about us , customer service , more   -->
-                <div class="someInfo row justify-content-evenly align-items-center col-12 col-lg-6 p-2 ">
-                    <div class="aboutus col-auto">
-                        <a href="#">About Us</a>
-                    </div>
-                    <div class="customerService col-auto">
-                        <a href="#">Customer Service</a>
-                    </div>
-                    <div class="more col-auto">
-                        <a href="#">More</a>
-                    </div>
-                </div>
 
-                <!-- Our social media links , facebook , insta , youtube and linked in -->
-                <!-- Our social media links , facebook , insta , youtube and linked in -->
-                <div class="socialMediaLinks row justify-content-evenly align-items-center col-8 col-lg-4 p-2">
-                    <a class="col-1" href="https://www.facebook.com/" target="_blank"><i
-                            class="fa fa-facebook-f"></i></a>
-                    <a class="col-1" href="https://www.instagram.com/" target="_blank"><i
-                            class="fa fa-instagram"></i></i></a>
-                    <a class="col-1" href="https://www.youtube.com/" target="_blank"><i
-                            class="fa fa-youtube-play"></i></a>
-                    <a class="col-1" href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a>
-                </div>
-
-                <!-- Payment methods , paypal , visa and premium card -->
-                <div class="paymentMethods row justify-content-center align-items-center col-8 col-lg-6 p-2 ">
-                    <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
-                            src="../Images/CustomerImages/pay_images/premium_card.png" alt=""></a>
-                    <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
-                            src="../Images/CustomerImages/pay_images/visa.png" alt=""></a>
-                    <a class="col-2 px-2 px-lg-4" href="#"><img class="w-100"
-                            src="../Images/CustomerImages/pay_images/payPal.png" alt=""></a>
-                </div>
-
-                <!-- text about our rights reserved -->
-                <div class="rights row justify-content-evenly align-items-center col-10 col-lg-4 p-2">
-                    All rights reserved - forYou
-                </div>
-
-            </div>
-        </div>
-    </footer>
 
     <script type="module" src="../js/navBar.js"></script>
     <!-- <script type="module" src="../JS/script.js"></script> -->
