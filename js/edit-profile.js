@@ -15,7 +15,10 @@ const countryInput = document.getElementById('country');
 const cityInput = document.getElementById('city');
 const cancelBtn = document.getElementById('cancelBtn');
 
+
+
 // Load user data when page loads
+let userData 
 window.addEventListener('DOMContentLoaded', async () => {
     try {
         const userId = await getCurrentUserId();
@@ -24,14 +27,15 @@ window.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        const userData = await getUserProfile(userId);
+        userData = await getUserProfile(userId);
         if (userData) {
             // Populate form with user data
-            fullNameInput.value = userData.Username || '';
+            fullNameInput.value = userData.userName || '';
             emailInput.value = userData.email || '';
             phoneInput.value = userData.phone || '';
             countryInput.value = userData.address?.[0] || '';
             cityInput.value = userData.address?.[1] || '';
+            
         }
     } catch (error) {
         console.error('Error loading user data:', error);
@@ -56,7 +60,9 @@ editProfileForm.addEventListener('submit', async (e) => {
             address: {
                 country:countryInput.value.trim(),
                 city:cityInput.value.trim()
-            }
+            },
+            wishlist: userData.wishlist,
+            shoppingCart: userData.shoppingCart
         };
 
         // Validate data
