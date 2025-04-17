@@ -272,7 +272,7 @@ async function createProductsInHtml(productsContainer , products , catName) {
         
         // productImage.src = product.img;
         // productImage.alt = "product image";
-        productImage.className = "text-center";
+        productImage.className = "text-center imageClass";
         productImage.innerHTML = `
             <img id="cookerProdImage_id_${product.id}" src="${product.img}" alt="${product.name}" 
                  referrerpolicy="no-referrer">`;

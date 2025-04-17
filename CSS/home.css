@@ -251,10 +251,12 @@ footer .socialMediaLinks a {
 .product a{
     flex-grow: 1;
 }
-.product img {
+.product .imageClass {
+    flex-grow: 1;
+}
+.product img{
     width: 75%;
     object-fit: contain;
-    flex-grow: 1;
 }
 
 /* this is product description paragraph*/
