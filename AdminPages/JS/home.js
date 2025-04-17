@@ -94,7 +94,7 @@ function createProductRow(id, product) {
 function updateProductSummary(products) {
   dom.totalProducts.textContent = products.length;
   dom.totalCategories.textContent = new Set(
-    products.map((p) => p.category_id)
+    products.map((p) => p.cat_id)
   ).size;
 }
 

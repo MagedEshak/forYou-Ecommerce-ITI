@@ -5,6 +5,8 @@ import {
   setCookie,
   createUserProfile,
   registerUser,
+  getCurrentUserId,
+  getUserProfile,
 } from "../../js/auth.js";
 
 // Edit Admin Profile
@@ -39,7 +41,8 @@ let createNewAdminForm = document.getElementById("adminRegitForm");
 
 
 //-----------------------------------------------------------------------------
-
+const userId = getCurrentUserId();
+const userprofile = getUserProfile(userId);
 // Edit Admin Profile Form Validation
 document.addEventListener("DOMContentLoaded", async function () {
   const userId = getCookie("userId");
@@ -102,6 +105,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             ? editCity.value
             : userAddress,
       },
+      wishlist: userprofile.wishlist,
+      shoppingCart:userprofile.shoppingCart
     };
 
     try {
@@ -239,9 +244,6 @@ createNewAdminForm.addEventListener("submit", async (e) => {
   } else {
     clearFieldError("repeatPassInput");
   }
-
-  password.type = cekBoxPass.checked ? "text" : "password";
-  repeatPassword.type = cekBoxRePass.checked ? "text" : "password";
 
   if (phone.value.trim() !== "" && !validatePhone(phone.value)) {
     showFieldError("phone", "Please Enter Valid Phone Number");

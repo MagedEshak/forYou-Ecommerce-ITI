@@ -60,18 +60,18 @@ async function createProductsInHtml() {
 
     // this is the container of products
     let productsContainer = document.createElement('div');
-    productsContainer.className = "products row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4";
+    productsContainer.className = "products row justify-content-center py-2 px-md-3 px-lg-4";
     productsContainer.id = `${catName}Products_id`;
 
     productsTemp.forEach( product => {
         // this is the div that contains my product elements
         let productContainer = document.createElement('div');
         productContainer.id = `${catName}Product_id_${product.id}`; /* categoryName_id_prodID  : cookerProd_id_1 */
-        productContainer.className = "product col-10 col-md-4 col-lg-3 justify-content-center align-items-center";
+        productContainer.className = "product col-10 col-md-4 col-lg-3 justify-content-center align-items-center p-1";
     
         // this is inner container of my product to handel good view
         let productInnerContainer = document.createElement('div'); 
-        productInnerContainer.className = "h-100 productInnercontainer d-flex flex-column justify-content-between align-items-center";
+        productInnerContainer.className = "h-100 productInnercontainer d-flex flex-column justify-content-between align-items-center border border-dark";
     
         /*****************************************************************/
         // this header div contains the discount percentage , and the add to wishlist button
@@ -182,7 +182,7 @@ async function createProductsInHtml() {
         
         // productImage.src = product.img;
         // productImage.alt = "product image";
-        productImage.className = "text-center";
+        productImage.className = "text-center imageClass";
         productImage.innerHTML = `
             <img id="cookerProdImage_id_${product.id}" src="${product.img}" alt="${product.name}" 
                  referrerpolicy="no-referrer">`;
