@@ -103,17 +103,22 @@ function createCategoryInHtml(categoriesContainer, category, index) {
   let categoryHeader = document.createElement("p");
   categoryHeader.innerText = category.cat_name;
 
+  let emptyDiv = document.createElement('div');
+  emptyDiv.style.height = '20px';
+  emptyDiv.style.width = '100%';
+
   let categoryImage = document.createElement("div");
   // categoryImage.referrerPolicy = "no-referrer";
   // categoryImage.className = "w-75 catImg";
   // categoryImage.src = category.img ;
   // categoryImage.referrerpolicy = "no-referrer";
-  categoryImage.className = "text-center ";
+  categoryImage.className = "text-center";
   categoryImage.innerHTML = `
         <img class="w-75 catImg" src="${category.img}" alt="${category.cat_name}" 
              referrerpolicy="no-referrer">`;
 
   categoryAncorContainer.appendChild(categoryHeader);
+  categoryAncorContainer.appendChild(emptyDiv);
   categoryAncorContainer.appendChild(categoryImage);
 
   categoryContainer.appendChild(categoryAncorContainer);
@@ -253,7 +258,7 @@ async function createProductsInHtml(productsContainer, products, catName) {
     // this contains the product image  : must be appended in a
     let productImage = document.createElement("div");
   
-    productImage.className = "text-center imageClass";
+    productImage.className = "text-center imageClass d-flex align-items-center justify-content-center";
     productImage.innerHTML = `
             <img id="cookerProdImage_id_${product.id}" src="${product.img}" alt="${product.name}" 
                  referrerpolicy="no-referrer">`;

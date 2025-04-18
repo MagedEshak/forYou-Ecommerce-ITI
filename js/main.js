@@ -196,7 +196,7 @@ export async function deleteDocById(docName, Id) {
 
 // Imgur upload function
 export async function uploadToImgur(file) {
-  const clientId = '5c51da6457cf182';  
+  const clientId = '4fd27fad44e4294';  
 
   const formData = new FormData();
   formData.append('image', file);
