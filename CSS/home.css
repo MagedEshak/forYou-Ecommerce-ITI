@@ -262,12 +262,10 @@ footer .socialMediaLinks a {
 .product a {
     flex-grow: 1;
 }
-
-.imgClass {
+.product .imageClass {
     flex-grow: 1;
 }
-
-.product img {
+.product img{
     width: 75%;
     object-fit: contain;
 }
@@ -417,5 +415,6 @@ footer .socialMediaLinks a {
     }
 
 }
+
 
 /**********************************************************************/

@@ -92,7 +92,7 @@ function createCategoryInHtml(categoriesContainer, category, index) {
   // this is a link that contains category contents
   let categoryAncorContainer = document.createElement("a");
   categoryAncorContainer.className =
-    "bg-warning-subtle w-100 d-flex flex-column align-items-center justify-content-center";
+    "bg-warning-subtle w-100 d-flex flex-column align-items-center justify-content-evenly";
   categoryAncorContainer.id = `cat_id_${category.id}`;
   categoryAncorContainer.href = `CustomersPages/shopByCategory.html?cat_id=${category.id}`;
   if (index % 2 == 0) {
@@ -103,17 +103,22 @@ function createCategoryInHtml(categoriesContainer, category, index) {
   let categoryHeader = document.createElement("p");
   categoryHeader.innerText = category.cat_name;
 
+  let emptyDiv = document.createElement('div');
+  emptyDiv.style.height = '20px';
+  emptyDiv.style.width = '100%';
+
   let categoryImage = document.createElement("div");
   // categoryImage.referrerPolicy = "no-referrer";
   // categoryImage.className = "w-75 catImg";
   // categoryImage.src = category.img ;
   // categoryImage.referrerpolicy = "no-referrer";
-  categoryImage.className = "text-center ";
+  categoryImage.className = "text-center";
   categoryImage.innerHTML = `
         <img class="w-75 catImg" src="${category.img}" alt="${category.cat_name}" 
              referrerpolicy="no-referrer">`;
 
   categoryAncorContainer.appendChild(categoryHeader);
+  categoryAncorContainer.appendChild(emptyDiv);
   categoryAncorContainer.appendChild(categoryImage);
 
   categoryContainer.appendChild(categoryAncorContainer);
@@ -125,7 +130,7 @@ async function fillProductsInHtml() {
   // this is the container of products
   let productsContainer = document.createElement("div");
   productsContainer.className =
-    "products row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4";
+    "products row justify-content-center py-2 px-md-3 px-lg-4";
   //productsContainer.id = `${catName}Products_id`;
 
   for (let category of categoriesTemp) {
@@ -151,12 +156,12 @@ async function createProductsInHtml(productsContainer, products, catName) {
     let productContainer = document.createElement("div");
     productContainer.id = `${catName}Product_id_${product.id}`; /* categoryName_id_prodID  : cookerProd_id_1 */
     productContainer.className =
-      "product col-10 col-md-4 col-lg-3 justify-content-center align-items-center";
+      "product col-10 col-md-4 col-lg-3 justify-content-center align-items-center p-1";
 
     // this is inner container of my product to handel good view
     let productInnerContainer = document.createElement("div");
     productInnerContainer.className =
-      "h-100 productInnercontainer d-flex flex-column justify-content-between align-items-center";
+      "h-100 productInnercontainer d-flex flex-column justify-content-between align-items-center border border-dark";
 
     /*****************************************************************/
     // this header div contains the discount percentage , and the add to wishlist button
@@ -253,7 +258,7 @@ async function createProductsInHtml(productsContainer, products, catName) {
     // this contains the product image  : must be appended in a
     let productImage = document.createElement("div");
   
-    productImage.className = "text-center imgClass";
+    productImage.className = "text-center imageClass d-flex align-items-center justify-content-center";
     productImage.innerHTML = `
             <img id="cookerProdImage_id_${product.id}" src="${product.img}" alt="${product.name}" 
                  referrerpolicy="no-referrer">`;

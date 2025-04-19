@@ -60,18 +60,18 @@ async function createProductsInHtml() {
 
     // this is the container of products
     let productsContainer = document.createElement('div');
-    productsContainer.className = "products row justify-content-center bg-primary-subtle py-2 px-md-3 px-lg-4";
+    productsContainer.className = "products row justify-content-center py-2 px-md-3 px-lg-4";
     productsContainer.id = `${catName}Products_id`;
 
     productsTemp.forEach( product => {
         // this is the div that contains my product elements
         let productContainer = document.createElement('div');
         productContainer.id = `${catName}Product_id_${product.id}`; /* categoryName_id_prodID  : cookerProd_id_1 */
-        productContainer.className = "product col-10 col-md-4 col-lg-3 justify-content-center align-items-center";
+        productContainer.className = "product col-10 col-md-4 col-lg-3 justify-content-center align-items-center p-1";
     
         // this is inner container of my product to handel good view
         let productInnerContainer = document.createElement('div'); 
-        productInnerContainer.className = "h-100 productInnercontainer d-flex flex-column justify-content-between align-items-center";
+        productInnerContainer.className = "h-100 productInnercontainer d-flex flex-column justify-content-between align-items-center border border-dark";
     
         /*****************************************************************/
         // this header div contains the discount percentage , and the add to wishlist button
@@ -175,14 +175,8 @@ async function createProductsInHtml() {
         // this contains the product image  : must be appended in a
         // this contains the product image  : must be appended in a
         let productImage = document.createElement('div');
-        // productImage.src = product.img;
-        // productImage.referrerpolicy = "no-referrer";
-        
-        //productImage.id = `cookerProdImage_id_${product.id}`;
-        
-        // productImage.src = product.img;
-        // productImage.alt = "product image";
-        productImage.className = "text-center";
+
+        productImage.className = "text-center imageClass d-flex align-items-center justify-content-center";
         productImage.innerHTML = `
             <img id="cookerProdImage_id_${product.id}" src="${product.img}" alt="${product.name}" 
                  referrerpolicy="no-referrer">`;
@@ -278,49 +272,6 @@ async function createProductsInHtml() {
         let countAndBinDiv = document.createElement("div");
         countAndBinDiv.id = `${catName}ProdCountAndBinDiv_id_${product.id}`;
         countAndBinDiv.className = "productCountAndBin w-75 d-flex justify-content-center align-items-center px-3 py-2 d-none";
-    
-        // // remove Button that contains trash icon
-        // let removeBtn = document.createElement("button");
-        // removeBtn.id = `${catName}ProdRemoveFromCartBtn_id_${product.id}`;
-        // removeBtn.className = "bin";
-        // // creating trash icon
-        // let trashIcon = document.createElement('i');
-        // trashIcon.className = "fa fa-trash-o";
-        // // appending the trah icon to remove btn
-        // removeBtn.appendChild(trashIcon);
-    
-        // // Decrease Button
-        // let decrBtn = document.createElement("button");
-        // decrBtn.id = `${catName}ProdDecrCountBtn_id_${product.id}`;
-        // decrBtn.className = "minus d-none";
-        // // creating minus icon
-        // let minusIcon = document.createElement('i');
-        // minusIcon.className = "fa fa-minus";
-        // // appending the minus icon to decrement btn
-        // decrBtn.appendChild(minusIcon);
-    
-        // // Count Span
-        // let countSpan = document.createElement("span");
-        // countSpan.id = `${catName}ProdCountSpan_id_${product.id}`;
-        // countSpan.className = "col-auto";
-        // countSpan.innerText = "0";
-    
-        // // Increase Button
-        // let incrBtn = document.createElement("button");
-        // incrBtn.id = `${catName}ProdIncrCountBtn_id_${product.id}`;
-        // incrBtn.className = "plus";
-        // // creating plus icon
-        // let plusIcon = document.createElement('i');
-        // plusIcon.className = "fa fa-plus";
-        // // appending the plus icon to decrement btn
-        // incrBtn.appendChild(plusIcon);
-    
-        // Append elements to counter div
-
-        // countAndBinDiv.appendChild(removeBtn);
-        // countAndBinDiv.appendChild(decrBtn);
-        //// countAndBinDiv.appendChild(countSpan);
-        //// countAndBinDiv.appendChild(incrBtn);
     
         // Append addToCart button & counter div
         cartBtnDiv.appendChild(addToCartBtn);

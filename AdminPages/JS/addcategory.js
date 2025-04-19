@@ -21,6 +21,7 @@ document
     event.preventDefault();
     var catName = document.getElementById("categoryNameInput_id").value;
     const fileInput = document.getElementById("product-image");
+    debugger;
     const imageFile = fileInput.files[0];
 
     if (!catName || !imageFile) {

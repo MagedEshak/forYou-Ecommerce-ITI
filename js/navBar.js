@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 deleteAllCookies();
                 deleteCookie("cart")
                 localStorage.removeItem("wishlist")
-
                 if (window.location.href.split('/')[3] == 'index.html')
                   { 
                     e.target.href=`./CustomersPages/signin.html`
